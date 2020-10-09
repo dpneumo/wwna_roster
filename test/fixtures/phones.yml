@@ -3,15 +3,15 @@
 one:
   cc: MyString
   area: MyString
-  : 
+  prefix: MyString
   number: MyString
-  type: 
-  txt_msg: 
+  type: MyString
+  txt_msg: MyString
 
 two:
   cc: MyString
   area: MyString
-  : 
+  prefix: MyString
   number: MyString
-  type: 
-  txt_msg: 
+  type: MyString
+  txt_msg: MyString

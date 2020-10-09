@@ -1,15 +1,15 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 valid:
-  line1: "123 Jump"
+  line1: '123 Jump'
   line2: abc
   city: Arlington
   state: TX
-  zip: "76016"
+  zip: '76016'
 
 mystery:
   line1: zzz
   line2: aaa
   city: Ghost
   state: ZZ
-  zip: "66666"
+  zip: '66666'

@@ -2,10 +2,10 @@
 
 one:
   address: MyString
-  type: 
+  type: MyString
   note: MyText
 
 two:
   address: MyString
-  type: 
+  type: MyString
   note: MyText

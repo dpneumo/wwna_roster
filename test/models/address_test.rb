@@ -5,57 +5,37 @@ class AddressTest < ActiveSupport::TestCase
     @addr = addresses(:valid)
   end
   
-  test "a valid @address succeeds" do
+  test "a valid address succeeds" do
   	assert @addr.save
   end
 
-  test "line1 must not be null" do
-    @addr.line1 = null
-  	assert_raises(NameError) { @addr.save }
-  end
-
-  test "line1 must not be empty" do
+  test "line1 must be present" do
     @addr.line1 = ""
-  	refute @addr.save
+  	refute @addr.save, "Saved address without line1"
   end
 
-  test "line2 may be null" do
-    @addr = Address.new(line1: "123 Jump", line2: , city: "Arl", state: "TX", zip: "76016")
-  	refute @addr.save
+  test "line2 may be nil" do
+    @addr.line2 = nil
+  	assert @addr.save, "Save address failed with nil line2"
   end
 
-  test "line1 may be empty" do
-    @addr = Address.new(line1: "123 Jump", line2: "", city: "Arl", state: "TX", zip: "76016")
-  	refute @addr.save
+  test "line2 may be empty" do
+    @addr.line2 = ""
+  	assert @addr.save, "Save address failed with nil line2"
   end
 
-  test "city must not be null" do
-    @addr = Address.new(line1: "123 Jump", line2: "abc", city: , state: "TX", zip: "76016")
-  	refute @addr.save
+  test "city must be present" do
+    @addr.city = ""
+  	refute @addr.save, "Saved address without city"
   end
 
-  test "city must not be empty" do
-    @addr = Address.new(line1: "123 Jump", line2: "abc", city: "", state: "TX", zip: "76016")
-  	refute @addr.save
+  test "state must be present" do
+    @addr.state = ""
+  	refute @addr.save, "Saved address without state"
   end
 
-  test "state must not be null" do
-    @addr = Address.new(line1: "123 Jump", line2: "abc", city: "Arl", state: , zip: "76016")
-  	refute @addr.save
-  end
-
-  test "state must not be empty" do
-    @addr = Address.new(line1: "123 Jump", line2: "abc", city: "Arl", state: "", zip: "76016")
-  	refute @addr.save
-  end
-
-  test "zip must not be null" do
-    @addr = Address.new(line1: "123 Jump", line2: "abc", city: "Arl", state: "TX", zip: )
-  	refute @addr.save
-  end
-
-  test "zip must not be empty" do
-    @addr = Address.new(line1: "123 Jump", line2: "abc", city: "Arl", state: "TX", zip: "")
-  	refute @addr.save
+  test "zip must be present" do
+    @addr.zip = ""
+  	refute @addr.save, "Saved address without zip"
   end
 end
