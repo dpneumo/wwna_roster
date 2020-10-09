@@ -21,6 +21,6 @@ class EmailTest < ActiveSupport::TestCase
 
   test "note may be empty" do
     @em.note = ""
-    assert @em.save, "Save email failed with nil note"
+    assert @em.save, "Save email failed with empty note"
   end
 end

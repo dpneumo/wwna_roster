@@ -2,10 +2,8 @@
 
 valid:
   address: "aaa@bbb.ccc"
-  locn: home
   note: MyText
 
 two:
   address: MyString
-  locn: MyString
   note: MyText

@@ -1,7 +1,8 @@
 Rails.application.routes.draw do
   get 'welcome/index'
 
-  resources :addresses, :phones, :emails, :persons, 
+  resources :addresses, :phones, :emails, :persons,
+            :person_phones,
   					:lots, :houses, :occupents, :owners
 
   root 'welcome#index'
