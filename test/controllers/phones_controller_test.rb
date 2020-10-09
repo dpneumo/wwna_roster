@@ -2,7 +2,7 @@ require 'test_helper'
 
 class PhonesControllerTest < ActionDispatch::IntegrationTest
   setup do
-    @phone = phones(:one)
+    @phone = phones(:valid)
   end
 
   test "should get index" do
@@ -17,7 +17,7 @@ class PhonesControllerTest < ActionDispatch::IntegrationTest
 
   test "should create phone" do
     assert_difference('Phone.count') do
-      post phones_url, params: { phone: { : @phone., area: @phone.area, cc: @phone.cc, number: @phone.number, txt_msg: @phone.txt_msg, type: @phone.type } }
+      post phones_url, params: { phone: { prefix: @phone.prefix, area: @phone.area, cc: @phone.cc, number: @phone.number, txt_msg: @phone.txt_msg } }
     end
 
     assert_redirected_to phone_url(Phone.last)
@@ -34,7 +34,7 @@ class PhonesControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should update phone" do
-    patch phone_url(@phone), params: { phone: { : @phone., area: @phone.area, cc: @phone.cc, number: @phone.number, txt_msg: @phone.txt_msg, type: @phone.type } }
+    patch phone_url(@phone), params: { phone: { prefix: @phone.prefix, area: @phone.area, cc: @phone.cc, number: @phone.number, txt_msg: @phone.txt_msg } }
     assert_redirected_to phone_url(@phone)
   end
 

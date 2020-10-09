@@ -23,19 +23,19 @@ ActiveRecord::Schema.define(version: 2020_10_09_152928) do
   end
 
   create_table "emails", force: :cascade do |t|
-    t.string "address"
-    t.string "type"
+    t.string "address", null: false
+    t.string "locn"
     t.text "note"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "phones", force: :cascade do |t|
-    t.string "cc"
-    t.string "area"
-    t.string "prefix"
-    t.string "number"
-    t.string "type"
+    t.string "cc", default: "1"
+    t.string "area", null: false
+    t.string "prefix", null: false
+    t.string "number", null: false
+    t.string "locn"
     t.text "txt_msg"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false

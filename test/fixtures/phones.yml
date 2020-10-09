@@ -1,17 +1,15 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-one:
-  cc: MyString
-  area: MyString
-  prefix: MyString
-  number: MyString
-  type: MyString
-  txt_msg: MyString
+valid:
+  cc: '1'
+  area: '817'
+  prefix: '123'
+  number: '4567'
+  txt_msg: 'No'
 
 two:
   cc: MyString
   area: MyString
   prefix: MyString
   number: MyString
-  type: MyString
   txt_msg: MyString

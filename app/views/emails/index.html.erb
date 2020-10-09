@@ -6,7 +6,6 @@
   <thead>
     <tr>
       <th>Address</th>
-      <th>Type</th>
       <th>Note</th>
       <th colspan="3"></th>
     </tr>
@@ -16,7 +15,6 @@
     <% @emails.each do |email| %>
       <tr>
         <td><%= email.address %></td>
-        <td><%= email.type %></td>
         <td><%= email.note %></td>
         <td><%= link_to 'Show', email %></td>
         <td><%= link_to 'Edit', edit_email_path(email) %></td>

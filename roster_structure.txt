@@ -6,17 +6,33 @@ Address
 	zip
 
 Phone
-	country_code
-	area_code
+	cc
+	area
 	prefix
 	number
-	type(home, work, other)
 	txt_msg(y/n)
 
 Email
-	address
-	type(home, work, other)
+	addr
 	note
+
+PersonPhone
+	person_id
+	phone_id
+	locn(home, work, other)
+	preferred(y/n)
+
+PersonEmail
+	person_id
+	email_id
+	locn(home, work, other)
+	preferred(y/n)
+
+PersonAddress
+	person_id
+	email_id
+	locn(home, work, other)
+	preferred(y/n)
 
 Person
 	nickname
@@ -25,8 +41,6 @@ Person
 	last
 	suffix
 	honorific
-	email_id
-	phone_id
 	note
 
 Lot
