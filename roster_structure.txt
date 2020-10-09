@@ -1,0 +1,57 @@
+Address
+	line1
+	line2
+	city
+	state
+	zip
+
+Phone
+	country_code
+	area_code
+	prefix
+	number
+	type(home, work, other)
+	txt_msg(y/n)
+
+Email
+	address
+	type(home, work, other)
+	note
+
+Person
+	nickname
+	first
+	middle
+	last
+	suffix
+	honorific
+	email_id
+	phone_id
+	note
+
+Lot
+	address_id
+	TAD_id
+	google_map_link
+	image_link
+	note
+
+House
+	lot_id
+	linked_lot_id
+	flag(y/n)
+	rental(y/n)
+	listed(y/n)
+	status(occupied, vacant, construction)
+	note
+
+Occupent
+	house_id
+	person_id
+	relation(husband, wife, partner, child, guest, other)
+	type(owner, renter, unknown)
+	note
+
+Owner
+	house_id
+	person_id

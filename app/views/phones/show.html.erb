@@ -1,0 +1,34 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Cc:</strong>
+  <%= @phone.cc %>
+</p>
+
+<p>
+  <strong>Area:</strong>
+  <%= @phone.area %>
+</p>
+
+<p>
+  <strong>:</strong>
+  <%= @phone. %>
+</p>
+
+<p>
+  <strong>Number:</strong>
+  <%= @phone.number %>
+</p>
+
+<p>
+  <strong>Type:</strong>
+  <%= @phone.type %>
+</p>
+
+<p>
+  <strong>Txt msg:</strong>
+  <%= @phone.txt_msg %>
+</p>
+
+<%= link_to 'Edit', edit_phone_path(@phone) %> |
+<%= link_to 'Back', phones_path %>
