@@ -10,8 +10,8 @@ class EmailTest < ActiveSupport::TestCase
   end
 
   test "address must be present" do
-    @em.address = ""
-    refute @em.save, "Saved email without address"
+    @em.addr = ""
+    refute @em.save, "Saved email without addr"
   end
 
   test "note may be nil" do

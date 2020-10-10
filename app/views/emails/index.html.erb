@@ -5,7 +5,7 @@
 <table>
   <thead>
     <tr>
-      <th>Address</th>
+      <th>Addr</th>
       <th>Note</th>
       <th colspan="3"></th>
     </tr>
@@ -14,7 +14,7 @@
   <tbody>
     <% @emails.each do |email| %>
       <tr>
-        <td><%= email.address %></td>
+        <td><%= email.addr %></td>
         <td><%= email.note %></td>
         <td><%= link_to 'Show', email %></td>
         <td><%= link_to 'Edit', edit_email_path(email) %></td>

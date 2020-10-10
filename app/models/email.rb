@@ -1,3 +1,3 @@
 class Email < ApplicationRecord
-  validates :address, presence: true
+  validates :addr, presence: true
 end

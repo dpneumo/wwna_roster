@@ -69,6 +69,6 @@ class EmailsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def email_params
-      params.require(:email).permit(:address, :note)
+      params.require(:email).permit(:addr, :note)
     end
 end
