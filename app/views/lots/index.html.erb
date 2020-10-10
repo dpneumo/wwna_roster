@@ -1,0 +1,35 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Lots</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Address</th>
+      <th>Tad</th>
+      <th>Google maps link</th>
+      <th>Image link</th>
+      <th>Note</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @lots.each do |lot| %>
+      <tr>
+        <td><%= lot.address_id %></td>
+        <td><%= lot.tad_id %></td>
+        <td><%= lot.google_maps_link %></td>
+        <td><%= lot.image_link %></td>
+        <td><%= lot.note %></td>
+        <td><%= link_to 'Show', lot %></td>
+        <td><%= link_to 'Edit', edit_lot_path(lot) %></td>
+        <td><%= link_to 'Destroy', lot, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Lot', new_lot_path %>

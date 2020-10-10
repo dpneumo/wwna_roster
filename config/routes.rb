@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :lots
   resources :people
   resources :person_addresses
   resources :person_emails
