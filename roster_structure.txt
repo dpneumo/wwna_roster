@@ -59,11 +59,11 @@ House
 	status(occupied, vacant, construction)
 	note
 
-Occupent
+Occupant
 	house_id
 	person_id
 	relation(husband, wife, partner, child, guest, other)
-	type(owner, renter, unknown)
+	status(owner, renter, other, unknown)
 	note
 
 Owner

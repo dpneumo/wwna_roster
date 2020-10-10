@@ -1,0 +1,42 @@
+<%= form_with(model: occupant, local: true) do |form| %>
+  <% if occupant.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(occupant.errors.count, "error") %> prohibited this occupant from being saved:</h2>
+
+      <ul>
+        <% occupant.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :house_id %>
+    <%= form.number_field :house_id %>
+  </div>
+
+  <div class="field">
+    <%= form.label :person_id %>
+    <%= form.number_field :person_id %>
+  </div>
+
+  <div class="field">
+    <%= form.label :relation %>
+    <%= form.text_field :relation %>
+  </div>
+
+  <div class="field">
+    <%= form.label :status %>
+    <%= form.text_field :status %>
+  </div>
+
+  <div class="field">
+    <%= form.label :note %>
+    <%= form.text_area :note %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

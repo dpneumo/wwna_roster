@@ -1,0 +1,19 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  lot_id: 1
+  linked_lot_id: 3
+  flag: false
+  rental: false
+  listed: false
+  status: Occupied
+  note: MyText1
+
+two:
+  lot_id: 2
+  linked_lot_id: 4
+  flag: false
+  rental: false
+  listed: false
+  status: Vacant
+  note: MyText2

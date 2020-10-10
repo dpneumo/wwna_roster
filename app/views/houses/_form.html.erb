@@ -1,0 +1,52 @@
+<%= form_with(model: house, local: true) do |form| %>
+  <% if house.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(house.errors.count, "error") %> prohibited this house from being saved:</h2>
+
+      <ul>
+        <% house.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :lot_id %>
+    <%= form.number_field :lot_id %>
+  </div>
+
+  <div class="field">
+    <%= form.label :linked_lot_id %>
+    <%= form.number_field :linked_lot_id %>
+  </div>
+
+  <div class="field">
+    <%= form.label :flag %>
+    <%= form.check_box :flag %>
+  </div>
+
+  <div class="field">
+    <%= form.label :rental %>
+    <%= form.check_box :rental %>
+  </div>
+
+  <div class="field">
+    <%= form.label :listed %>
+    <%= form.check_box :listed %>
+  </div>
+
+  <div class="field">
+    <%= form.label :status %>
+    <%= form.text_field :status %>
+  </div>
+
+  <div class="field">
+    <%= form.label :note %>
+    <%= form.text_area :note %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>
