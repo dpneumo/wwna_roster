@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Person:</strong>
+  <%= @person_email.person_id %>
+</p>
+
+<p>
+  <strong>Email:</strong>
+  <%= @person_email.email_id %>
+</p>
+
+<p>
+  <strong>Locn:</strong>
+  <%= @person_email.locn %>
+</p>
+
+<p>
+  <strong>Preferred:</strong>
+  <%= @person_email.preferred %>
+</p>
+
+<%= link_to 'Edit', edit_person_email_path(@person_email) %> |
+<%= link_to 'Back', person_emails_path %>

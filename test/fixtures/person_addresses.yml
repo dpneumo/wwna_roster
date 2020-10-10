@@ -2,12 +2,12 @@
 
 valid:
   person_id: 1
-  phone_id: 2
-  locn: home
+  address_id: 2
+  locn: Other
   preferred: yes
 
 two:
   person_id: 2
-  phone_id: 1
-  locn: other
+  address_id: 1
+  locn: Home
   preferred: no

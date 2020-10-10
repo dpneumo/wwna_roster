@@ -30,7 +30,7 @@ PersonEmail
 
 PersonAddress
 	person_id
-	email_id
+	address_id
 	locn(home, work, other)
 	preferred(y/n)
 

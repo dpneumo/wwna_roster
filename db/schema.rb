@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_10_09_214717) do
+ActiveRecord::Schema.define(version: 2020_10_10_010618) do
 
   create_table "addresses", force: :cascade do |t|
     t.string "line1", null: false
@@ -23,17 +23,35 @@ ActiveRecord::Schema.define(version: 2020_10_09_214717) do
   end
 
   create_table "emails", force: :cascade do |t|
-    t.string "address", null: false
+    t.string "addr", null: false
     t.text "note"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
 
-  create_table "person_phones", force: :cascade do |t|
-    t.integer "person_id"
-    t.integer "phone_id"
+  create_table "person_addresses", force: :cascade do |t|
+    t.integer "person_id", null: false
+    t.integer "address_id", null: false
     t.string "locn"
-    t.string "preferred"
+    t.string "preferred", default: "No"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "person_emails", force: :cascade do |t|
+    t.integer "person_id", null: false
+    t.integer "email_id", null: false
+    t.string "locn"
+    t.string "preferred", default: "No"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "person_phones", force: :cascade do |t|
+    t.integer "person_id", null: false
+    t.integer "phone_id", null: false
+    t.string "locn"
+    t.string "preferred", default: "No"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

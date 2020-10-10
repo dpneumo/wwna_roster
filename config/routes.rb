@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :person_addresses
+  resources :person_emails
   get 'welcome/index'
 
   resources :addresses, :phones, :emails, :persons,
