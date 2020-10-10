@@ -1,0 +1,19 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  nickname: Bob
+  first: Robert
+  middle: A
+  last: Heinlin 
+  suffix: Sr.
+  honorific: Sir
+  note: "A Fake"
+
+two:
+  nickname: Mike
+  first: Michael
+  middle: B
+  last: Satre
+  suffix: Jr.
+  honorific: Dr.
+  note: MyText

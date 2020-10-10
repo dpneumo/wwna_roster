@@ -1,0 +1,39 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Nickname:</strong>
+  <%= @person.nickname %>
+</p>
+
+<p>
+  <strong>First:</strong>
+  <%= @person.first %>
+</p>
+
+<p>
+  <strong>Middle:</strong>
+  <%= @person.middle %>
+</p>
+
+<p>
+  <strong>Last:</strong>
+  <%= @person.last %>
+</p>
+
+<p>
+  <strong>Suffix:</strong>
+  <%= @person.suffix %>
+</p>
+
+<p>
+  <strong>Honorific:</strong>
+  <%= @person.honorific %>
+</p>
+
+<p>
+  <strong>Note:</strong>
+  <%= @person.note %>
+</p>
+
+<%= link_to 'Edit', edit_person_path(@person) %> |
+<%= link_to 'Back', people_path %>
