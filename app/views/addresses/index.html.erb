@@ -5,8 +5,8 @@
 <table>
   <thead>
     <tr>
-      <th>Line1</th>
-      <th>Line2</th>
+      <th>Number</th>
+      <th>Street</th>
       <th>City</th>
       <th>State</th>
       <th>Zip</th>
@@ -17,8 +17,8 @@
   <tbody>
     <% @addresses.each do |address| %>
       <tr>
-        <td><%= address.line1 %></td>
-        <td><%= address.line2 %></td>
+        <td><%= address.number %></td>
+        <td><%= address.street %></td>
         <td><%= address.city %></td>
         <td><%= address.state %></td>
         <td><%= address.zip %></td>

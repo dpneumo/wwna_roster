@@ -9,19 +9,14 @@ class AddressTest < ActiveSupport::TestCase
   	assert @addr.save
   end
 
-  test "line1 must be present" do
-    @addr.line1 = ""
-  	refute @addr.save, "Saved address without line1"
+  test "number must be present" do
+    @addr.number = ""
+    refute @addr.save, "Saved address without number"
   end
 
-  test "line2 may be nil" do
-    @addr.line2 = nil
-  	assert @addr.save, "Save address failed with nil line2"
-  end
-
-  test "line2 may be empty" do
-    @addr.line2 = ""
-  	assert @addr.save, "Save address failed with nil line2"
+  test "street must be present" do
+    @addr.street = ""
+    refute @addr.save, "Saved address without street"
   end
 
   test "city must be present" do

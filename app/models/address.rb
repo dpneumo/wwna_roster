@@ -3,8 +3,9 @@ class Address < ApplicationRecord
   has_many :people, through: :person_addresses
   has_one  :lot
 
-  validates :line1, presence: true
-  validates :city,  presence: true
-  validates :state, presence: true
-  validates :zip,   presence: true
+  validates :number, presence: true
+  validates :street, presence: true
+  validates :city,   presence: true
+  validates :state,  presence: true
+  validates :zip,    presence: true
 end

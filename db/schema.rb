@@ -13,8 +13,8 @@
 ActiveRecord::Schema.define(version: 2020_10_10_203806) do
 
   create_table "addresses", force: :cascade do |t|
-    t.string "line1", null: false
-    t.string "line2"
+    t.string "number", null: false
+    t.string "street", null: false
     t.string "city", default: "Arlington", null: false
     t.string "state", default: "TX", null: false
     t.string "zip", default: "76016", null: false

@@ -66,6 +66,6 @@ Occupancy
 	status(owner, renter, other, unknown)
 	note
 
-Owner
+Ownership
 	house_id
 	person_id
