@@ -3,7 +3,7 @@ Rails.application.routes.draw do
 
   resources :addresses, :phones, :emails, :people,
             :person_phones, :person_emails, :person_addresses,
-  					:lots, :houses, :occupancies, :ownerships
+  					:houses, :occupancies, :ownerships
 
   root 'welcome#index'
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
