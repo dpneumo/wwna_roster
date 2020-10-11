@@ -9,8 +9,8 @@ class HouseTest < ActiveSupport::TestCase
     assert @hse.save
   end
 
-  test "lot_id must be present" do
-    @hse.lot_id = ""
-    refute @hse.save, "Saved house without lot_id"
+  test "address_id must be present" do
+    @hse.address_id = ""
+    refute @hse.save, "Saved house without address_id"
   end
 end

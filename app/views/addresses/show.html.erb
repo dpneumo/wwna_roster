@@ -25,5 +25,25 @@
   <%= @address.zip %>
 </p>
 
+<p>
+  <strong>Tad:</strong>
+  <%= @address.tad_id %>
+</p>
+
+<p>
+  <strong>Google maps link:</strong>
+  <%= @address.google_maps_link %>
+</p>
+
+<p>
+  <strong>Image link:</strong>
+  <%= @address.image_link %>
+</p>
+
+<p>
+  <strong>Note:</strong>
+  <%= @address.note %>
+</p>
+
 <%= link_to 'Edit', edit_address_path(@address) %> |
 <%= link_to 'Back', addresses_path %>

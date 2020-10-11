@@ -6,6 +6,10 @@ one:
   city: Arlington
   state: TX
   zip: '76016'
+  tad_id: TAD-abc
+  google_maps_link: GM-123
+  image_link: Img-1
+  note: Mynotes1
 
 two:
   number: zzz
@@ -13,3 +17,7 @@ two:
   city: Ghost
   state: ZZ
   zip: '66666'
+  tad_id: TAD-def
+  google_maps_link: GM-456
+  image_link: Img-2
+  note: Mynotes2

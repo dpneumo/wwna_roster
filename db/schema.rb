@@ -18,6 +18,10 @@ ActiveRecord::Schema.define(version: 2020_10_10_203806) do
     t.string "city", default: "Arlington", null: false
     t.string "state", default: "TX", null: false
     t.string "zip", default: "76016", null: false
+    t.string "tad_id"
+    t.string "google_maps_link"
+    t.string "image_link"
+    t.text "note"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -30,22 +34,12 @@ ActiveRecord::Schema.define(version: 2020_10_10_203806) do
   end
 
   create_table "houses", force: :cascade do |t|
-    t.integer "lot_id", null: false
+    t.integer "address_id", null: false
     t.integer "linked_lot_id"
     t.boolean "flag", default: false
     t.boolean "rental", default: false
     t.boolean "listed", default: false
     t.string "status", default: "occupied"
-    t.text "note"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-  end
-
-  create_table "lots", force: :cascade do |t|
-    t.integer "address_id", null: false
-    t.string "tad_id"
-    t.string "google_maps_link"
-    t.string "image_link"
     t.text "note"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
