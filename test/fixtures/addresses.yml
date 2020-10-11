@@ -6,8 +6,8 @@ one:
   city: Arlington
   state: TX
   zip: '76016'
-  tad_id: TAD-abc
-  google_maps_link: GM-123
+  latitude: 45.123456
+  longitude: 120.123456
   image_link: Img-1
   note: Mynotes1
 
@@ -17,7 +17,7 @@ two:
   city: Ghost
   state: ZZ
   zip: '66666'
-  tad_id: TAD-def
-  google_maps_link: GM-456
+  latitude: -15.123456
+  longitude: -100.123456
   image_link: Img-2
   note: Mynotes2

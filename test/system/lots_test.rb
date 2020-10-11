@@ -15,10 +15,10 @@ class LotsTest < ApplicationSystemTestCase
     click_on "New Lot"
 
     fill_in "Address", with: @lot.address_id
-    fill_in "Google maps link", with: @lot.google_maps_link
+    fill_in "Google maps link", with: @lot.longitude
     fill_in "Image link", with: @lot.image_link
     fill_in "Note", with: @lot.note
-    fill_in "Tad", with: @lot.tad_id
+    fill_in "Tad", with: @lot.latitude
     click_on "Create Lot"
 
     assert_text "Lot was successfully created"
@@ -30,10 +30,10 @@ class LotsTest < ApplicationSystemTestCase
     click_on "Edit", match: :first
 
     fill_in "Address", with: @lot.address_id
-    fill_in "Google maps link", with: @lot.google_maps_link
+    fill_in "Google maps link", with: @lot.longitude
     fill_in "Image link", with: @lot.image_link
     fill_in "Note", with: @lot.note
-    fill_in "Tad", with: @lot.tad_id
+    fill_in "Tad", with: @lot.latitude
     click_on "Update Lot"
 
     assert_text "Lot was successfully updated"

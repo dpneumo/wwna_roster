@@ -18,8 +18,8 @@ ActiveRecord::Schema.define(version: 2020_10_10_203806) do
     t.string "city", default: "Arlington", null: false
     t.string "state", default: "TX", null: false
     t.string "zip", default: "76016", null: false
-    t.string "tad_id"
-    t.string "google_maps_link"
+    t.decimal "latitude", precision: 9, scale: 6
+    t.decimal "longitude", precision: 9, scale: 6
     t.string "image_link"
     t.text "note"
     t.datetime "created_at", precision: 6, null: false

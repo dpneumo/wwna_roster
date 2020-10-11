@@ -17,7 +17,7 @@ class AddressesControllerTest < ActionDispatch::IntegrationTest
 
   test "should create address" do
     assert_difference('Address.count') do
-      post addresses_url, params: { address: { city: @address.city, number: @address.number, street: @address.street, state: @address.state, zip: @address.zip, google_maps_link: @address.google_maps_link, image_link: @address.image_link, note: @address.note, tad_id: @address.tad_id } }
+      post addresses_url, params: { address: { city: @address.city, number: @address.number, street: @address.street, state: @address.state, zip: @address.zip, longitude: @address.longitude, image_link: @address.image_link, note: @address.note, latitude: @address.latitude } }
     end
 
     assert_redirected_to address_url(Address.last)
@@ -34,7 +34,7 @@ class AddressesControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should update address" do
-    patch address_url(@address), params: { address: { city: @address.city, number: @address.number, street: @address.street, state: @address.state, zip: @address.zip, google_maps_link: @address.google_maps_link, image_link: @address.image_link, note: @address.note, tad_id: @address.tad_id } }
+    patch address_url(@address), params: { address: { city: @address.city, number: @address.number, street: @address.street, state: @address.state, zip: @address.zip, longitude: @address.longitude, image_link: @address.image_link, note: @address.note, latitude: @address.latitude } }
     assert_redirected_to address_url(@address)
   end
 
