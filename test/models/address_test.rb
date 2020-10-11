@@ -2,7 +2,7 @@ require 'test_helper'
 
 class AddressTest < ActiveSupport::TestCase
   setup do
-    @addr = addresses(:valid)
+    @addr = addresses(:one)
   end
   
   test "a valid address succeeds" do

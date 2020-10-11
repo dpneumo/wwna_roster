@@ -59,7 +59,7 @@ House
 	status(occupied, vacant, construction)
 	note
 
-Occupant
+Occupancy
 	house_id
 	person_id
 	relation(husband, wife, partner, child, guest, other)

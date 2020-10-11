@@ -2,7 +2,7 @@ require 'test_helper'
 
 class PhoneTest < ActiveSupport::TestCase
   setup do
-    @ph = phones(:valid)
+    @ph = phones(:one)
   end
 
   test "Can save a valid phone" do

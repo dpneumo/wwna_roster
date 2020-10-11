@@ -1,13 +1,13 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-valid:
-  person_id: 1
-  email_id: 1
+one:
+  person: one
+  email: one
   locn: work
   preferred: Yes
 
 two:
-  person_id: 2
-  email_id: 2
+  person: two
+  email: two
   locn: home
   preferred: No

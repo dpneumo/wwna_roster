@@ -1,13 +1,13 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-valid:
+one:
   line1: '123 Jump'
   line2: abc
   city: Arlington
   state: TX
   zip: '76016'
 
-mystery:
+two:
   line1: zzz
   line2: aaa
   city: Ghost

@@ -1,0 +1,35 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Occupancies</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>House</th>
+      <th>Person</th>
+      <th>Relation</th>
+      <th>Status</th>
+      <th>Note</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @occupancies.each do |occupancy| %>
+      <tr>
+        <td><%= occupancy.house_id %></td>
+        <td><%= occupancy.person_id %></td>
+        <td><%= occupancy.relation %></td>
+        <td><%= occupancy.status %></td>
+        <td><%= occupancy.note %></td>
+        <td><%= link_to 'Show', occupancy %></td>
+        <td><%= link_to 'Edit', edit_occupancy_path(occupancy) %></td>
+        <td><%= link_to 'Destroy', occupancy, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Occupancy', new_occupancy_path %>

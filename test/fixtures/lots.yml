@@ -1,14 +1,14 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  address_id: 1
+  address: one
   tad_id: TAD-abc
   google_maps_link: GM-123
   image_link: Img-1
   note: Mynotes1
 
 two:
-  address_id: 2
+  address: two
   tad_id: TAD-def
   google_maps_link: GM-456
   image_link: Img-2

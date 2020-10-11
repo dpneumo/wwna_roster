@@ -2,7 +2,7 @@ require 'test_helper'
 
 class PersonPhonesControllerTest < ActionDispatch::IntegrationTest
   setup do
-    @person_phone = person_phones(:valid)
+    @person_phone = person_phones(:one)
   end
 
   test "should get index" do

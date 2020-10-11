@@ -1,51 +1,51 @@
 require "application_system_test_case"
 
-class OccupantsTest < ApplicationSystemTestCase
+class OccupanciesTest < ApplicationSystemTestCase
   setup do
-    @occupant = occupants(:one)
+    @occupancy = occupancies(:one)
   end
 
   test "visiting the index" do
-    visit occupants_url
-    assert_selector "h1", text: "Occupants"
+    visit occupancies_url
+    assert_selector "h1", text: "Occupancies"
   end
 
-  test "creating a Occupant" do
-    visit occupants_url
-    click_on "New Occupant"
+  test "creating an Occupancy" do
+    visit occupancies_url
+    click_on "New Occupancy"
 
-    fill_in "House", with: @occupant.house_id
-    fill_in "Note", with: @occupant.note
-    fill_in "Person", with: @occupant.person_id
-    fill_in "Relation", with: @occupant.relation
-    fill_in "Status", with: @occupant.status
-    click_on "Create Occupant"
+    fill_in "House", with: @occupancy.house_id
+    fill_in "Note", with: @occupancy.note
+    fill_in "Person", with: @occupancy.person_id
+    fill_in "Relation", with: @occupancy.relation
+    fill_in "Status", with: @occupancy.status
+    click_on "Create Occupancy"
 
-    assert_text "Occupant was successfully created"
+    assert_text "Occupancy was successfully created"
     click_on "Back"
   end
 
-  test "updating a Occupant" do
-    visit occupants_url
+  test "updating an Occupancy" do
+    visit occupancies_url
     click_on "Edit", match: :first
 
-    fill_in "House", with: @occupant.house_id
-    fill_in "Note", with: @occupant.note
-    fill_in "Person", with: @occupant.person_id
-    fill_in "Relation", with: @occupant.relation
-    fill_in "Status", with: @occupant.status
-    click_on "Update Occupant"
+    fill_in "House", with: @occupancy.house_id
+    fill_in "Note", with: @occupancy.note
+    fill_in "Person", with: @occupancy.person_id
+    fill_in "Relation", with: @occupancy.relation
+    fill_in "Status", with: @occupancy.status
+    click_on "Update Occupancy"
 
-    assert_text "Occupant was successfully updated"
+    assert_text "Occupancy was successfully updated"
     click_on "Back"
   end
 
-  test "destroying a Occupant" do
-    visit occupants_url
+  test "destroying an Occupancy" do
+    visit occupancies_url
     page.accept_confirm do
       click_on "Destroy", match: :first
     end
 
-    assert_text "Occupant was successfully destroyed"
+    assert_text "Occupancy was successfully destroyed"
   end
 end

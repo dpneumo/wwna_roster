@@ -1,15 +1,15 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  house_id: 1
-  person_id: 1
+  house: one
+  person: one
   relation: MyString
   status: MyString
   note: MyText
 
 two:
-  house_id: 1
-  person_id: 1
+  house: two
+  person: two
   relation: MyString
   status: MyString
   note: MyText

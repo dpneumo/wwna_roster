@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>House:</strong>
+  <%= @occupancy.house_id %>
+</p>
+
+<p>
+  <strong>Person:</strong>
+  <%= @occupancy.person_id %>
+</p>
+
+<p>
+  <strong>Relation:</strong>
+  <%= @occupancy.relation %>
+</p>
+
+<p>
+  <strong>Status:</strong>
+  <%= @occupancy.status %>
+</p>
+
+<p>
+  <strong>Note:</strong>
+  <%= @occupancy.note %>
+</p>
+
+<%= link_to 'Edit', edit_occupancy_path(@occupancy) %> |
+<%= link_to 'Back', occupancies_path %>

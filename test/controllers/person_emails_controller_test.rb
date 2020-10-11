@@ -2,7 +2,7 @@ require 'test_helper'
 
 class PersonEmailsControllerTest < ActionDispatch::IntegrationTest
   setup do
-    @person_email = person_emails(:valid)
+    @person_email = person_emails(:one)
   end
 
   test "should get index" do

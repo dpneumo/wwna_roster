@@ -2,7 +2,7 @@ require 'test_helper'
 
 class EmailTest < ActiveSupport::TestCase
   setup do
-    @em = emails(:valid)
+    @em = emails(:one)
   end
   
   test "a valid email succeeds" do

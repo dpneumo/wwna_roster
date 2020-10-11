@@ -1,10 +1,10 @@
-<%= form_with(model: occupant, local: true) do |form| %>
-  <% if occupant.errors.any? %>
+<%= form_with(model: occupancy, local: true) do |form| %>
+  <% if occupancy.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(occupant.errors.count, "error") %> prohibited this occupant from being saved:</h2>
+      <h2><%= pluralize(occupancy.errors.count, "error") %> prohibited this occupancy from being saved:</h2>
 
       <ul>
-        <% occupant.errors.full_messages.each do |message| %>
+        <% occupancy.errors.full_messages.each do |message| %>
           <li><%= message %></li>
         <% end %>
       </ul>

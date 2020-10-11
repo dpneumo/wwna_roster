@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   resources :owners
-  resources :occupants
+  resources :occupancies
   resources :houses
   resources :lots
   resources :people
@@ -10,7 +10,7 @@ Rails.application.routes.draw do
 
   resources :addresses, :phones, :emails, :persons,
             :person_phones,
-  					:lots, :houses, :occupants, :owners
+  					:lots, :houses, :occupancies, :owners
 
   root 'welcome#index'
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html

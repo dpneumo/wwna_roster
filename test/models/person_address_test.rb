@@ -2,7 +2,7 @@ require 'test_helper'
 
 class PersonAddressTest < ActiveSupport::TestCase
   setup do
-    @pa = person_addresses(:valid)
+    @pa = person_addresses(:one)
   end
   
   test "a valid person_address succeeds" do

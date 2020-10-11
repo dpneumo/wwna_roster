@@ -2,7 +2,7 @@ require 'test_helper'
 
 class PersonPhoneTest < ActiveSupport::TestCase
   setup do
-    @pp = person_phones(:valid)
+    @pp = person_phones(:one)
   end
   
   test "a valid person_phone succeeds" do
