@@ -1,16 +1,9 @@
 Rails.application.routes.draw do
-  resources :owners
-  resources :occupancies
-  resources :houses
-  resources :lots
-  resources :people
-  resources :person_addresses
-  resources :person_emails
   get 'welcome/index'
 
-  resources :addresses, :phones, :emails, :persons,
-            :person_phones,
-  					:lots, :houses, :occupancies, :owners
+  resources :addresses, :phones, :emails, :people,
+            :person_phones, :person_emails, :person_addresses,
+  					:lots, :houses, :occupancies, :ownerships
 
   root 'welcome#index'
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html

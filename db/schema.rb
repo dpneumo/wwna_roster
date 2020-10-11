@@ -61,7 +61,7 @@ ActiveRecord::Schema.define(version: 2020_10_10_203806) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
-  create_table "owners", force: :cascade do |t|
+  create_table "ownerships", force: :cascade do |t|
     t.integer "house_id", null: false
     t.integer "person_id", null: false
     t.datetime "created_at", precision: 6, null: false

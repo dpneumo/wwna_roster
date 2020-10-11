@@ -7,8 +7,8 @@ class Person < ApplicationRecord
   has_many :phones,    through: :person_phones
   has_one :occupancy
   has_one :house, through: :occupancies
-  has_many :owners
-  has_many :houses, through: :owners
+  has_many :ownerships
+  has_many :houses, through: :ownerships
 
   validates :first, presence: true
   validates :last,  presence: true

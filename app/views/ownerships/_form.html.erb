@@ -1,10 +1,10 @@
-<%= form_with(model: owner, local: true) do |form| %>
-  <% if owner.errors.any? %>
+<%= form_with(model: ownership, local: true) do |form| %>
+  <% if ownership.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(owner.errors.count, "error") %> prohibited this owner from being saved:</h2>
+      <h2><%= pluralize(ownership.errors.count, "error") %> prohibited this ownership from being saved:</h2>
 
       <ul>
-        <% owner.errors.full_messages.each do |message| %>
+        <% ownership.errors.full_messages.each do |message| %>
           <li><%= message %></li>
         <% end %>
       </ul>
