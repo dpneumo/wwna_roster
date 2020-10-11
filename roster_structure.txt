@@ -4,8 +4,8 @@ Address
 	city
 	state
 	zip
-	TAD_id
-	google_map_link
+	latitude
+	longitude
 	image_link
 	note
 
@@ -66,3 +66,8 @@ Occupancy
 Ownership
 	house_id
 	person_id
+
+Contribution
+	house_id
+	date_paid
+	amount

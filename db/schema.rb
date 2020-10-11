@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_10_10_203806) do
+ActiveRecord::Schema.define(version: 2020_10_11_215205) do
 
   create_table "addresses", force: :cascade do |t|
     t.string "number", null: false
@@ -22,6 +22,14 @@ ActiveRecord::Schema.define(version: 2020_10_10_203806) do
     t.decimal "longitude", precision: 9, scale: 6
     t.string "image_link"
     t.text "note"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "contributions", force: :cascade do |t|
+    t.integer "house_id", null: false
+    t.date "date_paid", null: false
+    t.decimal "amount", precision: 4, scale: 2, null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

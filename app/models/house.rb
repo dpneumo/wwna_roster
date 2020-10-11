@@ -4,6 +4,7 @@ class House < ApplicationRecord
   has_many :people, through: :occupancies
   has_many :ownerships
   has_many :people, through: :ownerships
+  has_many :contributions
 
   validates :address_id, presence: true
 end

@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>House:</strong>
+  <%= @contribution.house_id %>
+</p>
+
+<p>
+  <strong>Date paid:</strong>
+  <%= @contribution.date_paid %>
+</p>
+
+<p>
+  <strong>Amount:</strong>
+  <%= @contribution.amount %>
+</p>
+
+<%= link_to 'Edit', edit_contribution_path(@contribution) %> |
+<%= link_to 'Back', contributions_path %>
