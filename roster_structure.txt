@@ -1,9 +1,13 @@
 Address
-	line1
-	line2
+	number
+	street
 	city
 	state
 	zip
+	TAD_id
+	google_map_link
+	image_link
+	note
 
 Phone
 	cc
@@ -43,15 +47,8 @@ Person
 	honorific
 	note
 
-Lot
-	address_id
-	TAD_id
-	google_map_link
-	image_link
-	note
-
 House
-	lot_id
+	address_id
 	linked_lot_id
 	flag(y/n)
 	rental(y/n)
