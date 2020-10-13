@@ -25,25 +25,5 @@
   <%= @address.zip %>
 </p>
 
-<p>
-  <strong>Latitude:</strong>
-  <%= @address.latitude %>
-</p>
-
-<p>
-  <strong>Longitude:</strong>
-  <%= @address.longitude %>
-</p>
-
-<p>
-  <strong>Image link:</strong>
-  <%= @address.image_link %>
-</p>
-
-<p>
-  <strong>Note:</strong>
-  <%= @address.note %>
-</p>
-
 <%= link_to 'Edit', edit_address_path(@address) %> |
 <%= link_to 'Back', addresses_path %>

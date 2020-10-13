@@ -10,18 +10,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_10_11_215205) do
+ActiveRecord::Schema.define(version: 2020_10_13_093427) do
 
   create_table "addresses", force: :cascade do |t|
     t.string "number", null: false
     t.string "street", null: false
-    t.string "city", default: "Arlington", null: false
+    t.string "city", null: false
     t.string "state", default: "TX", null: false
-    t.string "zip", default: "76016", null: false
-    t.decimal "latitude", precision: 9, scale: 6
-    t.decimal "longitude", precision: 9, scale: 6
-    t.string "image_link"
-    t.text "note"
+    t.string "zip", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -42,12 +38,23 @@ ActiveRecord::Schema.define(version: 2020_10_11_215205) do
   end
 
   create_table "houses", force: :cascade do |t|
-    t.integer "address_id", null: false
+    t.integer "lot_id", null: false
     t.integer "linked_lot_id"
     t.boolean "flag", default: false
     t.boolean "rental", default: false
     t.boolean "listed", default: false
     t.string "status", default: "occupied"
+    t.text "note"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "lots", force: :cascade do |t|
+    t.string "number", null: false
+    t.string "street", null: false
+    t.decimal "latitude", precision: 9, scale: 6
+    t.decimal "longitude", precision: 9, scale: 6
+    t.string "image_link"
     t.text "note"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false

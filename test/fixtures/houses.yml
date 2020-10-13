@@ -1,7 +1,7 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  address: one
+  lot: one
   linked_lot_id: 3
   flag: false
   rental: false
@@ -10,7 +10,7 @@ one:
   note: MyText1
 
 two:
-  address: two
+  lot: two
   linked_lot_id: 4
   flag: false
   rental: false

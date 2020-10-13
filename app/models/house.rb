@@ -1,10 +1,10 @@
 class House < ApplicationRecord
-  belongs_to :address
+  belongs_to :lot
   has_many :occupancies
   has_many :people, through: :occupancies
   has_many :ownerships
   has_many :people, through: :ownerships
   has_many :contributions
 
-  validates :address_id, presence: true
+  validates :lot_id, presence: true
 end

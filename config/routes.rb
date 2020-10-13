@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :lots
   get 'welcome/index'
 
   resources :addresses, :phones, :emails, :people,

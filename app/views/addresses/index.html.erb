@@ -11,10 +11,6 @@
         <th>City</th>
         <th>State</th>
         <th>Zip</th>
-        <th>Latitude</th>
-        <th>Longitude</th>
-        <th>Image link</th>
-        <th>Note</th>
         <th colspan="3"></th>
       </tr>
     </thead>
@@ -27,10 +23,6 @@
           <td><%= address.city %></td>
           <td><%= address.state %></td>
           <td><%= address.zip %></td>
-          <td><%= address.latitude %></td>
-          <td><%= address.longitude %></td>
-          <td><%= address.image_link %></td>
-          <td><%= address.note %></td>
           <td><%= link_to 'Show', address %></td>
           <td><%= link_to 'Edit', edit_address_path(address) %></td>
           <td><%= link_to 'Destroy', address, method: :delete, data: { confirm: 'Are you sure?' } %></td>

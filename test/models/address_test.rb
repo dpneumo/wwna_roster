@@ -33,24 +33,4 @@ class AddressTest < ActiveSupport::TestCase
     @addr.zip = ""
   	refute @addr.save, "Saved address without zip"
   end
-
-  test "latitude may not be > 90" do
-    @addr.latitude = 100
-    refute @addr.save, "Saved address with too high latitude"
-  end
-
-  test "latitude may not be < -90" do
-    @addr.latitude = -100
-    refute @addr.save, "Saved address with too low latitude"
-  end
-
-  test "longitude may not be > 180" do
-    @addr.longitude = 200
-    refute @addr.save, "Saved address with too high longitude"
-  end
-
-  test "longitude may not be < -180" do
-    @addr.longitude = -200
-    refute @addr.save, "Saved address with too low longitude"
-  end
 end

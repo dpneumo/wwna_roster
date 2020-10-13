@@ -4,10 +4,6 @@ Address
 	city
 	state
 	zip
-	latitude
-	longitude
-	image_link
-	note
 
 Phone
 	cc
@@ -47,8 +43,16 @@ Person
 	honorific
 	note
 
+Lot
+	number
+	street
+	latitude
+	longitude
+	image_link
+	note
+
 House
-	address_id
+	lot_id
 	linked_lot_id
 	flag(y/n)
 	rental(y/n)

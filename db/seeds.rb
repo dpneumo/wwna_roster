@@ -6,7 +6,7 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-Address.create([
+Lot.create([
   { number: 6000, street: 'Englishoak Dr'},
   { number: 6002, street: 'Englishoak Dr'},
   { number: 6003, street: 'Englishoak Dr'},

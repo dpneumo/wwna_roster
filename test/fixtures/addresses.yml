@@ -6,10 +6,6 @@ one:
   city: Arlington
   state: TX
   zip: '76016'
-  latitude: 45.123456
-  longitude: 120.123456
-  image_link: Img-1
-  note: Mynotes1
 
 two:
   number: zzz
@@ -17,7 +13,3 @@ two:
   city: Ghost
   state: ZZ
   zip: '66666'
-  latitude: -15.123456
-  longitude: -100.123456
-  image_link: Img-2
-  note: Mynotes2

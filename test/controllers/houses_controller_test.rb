@@ -17,7 +17,7 @@ class HousesControllerTest < ActionDispatch::IntegrationTest
 
   test "should create house" do
     assert_difference('House.count') do
-      post houses_url, params: { house: { flag: @house.flag, linked_lot_id: @house.linked_lot_id, listed: @house.listed, address_id: @house.address_id, note: @house.note, rental: @house.rental, status: @house.status } }
+      post houses_url, params: { house: { flag: @house.flag, linked_lot_id: @house.linked_lot_id, listed: @house.listed, lot_id: @house.lot_id, note: @house.note, rental: @house.rental, status: @house.status } }
     end
 
     assert_redirected_to house_url(House.last)
@@ -34,7 +34,7 @@ class HousesControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should update house" do
-    patch house_url(@house), params: { house: { flag: @house.flag, linked_lot_id: @house.linked_lot_id, listed: @house.listed, address_id: @house.address_id, note: @house.note, rental: @house.rental, status: @house.status } }
+    patch house_url(@house), params: { house: { flag: @house.flag, linked_lot_id: @house.linked_lot_id, listed: @house.listed, lot_id: @house.lot_id, note: @house.note, rental: @house.rental, status: @house.status } }
     assert_redirected_to house_url(@house)
   end
 
