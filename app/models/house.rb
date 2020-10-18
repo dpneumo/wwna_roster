@@ -7,4 +7,8 @@ class House < ApplicationRecord
   has_many :contributions
 
   validates :lot_id, presence: true
+
+  def street_number
+    lot.street_number
+  end
 end

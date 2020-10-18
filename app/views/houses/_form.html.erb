@@ -1,6 +1,7 @@
 <%= form_with(model: house, local: true) do |form| %>
+
   <% if house.errors.any? %>
-    <div id="error_explanation">
+    <div class="row" id="error_explanation">
       <h2><%= pluralize(house.errors.count, "error") %> prohibited this house from being saved:</h2>
 
       <ul>
@@ -11,42 +12,53 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= form.label :lot_id %>
-    <%= form.number_field :lot_id %>
+  <div class="row">
+    <div class="field col-sm">
+      <%= form.label :lot_id, "Lot" %>
+      <%= form.collection_select :lot_id, Lot.order(:number), :id, :street_number, class: "custom-select" %>
+    </div>
+
+    <div class="field col-sm">
+      <%= form.label :status %>
+      <%= form.select :status, ["Occupied","Vacant","Construction"], selected: "Occupied" %>
+    </div>
+
+    <div class="field col-sm">
+      <%= form.label :linked_lot_id, "Linked Lot" %>
+      <%= form.collection_select :linked_lot_id, Lot.order(:number), :id, :street_number,{include_blank: ''} %>
+    </div>
   </div>
 
-  <div class="field">
-    <%= form.label :linked_lot_id %>
-    <%= form.number_field :linked_lot_id %>
+  <div class="row mb-3">
+    <div class="field col-sm">
+      <%= form.label :flag, "Member Flag Group" %>
+      <%= form.check_box :flag %>
+    </div>
+
+    <div class="field col-sm">
+      <%= form.label :rental, "Rental Property" %>
+      <%= form.check_box :rental %>
+    </div>
+
+    <div class="field col-sm">
+      <%= form.label :listed, "For Sale" %>
+      <%= form.check_box :listed %>
+    </div>
   </div>
 
-  <div class="field">
-    <%= form.label :flag %>
-    <%= form.check_box :flag %>
+  <div class="row mb-4 ml-1">
+    <div class="input-group">
+      <div class="input-group-prepend">
+        <span class="input-group-text">Note</span>
+      </div>
+      <%= form.text_area :note, class: 'form-control', 'aria-label': "With textarea" %>
+    </div>
   </div>
 
-  <div class="field">
-    <%= form.label :rental %>
-    <%= form.check_box :rental %>
+  <div class="row mb-4">
+    <div class="actions col-sm">
+      <%= form.submit %>
+    </div>
   </div>
 
-  <div class="field">
-    <%= form.label :listed %>
-    <%= form.check_box :listed %>
-  </div>
-
-  <div class="field">
-    <%= form.label :status %>
-    <%= form.text_field :status %>
-  </div>
-
-  <div class="field">
-    <%= form.label :note %>
-    <%= form.text_area :note %>
-  </div>
-
-  <div class="actions">
-    <%= form.submit %>
-  </div>
 <% end %>
