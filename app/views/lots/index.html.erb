@@ -6,8 +6,8 @@
   <table class='table table-sm table-bordered table-hover'>
     <thead class='thead-light'>
       <tr>
-        <th>Number</th>
-        <th>Street</th>
+        <th>ID</th>
+        <th>Street Number</th>
         <th>Latitude</th>
         <th>Longitude</th>
         <th>Image link</th>
@@ -19,8 +19,8 @@
     <tbody>
       <% @lots.each do |lot| %>
         <tr>
-          <td><%= lot.number %></td>
-          <td><%= lot.street %></td>
+          <td><%= lot.id %></td>
+          <td><%= lot.street_number %></td>
           <td><%= lot.latitude %></td>
           <td><%= lot.longitude %></td>
           <td><%= lot.image_link %></td>

@@ -4,6 +4,10 @@ class Lot < ApplicationRecord
   validate :latitude_is_sane
   validate :longitude_is_sane
 
+  def street_number
+    number + ' ' + street
+  end
+
   private
       def latitude_is_sane
       return unless latitude
