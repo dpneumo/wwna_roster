@@ -4,7 +4,7 @@ class PersonPhonesController < ApplicationController
   # GET /person_phones
   # GET /person_phones.json
   def index
-    @person_phones = PersonPhone.all
+    @pagy, @person_phones = pagy(PersonPhone.all)
   end
 
   # GET /person_phones/1

@@ -2,37 +2,45 @@
 
 <h1>People</h1>
 
-<table>
-  <thead>
-    <tr>
-      <th>Nickname</th>
-      <th>First</th>
-      <th>Middle</th>
-      <th>Last</th>
-      <th>Suffix</th>
-      <th>Honorific</th>
-      <th>Note</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @people.each do |person| %>
+<div class='container'>
+  <table class='table table-sm table-bordered table-hover'>
+    <thead class='thead-light'>
       <tr>
-        <td><%= person.nickname %></td>
-        <td><%= person.first %></td>
-        <td><%= person.middle %></td>
-        <td><%= person.last %></td>
-        <td><%= person.suffix %></td>
-        <td><%= person.honorific %></td>
-        <td><%= person.note %></td>
-        <td><%= link_to 'Show', person %></td>
-        <td><%= link_to 'Edit', edit_person_path(person) %></td>
-        <td><%= link_to 'Destroy', person, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <th>Nickname</th>
+        <th>First</th>
+        <th>Middle</th>
+        <th>Last</th>
+        <th>Suffix</th>
+        <th>Honorific</th>
+        <th>Note</th>
+        <th colspan="3"></th>
       </tr>
-    <% end %>
-  </tbody>
-</table>
+    </thead>
+
+    <tbody>
+      <% @people.each do |person| %>
+        <tr>
+          <td><%= person.nickname %></td>
+          <td><%= person.first %></td>
+          <td><%= person.middle %></td>
+          <td><%= person.last %></td>
+          <td><%= person.suffix %></td>
+          <td><%= person.honorific %></td>
+          <td><%= person.note %></td>
+          <td><%= link_to 'Show', person %></td>
+          <td><%= link_to 'Edit', edit_person_path(person) %></td>
+          <td><%= link_to 'Destroy', person, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+
+  </table>
+
+  <%== pagy_bootstrap_nav_js(@pagy) %>
+
+<%== pagy_bootstrap_nav(@pagy) %>
+</div>
 
 <br>
 

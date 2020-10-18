@@ -2,33 +2,41 @@
 
 <h1>Phones</h1>
 
-<table>
-  <thead>
-    <tr>
-      <th>Cc</th>
-      <th>Area</th>
-      <th>Prefix</th>
-      <th>Number</th>
-      <th>Txt msg</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @phones.each do |phone| %>
+<div class='container'>
+  <table class='table table-sm table-bordered table-hover'>
+    <thead class='thead-light'>
       <tr>
-        <td><%= phone.cc %></td>
-        <td><%= phone.area %></td>
-        <td><%= phone.prefix %></td>
-        <td><%= phone.number %></td>
-        <td><%= phone.txt_msg %></td>
-        <td><%= link_to 'Show', phone %></td>
-        <td><%= link_to 'Edit', edit_phone_path(phone) %></td>
-        <td><%= link_to 'Destroy', phone, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <th>Cc</th>
+        <th>Area</th>
+        <th>Prefix</th>
+        <th>Number</th>
+        <th>Txt msg</th>
+        <th colspan="3"></th>
       </tr>
-    <% end %>
-  </tbody>
-</table>
+    </thead>
+
+    <tbody>
+      <% @phones.each do |phone| %>
+        <tr>
+          <td><%= phone.cc %></td>
+          <td><%= phone.area %></td>
+          <td><%= phone.prefix %></td>
+          <td><%= phone.number %></td>
+          <td><%= phone.txt_msg %></td>
+          <td><%= link_to 'Show', phone %></td>
+          <td><%= link_to 'Edit', edit_phone_path(phone) %></td>
+          <td><%= link_to 'Destroy', phone, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+
+  </table>
+
+  <%== pagy_bootstrap_nav_js(@pagy) %>
+
+<%== pagy_bootstrap_nav(@pagy) %>
+</div>
 
 <br>
 

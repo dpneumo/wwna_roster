@@ -4,7 +4,7 @@ class ContributionsController < ApplicationController
   # GET /contributions
   # GET /contributions.json
   def index
-    @contributions = Contribution.all
+    @pagy, @contributions = pagy(Contribution.all)
   end
 
   # GET /contributions/1

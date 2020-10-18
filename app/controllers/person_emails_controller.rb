@@ -4,7 +4,7 @@ class PersonEmailsController < ApplicationController
   # GET /person_emails
   # GET /person_emails.json
   def index
-    @person_emails = PersonEmail.all
+    @pagy, @person_emails = pagy(PersonEmail.all)
   end
 
   # GET /person_emails/1

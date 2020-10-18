@@ -34,7 +34,7 @@
 
 # Bootstrap extra: Add nav, nav_js and combo_nav_js helpers and templates for Bootstrap pagination
 # See https://ddnexus.github.io/pagy/extras/bootstrap
-# require 'pagy/extras/bootstrap'
+require 'pagy/extras/bootstrap'
 
 # Bulma extra: Add nav, nav_js and combo_nav_js helpers and templates for Bulma pagination
 # See https://ddnexus.github.io/pagy/extras/bulma
@@ -128,7 +128,7 @@ Pagy::VARS[:items] = 10                                   # default
 # Rails: extras assets path required by the helpers that use javascript
 # (pagy*_nav_js, pagy*_combo_nav_js, and pagy_items_selector_js)
 # See https://ddnexus.github.io/pagy/extras#javascript
-# Rails.application.config.assets.paths << Pagy.root.join('javascripts')
+Rails.application.config.assets.paths << Pagy.root.join('javascripts')
 
 
 # I18n

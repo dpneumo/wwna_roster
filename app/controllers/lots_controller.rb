@@ -4,7 +4,7 @@ class LotsController < ApplicationController
   # GET /lots
   # GET /lots.json
   def index
-    @lots = Lot.all
+    @pagy, @lots = pagy(Lot.all)
   end
 
   # GET /lots/1

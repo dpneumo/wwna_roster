@@ -4,7 +4,7 @@ class OccupanciesController < ApplicationController
   # GET /occupancies
   # GET /occupancies.json
   def index
-    @occupancies = Occupancy.all
+    @pagy, @occupancies = pagy(Occupancy.all)
   end
 
   # GET /occupancies/1

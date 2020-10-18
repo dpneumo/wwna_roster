@@ -17,6 +17,8 @@ require('datatables.net-bs4')
 // const images = require.context('../images', true)
 // const imagePath = (name) => images(name, true)
 
+import './pagy.js.erb'
+
 import "bootstrap";
 import "../stylesheets/application";
 import "./custom";

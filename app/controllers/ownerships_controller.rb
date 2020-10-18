@@ -4,7 +4,7 @@ class OwnershipsController < ApplicationController
   # GET /ownerships
   # GET /ownerships.json
   def index
-    @ownerships = Ownership.all
+    @pagy, @ownerships = pagy(Ownership.all)
   end
 
   # GET /ownerships/1

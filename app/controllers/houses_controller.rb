@@ -4,7 +4,7 @@ class HousesController < ApplicationController
   # GET /houses
   # GET /houses.json
   def index
-    @houses = House.all
+    @pagy, @houses = pagy(House.all)
   end
 
   # GET /houses/1
