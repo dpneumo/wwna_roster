@@ -18,8 +18,8 @@
     <tbody>
       <% @occupancies.each do |occupancy| %>
         <tr>
-          <td><%= occupancy.house_id %></td>
-          <td><%= occupancy.person_id %></td>
+          <td><%= occupancy.house.street_number %></td>
+          <td><%= occupancy.person.fullname %></td>
           <td><%= occupancy.relation %></td>
           <td><%= occupancy.status %></td>
           <td><%= occupancy.note %></td>

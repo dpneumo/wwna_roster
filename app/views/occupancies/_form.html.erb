@@ -1,6 +1,7 @@
 <%= form_with(model: occupancy, local: true) do |form| %>
+
   <% if occupancy.errors.any? %>
-    <div id="error_explanation">
+    <div class="row" id="error_explanation">
       <h2><%= pluralize(occupancy.errors.count, "error") %> prohibited this occupancy from being saved:</h2>
 
       <ul>
@@ -11,32 +12,43 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= form.label :house_id %>
-    <%= form.number_field :house_id %>
+  <row class="row">
+    <div class="field col-sm">
+      <%= form.label :house_id, "House" %>
+      <%= form.collection_select :house_id, House.all, :id, :street_number, {include_blank: true, class: "custom-select"} %>
+    </div>
+
+    <div class="field col-sm">
+      <%= form.label :person_id %>
+      <%= form.collection_select :person_id, Person.all, :id, :fullname, {include_blank: true, class: "custom-select"} %>  
+    </div>
+  </row>
+
+  <row class="row mb-3">
+    <div class="field col-sm">
+      <%= form.label :relation %>
+      <%= form.select :relation, ["Husband","Wife","Partner","Child","Guest", "Other","Unknown"], {include_blank: true, class: "custom-select"} %>
+    </div>
+
+    <div class="field col-sm">
+      <%= form.label :status %>
+      <%= form.select :status, ["Owner","Renter","Other","Unknown"], {include_blank: true, class: "custom-select"} %>
+    </div>
+  </row>
+
+  <div class="row mb-4 ml-1">
+    <div class="input-group">
+      <div class="input-group-prepend">
+        <span class="input-group-text">Note</span>
+      </div>
+      <%= form.text_area :note, class: 'form-control', 'aria-label': "With textarea" %>
+    </div>
   </div>
 
-  <div class="field">
-    <%= form.label :person_id %>
-    <%= form.number_field :person_id %>
+  <div class="row mb-4">
+    <div class="actions col-sm">
+      <%= form.submit %>
+    </div>
   </div>
 
-  <div class="field">
-    <%= form.label :relation %>
-    <%= form.text_field :relation %>
-  </div>
-
-  <div class="field">
-    <%= form.label :status %>
-    <%= form.text_field :status %>
-  </div>
-
-  <div class="field">
-    <%= form.label :note %>
-    <%= form.text_area :note %>
-  </div>
-
-  <div class="actions">
-    <%= form.submit %>
-  </div>
 <% end %>

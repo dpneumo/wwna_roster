@@ -1,6 +1,6 @@
 <%= form_with(model: lot, local: true) do |form| %>
   <% if lot.errors.any? %>
-    <div id="error_explanation">
+    <div class="row" id="error_explanation">
       <h2><%= pluralize(lot.errors.count, "error") %> prohibited this lot from being saved:</h2>
 
       <ul>
@@ -11,37 +11,50 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= form.label :number %>
-    <%= form.text_field :number %>
+  <div class ="row">
+    <div class="field col-sm">
+      <%= form.label :number %>
+      <%= form.text_field :number %>
+    </div>
+
+    <div class="field col-sm">
+      <%= form.label :street %>
+      <%= form.text_field :street %>
+    </div>
   </div>
 
-  <div class="field">
-    <%= form.label :street %>
-    <%= form.text_field :street %>
+  <div class="row">
+    <div class="field col-sm">
+      <%= form.label :latitude %>
+      <%= form.text_field :latitude %>
+    </div>
+
+    <div class="field col-sm">
+      <%= form.label :longitude %>
+      <%= form.text_field :longitude %>
+    </div>
   </div>
 
-  <div class="field">
-    <%= form.label :latitude %>
-    <%= form.text_field :latitude %>
+  <div class="row mb-3">
+    <div class="field col-sm">
+      <%= form.label :image_link %>
+      <%= form.text_field :image_link %>
+    </div>
   </div>
 
-  <div class="field">
-    <%= form.label :longitude %>
-    <%= form.text_field :longitude %>
+  <div class="row mb-4 ml-1">
+    <div class="input-group">
+      <div class="input-group-prepend">
+        <span class="input-group-text">Note</span>
+      </div>
+      <%= form.text_area :note, class: 'form-control', 'aria-label': "With textarea" %>
+    </div>
   </div>
 
-  <div class="field">
-    <%= form.label :image_link %>
-    <%= form.text_field :image_link %>
+  <div class="row mb-4">
+    <div class="actions col-sm">
+      <%= form.submit %>
+    </div>
   </div>
 
-  <div class="field">
-    <%= form.label :note %>
-    <%= form.text_area :note %>
-  </div>
-
-  <div class="actions">
-    <%= form.submit %>
-  </div>
 <% end %>
