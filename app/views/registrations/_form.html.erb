@@ -1,0 +1,49 @@
+<%= form_for @registration do |form| %>
+  <row class="row mb-4">
+    <div class="field col-sm">
+		  <%= form.label :house_id, "House" %>
+		  <%= form.collection_select :house_id, House.all, :id, :street_number, {include_blank: true, class: "custom-select"} %>
+		</div>
+	</row>
+
+  <row class="row mb-4">
+    <div class="field col-sm">
+		  <%= form.label :first %>
+		  <%= form.text_field :first %>
+		</div>
+
+    <div class="field col-sm">
+		  <%= form.label :middle %>
+		  <%= form.text_field :middle %>
+		</div>
+
+    <div class="field col-sm">
+		  <%= form.label :last %>
+		  <%= form.text_field :last %>
+		</div>
+  </row>
+
+  <row class="row mb-4">
+    <div class="field col-sm">
+      <%= form.label :nickname %>
+      <%= form.text_field :nickname %>
+    </div>
+
+    <div class="field col-sm">
+		  <%= form.label :relation %>
+		  <%= form.select :relation, ["Husband","Wife","Partner","Child","Guest","Other","Unknown"], {include_blank: true, class: "custom-select"} %>
+		</div>
+
+    <div class="field col-sm">
+		  <%= form.label :status %>
+		  <%= form.select :status, ["Owner","Renter","Other","Unknown"], {include_blank: true, class: "custom-select"} %>
+		</div>
+  </row>
+
+  <div class="row mb-4">
+    <div class="actions col-sm">
+      <%= form.submit %>
+    </div>
+  </div>
+
+<% end %>
