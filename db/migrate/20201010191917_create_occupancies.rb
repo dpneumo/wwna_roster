@@ -4,7 +4,7 @@ class CreateOccupancies < ActiveRecord::Migration[6.0]
       t.integer :house_id,  null: false
       t.integer :person_id, null: false
       t.string :relation
-      t.string :status, default: 'Other'
+      t.string :status
       t.text :note
 
       t.timestamps

@@ -6,7 +6,7 @@ class CreateHouses < ActiveRecord::Migration[6.0]
       t.boolean :flag,   default: false
       t.boolean :rental, default: false
       t.boolean :listed, default: false
-      t.string :status,  default: 'occupied'
+      t.string :status,  default: 'Occupied'
       t.text :note
 
       t.timestamps
