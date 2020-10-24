@@ -13,18 +13,15 @@ Phone
 	txt_msg(y/n)
 
 Email
+	person_id
 	addr
+	locn(home, work, other)
+	preferred(y/n)
 	note
 
 PersonPhone
 	person_id
 	phone_id
-	locn(home, work, other)
-	preferred(y/n)
-
-PersonEmail
-	person_id
-	email_id
 	locn(home, work, other)
 	preferred(y/n)
 
