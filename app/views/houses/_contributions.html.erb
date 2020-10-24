@@ -1,0 +1,33 @@
+<row class="row">
+  <div class="col-sm">
+    <h5>Contributions:</h5>
+  </div>
+  <div class="col"></div>
+  <div class="col-sm">
+    <%= link_to 'New Contribution', new_contribution_path %>
+  </div>
+</row>
+
+<div class='container'>
+  <table class='table table-sm table-bordered table-hover'>
+    <thead class='thead-light'>
+      <tr>
+        <th>Date paid</th>
+        <th>Amount</th>
+        <th colspan="3"></th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% @house.contributions.each do |contribution| %>
+        <tr>
+          <td><%= contribution.date_paid %></td>
+          <td><%= contribution.amount %></td>
+          <td><%= link_to 'Show', contribution %></td>
+          <td><%= link_to 'Edit', edit_contribution_path(contribution) %></td>
+          <td><%= link_to 'Destroy', contribution, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>

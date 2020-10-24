@@ -1,6 +1,7 @@
 <%= form_with(model: contribution, local: true) do |form| %>
+
   <% if contribution.errors.any? %>
-    <div id="error_explanation">
+    <div class="row" id="error_explanation">
       <h2><%= pluralize(contribution.errors.count, "error") %> prohibited this contribution from being saved:</h2>
 
       <ul>
@@ -11,22 +12,35 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= form.label :house_id %>
-    <%= form.number_field :house_id %>
-  </div>
 
-  <div class="field">
-    <%= form.label :date_paid %>
-    <%= form.date_select :date_paid %>
-  </div>
+  <row class="row mb-3">
+    <div class="field col-sm">
+      <%= form.label :house_id, "House" %>
+      <%= form.collection_select :house_id, House.all, :id, :street_number, {include_blank: true, class: "custom-select"} %>
+    </div>
+  </row>
 
-  <div class="field">
-    <%= form.label :amount %>
-    <%= form.text_field :amount %>
-  </div>
 
-  <div class="actions">
-    <%= form.submit %>
-  </div>
+  <row class="row mb-3">
+    <div class="field col-sm">
+      <%= form.label :date_paid %>
+      <%= form.date_select :date_paid %>
+    </div>
+  </row>
+
+
+  <row class="row mb-3">
+    <div class="field col-sm">
+      <%= form.label :amount %>
+      <%= form.text_field :amount %>
+    </div>
+  </row>
+
+
+  <row class="row mb-4">
+    <div class="actions">
+      <%= form.submit %>
+    </div>
+  </row>
+
 <% end %>
