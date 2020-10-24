@@ -1,6 +1,5 @@
 class Address < ApplicationRecord
-  has_many :person_addresses
-  has_many :people, through: :person_addresses
+  belongs_to :person
 
   validates :number, presence: true
   validates :street, presence: true

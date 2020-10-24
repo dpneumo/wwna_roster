@@ -13,11 +13,15 @@
 ActiveRecord::Schema.define(version: 2020_10_13_093427) do
 
   create_table "addresses", force: :cascade do |t|
+    t.integer "person_id", null: false
     t.string "number", null: false
     t.string "street", null: false
     t.string "city", null: false
     t.string "state", default: "TX", null: false
     t.string "zip", null: false
+    t.string "locn", default: "Home"
+    t.string "preferred", default: "No"
+    t.text "note"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

@@ -12,28 +12,48 @@
   <% end %>
 
   <div class="field">
-    <%= form.label :number %>
+    <%= form.label :person_id, 'Person' %>
+    <%= form.text_field :person_id %>
+  </div>
+
+  <div class="field">
+    <%= form.label :number, 'Number' %>
     <%= form.text_field :number %>
   </div>
 
   <div class="field">
-    <%= form.label :street %>
+    <%= form.label :street, 'Street' %>
     <%= form.text_field :street %>
   </div>
 
   <div class="field">
-    <%= form.label :city %>
+    <%= form.label :city, 'City' %>
     <%= form.text_field :city %>
   </div>
 
   <div class="field">
-    <%= form.label :state %>
+    <%= form.label :state, 'State' %>
     <%= form.text_field :state %>
   </div>
 
   <div class="field">
-    <%= form.label :zip %>
+    <%= form.label :zip, 'Zip' %>
     <%= form.text_field :zip %>
+  </div>
+
+  <div class="field">
+    <%= form.label :locn, 'Location' %>
+    <%= form.text_field :locn %>
+  </div>
+
+  <div class="field">
+    <%= form.label :preferred, 'Preferred' %>
+    <%= form.text_field :preferred %>
+  </div>
+
+  <div class="field">
+    <%= form.label :note, 'Note' %>
+    <%= form.text_field :note %>
   </div>
 
   <div class="actions">
