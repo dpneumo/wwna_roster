@@ -10,7 +10,9 @@
         <th>Area</th>
         <th>Prefix</th>
         <th>Number</th>
-        <th>Txt msg</th>
+        <th>Location</th>
+        <th>Preferred</th>
+        <th>Msg Capable</th>
         <th colspan="3"></th>
       </tr>
     </thead>
@@ -22,7 +24,9 @@
           <td><%= phone.area %></td>
           <td><%= phone.prefix %></td>
           <td><%= phone.number %></td>
-          <td><%= phone.txt_msg %></td>
+          <td><%= phone.locn %></td>
+          <td><%= phone.preferred %></td>
+          <td><%= phone.txt_capable %></td>
           <td><%= link_to 'Show', phone %></td>
           <td><%= link_to 'Edit', edit_phone_path(phone) %></td>
           <td><%= link_to 'Destroy', phone, method: :delete, data: { confirm: 'Are you sure?' } %></td>

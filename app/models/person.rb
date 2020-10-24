@@ -2,8 +2,7 @@ class Person < ApplicationRecord
   has_many :person_addresses
   has_many :addresses, through: :person_addresses
   has_many :emails
-  has_many :person_phones
-  has_many :phones,    through: :person_phones
+  has_many :phones
   has_one :occupant
   has_one :house, through: :occupants
   has_many :owners

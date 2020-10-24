@@ -3,6 +3,7 @@ require 'test_helper'
 class PhoneTest < ActiveSupport::TestCase
   setup do
     @ph = phones(:one)
+    @ph2 = phones(:two)
   end
 
   test "Can save a valid phone" do
@@ -24,23 +25,24 @@ class PhoneTest < ActiveSupport::TestCase
     refute @ph.save, "Saved phone without number"
   end
 
-  test "cc may be nil" do
-    @ph.cc = nil
-    assert @ph.save, "Save phone failed with nil cc"
+  test "cc defaults to 1" do
+    assert_equal "1", @ph2.cc
   end
 
-  test "cc may be empty" do
-    @ph.cc = ""
-    assert @ph.save, "Save phone failed with empty cc"
+  test "preferred defaults to No" do
+    assert_equal "No", @ph2.preferred
   end
 
-  test "txt_msg may be nil" do
-    @ph.txt_msg = nil
-    assert @ph.save, "Save phone failed with nil txt_msg"
+  test "txt_capable defaults to false" do
+    assert_equal false, @ph2.txt_capable
   end
 
-  test "txt_msg may be empty" do
-    @ph.txt_msg = ""
-    assert @ph.save, "Save phone failed with empty txt_msg"
+  test "note may be nil" do
+    assert @ph2.save, "Save phone failed with nil note"
+  end
+
+  test "note may be empty" do
+    @ph.note = ""
+    assert @ph.save, "Save phone failed with empty note"
   end
 end

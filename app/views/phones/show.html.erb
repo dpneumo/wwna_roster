@@ -21,8 +21,18 @@
 </p>
 
 <p>
-  <strong>Txt msg:</strong>
-  <%= @phone.txt_msg %>
+  <strong>Location:</strong>
+  <%= @phone.locn %>
+</p>
+
+<p>
+  <strong>Preferred:</strong>
+  <%= @phone.preferred %>
+</p>
+
+<p>
+  <strong>Msg Capable:</strong>
+  <%= @phone.txt_capable %>
 </p>
 
 <%= link_to 'Edit', edit_phone_path(@phone) %> |

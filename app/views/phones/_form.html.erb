@@ -12,28 +12,43 @@
   <% end %>
 
   <div class="field">
-    <%= form.label :cc %>
+    <%= form.label :cc, "CC" %>
     <%= form.text_field :cc %>
   </div>
 
   <div class="field">
-    <%= form.label :area %>
+    <%= form.label :area, "Area" %>
     <%= form.text_field :area %>
   </div>
 
   <div class="field">
-    <%= form.label :prefix %>
+    <%= form.label :prefix, "Prefix" %>
     <%= form.text_field :prefix %>
   </div>
 
   <div class="field">
-    <%= form.label :number %>
+    <%= form.label :number, "Number" %>
     <%= form.text_field :number %>
   </div>
 
   <div class="field">
-    <%= form.label :txt_msg %>
-    <%= form.text_field :txt_msg %>
+    <%= form.label :locn, "Location" %>
+    <%= form.text_field :locn %>
+  </div>
+
+  <div class="field">
+    <%= form.label :preferred, "Preferred" %>
+    <%= form.text_field :preferred %>
+  </div>
+
+  <div class="field">
+    <%= form.label :txt_capable, "Msg Capable" %>
+    <%= form.text_field :txt_capable %>
+  </div>
+
+  <div class="field">
+    <%= form.label :note, "Note" %>
+    <%= form.text_field :note %>
   </div>
 
   <div class="actions">

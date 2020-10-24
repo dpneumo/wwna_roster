@@ -7,15 +7,17 @@
         <th>Phone</th>
         <th>Locn</th>
         <th>Preferred</th>
+        <th>Msg Capable</th>
       </tr>
     </thead>
 
     <tbody>
-      <% @person.person_phones.each do |pp| %>
+      <% @person.phones.each do |p| %>
         <tr>
-          <td><%= pp.phone.ph_number %></td>
-          <td><%= pp.locn %></td>
-          <td><%= pp.preferred %></td>
+          <td><%= p.ph_number %></td>
+          <td><%= p.locn %></td>
+          <td><%= p.preferred %></td>
+          <td><%= p.txt_capable %></td>
         </tr>
       <% end %>
     </tbody>

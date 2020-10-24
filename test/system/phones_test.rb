@@ -14,12 +14,14 @@ class PhonesTest < ApplicationSystemTestCase
     visit phones_url
     click_on "New Phone"
 
-    fill_in "", with: @phone.
+    fill_in "CC", with: @phone.cc
     fill_in "Area", with: @phone.area
-    fill_in "Cc", with: @phone.cc
+    fill_in "Prefix", with: @phone.prefix
     fill_in "Number", with: @phone.number
-    fill_in "Txt msg", with: @phone.txt_msg
-    fill_in "Type", with: @phone.type
+    fill_in "Location", with: @phone.locn
+    fill_in "Preferred", with: @phone.preferred
+    fill_in "Msg Capable", with: @phone.txt_capable
+    fill_in "Note", with: @phone.note
     click_on "Create Phone"
 
     assert_text "Phone was successfully created"
@@ -30,12 +32,14 @@ class PhonesTest < ApplicationSystemTestCase
     visit phones_url
     click_on "Edit", match: :first
 
-    fill_in "", with: @phone.
+    fill_in "CC", with: @phone.cc
     fill_in "Area", with: @phone.area
-    fill_in "Cc", with: @phone.cc
+    fill_in "Prefix", with: @phone.prefix
     fill_in "Number", with: @phone.number
-    fill_in "Txt msg", with: @phone.txt_msg
-    fill_in "Type", with: @phone.type
+    fill_in "Location", with: @phone.locn
+    fill_in "Preferred", with: @phone.preferred
+    fill_in "Msg Capable", with: @phone.txt_capable
+    fill_in "Note", with: @phone.note
     click_on "Update Phone"
 
     assert_text "Phone was successfully updated"

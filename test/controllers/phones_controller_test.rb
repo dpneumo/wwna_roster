@@ -16,9 +16,13 @@ class PhonesControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should create phone" do
-    assert_difference('Phone.count') do
-      post phones_url, params: { phone: { prefix: @phone.prefix, area: @phone.area, cc: @phone.cc, number: @phone.number, txt_msg: @phone.txt_msg } }
-    end
+      @person = people(:one)
+      assert_difference('Phone.count') do
+      post phones_url, params: { phone: { person_id: @person.id, cc: @phone.cc,
+                                          area: @phone.area, prefix: @phone.prefix, number: @phone.number,
+                                          locn: @phone.locn, preferred: @phone.preferred,
+                                          txt_capable: @phone.txt_capable } }
+      end
 
     assert_redirected_to phone_url(Phone.last)
   end
@@ -34,7 +38,10 @@ class PhonesControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should update phone" do
-    patch phone_url(@phone), params: { phone: { prefix: @phone.prefix, area: @phone.area, cc: @phone.cc, number: @phone.number, txt_msg: @phone.txt_msg } }
+    patch phone_url(@phone), params: { phone: { cc: @phone.cc,
+                                                area: @phone.area, prefix: @phone.prefix, number: @phone.number,
+                                                locn: @phone.locn, preferred: @phone.preferred,
+                                                txt_capable: @phone.txt_capable } }
     assert_redirected_to phone_url(@phone)
   end
 

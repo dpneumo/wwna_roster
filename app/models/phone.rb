@@ -1,6 +1,5 @@
 class Phone < ApplicationRecord
-  has_many :person_phones
-  has_many :phones, through: :person_phones
+  belongs_to :person
 
   validates :area, presence: true
   validates :prefix, presence: true

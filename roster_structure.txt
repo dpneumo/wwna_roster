@@ -6,11 +6,15 @@ Address
 	zip
 
 Phone
+	person_id
 	cc
 	area
 	prefix
 	number
-	txt_msg(y/n)
+	locn(home, work, other)
+	preferred(y/n)
+	txt_capable(y/n)
+	note
 
 Email
 	person_id
@@ -18,12 +22,6 @@ Email
 	locn(home, work, other)
 	preferred(y/n)
 	note
-
-PersonPhone
-	person_id
-	phone_id
-	locn(home, work, other)
-	preferred(y/n)
 
 PersonAddress
 	person_id
