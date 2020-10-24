@@ -11,11 +11,11 @@
     </thead>
 
     <tbody>
-      <% @person.person_emails.each do |pe| %>
+      <% @person.emails.each do |e| %>
         <tr>
-          <td><%= pe.email.addr %></td>
-          <td><%= pe.locn %></td>
-          <td><%= pe.preferred %></td>
+          <td><%= e.addr %></td>
+          <td><%= e.locn %></td>
+          <td><%= e.preferred %></td>
         </tr>
       <% end %>
     </tbody>

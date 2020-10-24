@@ -12,12 +12,27 @@
   <% end %>
 
   <div class="field">
-    <%= form.label :addr %>
+    <%= form.label :person_id, "Person" %>
+    <%= form.text_field :person_id %>
+  </div>
+
+  <div class="field">
+    <%= form.label :addr, "Address" %>
     <%= form.text_field :addr %>
   </div>
 
   <div class="field">
-    <%= form.label :note %>
+    <%= form.label :locn, "Location" %>
+    <%= form.text_field :locn %>
+  </div>
+
+  <div class="field">
+    <%= form.label :preferred, "Preferred" %>
+    <%= form.text_field :preferred %>
+  </div>
+
+  <div class="field">
+    <%= form.label :note, "Note" %>
     <%= form.text_area :note %>
   </div>
 

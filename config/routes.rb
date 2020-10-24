@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   get '/people/:id/detail', to: 'people#detail', as: 'person_detail'
 
   resources :addresses, :lots, :phones, :emails, :people,
-            :person_phones, :person_emails, :person_addresses,
+            :person_phones, :person_addresses,
   					:houses, :occupants, :owners, :contributions,
             :registrations
 

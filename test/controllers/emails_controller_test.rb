@@ -16,8 +16,9 @@ class EmailsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should create email" do
+    @person = people(:one)
     assert_difference('Email.count') do
-      post emails_url, params: { email: { addr: @email.addr, note: @email.note } }
+      post emails_url, params: { email: { person_id: @person.id, addr: @email.addr, note: @email.note } }
     end
 
     assert_redirected_to email_url(Email.last)

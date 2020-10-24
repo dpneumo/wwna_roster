@@ -31,7 +31,10 @@ ActiveRecord::Schema.define(version: 2020_10_13_093427) do
   end
 
   create_table "emails", force: :cascade do |t|
+    t.integer "person_id", null: false
     t.string "addr", null: false
+    t.string "locn"
+    t.string "preferred", default: "No"
     t.text "note"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
@@ -92,15 +95,6 @@ ActiveRecord::Schema.define(version: 2020_10_13_093427) do
   create_table "person_addresses", force: :cascade do |t|
     t.integer "person_id", null: false
     t.integer "address_id", null: false
-    t.string "locn"
-    t.string "preferred", default: "No"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-  end
-
-  create_table "person_emails", force: :cascade do |t|
-    t.integer "person_id", null: false
-    t.integer "email_id", null: false
     t.string "locn"
     t.string "preferred", default: "No"
     t.datetime "created_at", precision: 6, null: false
