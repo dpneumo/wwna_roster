@@ -1,0 +1,83 @@
+  <row class="row">
+    <div class="col-sm">
+      <p>
+        <strong>Street Number:</strong>
+        <%= @house.street_number %>
+      </p>
+    </div>
+
+    <div class="col-sm">
+      <p>
+        <strong>Linked lot:</strong>
+        <%= @house.linked_lot_id %>
+      </p>
+    </div>
+  </row>
+
+
+  <row class="row">
+    <div class="col-sm">
+      <p>
+        <strong>Member Flag Group:</strong>
+        <%= @house.flag %>
+      </p>
+    </div>
+
+    <div class="col-sm">
+      <p>
+        <strong>Rental Property:</strong>
+        <%= @house.rental %>
+      </p>
+    </div>
+
+    <div class="col-sm">
+      <p>
+        <strong>Listed Sale:</strong>
+        <%= @house.listed %>
+      </p>
+    </div>
+  </row>
+
+
+  <row class="row">
+    <div class="col-sm">
+      <p>
+        <strong>Status:</strong>
+        <%= @house.status %>
+      </p>
+    </div>
+  </row>
+
+
+  <row class="row">
+    <div class="col-sm">
+      <%= render 'occupants' %>
+    </div>
+  </row>
+
+
+  <row class="row">
+    <div class="col-sm">
+      <%= render 'contributions' %>
+    </div>
+  </row>
+
+
+  <row class="row">
+    <div class="col-sm">
+      <%= render 'owners' %>
+    </div>
+  </row>
+
+
+  <row class="row">
+    <div class="col-sm">
+      <p>
+        <strong>Note:</strong>
+        <%= @house.note %>
+      </p>
+    </div>
+  </row>
+
+<%= link_to 'Edit', edit_house_path(@house) %> |
+<%= link_to 'Back', houses_path %>

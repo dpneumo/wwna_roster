@@ -1,0 +1,90 @@
+<row class="row">
+  <div class="col-sm">
+    <p id="notice"><%= notice %></p>
+  </div>
+</row>
+
+
+<row class="row">
+  <div class="col-sm">
+    <p>
+      <strong>Nickname:</strong>
+      <%= @person.nickname %>
+    </p>
+  </div>
+</row>
+
+
+<row class="row">
+  <div class="col-sm">
+    <p>
+      <strong>First:</strong>
+      <%= @person.first %>
+    </p>
+  </div>
+
+  <div class="col-sm">
+    <p>
+      <strong>Middle:</strong>
+      <%= @person.middle %>
+    </p>
+  </div>
+
+  <div class="col-sm">
+    <p>
+      <strong>Last:</strong>
+      <%= @person.last %>
+    </p>
+  </div>
+</row>
+
+
+<row class="row">
+  <div class="col-sm">
+    <p>
+      <strong>Suffix:</strong>
+      <%= @person.suffix %>
+    </p>
+  </div>
+
+  <div class="col-sm">
+    <p>
+      <strong>Honorific:</strong>
+      <%= @person.honorific %>
+    </p>
+  </div>
+</row>
+
+
+<row class="row">
+  <div class="col-sm">
+    <%= render 'emails' %>
+  </div>
+</row>
+
+
+<row class="row">
+  <div class="col-sm">
+    <%= render 'phones' %>
+  </div>
+</row>
+
+
+<row class="row">
+  <div class="col-sm">
+    <%= render 'addresses' %>
+  </div>
+</row>
+
+
+<row class="row">
+  <div class="col-sm">
+    <p>
+      <strong>Note:</strong>
+      <%= @person.note %>
+    </p>
+  </div>
+</row>
+
+<%= link_to 'Edit', edit_person_path(@person) %> |
+<%= link_to 'Back', people_path %>

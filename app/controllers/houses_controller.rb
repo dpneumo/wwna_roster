@@ -1,5 +1,5 @@
 class HousesController < ApplicationController
-  before_action :set_house, only: [:show, :edit, :update, :destroy]
+  before_action :set_house, only: [:show, :detail, :edit, :update, :destroy]
 
   # GET /houses
   # GET /houses.json
@@ -10,6 +10,10 @@ class HousesController < ApplicationController
   # GET /houses/1
   # GET /houses/1.json
   def show
+  end
+
+  # GET /houses/1/detail
+  def detail
   end
 
   # GET /houses/new

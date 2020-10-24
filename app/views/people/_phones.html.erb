@@ -1,0 +1,23 @@
+<h5>Phones</h5>
+
+<div class='container'>
+  <table class='table table-sm table-bordered table-hover'>
+    <thead class='thead-light'>
+      <tr>
+        <th>Phone</th>
+        <th>Locn</th>
+        <th>Preferred</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% @person.person_phones.each do |pp| %>
+        <tr>
+          <td><%= pp.phone.ph_number %></td>
+          <td><%= pp.locn %></td>
+          <td><%= pp.preferred %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
