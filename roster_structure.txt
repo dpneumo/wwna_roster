@@ -60,14 +60,14 @@ House
 	status(occupied, vacant, construction)
 	note
 
-Occupancy
+Occupant
 	house_id
 	person_id
 	relation(husband, wife, partner, child, guest, other)
 	status(owner, renter, other, unknown)
 	note
 
-Ownership
+Owner
 	house_id
 	person_id
 
