@@ -1,16 +1,17 @@
-<%= form_with(model: occupancy, local: true) do |form| %>
+<%= form_with(model: occupant, local: true) do |form| %>
 
-  <% if occupancy.errors.any? %>
+  <% if occupant.errors.any? %>
     <div class="row" id="error_explanation">
-      <h2><%= pluralize(occupancy.errors.count, "error") %> prohibited this occupancy from being saved:</h2>
+      <h2><%= pluralize(occupant.errors.count, "error") %> prohibited this occupant from being saved:</h2>
 
       <ul>
-        <% occupancy.errors.full_messages.each do |message| %>
+        <% occupant.errors.full_messages.each do |message| %>
           <li><%= message %></li>
         <% end %>
       </ul>
     </div>
   <% end %>
+
 
   <row class="row">
     <div class="field col-sm">
@@ -20,9 +21,10 @@
 
     <div class="field col-sm">
       <%= form.label :person_id %>
-      <%= form.collection_select :person_id, Person.all, :id, :fullname, {include_blank: true, class: "custom-select"} %>  
+      <%= form.collection_select :person_id, Person.all, :id, :fullname, {include_blank: true, class: "custom-select"} %>
     </div>
   </row>
+
 
   <row class="row mb-3">
     <div class="field col-sm">
@@ -36,19 +38,21 @@
     </div>
   </row>
 
-  <div class="row mb-4 ml-1">
+
+  <row class="row mb-4 ml-1">
     <div class="input-group">
       <div class="input-group-prepend">
         <span class="input-group-text">Note</span>
       </div>
       <%= form.text_area :note, class: 'form-control', 'aria-label': "With textarea" %>
     </div>
-  </div>
+  </row>
 
-  <div class="row mb-4">
+
+  <row class="row mb-4">
     <div class="actions col-sm">
       <%= form.submit %>
     </div>
-  </div>
+  </row>
 
 <% end %>

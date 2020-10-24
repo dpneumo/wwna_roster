@@ -1,5 +1,6 @@
 class RegistrationsController < ApplicationController
   def new
+    @houses = House.all
     @registration = Registration.new
   end
 
@@ -7,7 +8,7 @@ class RegistrationsController < ApplicationController
     @registration = Registration.new(registration_params)
 
     if @registration.save
-      redirect_to occupancies_path, notice: 'Registration successful!'
+      redirect_to occupants_path, notice: 'Registration successful!'
     else
       render :new
     end

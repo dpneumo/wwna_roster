@@ -43,7 +43,7 @@ ActiveRecord::Schema.define(version: 2020_10_13_093427) do
     t.boolean "flag", default: false
     t.boolean "rental", default: false
     t.boolean "listed", default: false
-    t.string "status", default: "occupied"
+    t.string "status", default: "Occupied"
     t.text "note"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
@@ -60,17 +60,17 @@ ActiveRecord::Schema.define(version: 2020_10_13_093427) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
-  create_table "occupancies", force: :cascade do |t|
+  create_table "occupants", force: :cascade do |t|
     t.integer "house_id", null: false
     t.integer "person_id", null: false
     t.string "relation"
-    t.string "status", default: "Other"
+    t.string "status"
     t.text "note"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
 
-  create_table "ownerships", force: :cascade do |t|
+  create_table "owners", force: :cascade do |t|
     t.integer "house_id", null: false
     t.integer "person_id", null: false
     t.datetime "created_at", precision: 6, null: false

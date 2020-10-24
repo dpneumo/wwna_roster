@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>House:</strong>
+  <%= @occupant.house.street_number %>
+</p>
+
+<p>
+  <strong>Person:</strong>
+  <%= @occupant.person.fullname %>
+</p>
+
+<p>
+  <strong>Relation:</strong>
+  <%= @occupant.relation %>
+</p>
+
+<p>
+  <strong>Status:</strong>
+  <%= @occupant.status %>
+</p>
+
+<p>
+  <strong>Note:</strong>
+  <%= @occupant.note %>
+</p>
+
+<%= link_to 'Edit', edit_occupant_path(@occupant) %> |
+<%= link_to 'Back', occupants_path %>

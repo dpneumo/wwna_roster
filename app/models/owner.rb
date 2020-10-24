@@ -1,4 +1,4 @@
-class Occupancy < ApplicationRecord
+class Owner < ApplicationRecord
   belongs_to :house
   belongs_to :person
 

@@ -5,15 +5,19 @@ class Person < ApplicationRecord
   has_many :emails,    through: :person_emails
   has_many :person_phones
   has_many :phones,    through: :person_phones
-  has_one :occupancy
-  has_one :house, through: :occupancies
-  has_many :ownerships
-  has_many :houses, through: :ownerships
+  has_one :occupant
+  has_one :house, through: :occupants
+  has_many :owners
+  has_many :houses, through: :owners
 
   validates :first, presence: true
   validates :last,  presence: true
 
   def fullname
     last + ', ' + first + ' ' + middle
+  end
+
+  def addresses
+    person_addresses
   end
 end

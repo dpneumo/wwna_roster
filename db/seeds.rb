@@ -100,4 +100,35 @@ Lot.create([
   { number: 6005, street: 'Royaloak Dr'},
   { number: 6006, street: 'Royaloak Dr'},
   { number: 6008, street: 'Royaloak Dr'},
+
+  { number: 2201, street: 'Woodsong Tr'},
+  { number: 2202, street: 'Woodsong Tr'},
+  { number: 2203, street: 'Woodsong Tr'},
+  { number: 2204, street: 'Woodsong Tr'},
+  { number: 2205, street: 'Woodsong Tr'},
+  { number: 2207, street: 'Woodsong Tr'},
+  { number: 2208, street: 'Woodsong Tr'},
+  { number: 2209, street: 'Woodsong Tr'},
+  { number: 2211, street: 'Woodsong Tr'},
+
+  { number: 2300, street: 'Woodsong Tr'},
+  { number: 2301, street: 'Woodsong Tr'},
+  { number: 2302, street: 'Woodsong Tr'},
+  { number: 2303, street: 'Woodsong Tr'},
+  { number: 2304, street: 'Woodsong Tr'},
+  { number: 2305, street: 'Woodsong Tr'},
+  { number: 2307, street: 'Woodsong Tr'},
+  { number: 2308, street: 'Woodsong Tr'},
+  { number: 2309, street: 'Woodsong Tr'},
+  { number: 2310, street: 'Woodsong Tr'},
+  { number: 2311, street: 'Woodsong Tr'},
+  { number: 2313, street: 'Woodsong Tr'},
+  { number: 2314, street: 'Woodsong Tr'},
+  { number: 2315, street: 'Woodsong Tr'},
+  { number: 2316, street: 'Woodsong Tr'},
+  { number: 2317, street: 'Woodsong Tr'},
+  { number: 2319, street: 'Woodsong Tr'},
 ])
+
+props = {flag: false, rental: false, listed: false, status: 'Occupied'}
+House.create( Lot.all.map {|lot| props.merge(lot_id: lot.id) } )

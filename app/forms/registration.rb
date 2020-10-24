@@ -9,7 +9,7 @@ class Registration
 
     ActiveRecord::Base.transaction do
       person = Person.create!(nickname: nickname, first: first, middle: middle, last: last)
-      person.create_occupancy!(status: status, relation: relation, house_id: house_id)
+      person.create_occupant!(status: status, relation: relation, house_id: house_id)
     end
 
     true

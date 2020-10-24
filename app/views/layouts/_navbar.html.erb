@@ -18,15 +18,15 @@
       </li>
 
       <li class="nav-item p-2">
-        <%= link_to "Occupancies", occupancies_path %>
-      </li>
-
-      <li class="nav-item p-2">
-        <%= link_to "Ownerships", ownerships_path %>
-      </li>
-
-      <li class="nav-item p-2">
         <%= link_to 'Houses', houses_path %>
+      </li>
+
+      <li class="nav-item p-2">
+        <%= link_to "Occupants", occupants_path %>
+      </li>
+
+      <li class="nav-item p-2">
+        <%= link_to "Owners", owners_path %>
       </li>
 
       <li class="nav-item p-2">
@@ -35,18 +35,6 @@
 
       <li class="nav-item p-2">
         <%= link_to "Contributions", contributions_path %>
-      </li>
-
-      <li class="nav-item p-2 active">
-        <%= link_to "Addresses", addresses_path %>
-      </li>
-
-      <li class="nav-item p-2">
-        <%= link_to "Emails", emails_path %>
-      </li>
-
-      <li class="nav-item p-2">
-        <%= link_to "Phones", phones_path %>
       </li>
 
       <li class="nav-item dropdown">
@@ -60,6 +48,15 @@
           </a>
           <a class="dropdown-item">
             <%= link_to "Person Phones", person_phones_path %>
+          </a>
+          <a class="dropdown-item">
+            <%= link_to "Addresses", addresses_path %>
+          </a>
+          <a class="dropdown-item">
+            <%= link_to "Emails", emails_path %>
+          </a>
+          <a class="dropdown-item">
+            <%= link_to "Phones", phones_path %>
           </a>
         </div>
       </li>

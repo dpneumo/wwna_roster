@@ -1,45 +1,45 @@
 require "application_system_test_case"
 
-class OwnershipsTest < ApplicationSystemTestCase
+class OwnersTest < ApplicationSystemTestCase
   setup do
-    @ownership = ownerships(:one)
+    @owner = owners(:one)
   end
 
   test "visiting the index" do
-    visit ownerships_url
-    assert_selector "h1", text: "Ownerships"
+    visit owners_url
+    assert_selector "h1", text: "Owners"
   end
 
-  test "creating a Ownership" do
-    visit ownerships_url
-    click_on "New Ownership"
+  test "creating a Owner" do
+    visit owners_url
+    click_on "New Owner"
 
-    fill_in "House", with: @ownership.house_id
-    fill_in "Person", with: @ownership.person_id
-    click_on "Create Ownership"
+    fill_in "House", with: @owner.house_id
+    fill_in "Person", with: @owner.person_id
+    click_on "Create Owner"
 
-    assert_text "Ownership was successfully created"
+    assert_text "Owner was successfully created"
     click_on "Back"
   end
 
-  test "updating a Ownership" do
-    visit ownerships_url
+  test "updating a Owner" do
+    visit owners_url
     click_on "Edit", match: :first
 
-    fill_in "House", with: @ownership.house_id
-    fill_in "Person", with: @ownership.person_id
-    click_on "Update Ownership"
+    fill_in "House", with: @owner.house_id
+    fill_in "Person", with: @owner.person_id
+    click_on "Update Owner"
 
-    assert_text "Ownership was successfully updated"
+    assert_text "Owner was successfully updated"
     click_on "Back"
   end
 
-  test "destroying a Ownership" do
-    visit ownerships_url
+  test "destroying a Owner" do
+    visit owners_url
     page.accept_confirm do
       click_on "Destroy", match: :first
     end
 
-    assert_text "Ownership was successfully destroyed"
+    assert_text "Owner was successfully destroyed"
   end
 end
