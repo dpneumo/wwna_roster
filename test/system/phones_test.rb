@@ -14,6 +14,7 @@ class PhonesTest < ApplicationSystemTestCase
     visit phones_url
     click_on "New Phone"
 
+    fill_in "Person", with: @phone.person_id
     fill_in "CC", with: @phone.cc
     fill_in "Area", with: @phone.area
     fill_in "Prefix", with: @phone.prefix
