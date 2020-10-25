@@ -14,11 +14,15 @@ class AddressesTest < ApplicationSystemTestCase
     visit addresses_url
     click_on "New Address"
 
+    fill_in "Person", with: @address.person_id
+    fill_in "Number", with: @address.number
+    fill_in "Street", with: @address.street
     fill_in "City", with: @address.city
-    fill_in "Line1", with: @address.line1
-    fill_in "Line2", with: @address.line2
     fill_in "State", with: @address.state
     fill_in "Zip", with: @address.zip
+    fill_in "Location", with: @address.locn
+    fill_in "Preferred", with: @address.preferred
+    fill_in "Note", with: @address.note
     click_on "Create Address"
 
     assert_text "Address was successfully created"
@@ -29,11 +33,14 @@ class AddressesTest < ApplicationSystemTestCase
     visit addresses_url
     click_on "Edit", match: :first
 
+    fill_in "Number", with: @address.number
+    fill_in "Street", with: @address.street
     fill_in "City", with: @address.city
-    fill_in "Line1", with: @address.line1
-    fill_in "Line2", with: @address.line2
     fill_in "State", with: @address.state
     fill_in "Zip", with: @address.zip
+    fill_in "Location", with: @address.locn
+    fill_in "Preferred", with: @address.preferred
+    fill_in "Note", with: @address.note
     click_on "Update Address"
 
     assert_text "Address was successfully updated"

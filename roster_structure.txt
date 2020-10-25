@@ -1,9 +1,13 @@
 Address
+	person_id
 	number
 	street
 	city
 	state
 	zip
+	locn(home, work, other)
+	preferred(y/n)
+	note
 
 Phone
 	person_id
@@ -22,12 +26,6 @@ Email
 	locn(home, work, other)
 	preferred(y/n)
 	note
-
-PersonAddress
-	person_id
-	address_id
-	locn(home, work, other)
-	preferred(y/n)
 
 Person
 	nickname
