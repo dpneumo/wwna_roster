@@ -12,8 +12,8 @@
   <% end %>
 
   <div class="field">
-    <%= form.label :person_id, 'Person' %>
-    <%= form.text_field :person_id %>
+    <%= form.label :person_id, "Person" %>
+    <%= form.collection_select :person_id, Person.all, :id, :fullname, {include_blank: true, class: "custom-select"} %>
   </div>
 
   <div class="field">

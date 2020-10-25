@@ -1,6 +1,11 @@
 <p id="notice"><%= notice %></p>
 
 <p>
+  <strong>Person:</strong>
+  <%= @address.person.fullname %>
+</p>
+
+<p>
   <strong>Number:</strong>
   <%= @address.number %>
 </p>
@@ -23,6 +28,21 @@
 <p>
   <strong>Zip:</strong>
   <%= @address.zip %>
+</p>
+
+<p>
+  <strong>Location:</strong>
+  <%= @address.locn %>
+</p>
+
+<p>
+  <strong>Preferred:</strong>
+  <%= @address.preferred %>
+</p>
+
+<p>
+  <strong>Note:</strong>
+  <%= @address.note %>
 </p>
 
 <%= link_to 'Edit', edit_address_path(@address) %> |

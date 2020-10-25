@@ -13,8 +13,4 @@ class Person < ApplicationRecord
   def fullname
     last + ', ' + first + ' ' + middle
   end
-
-  def addresses
-    person_addresses
-  end
 end

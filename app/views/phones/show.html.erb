@@ -1,7 +1,12 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <strong>Cc:</strong>
+  <strong>Person:</strong>
+  <%= @phone.person.fullname %>
+</p>
+
+<p>
+  <strong>CC:</strong>
   <%= @phone.cc %>
 </p>
 
@@ -11,7 +16,7 @@
 </p>
 
 <p>
-  <strong>:</strong>
+  <strong>Prefix:</strong>
   <%= @phone.prefix %>
 </p>
 
@@ -33,6 +38,10 @@
 <p>
   <strong>Msg Capable:</strong>
   <%= @phone.txt_capable %>
+</p>
+<p>
+  <strong>Note:</strong>
+  <%= @phone.note %>
 </p>
 
 <%= link_to 'Edit', edit_phone_path(@phone) %> |

@@ -5,6 +5,9 @@
     <thead class='thead-light'>
       <tr>
         <th>Address</th>
+        <th>Location</th>
+        <th>Preferred</th>
+        <th>Note</th>
       </tr>
     </thead>
 
@@ -12,7 +15,11 @@
       <% @person.addresses.each do |pa| %>
         <tr>
           <td><%= pa.address %></td>
+          <td><%= pa.locn %></td>
+          <td><%= pa.preferred %></td>
+          <td><%= pa.note %></td>
         </tr>
       <% end %>
     </tbody>
   </table>
+</div>

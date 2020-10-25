@@ -96,15 +96,6 @@ ActiveRecord::Schema.define(version: 2020_10_13_093427) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
-  create_table "person_addresses", force: :cascade do |t|
-    t.integer "person_id", null: false
-    t.integer "address_id", null: false
-    t.string "locn"
-    t.string "preferred", default: "No"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-  end
-
   create_table "phones", force: :cascade do |t|
     t.integer "person_id", null: false
     t.string "cc", default: "1"

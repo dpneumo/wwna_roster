@@ -1,8 +1,23 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <strong>Addr:</strong>
+  <strong>Person:</strong>
+  <%= @email.person.fullname %>
+</p>
+
+<p>
+  <strong>Address:</strong>
   <%= @email.addr %>
+</p>
+
+<p>
+  <strong>Location:</strong>
+  <%= @email.locn %>
+</p>
+
+<p>
+  <strong>Preferred:</strong>
+  <%= @email.preferred %>
 </p>
 
 <p>
