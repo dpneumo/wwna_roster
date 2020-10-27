@@ -1,9 +1,7 @@
-<div class="row">
-  <div class="col-sm-8"><h5>Contributions:</h5></div>
-  <div class="col-sm-4">
-    <%= link_to "New Contribution", new_contribution_path(house_id: @house.id) %>
-  </div>
-</div>
+<%= render  partial: 'shared/subtable_header_bs',
+            locals: { title: "Contributions:",
+                      link_text: "New Contribution",
+                      path: new_contribution_path(house_id: @house.id) } %>
 
 <table class='table table-sm table-bordered table-hover'>
   <thead class='thead-light'>
