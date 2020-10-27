@@ -2,4 +2,7 @@
 
 <%= render 'form', occupant: @occupant %>
 
-<%= link_to 'Back', occupants_path %>
+<%= link_to 'House Detail', house_detail_path(@occupant.house_id) %>
+<% if false %> |
+  <%= link_to 'List', occupants_path %>
+<% end %>

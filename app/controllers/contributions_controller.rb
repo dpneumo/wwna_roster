@@ -15,6 +15,7 @@ class ContributionsController < ApplicationController
   # GET /contributions/new
   def new
     @contribution = Contribution.new
+    @contribution.house_id = params[:house_id]
   end
 
   # GET /contributions/1/edit

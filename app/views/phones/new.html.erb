@@ -2,4 +2,7 @@
 
 <%= render 'form', phone: @phone %>
 
-<%= link_to 'Back', phones_path %>
+<%= link_to 'Person Detail', person_detail_path(@phone.person_id) %>
+<% if false %> |
+  <%= link_to 'List', phones_path %>
+<% end %>

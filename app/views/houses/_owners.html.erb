@@ -1,31 +1,26 @@
-<row class="row">
-  <div class="col-sm">
-    <h5>Owners:</h5>
+<div class="row">
+  <div class="col-sm-8"><h5>Owners:</h5></div>
+  <div class="col-sm-4">
+    <%= link_to "New Owner", new_owner_path(house_id: @house.id) %>
   </div>
-  <div class="col"></div>
-  <div class="col-sm">
-    <%= link_to 'New Owner', new_owner_path %>
-  </div>
-</row>
-
-<div class='container'>
-  <table class='table table-sm table-bordered table-hover'>
-    <thead class='thead-light'>
-      <tr>
-        <th>Person</th>
-        <th colspan="3"></th>
-      </tr>
-    </thead>
-
-    <tbody>
-      <% @house.owners.each do |owner| %>
-        <tr>
-          <td><%= owner.person.fullname %></td>
-          <td><%= link_to 'Show', owner %></td>
-          <td><%= link_to 'Edit', edit_owner_path(owner) %></td>
-          <td><%= link_to 'Destroy', owner, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-        </tr>
-      <% end %>
-    </tbody>
-  </table>
 </div>
+
+<table class='table table-sm table-bordered table-hover'>
+  <thead class='thead-light'>
+    <tr>
+      <th>Person</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @house.owners.each do |owner| %>
+      <tr>
+        <td><%= owner.person.fullname %></td>
+        <td><%= link_to 'Show', owner %></td>
+        <td><%= link_to 'Edit', edit_owner_path(owner) %></td>
+        <td><%= link_to 'Destroy', owner, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

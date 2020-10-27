@@ -1,58 +1,40 @@
 <%= form_with(model: occupant, local: true) do |form| %>
 
-  <% if occupant.errors.any? %>
-    <div class="row" id="error_explanation">
-      <h2><%= pluralize(occupant.errors.count, "error") %> prohibited this occupant from being saved:</h2>
+  <%= render  partial: 'shared/errors',
+              locals: { my_model: @occupant } %>
 
-      <ul>
-        <% occupant.errors.full_messages.each do |message| %>
-          <li><%= message %></li>
-        <% end %>
-      </ul>
-    </div>
+
+  <% if occupant.house_id %>
+    <%= render  partial: 'shared/readonly_field_bs',
+                locals: { form: form, my_field: :house_id,
+                          my_label: "House",
+                          my_id: occupant.house_id,
+                          my_display: :street_number } %>
+  <% else %>
+    <%= render  partial: 'shared/collectselect_bs',
+                locals: { form: form, my_field: :house_id,
+                          my_collection: House.all,
+                          my_display: :street_number } %>
   <% end %>
 
+  <%= render  partial: 'shared/collectselect_bs',
+              locals: { form: form, my_field: :person_id,
+                        my_collection: Person.all,
+                        my_display: :fullname } %>
 
-  <row class="row">
-    <div class="field col-sm">
-      <%= form.label :house_id, "House" %>
-      <%= form.collection_select :house_id, House.all, :id, :street_number, {include_blank: true, class: "custom-select"} %>
-    </div>
+  <%= render  partial: 'shared/select_bs',
+              locals: { form: form, my_field: :relation,
+                        collection: [ "Husband","Wife","Partner",
+                                      "Child","Guest", "Other","Unknown" ] } %>
 
-    <div class="field col-sm">
-      <%= form.label :person_id %>
-      <%= form.collection_select :person_id, Person.all, :id, :fullname, {include_blank: true, class: "custom-select"} %>
-    </div>
-  </row>
+  <%= render  partial: 'shared/select_bs',
+              locals: { form: form, my_field: :status,
+                        collection: [ "Owner","Renter","Other","Unknown" ] } %>
 
+  <%= render  partial: 'shared/textarea_bs',
+                locals: { form: form, my_field: :note, my_label: 'Note' } %>
 
-  <row class="row mb-3">
-    <div class="field col-sm">
-      <%= form.label :relation %>
-      <%= form.select :relation, ["Husband","Wife","Partner","Child","Guest", "Other","Unknown"], {include_blank: true, class: "custom-select"} %>
-    </div>
-
-    <div class="field col-sm">
-      <%= form.label :status %>
-      <%= form.select :status, ["Owner","Renter","Other","Unknown"], {include_blank: true, class: "custom-select"} %>
-    </div>
-  </row>
-
-
-  <row class="row mb-4 ml-1">
-    <div class="input-group">
-      <div class="input-group-prepend">
-        <span class="input-group-text">Note</span>
-      </div>
-      <%= form.text_area :note, class: 'form-control', 'aria-label': "With textarea" %>
-    </div>
-  </row>
-
-
-  <row class="row mb-4">
-    <div class="actions col-sm">
-      <%= form.submit %>
-    </div>
-  </row>
+  <%= render  partial: 'shared/form_submit_bs',
+              locals: { form: form } %>
 
 <% end %>

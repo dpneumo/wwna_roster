@@ -1,52 +1,30 @@
 <%= form_with(model: person, local: true) do |form| %>
-  <% if person.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(person.errors.count, "error") %> prohibited this person from being saved:</h2>
 
-      <ul>
-        <% person.errors.full_messages.each do |message| %>
-          <li><%= message %></li>
-        <% end %>
-      </ul>
-    </div>
-  <% end %>
+  <%= render  partial: 'shared/errors',
+              locals: { my_model: @person } %>
 
-  <div class="field">
-    <%= form.label :nickname %>
-    <%= form.text_field :nickname %>
-  </div>
+  <%= render  partial: 'shared/text_bs',
+              locals: { form: form, my_field: :nickname } %>
 
-  <div class="field">
-    <%= form.label :first %>
-    <%= form.text_field :first %>
-  </div>
+  <%= render  partial: 'shared/text_bs',
+              locals: { form: form, my_field: :first } %>
 
-  <div class="field">
-    <%= form.label :middle %>
-    <%= form.text_field :middle %>
-  </div>
+  <%= render  partial: 'shared/text_bs',
+              locals: { form: form, my_field: :middle } %>
 
-  <div class="field">
-    <%= form.label :last %>
-    <%= form.text_field :last %>
-  </div>
+  <%= render  partial: 'shared/text_bs',
+              locals: { form: form, my_field: :last } %>
 
-  <div class="field">
-    <%= form.label :suffix %>
-    <%= form.text_field :suffix %>
-  </div>
+  <%= render  partial: 'shared/text_bs',
+              locals: { form: form, my_field: :suffix } %>
 
-  <div class="field">
-    <%= form.label :honorific %>
-    <%= form.text_field :honorific %>
-  </div>
+  <%= render  partial: 'shared/text_bs',
+              locals: { form: form, my_field: :honorific } %>
 
-  <div class="field">
-    <%= form.label :note %>
-    <%= form.text_area :note %>
-  </div>
+  <%= render  partial: 'shared/text_bs',
+              locals: { form: form, my_field: :note } %>
 
-  <div class="actions">
-    <%= form.submit %>
-  </div>
+  <%= render  partial: 'shared/form_submit_bs',
+              locals: { form: form } %>
+
 <% end %>

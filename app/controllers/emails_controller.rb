@@ -15,6 +15,7 @@ class EmailsController < ApplicationController
   # GET /emails/new
   def new
     @email = Email.new
+    @email.person_id = params[:person_id]
   end
 
   # GET /emails/1/edit

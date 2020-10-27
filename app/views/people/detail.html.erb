@@ -1,21 +1,21 @@
-<row class="row">
+<div class="row">
   <div class="col-sm">
     <p id="notice"><%= notice %></p>
   </div>
-</row>
+</div>
 
 
-<row class="row">
+<div class="row">
   <div class="col-sm">
     <p>
       <strong>Nickname:</strong>
       <%= @person.nickname %>
     </p>
   </div>
-</row>
+</div>
 
 
-<row class="row">
+<div class="row">
   <div class="col-sm">
     <p>
       <strong>First:</strong>
@@ -36,10 +36,10 @@
       <%= @person.last %>
     </p>
   </div>
-</row>
+</div>
 
 
-<row class="row">
+<div class="row">
   <div class="col-sm">
     <p>
       <strong>Suffix:</strong>
@@ -53,38 +53,38 @@
       <%= @person.honorific %>
     </p>
   </div>
-</row>
+</div>
 
 
-<row class="row">
+<div class="row">
   <div class="col-sm">
     <%= render 'emails' %>
   </div>
-</row>
+</div>
 
 
-<row class="row">
+<div class="row">
   <div class="col-sm">
     <%= render 'phones' %>
   </div>
-</row>
+</div>
 
 
-<row class="row">
+<div class="row">
   <div class="col-sm">
     <%= render 'addresses' %>
   </div>
-</row>
+</div>
 
 
-<row class="row">
+<div class="row">
   <div class="col-sm">
     <p>
       <strong>Note:</strong>
       <%= @person.note %>
     </p>
   </div>
-</row>
+</div>
 
 <%= link_to 'Edit', edit_person_path(@person) %> |
-<%= link_to 'Back', people_path %>
+<%= link_to 'List', people_path %>

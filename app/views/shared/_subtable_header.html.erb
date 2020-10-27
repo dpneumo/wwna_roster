@@ -1,0 +1,9 @@
+<div class="row">
+  <div class="col-sm">
+    <h5><%= name.pluralize %>:</h5>
+  </div>
+  <div class="col"></div>
+  <div class="col-sm">
+    <%= link_to "New #{name}", send(path, {k => v} ) %>
+  </div>
+</div>

@@ -15,6 +15,7 @@ class OccupantsController < ApplicationController
   # GET /occupants/new
   def new
     @occupant = Occupant.new
+    @occupant.house_id = params[:house_id]
   end
 
   # GET /occupants/1/edit

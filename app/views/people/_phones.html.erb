@@ -1,27 +1,33 @@
-<h5>Phones</h5>
-
-<div class='container'>
-  <table class='table table-sm table-bordered table-hover'>
-    <thead class='thead-light'>
-      <tr>
-        <th>Phone</th>
-        <th>Location</th>
-        <th>Preferred</th>
-        <th>Msg Capable</th>
-        <th>Note</th>
-      </tr>
-    </thead>
-
-    <tbody>
-      <% @person.phones.each do |p| %>
-        <tr>
-          <td><%= p.ph_number %></td>
-          <td><%= p.locn %></td>
-          <td><%= p.preferred %></td>
-          <td><%= p.txt_capable %></td>
-          <td><%= p.note %></td>
-        </tr>
-      <% end %>
-    </tbody>
-  </table>
+<div class="row">
+  <div class="col-sm-8"><h5>Phones:</h5></div>
+  <div class="col-sm-4">
+    <%= link_to "New Phone", new_phone_path(person_id: @person.id) %>
+  </div>
 </div>
+
+<table class='table table-sm table-bordered table-hover'>
+  <thead class='thead-light'>
+    <tr>
+      <th>Phone</th>
+      <th>Location</th>
+      <th>Preferred</th>
+      <th>Msg Capable</th>
+      <th>Note</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @person.phones.each do |phone| %>
+      <tr>
+        <td><%= phone.ph_number %></td>
+        <td><%= phone.locn %></td>
+        <td><%= phone.preferred %></td>
+        <td><%= phone.txt_capable %></td>
+        <td><%= phone.note %></td>
+        <td><%= link_to 'Show', phone %></td>
+        <td><%= link_to 'Edit', edit_phone_path(phone) %></td>
+        <td><%= link_to 'Destroy', phone, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

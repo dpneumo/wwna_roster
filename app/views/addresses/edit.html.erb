@@ -3,4 +3,7 @@
 <%= render 'form', address: @address %>
 
 <%= link_to 'Show', @address %> |
-<%= link_to 'Back', addresses_path %>
+<%= link_to 'Person Detail', person_detail_path(@address.person_id) %>
+<% if false %> |
+  <%= link_to 'List', addresses_path %>
+<% end %>

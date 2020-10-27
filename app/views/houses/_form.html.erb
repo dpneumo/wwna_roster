@@ -1,16 +1,7 @@
 <%= form_with(model: house, local: true) do |form| %>
 
-  <% if house.errors.any? %>
-    <div class="row" id="error_explanation">
-      <h2><%= pluralize(house.errors.count, "error") %> prohibited this house from being saved:</h2>
-
-      <ul>
-        <% house.errors.full_messages.each do |message| %>
-          <li><%= message %></li>
-        <% end %>
-      </ul>
-    </div>
-  <% end %>
+  <%= render  partial: 'shared/errors',
+              locals: { my_model: @house } %>
 
   <div class="row">
     <div class="field col-sm">
@@ -55,10 +46,7 @@
     </div>
   </div>
 
-  <div class="row mb-4">
-    <div class="actions col-sm">
-      <%= form.submit %>
-    </div>
-  </div>
+  <%= render  partial: 'shared/form_submit_bs',
+              locals: { form: form } %>
 
 <% end %>

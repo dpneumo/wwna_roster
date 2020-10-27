@@ -1,38 +1,28 @@
 <%= form_with(model: owner, local: true) do |form| %>
 
-  <% if owner.errors.any? %>
-    <div class="row" id="error_explanation">
-      <h2><%= pluralize(owner.errors.count, "error") %> prohibited this owner from being saved:</h2>
+  <%= render  partial: 'shared/errors',
+              locals: { my_model: @owner } %>
 
-      <ul>
-        <% owner.errors.full_messages.each do |message| %>
-          <li><%= message %></li>
-        <% end %>
-      </ul>
-    </div>
+  <% if owner.house_id %>
+    <%= render  partial: 'shared/readonly_field_bs',
+                locals: { form: form, my_field: :house_id,
+                          my_label: "House",
+                          my_id: owner.house_id,
+                          my_display: :street_number } %>
+  <% else %>
+    <%= render  partial: 'shared/collectselect_bs',
+                locals: { form: form, my_field: :house_id,
+                          my_collection: House.all,
+                          my_display: :street_number } %>
   <% end %>
 
+  <%= render  partial: 'shared/collectselect_bs',
+              locals: { form: form, my_field: :person_id,
+                        my_collection: Person.all,
+                        my_display: :fullname } %>
 
-  <row class="row mb-3">
-    <div class="field col-sm">
-      <%= form.label :house_id, "House" %>
-      <%= form.collection_select :house_id, House.all, :id, :street_number, {include_blank: true, class: "custom-select"} %>
-    </div>
-  </row>
-
-
-  <row class="row mb-3">
-    <div class="field col-sm">
-      <%= form.label :person_id %>
-      <%= form.collection_select :person_id, Person.all, :id, :fullname, {include_blank: true, class: "custom-select"} %>
-    </div>
-  </row>
-
-
-  <row class="row mb-4">
-    <div class="actions">
-      <%= form.submit %>
-    </div>
-  </row>
+  <%= render  partial: 'shared/form_submit_bs',
+              locals: { form: form } %>
 
 <% end %>
+

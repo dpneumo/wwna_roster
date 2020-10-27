@@ -21,24 +21,26 @@
         <%= link_to 'Houses', houses_path %>
       </li>
 
-      <li class="nav-item p-2">
-        <%= link_to "Occupants", occupants_path %>
-      </li>
-
-      <li class="nav-item p-2">
-        <%= link_to "Owners", owners_path %>
-      </li>
-
-      <li class="nav-item p-2">
-        <%= link_to "Lots", lots_path %>
-      </li>
-
-      <li class="nav-item p-2">
-        <%= link_to "Contributions", contributions_path %>
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="propertyLnks" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Property Admin</a>
+        <div class="dropdown-menu" aria-labelledby="propertyLnks">
+          <a class="dropdown-item">
+            <%= link_to "Lots", lots_path %>
+          </a>
+          <a class="dropdown-item">
+            <%= link_to "Occupants", occupants_path %>
+          </a>
+          <a class="dropdown-item">
+            <%= link_to "Owners", owners_path %>
+          </a>
+          <a class="dropdown-item">
+            <%= link_to "Contributions", contributions_path %>
+          </a>
+        </div>
       </li>
 
       <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" href="#" id="personLnks" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Person Links</a>
+        <a class="nav-link dropdown-toggle" href="#" id="personLnks" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Person Admin</a>
         <div class="dropdown-menu" aria-labelledby="personLnks">
           <a class="dropdown-item">
             <%= link_to "Addresses", addresses_path %>

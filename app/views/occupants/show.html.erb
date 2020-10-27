@@ -26,4 +26,7 @@
 </p>
 
 <%= link_to 'Edit', edit_occupant_path(@occupant) %> |
-<%= link_to 'Back', occupants_path %>
+<%= link_to 'House Detail', house_detail_path(@occupant.house_id) %>
+<% if false %> |
+  <%= link_to 'List', occupants_path %>
+<% end %>

@@ -2,13 +2,16 @@
 
 <p>
   <strong>House:</strong>
-  <%= @owner.house_id %>
+  <%= @owner.house.street_number %>
 </p>
 
 <p>
   <strong>Person:</strong>
-  <%= @owner.person_id %>
+  <%= @owner.person.fullname %>
 </p>
 
 <%= link_to 'Edit', edit_owner_path(@owner) %> |
-<%= link_to 'Back', owners_path %>
+<%= link_to 'House Detail', house_detail_path(@owner.house_id) %>
+<% if false %> |
+  <%= link_to 'List', owners_path %>
+<% end %>

@@ -1,46 +1,29 @@
 <%= form_with(model: contribution, local: true) do |form| %>
 
-  <% if contribution.errors.any? %>
-    <div class="row" id="error_explanation">
-      <h2><%= pluralize(contribution.errors.count, "error") %> prohibited this contribution from being saved:</h2>
+  <%= render  partial: 'shared/errors',
+              locals: { my_model: @contribution } %>
 
-      <ul>
-        <% contribution.errors.full_messages.each do |message| %>
-          <li><%= message %></li>
-        <% end %>
-      </ul>
-    </div>
+
+  <% if contribution.house_id %>
+    <%= render  partial: 'shared/readonly_field_bs',
+                locals: { form: form, my_field: :house_id,
+                          my_label: "House",
+                          my_id: contribution.house_id,
+                          my_display: :street_number } %>
+  <% else %>
+    <%= render  partial: 'shared/collectselect_bs',
+                locals: { form: form, my_field: :house_id,
+                          my_collection: House.all,
+                          my_display: :street_number } %>
   <% end %>
 
+  <%= render  partial: 'shared/dateselect_bs',
+              locals: { form: form, my_field: :date_paid } %>
 
-  <row class="row mb-3">
-    <div class="field col-sm">
-      <%= form.label :house_id, "House" %>
-      <%= form.collection_select :house_id, House.all, :id, :street_number, {include_blank: true, class: "custom-select"} %>
-    </div>
-  </row>
+  <%= render  partial: 'shared/text_bs',
+              locals: { form: form, my_field: :amount } %>
 
-
-  <row class="row mb-3">
-    <div class="field col-sm">
-      <%= form.label :date_paid %>
-      <%= form.date_select :date_paid %>
-    </div>
-  </row>
-
-
-  <row class="row mb-3">
-    <div class="field col-sm">
-      <%= form.label :amount %>
-      <%= form.text_field :amount %>
-    </div>
-  </row>
-
-
-  <row class="row mb-4">
-    <div class="actions">
-      <%= form.submit %>
-    </div>
-  </row>
+  <%= render  partial: 'shared/form_submit_bs',
+              locals: { form: form } %>
 
 <% end %>

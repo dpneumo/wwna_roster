@@ -2,5 +2,7 @@
 
 <%= render 'form', contribution: @contribution %>
 
-<%= link_to 'Show', @contribution %> |
-<%= link_to 'Back', contributions_path %>
+<%= link_to 'House Detail', house_detail_path(@contribution.house_id) %>
+<% if false %> |
+  <%= link_to 'List', contributions_path %>
+<% end %>

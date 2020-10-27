@@ -3,4 +3,7 @@
 <%= render 'form', owner: @owner %>
 
 <%= link_to 'Show', @owner %> |
-<%= link_to 'Back', owners_path %>
+<%= link_to 'House Detail', house_detail_path(@owner.house_id) %>
+<% if false %> |
+  <%= link_to 'List', owners_path %>
+<% end %>

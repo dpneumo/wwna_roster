@@ -1,4 +1,11 @@
-  <row class="row">
+<div class="row">
+  <div class="col-sm">
+    <p id="notice"><%= notice %></p>
+  </div>
+</div>
+
+
+  <div class="row">
     <div class="col-sm">
       <p>
         <strong>Street Number:</strong>
@@ -12,10 +19,10 @@
         <%= @house.linked_lot_id %>
       </p>
     </div>
-  </row>
+  </div>
 
 
-  <row class="row">
+  <div class="row">
     <div class="col-sm">
       <p>
         <strong>Member Flag Group:</strong>
@@ -32,52 +39,52 @@
 
     <div class="col-sm">
       <p>
-        <strong>Listed Sale:</strong>
+        <strong>Listed For Sale:</strong>
         <%= @house.listed %>
       </p>
     </div>
-  </row>
+  </div>
 
 
-  <row class="row">
+  <div class="row">
     <div class="col-sm">
       <p>
         <strong>Status:</strong>
         <%= @house.status %>
       </p>
     </div>
-  </row>
+  </div>
 
 
-  <row class="row">
+  <div class="row">
     <div class="col-sm">
       <%= render 'occupants' %>
     </div>
-  </row>
+  </div>
 
 
-  <row class="row">
+  <div class="row">
     <div class="col-sm">
       <%= render 'contributions' %>
     </div>
-  </row>
+  </div>
 
 
-  <row class="row">
+  <div class="row">
     <div class="col-sm">
       <%= render 'owners' %>
     </div>
-  </row>
+  </div>
 
 
-  <row class="row">
+  <div class="row">
     <div class="col-sm">
       <p>
         <strong>Note:</strong>
         <%= @house.note %>
       </p>
     </div>
-  </row>
+  </div>
 
 <%= link_to 'Edit', edit_house_path(@house) %> |
-<%= link_to 'Back', houses_path %>
+<%= link_to 'List', houses_path %>

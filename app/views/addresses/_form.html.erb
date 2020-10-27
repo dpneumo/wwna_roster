@@ -1,62 +1,47 @@
 <%= form_with(model: address, local: true) do |form| %>
-  <% if address.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(address.errors.count, "error") %> prohibited this address from being saved:</h2>
 
-      <ul>
-        <% address.errors.full_messages.each do |message| %>
-          <li><%= message %></li>
-        <% end %>
-      </ul>
-    </div>
+  <%= render  partial: 'shared/errors',
+              locals: { my_model: @address } %>
+
+  <% if address.person_id %>
+    <%= render  partial: 'shared/readonly_field_bs',
+                locals: { form: form, my_field: :person_id,
+                          my_label: "Person",
+                          my_id: address.person_id,
+                          my_display: :fullname } %>
+  <% else %>
+    <%= render  partial: 'shared/collectselect_bs',
+                locals: { form: form, my_field: :person_id,
+                          my_collection: Person.all,
+                          my_display: :fullname } %>
   <% end %>
 
-  <div class="field">
-    <%= form.label :person_id, "Person" %>
-    <%= form.collection_select :person_id, Person.all, :id, :fullname, {include_blank: true, class: "custom-select"} %>
-  </div>
 
-  <div class="field">
-    <%= form.label :number, 'Number' %>
-    <%= form.text_field :number %>
-  </div>
+  <%= render  partial: 'shared/text_bs',
+              locals: { form: form, my_field: :number } %>
 
-  <div class="field">
-    <%= form.label :street, 'Street' %>
-    <%= form.text_field :street %>
-  </div>
+  <%= render  partial: 'shared/text_bs',
+              locals: { form: form, my_field: :street } %>
 
-  <div class="field">
-    <%= form.label :city, 'City' %>
-    <%= form.text_field :city %>
-  </div>
+  <%= render  partial: 'shared/text_bs',
+              locals: { form: form, my_field: :city } %>
 
-  <div class="field">
-    <%= form.label :state, 'State' %>
-    <%= form.text_field :state %>
-  </div>
+  <%= render  partial: 'shared/text_bs',
+              locals: { form: form, my_field: :state } %>
 
-  <div class="field">
-    <%= form.label :zip, 'Zip' %>
-    <%= form.text_field :zip %>
-  </div>
+  <%= render  partial: 'shared/text_bs',
+              locals: { form: form, my_field: :zip } %>
 
-  <div class="field">
-    <%= form.label :locn, 'Location' %>
-    <%= form.text_field :locn %>
-  </div>
+  <%= render  partial: 'shared/text_bs',
+              locals: { form: form, my_field: :locn } %>
 
-  <div class="field">
-    <%= form.label :preferred, 'Preferred' %>
-    <%= form.text_field :preferred %>
-  </div>
+  <%= render  partial: 'shared/text_bs',
+              locals: { form: form, my_field: :preferred } %>
 
-  <div class="field">
-    <%= form.label :note, 'Note' %>
-    <%= form.text_field :note %>
-  </div>
+  <%= render  partial: 'shared/text_bs',
+              locals: { form: form, my_field: :note } %>
 
-  <div class="actions">
-    <%= form.submit %>
-  </div>
+  <%= render  partial: 'shared/form_submit_bs',
+              locals: { form: form } %>
+
 <% end %>

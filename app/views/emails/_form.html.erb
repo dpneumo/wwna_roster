@@ -1,42 +1,35 @@
 <%= form_with(model: email, local: true) do |form| %>
-  <% if email.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(email.errors.count, "error") %> prohibited this email from being saved:</h2>
 
-      <ul>
-        <% email.errors.full_messages.each do |message| %>
-          <li><%= message %></li>
-        <% end %>
-      </ul>
-    </div>
+  <%= render  partial: 'shared/errors',
+              locals: { my_model: @email } %>
+
+  <% if email.person_id %>
+    <%= render  partial: 'shared/readonly_field_bs',
+                locals: { form: form, my_field: :person_id,
+                          my_label: "Person",
+                          my_id: email.person_id,
+                          my_display: :fullname } %>
+  <% else %>
+    <%= render  partial: 'shared/collectselect_bs',
+                locals: { form: form, my_field: :person_id,
+                          my_collection: Person.all,
+                          my_display: :fullname } %>
   <% end %>
 
-  <div class="field">
-    <%= form.label :person_id, "Person" %>
-    <%= form.collection_select :person_id, Person.all, :id, :fullname, {include_blank: true, class: "custom-select"} %>
-  </div>
 
-  <div class="field">
-    <%= form.label :addr, "Address" %>
-    <%= form.text_field :addr %>
-  </div>
+  <%= render  partial: 'shared/text_bs',
+              locals: { form: form, my_field: :addr } %>
 
-  <div class="field">
-    <%= form.label :locn, "Location" %>
-    <%= form.text_field :locn %>
-  </div>
+  <%= render  partial: 'shared/text_bs',
+              locals: { form: form, my_field: :locn } %>
 
-  <div class="field">
-    <%= form.label :preferred, "Preferred" %>
-    <%= form.text_field :preferred %>
-  </div>
+  <%= render  partial: 'shared/text_bs',
+              locals: { form: form, my_field: :preferred } %>
 
-  <div class="field">
-    <%= form.label :note, "Note" %>
-    <%= form.text_area :note %>
-  </div>
+  <%= render  partial: 'shared/textarea_bs',
+                locals: { form: form, my_field: :note, my_label: 'Note' } %>
 
-  <div class="actions">
-    <%= form.submit %>
-  </div>
+  <%= render  partial: 'shared/form_submit_bs',
+              locals: { form: form } %>
+
 <% end %>

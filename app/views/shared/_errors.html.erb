@@ -1,0 +1,15 @@
+<% if my_model.errors.any? %>
+  <div class="row" id="error_explanation">
+    <h5>
+      <%= pluralize(my_model.errors.count, "error") %> prohibited this
+      <%= my_model.class.name.demodulize%>
+      from being saved:
+    </h5>
+
+    <ul>
+      <% my_model.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>

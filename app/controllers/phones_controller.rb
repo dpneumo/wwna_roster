@@ -15,6 +15,7 @@ class PhonesController < ApplicationController
   # GET /phones/new
   def new
     @phone = Phone.new
+    @phone.person_id = params[:person_id]
   end
 
   # GET /phones/1/edit

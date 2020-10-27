@@ -2,4 +2,7 @@
 
 <%= render 'form', email: @email %>
 
-<%= link_to 'Back', emails_path %>
+<%= link_to 'Person Detail', person_detail_path(@email.person_id) %>
+<% if false %> |
+  <%= link_to 'List', emails_path %>
+<% end %>
