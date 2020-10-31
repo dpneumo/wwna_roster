@@ -11,7 +11,8 @@ class OccupantsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should get new" do
-    get new_occupant_url
+    @house = houses(:one)
+    get new_occupant_url(house_id: @house.id)
     assert_response :success
   end
 

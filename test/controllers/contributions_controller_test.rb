@@ -3,6 +3,7 @@ require 'test_helper'
 class ContributionsControllerTest < ActionDispatch::IntegrationTest
   setup do
     @contribution = contributions(:one)
+    @house = houses(:one)
   end
 
   test "should get index" do
@@ -11,7 +12,7 @@ class ContributionsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should get new" do
-    get new_contribution_url
+    get new_contribution_url(house_id: @house.id)
     assert_response :success
   end
 

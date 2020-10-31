@@ -12,6 +12,9 @@
 
 ActiveRecord::Schema.define(version: 2020_10_13_093427) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "addresses", force: :cascade do |t|
     t.integer "person_id", null: false
     t.string "number", null: false
@@ -29,7 +32,7 @@ ActiveRecord::Schema.define(version: 2020_10_13_093427) do
   create_table "contributions", force: :cascade do |t|
     t.integer "house_id", null: false
     t.date "date_paid", null: false
-    t.decimal "amount", precision: 4, scale: 2, null: false
+    t.string "amount", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

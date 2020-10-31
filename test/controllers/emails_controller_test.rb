@@ -11,7 +11,8 @@ class EmailsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should get new" do
-    get new_email_url
+    @person = people(:one)
+    get new_email_url(person_id: @person.id)
     assert_response :success
   end
 

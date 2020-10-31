@@ -11,7 +11,8 @@ class PhonesControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should get new" do
-    get new_phone_url
+    @person = people(:one)
+    get new_phone_url(person_id: @person.id)
     assert_response :success
   end
 

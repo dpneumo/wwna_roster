@@ -3,9 +3,9 @@
 one:
   house: one
   date_paid: 2020-10-11
-  amount: 199.99
+  amount: $199.99
 
 two:
   house: two
   date_paid: 2020-10-11
-  amount: 299.99
+  amount: $299.99
