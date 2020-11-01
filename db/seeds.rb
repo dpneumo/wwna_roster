@@ -12,7 +12,7 @@ Person.create([
   {nickname: "Blake", first: "J", middle: "Blake", last: "Kuppinger"},
 ])
 
-Lot.create([
+House.create([
   { number: 6000, street: 'Englishoak Dr'},
   { number: 6002, street: 'Englishoak Dr'},
   { number: 6003, street: 'Englishoak Dr'},
@@ -131,4 +131,4 @@ Lot.create([
 ])
 
 props = {flag: false, rental: false, listed: false, status: 'Occupied'}
-House.create( Lot.all.map {|lot| props.merge(lot_id: lot.id) } )
+House.update_all( props )

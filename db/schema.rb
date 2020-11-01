@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_10_13_093427) do
+ActiveRecord::Schema.define(version: 2020_10_11_215205) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -48,23 +48,16 @@ ActiveRecord::Schema.define(version: 2020_10_13_093427) do
   end
 
   create_table "houses", force: :cascade do |t|
-    t.integer "lot_id", null: false
-    t.integer "linked_lot_id"
-    t.boolean "flag", default: false
-    t.boolean "rental", default: false
-    t.boolean "listed", default: false
-    t.string "status", default: "Occupied"
-    t.text "note"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-  end
-
-  create_table "lots", force: :cascade do |t|
     t.string "number", null: false
     t.string "street", null: false
     t.decimal "latitude", precision: 9, scale: 6
     t.decimal "longitude", precision: 9, scale: 6
     t.string "image_link"
+    t.integer "linked_lot_id"
+    t.boolean "flag", default: false
+    t.boolean "rental", default: false
+    t.boolean "listed", default: false
+    t.string "status", default: "Occupied"
     t.text "note"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false

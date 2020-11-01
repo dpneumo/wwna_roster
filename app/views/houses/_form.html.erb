@@ -3,12 +3,38 @@
   <%= render  partial: 'shared/errors',
               locals: { my_model: @house } %>
 
-  <div class="row">
+  <div class ="row">
     <div class="field col-sm">
-      <%= form.label :lot_id, "Lot" %>
-      <%= form.collection_select :lot_id, Lot.order(:number), :id, :street_number, class: "custom-select" %>
+      <%= form.label :number %>
+      <%= form.text_field :number %>
     </div>
 
+    <div class="field col-sm">
+      <%= form.label :street %>
+      <%= form.text_field :street %>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="field col-sm">
+      <%= form.label :latitude %>
+      <%= form.text_field :latitude %>
+    </div>
+
+    <div class="field col-sm">
+      <%= form.label :longitude %>
+      <%= form.text_field :longitude %>
+    </div>
+  </div>
+
+  <div class="row mb-3">
+    <div class="field col-sm">
+      <%= form.label :image_link %>
+      <%= form.text_field :image_link %>
+    </div>
+  </div>
+
+  <div class="row">
     <div class="field col-sm">
       <%= form.label :status %>
       <%= form.select :status, ["Occupied","Vacant","Construction"], selected: "Occupied" %>
@@ -16,7 +42,7 @@
 
     <div class="field col-sm">
       <%= form.label :linked_lot_id, "Linked Lot" %>
-      <%= form.collection_select :linked_lot_id, Lot.order(:number), :id, :street_number,{include_blank: ''} %>
+      <%= form.collection_select :linked_lot_id, House.order(:number), :id, :street_number,{include_blank: ''} %>
     </div>
   </div>
 

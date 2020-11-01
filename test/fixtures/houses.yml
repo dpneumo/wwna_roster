@@ -1,7 +1,11 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  lot: one
+  number: '123A'
+  street: 'Oak Dr'
+  latitude: 45.123456
+  longitude: 120.123456
+  image_link: Img-1
   linked_lot_id: 3
   flag: false
   rental: false
@@ -10,7 +14,11 @@ one:
   note: MyText1
 
 two:
-  lot: two
+  number: zzz
+  street: aaa
+  latitude: -15.123456
+  longitude: -100.123456
+  image_link: Img-2
   linked_lot_id: 4
   flag: false
   rental: false

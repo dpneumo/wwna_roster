@@ -5,7 +5,7 @@ class HousesController < ApplicationController
   # GET /houses.json
   def index
     @q = House.ransack(params[:q])
-    @pagy, @houses = pagy(@q.result.includes(:lot))
+    @pagy, @houses = pagy(@q.result)
   end
 
   # GET /houses/1
@@ -74,6 +74,7 @@ class HousesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def house_params
-      params.require(:house).permit(:lot_id, :linked_lot_id, :flag, :rental, :listed, :status, :note)
+      params.require(:house).permit( :number, :street, :latitude, :longitude, :image_link,
+                                     :linked_lot_id, :flag, :rental, :listed, :status, :note)
     end
 end
