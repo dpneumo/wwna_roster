@@ -4,7 +4,8 @@ class PeopleController < ApplicationController
   # GET /people
   # GET /people.json
   def index
-    @pagy, @people = pagy(Person.all)
+    @q = Person.ransack(params[:q])
+    @pagy, @people = pagy(@q.result)
   end
 
   # GET /people/1

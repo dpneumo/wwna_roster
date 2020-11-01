@@ -22,6 +22,8 @@ gem 'jbuilder', '~> 2.7'
 
 gem 'bootstrap',  '~>4.3.1'
 gem 'font_awesome5_rails'
+
+gem 'ransack', github: 'activerecord-hackery/ransack'
 gem 'pagy', '~> 3'
 
 # Use Redis adapter to run Action Cable in production

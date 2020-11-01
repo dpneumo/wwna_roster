@@ -4,7 +4,8 @@ class HousesController < ApplicationController
   # GET /houses
   # GET /houses.json
   def index
-    @pagy, @houses = pagy(House.all)
+    @q = House.ransack(params[:q])
+    @pagy, @houses = pagy(@q.result.includes(:lot))
   end
 
   # GET /houses/1

@@ -1,0 +1,22 @@
+<%= search_form_for @q do |f| %>
+<div class='row'>
+  <div class="field col-sm">
+    <%= f.label :flag_eq, 'Flag: ' %>
+    <%= f.collection_radio_buttons :flag_eq, {'Yes' => true, 'No' => false, 'All' => nil}, :last, :first %>
+  </div>
+
+  <div class="field col-sm">
+    <%= f.label :rental_eq, 'Rental: ' %>
+    <%= f.collection_radio_buttons :rental_eq, {'Yes' => true, 'No' => false, 'All' => nil}, :last, :first %>
+  </div>
+
+  <div class="field col-sm">
+    <%= f.label :listed_eq, 'Listed: ' %>
+    <%= f.collection_radio_buttons :listed_eq, {'Yes' => true, 'No' => false, 'All' => nil}, :last, :first %>
+  </div>
+
+  <div class="field col-sm">
+    <%= f.submit %>
+  </div>
+</div>
+<% end %>
