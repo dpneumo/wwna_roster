@@ -10,11 +10,10 @@
     <thead class='thead-light'>
       <tr>
         <th>Nickname</th>
-        <th>First</th>
-        <th>Middle</th>
-        <th>Last</th>
+        <th>Name</th>
         <th>Suffix</th>
         <th>Honorific</th>
+        <th>House</th>
         <th>Note</th>
         <th colspan="3"></th>
       </tr>
@@ -24,11 +23,10 @@
       <% @people.each do |person| %>
         <tr>
           <td><%= person.nickname %></td>
-          <td><%= person.first %></td>
-          <td><%= person.middle %></td>
-          <td><%= person.last %></td>
+          <td><%= person.fullname %></td>
           <td><%= person.suffix %></td>
           <td><%= person.honorific %></td>
+          <td><%= person.occupant ? person.house.street_number : '' %></td>
           <td><%= person.note %></td>
           <td><%= link_to 'Detail', person_detail_path(person) %></td>
           <td><%= link_to 'Edit', edit_person_path(person) %></td>
