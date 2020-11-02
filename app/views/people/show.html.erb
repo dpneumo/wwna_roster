@@ -35,6 +35,13 @@
   <%= @person.note %>
 </p>
 
+<% if @person.occupant; then %>
+  <p>
+    <strong>House:</strong>
+    <%= @person.house.street_number %>
+  </p>
+<% end %>
+
 <%= link_to 'Edit', edit_person_path(@person) %> |
 <%= link_to 'Person Detail', person_detail_path(@person) %> |
 <%= link_to 'Back', people_path %>
