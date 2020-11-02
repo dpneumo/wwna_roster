@@ -10,15 +10,15 @@
     </div>
 
     <div class="field col-sm">
-      <%= form.label :street %>
-      <%= form.text_field :street %>
+      <%= form.label :latitude %>
+      <%= form.text_field :latitude %>
     </div>
   </div>
 
   <div class="row">
     <div class="field col-sm">
-      <%= form.label :latitude %>
-      <%= form.text_field :latitude %>
+      <%= form.label :street %>
+      <%= form.text_field :street %>
     </div>
 
     <div class="field col-sm">
@@ -27,17 +27,18 @@
     </div>
   </div>
 
-  <div class="row mb-3">
+  <div class="row">
+    <div class="field col-sm"></div>
     <div class="field col-sm">
-      <%= form.label :image_link %>
+      <%= form.label :image_link, "Image Link" %>
       <%= form.text_field :image_link %>
     </div>
   </div>
 
-  <div class="row">
+  <div class="row mb-3">
     <div class="field col-sm">
       <%= form.label :status %>
-      <%= form.select :status, ["Occupied","Vacant","Construction"], selected: "Occupied" %>
+      <%= form.select :status, House.states, selected: "Occupied" %>
     </div>
 
     <div class="field col-sm">
