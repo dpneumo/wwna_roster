@@ -12,12 +12,12 @@ class House < ApplicationRecord
 
   States = ["Occupied","Vacant","Construction"]
 
-  def self.street_names
-    all.collect {|h| h.street }.uniq
-  end
-
   def self.states
     States
+  end
+
+  def self.street_names
+    all.collect {|h| h.street }.uniq
   end
 
   def street_number

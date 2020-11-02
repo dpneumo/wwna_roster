@@ -18,4 +18,8 @@ class OwnerTest < ActiveSupport::TestCase
     @own.person_id = ""
     refute @own.save, "Saved owner without person_id"
   end
+
+  test "accesses houses through property association" do
+    assert_equal 1, @own.property.id
+  end
 end

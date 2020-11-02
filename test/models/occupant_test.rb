@@ -18,4 +18,12 @@ class OccupantTest < ActiveSupport::TestCase
     @occ.person_id = ""
     refute @occ.save, "Saved occupant without person_id"
   end
+
+  test "Occupant.relations returns a list of relationships" do
+    assert Occupant.relations.include?('Child')
+  end
+
+  test "Occupant.states returns a list of statusus" do
+    assert Occupant.states.include?('Owner')
+  end
 end
