@@ -10,14 +10,24 @@ class House < ApplicationRecord
   validate :latitude_is_sane
   validate :longitude_is_sane
 
+  States = ["Occupied","Vacant","Construction"]
+
+  def self.street_names
+    all.collect {|h| h.street }.uniq
+  end
+
+  def self.states
+    States
+  end
+
   def street_number
     number + ' ' + street
   end
 
   def <=>(other)
-    return -1 if self.lot.street < other.lot.street
-    return +1 if self.lot.street > other.lot.street
-    self.lot.number <=> other.lot.number
+    return -1 if self.street < other.street
+    return +1 if self.street > other.street
+    self.number <=> other.number
   end
 
   private

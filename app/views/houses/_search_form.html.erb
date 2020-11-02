@@ -1,22 +1,33 @@
 <%= search_form_for @q do |f| %>
-<div class='row'>
-  <div class="field col-sm">
-    <%= f.label :flag_eq, 'Flag: ' %>
-    <%= f.collection_radio_buttons :flag_eq, {'Yes' => true, 'No' => false, 'All' => nil}, :last, :first %>
+  <div class='row'>
+      <div class="field col-sm-4">
+        <%= f.label :flag_eq, 'Flag: ' %>
+        <%= f.collection_radio_buttons :flag_eq, {'Yes' => true, 'No' => false, 'All' => nil}, :last, :first %>
+      </div>
+
+      <div class="field col-sm-4">
+        <%= f.label :rental_eq, 'Rental: ' %>
+        <%= f.collection_radio_buttons :rental_eq, {'Yes' => true, 'No' => false, 'All' => nil}, :last, :first %>
+      </div>
+
+      <div class="field col-sm-4">
+        <%= f.label :listed_eq, 'Listed: ' %>
+        <%= f.collection_radio_buttons :listed_eq, {'Yes' => true, 'No' => false, 'All' => nil}, :last, :first %>
+      </div>
+
+      <div class='field col-sm-4'>
+        <%= f.label :street, 'Street: ' %>
+        <%= f.select(:street_eq, House.street_names, { include_blank: true }) %>
+      </div>
+
+      <div class='field col-sm-4'>
+        <%= f.label :status, 'Status: ' %>
+        <%= f.select(:status_eq, House.states, { include_blank: true }) %>
+      </div>
+
+      <div class="field col-sm-4">
+        <%= f.submit %>
+      </div>
   </div>
 
-  <div class="field col-sm">
-    <%= f.label :rental_eq, 'Rental: ' %>
-    <%= f.collection_radio_buttons :rental_eq, {'Yes' => true, 'No' => false, 'All' => nil}, :last, :first %>
-  </div>
-
-  <div class="field col-sm">
-    <%= f.label :listed_eq, 'Listed: ' %>
-    <%= f.collection_radio_buttons :listed_eq, {'Yes' => true, 'No' => false, 'All' => nil}, :last, :first %>
-  </div>
-
-  <div class="field col-sm">
-    <%= f.submit %>
-  </div>
-</div>
 <% end %>
