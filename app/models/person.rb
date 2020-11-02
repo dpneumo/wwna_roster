@@ -3,9 +3,9 @@ class Person < ApplicationRecord
   has_many :emails
   has_many :phones
   has_one :occupant
-  has_one :house, through: :occupants
+  has_one :house, through: :occupant
   has_many :owners
-  has_many :houses, through: :owners
+  has_many :properties, through: :owners
 
   validates :first, presence: true
   validates :last,  presence: true

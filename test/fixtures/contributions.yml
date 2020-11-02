@@ -1,11 +1,11 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  house: one
+  house_id: 1
   date_paid: 2020-10-11
   amount: $199.99
 
 two:
-  house: two
+  house_id: 2
   date_paid: 2020-10-11
   amount: $299.99
