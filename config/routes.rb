@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'welcome/index'
   get '/houses/:id/detail', to: 'houses#detail', as: 'house_detail'
   get '/people/:id/detail', to: 'people#detail', as: 'person_detail'
 
