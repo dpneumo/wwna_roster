@@ -1,0 +1,17 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Property:</strong>
+  <%= @ownership.property.street_number %>
+</p>
+
+<p>
+  <strong>Person:</strong>
+  <%= @ownership.person.fullname %>
+</p>
+
+<%= link_to 'Edit', edit_ownership_path(@ownership) %> |
+<%= link_to 'House Detail', house_detail_path(@ownership.house_id) %>
+<% if false %> |
+  <%= link_to 'List', ownerships_path %>
+<% end %>

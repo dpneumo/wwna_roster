@@ -5,7 +5,7 @@ Rails.application.routes.draw do
 
   resources :addresses, :phones, :emails, :people,
             :person_phones, :person_addresses,
-  					:houses, :occupants, :owners, :contributions,
+  					:houses, :occupants, :ownerships, :contributions,
             :registrations
 
   root 'welcome#index'

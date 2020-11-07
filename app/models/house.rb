@@ -3,8 +3,8 @@ class House < ApplicationRecord
 
   has_many :occupants
   has_many :people, through: :occupants
-  has_many :owners
-  has_many :people, through: :owners
+  has_many :ownerships
+  has_many :people, through: :ownerships
   has_many :contributions
 
   validate :latitude_is_sane

@@ -1,4 +1,4 @@
-class Owner < ApplicationRecord
+class Ownership < ApplicationRecord
   belongs_to :property, class_name: 'House', foreign_key: :house_id
   belongs_to :person
 

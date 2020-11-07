@@ -1,0 +1,33 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Ownerships</h1>
+
+<div class='container'>
+  <table class='table table-sm table-bordered table-hover'>
+    <thead class='thead-light'>
+      <tr>
+        <th>Property</th>
+        <th>Person</th>
+        <th colspan="3"></th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% @ownerships.each do |ownership| %>
+        <tr>
+          <td><%= ownership.property.street_number %></td>
+          <td><%= ownership.person.fullname %></td>
+          <td><%= link_to 'Show', ownership %></td>
+          <td><%= link_to 'Edit', edit_ownership_path(ownership) %></td>
+          <td><%= link_to 'Destroy', ownership, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+
+  <%== pagy_bootstrap_nav(@pagy) %>
+
+</div>
+<br>
+
+<%= link_to 'New Ownership', new_ownership_path %>

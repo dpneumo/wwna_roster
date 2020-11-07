@@ -1,0 +1,9 @@
+<h1>Editing Ownership</h1>
+
+<%= render 'form', ownership: @ownership %>
+
+<%= link_to 'Show', @ownership %> |
+<%= link_to 'House Detail', house_detail_path(@ownership.house_id) %>
+<% if false %> |
+  <%= link_to 'List', ownerships_path %>
+<% end %>

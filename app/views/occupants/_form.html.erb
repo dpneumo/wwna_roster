@@ -24,12 +24,11 @@
 
   <%= render  partial: 'shared/select_bs',
               locals: { form: form, my_field: :relation,
-                        collection: [ "Husband","Wife","Partner",
-                                      "Child","Guest", "Other","Unknown" ] } %>
+                        collection: Occupant.relations } %>
 
   <%= render  partial: 'shared/select_bs',
               locals: { form: form, my_field: :status,
-                        collection: [ "Owner","Renter","Other","Unknown" ] } %>
+                        collection: Occupant.states } %>
 
   <%= render  partial: 'shared/textarea_bs',
                 locals: { form: form, my_field: :note, my_label: 'Note' } %>

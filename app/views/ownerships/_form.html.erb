@@ -1,13 +1,13 @@
-<%= form_with(model: owner, local: true) do |form| %>
+<%= form_with(model: ownership, local: true) do |form| %>
 
   <%= render  partial: 'shared/errors',
-              locals: { my_model: @owner } %>
+              locals: { my_model: @ownership } %>
 
-  <% if owner.house_id %>
+  <% if ownership.house_id %>
     <%= render  partial: 'shared/readonly_field_bs',
                 locals: { form: form, my_field: :house_id,
                           my_label: "House",
-                          my_id: owner.house_id,
+                          my_id: ownership.house_id,
                           my_display: :street_number } %>
   <% else %>
     <%= render  partial: 'shared/collectselect_bs',
