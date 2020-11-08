@@ -29,7 +29,7 @@ class PeopleController < ApplicationController
   # POST /people
   # POST /people.json
   def create
-    @person = Person.new(person_params)
+    @person = Person.create(person_params)
 
     respond_to do |format|
       if @person.save
@@ -74,6 +74,6 @@ class PeopleController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def person_params
-      params.require(:person).permit(:nickname, :first, :middle, :last, :suffix, :honorific, :note)
+      params.require(:person).permit(:nickname, :first, :middle, :last, :suffix, :honorific, :note, occupant_attributes: [ :house_id ])
     end
 end
