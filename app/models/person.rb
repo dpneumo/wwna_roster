@@ -2,13 +2,23 @@ class Person < ApplicationRecord
   has_many :addresses
   has_many :emails
   has_many :phones
-  has_one :occupant
-  has_one :house, through: :occupant
+  belongs_to :house, optional: true
   has_many :ownerships
   has_many :properties, through: :ownerships
 
   validates :first, presence: true
   validates :last,  presence: true
+
+  Roles  = %w[ Husband Wife Partner Child Guest Other Unknown ]
+  States = %w[ Owner Renter Other Unknown ]
+
+  def self.roles
+    Roles
+  end
+
+  def self.states
+    States
+  end
 
   def fullname
     last + ', ' + first + ' ' + middle

@@ -1,8 +1,7 @@
 class House < ApplicationRecord
   include Comparable
 
-  has_many :occupants
-  has_many :people, through: :occupants
+  has_many :people
   has_many :ownerships
   has_many :people, through: :ownerships
   has_many :contributions

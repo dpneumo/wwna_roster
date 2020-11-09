@@ -26,4 +26,12 @@ class PersonTest < ActiveSupport::TestCase
   test "accesses owned houses through properties association" do
     assert_equal 'Oak Dr', @per.properties.first.street
   end
+
+  test "Person.roles returns a list of roles" do
+    assert Person.roles.include?('Child')
+  end
+
+  test "Person.states returns a list of statusus" do
+    assert Person.states.include?('Owner')
+  end
 end

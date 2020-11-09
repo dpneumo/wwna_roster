@@ -55,7 +55,23 @@
   </div>
 </div>
 
-<% if @person.occupant; then %>
+<div class="row">
+  <div class="col-sm-4">
+    <p>
+      <strong>Role:</strong>
+      <%= @person.role %>
+    </p>
+  </div>
+
+  <div class="col-sm-8">
+    <p>
+      <strong>Status:</strong>
+      <%= @person.status %>
+    </p>
+  </div>
+</div>
+
+<% if @person.house_id; then %>
   <div class="row">
     <div class="col-sm">
       <p>

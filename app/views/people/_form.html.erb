@@ -24,10 +24,26 @@
   <%= render  partial: 'shared/text_bs',
               locals: { form: form, my_field: :note } %>
 
-  <%= form.fields_for :occupant, person.occupant.build do |occupant_fields| %>
-    <%= occupant_fields.collection_select :house_id, House.all, :id, :street_number %>
+  <% if person.house_id %>
+    <%= render  partial: 'shared/readonly_field_bs',
+                locals: { form: form, my_field: :house_id,
+                          my_label: "House",
+                          my_id: person.house_id,
+                          my_display: :street_number } %>
+  <% else %>
+    <%= render  partial: 'shared/collectselect_bs',
+                locals: { form: form, my_field: :house_id,
+                          my_collection: House.all,
+                          my_display: :street_number } %>
   <% end %>
 
+  <%= render  partial: 'shared/select_bs',
+              locals: { form: form, my_field: :role,
+                        collection: Person.roles } %>
+
+  <%= render  partial: 'shared/select_bs',
+              locals: { form: form, my_field: :status,
+                        collection: Person.states } %>
 
   <%= render  partial: 'shared/form_submit_bs',
               locals: { form: form , my_label: nil} %>

@@ -2,14 +2,14 @@
 class Registration
   include ActiveModel::Model
 
-  attr_accessor :nickname, :first, :middle, :last, :relation, :status, :house_id
+  attr_accessor :nickname, :first, :middle, :last, :role, :status, :house_id
 
   def save
     return false if invalid?
 
     ActiveRecord::Base.transaction do
-      person = Person.create!(nickname: nickname, first: first, middle: middle, last: last)
-      person.create_occupant!(status: status, relation: relation, house_id: house_id)
+      person = Person.create!(nickname: nickname, first: first, middle: middle, last: last,
+                              house_id: house_id, status: status, relation: relation)
     end
 
     true

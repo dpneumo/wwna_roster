@@ -1,7 +1,7 @@
 <%= render  partial: 'shared/subtable_header_bs',
-            locals: { title: "Occupants:",
-                      link_text: "New Occupant",
-                      path: new_occupant_path(house_id: @house.id) } %>
+            locals: { title: "People:",
+                      link_text: "New Person",
+                      path: new_person_path(house_id: @house.id) } %>
 
 <table class='table table-sm table-bordered table-hover'>
   <thead class='thead-light'>
@@ -9,19 +9,18 @@
       <th>Person</th>
       <th>Relation</th>
       <th>Status</th>
-      <th colspan="3"></th>
+      <th colspan="2"></th>
     </tr>
   </thead>
 
   <tbody>
-    <% @house.occupants.each do |occupant| %>
+    <% @house.people.each do |person| %>
       <tr>
-        <td><%= occupant.person.fullname %></td>
-        <td><%= occupant.relation %></td>
-        <td><%= occupant.status %></td>
-        <td><%= link_to 'Show', occupant %></td>
-        <td><%= link_to 'Edit', edit_occupant_path(occupant) %></td>
-        <td><%= link_to 'Destroy', occupant, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= person.fullname %></td>
+        <td><%= person.relation %></td>
+        <td><%= person.status %></td>
+        <td><%= link_to 'Show', person %></td>
+        <td><%= link_to 'Edit', edit_person_path(person) %></td>
       </tr>
     <% end %>
   </tbody>

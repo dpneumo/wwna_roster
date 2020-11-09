@@ -35,12 +35,22 @@
   <%= @person.note %>
 </p>
 
-<% if @person.occupant; then %>
+<% if @person.house_id; then %>
   <p>
     <strong>House:</strong>
     <%= @person.house.street_number %>
   </p>
 <% end %>
+
+<p>
+  <strong>Role:</strong>
+  <%= @person.role %>
+</p>
+
+<p>
+  <strong>Status:</strong>
+  <%= @person.status %>
+</p>
 
 <%= link_to 'Edit', edit_person_path(@person) %> |
 <%= link_to 'Person Detail', person_detail_path(@person) %> |

@@ -8,6 +8,9 @@ one:
   suffix: Sr.
   honorific: Sir
   note: "A Fake"
+  house_id: 1
+  role: MyString
+  status: MyString
 
 two:
   nickname: Mike
@@ -17,3 +20,6 @@ two:
   suffix: Jr.
   honorific: Dr.
   note: MyText
+  house_id: 2
+  role: MyString
+  status: MyString
