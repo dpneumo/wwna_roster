@@ -29,6 +29,11 @@ class HouseTest < ActiveSupport::TestCase
     refute @hse.save, "Saved house with too low longitude"
   end
 
+  test "House.for_select returns options for grouped_options_for_select helper" do
+    expected = {"Oak Dr"=>[["123A", 1]], "aaa"=>[["zzz", 2]]}
+    assert_equal expected, House.for_select
+  end
+
   test "House.street_names returns the streets of it's houses" do
     streets = House.street_names
     err_msg ="House did not return a complete list of streets"

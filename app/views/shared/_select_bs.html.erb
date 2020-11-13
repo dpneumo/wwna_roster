@@ -1,8 +1,10 @@
-<div class="row mb-3">
-  <div class="field col-sm">
-    <%= form.label my_field %>
-    <%= form.select my_field, collection,
-                  { include_blank: true,
-                    class: "custom-select" } %>
-  </div>
+<div class="form-group row mb-3">
+    <%= form.label(
+            my_field,
+            class: "col-sm-2 col-form-label" ) %>
+    <%= form.select(
+            my_field,
+            my_collection,
+            include_blank: true,
+            class: "custom-select col-sm-3" ) %>
 </div>

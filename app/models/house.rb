@@ -19,6 +19,14 @@ class House < ApplicationRecord
     all.collect {|h| h.street }.uniq
   end
 
+  def self.for_select
+    all.reduce({}) do |map,house|
+      map[house.street] ||= []
+      map[house.street] << [house.number, house.id ]
+      map
+    end
+  end
+
   def street_number
     number + ' ' + street
   end
