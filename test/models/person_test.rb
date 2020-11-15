@@ -31,7 +31,7 @@ class PersonTest < ActiveSupport::TestCase
     assert Person.roles.include?('Child')
   end
 
-  test "Person.states returns a list of statusus" do
-    assert Person.states.include?('Owner')
+  test "Person.statuses returns a list of statusus" do
+    assert Person.statuses.include?('Owner')
   end
 end

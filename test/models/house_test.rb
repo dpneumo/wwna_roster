@@ -40,10 +40,10 @@ class HouseTest < ActiveSupport::TestCase
     assert streets.include?(@hse.street), err_msg
   end
 
-  test "House.states returns a list of states" do
-    states = House.states
-    err_msg ="House did not return a list of states"
-    assert states.include?("Vacant"), err_msg
+  test "House.statuses returns a list of statuses" do
+    statuses = House.statuses
+    err_msg ="House did not return a list of statuses"
+    assert statuses.include?("Vacant"), err_msg
   end
 
   test "street_number returns the house address" do

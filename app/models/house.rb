@@ -1,18 +1,18 @@
 class House < ApplicationRecord
   include Comparable
 
-  has_many :people
+  has_many :occupants, class_name: 'Person'
   has_many :ownerships
-  has_many :people, through: :ownerships
+  has_many :owners, through: :ownerships
   has_many :contributions
 
   validate :latitude_is_sane
   validate :longitude_is_sane
 
-  States = ["Occupied","Vacant","Construction"]
+  Statuses = ["Occupied","Vacant","Construction"]
 
-  def self.states
-    States
+  def self.statuses
+    Statuses
   end
 
   def self.street_names

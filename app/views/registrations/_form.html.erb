@@ -30,13 +30,13 @@
     </div>
 
     <div class="field col-sm">
-		  <%= form.label :relation %>
-		  <%= form.select :relation, Occupant.relations, {include_blank: true, class: "custom-select"} %>
+		  <%= form.label :role %>
+		  <%= form.select :role, Person.roles, {include_blank: true, class: "custom-select"} %>
 		</div>
 
     <div class="field col-sm">
 		  <%= form.label :status %>
-		  <%= form.select :status, Occupant.states, {include_blank: true, class: "custom-select"} %>
+		  <%= form.select :status, Person.statuses, {include_blank: true, class: "custom-select"} %>
 		</div>
   </row>
 

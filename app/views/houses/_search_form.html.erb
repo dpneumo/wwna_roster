@@ -22,7 +22,7 @@
 
       <div class='field col-sm-4'>
         <%= f.label :status, 'Status: ' %>
-        <%= f.select(:status_eq, House.states, { include_blank: true }) %>
+        <%= f.select(:status_eq, House.statuses, { include_blank: true }) %>
       </div>
 
       <div class="field col-sm-4">

@@ -10,14 +10,14 @@ class Person < ApplicationRecord
   validates :last,  presence: true
 
   Roles  = %w[ Husband Wife Partner Child Guest Other Unknown ]
-  States = %w[ Owner Renter Other Unknown ]
+  Statuses = %w[ Owner Renter Other Unknown ]
 
   def self.roles
     Roles
   end
 
-  def self.states
-    States
+  def self.statuses
+    Statuses
   end
 
   def fullname
