@@ -1,7 +1,6 @@
 <%= form_with(model: house, local: true) do |form| %>
 
-  <%= render  partial: 'shared/errors',
-              locals: { my_model: @house } %>
+  <%= Shared::ShowErrors.new(@house).call %>
 
   <div class ="row">
     <div class="field col-sm">
@@ -38,12 +37,15 @@
   <div class="row mb-3">
     <div class="field col-sm">
       <%= form.label :status %>
-      <%= form.select :status, House.statuses, selected: "Occupied" %>
+      <%= form.select :status, ["Occupied","Vacant","Construction"], selected: "Occupied" %>
     </div>
 
     <div class="field col-sm">
       <%= form.label :linked_lot_id, "Linked Lot" %>
-      <%= form.collection_select :linked_lot_id, House.order(:number), :id, :street_number,{include_blank: ''} %>
+      <%= form.select(:linked_lot_id,
+        grouped_options_for_select(House.for_select),
+        include_blank: true,
+        class: "custom-select col-sm-3" ) %>
     </div>
   </div>
 

@@ -16,15 +16,18 @@ class HousesController < ApplicationController
   # GET /houses/1/detail
   def detail
     @occupants = @house.occupants
+    @contributions = @house.contributions
   end
 
   # GET /houses/new
   def new
     @house = House.new
+    @statuses = House.statuses
   end
 
   # GET /houses/1/edit
   def edit
+    @statuses = House.statuses
   end
 
   # POST /houses

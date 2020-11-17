@@ -46,8 +46,8 @@ class HouseTest < ActiveSupport::TestCase
     assert statuses.include?("Vacant"), err_msg
   end
 
-  test "street_number returns the house address" do
-    assert_equal '123A Oak Dr', @hse.street_number
+  test "house_address returns the house address" do
+    assert_equal '123A Oak Dr', @hse.house_address
   end
 
   test "implements <=> for houses based on addresses" do

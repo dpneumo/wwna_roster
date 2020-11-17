@@ -1,20 +1,18 @@
 <%= form_with(model: contribution, local: true) do |form| %>
 
-  <%= render  partial: 'shared/errors',
-              locals: { my_model: @contribution } %>
-
+  <%= Shared::ShowErrors.new(@contribution).call %>
 
   <% if contribution.house_id %>
     <%= render  partial: 'shared/readonly_field_bs',
                 locals: { form: form, my_field: :house_id,
                           my_label: "House",
                           my_id: contribution.house_id,
-                          my_display: :street_number } %>
+                          my_display: :house_address } %>
   <% else %>
     <%= render  partial: 'shared/collectselect_bs',
                 locals: { form: form, my_field: :house_id,
                           my_collection: House.all,
-                          my_display: :street_number } %>
+                          my_display: :house_address } %>
   <% end %>
 
   <%= render  partial: 'shared/dateselect_bs',

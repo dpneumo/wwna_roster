@@ -1,7 +1,6 @@
 <%= form_with(model: person, local: true) do |form| %>
 
-  <%= render  partial: 'shared/errors',
-              locals: { my_model: @person } %>
+  <%= Shared::ShowErrors.new(@person).call %>
 
   <%= render  partial: 'shared/text_bs',
               locals: { form: form, my_field: :nickname } %>

@@ -2,7 +2,7 @@
   <row class="row mb-4">
     <div class="field col-sm">
 		  <%= form.label :house_id, "House" %>
-      <%= form.collection_select :house_id, @houses.sort, :id, :street_number, {include_blank: true, class: "custom-select"} %>
+      <%= form.collection_select :house_id, @houses.sort, :id, :house_address, {include_blank: true, class: "custom-select"} %>
 		</div>
 	</row>
 

@@ -16,19 +16,23 @@ class House < ApplicationRecord
   end
 
   def self.street_names
-    all.collect {|h| h.street }.uniq
+    all.collect {|house| house.street }.uniq
   end
 
   def self.for_select
-    all.reduce({}) do |map,house|
-      map[house.street] ||= []
-      map[house.street] << [house.number, house.id ]
-      map
+    all.reduce({}) do |acc,house|
+      acc[house.street] ||= []
+      acc[house.street] << [house.number, house.id ]
+      acc
     end
   end
 
-  def street_number
+  def house_address
     number + ' ' + street
+  end
+
+  def err_msgs
+    errors.full_messages
   end
 
   def <=>(other)

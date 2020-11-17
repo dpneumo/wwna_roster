@@ -16,7 +16,7 @@
     <tbody>
       <% @contributions.each do |contribution| %>
         <tr>
-          <td><%= contribution.house.street_number %></td>
+          <td><%= contribution.house.house_address %></td>
           <td><%= contribution.date_paid %></td>
           <td><%= contribution.amount %></td>
           <td><%= link_to 'Show', contribution %></td>

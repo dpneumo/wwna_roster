@@ -1,7 +1,6 @@
 <%= form_with(model: phone, local: true) do |form| %>
 
-  <%= render  partial: 'shared/errors',
-              locals: { my_model: @phone } %>
+  <%= Shared::ShowErrors.new(@phone).call %>
 
   <% if phone.person_id %>
     <%= render  partial: 'shared/readonly_field_bs',

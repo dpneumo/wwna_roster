@@ -15,7 +15,7 @@
     <tbody>
       <% @ownerships.each do |ownership| %>
         <tr>
-          <td><%= ownership.property.street_number %></td>
+          <td><%= ownership.property.house_address %></td>
           <td><%= ownership.person.fullname %></td>
           <td><%= link_to 'Show', ownership %></td>
           <td><%= link_to 'Edit', edit_ownership_path(ownership) %></td>
