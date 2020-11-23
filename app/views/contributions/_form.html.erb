@@ -1,6 +1,6 @@
 <%= form_with(model: contribution, local: true) do |form| %>
 
-  <%= Shared::ShowErrors.new(@contribution).call %>
+  <%= Shared::ShowErrs.new(@contribution).show %>
 
   <% if contribution.house_id %>
     <%= render  partial: 'shared/readonly_field_bs',

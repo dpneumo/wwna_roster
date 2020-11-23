@@ -1,6 +1,6 @@
 <%= form_with(model: ownership, local: true) do |form| %>
 
-  <%= Shared::ShowErrors.new(@ownership).call %>
+  <%= Shared::ShowErrs.new(@ownership).show %>
 
   <% if ownership.house_id %>
     <%= render  partial: 'shared/readonly_field_bs',

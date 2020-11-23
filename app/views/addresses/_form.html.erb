@@ -1,6 +1,6 @@
 <%= form_with(model: address, local: true) do |form| %>
 
-  <%= Shared::ShowErrors.new(@address).call %>
+  <%= Shared::ShowErrs.new(@address).show %>
 
   <% if address.person_id %>
     <%= render  partial: 'shared/readonly_field_bs',

@@ -1,6 +1,6 @@
 <%= form_with(model: house, local: true) do |form| %>
 
-  <%= Shared::ShowErrors.new(@house).call %>
+  <%= Shared::ShowErrs.new(@house).show %>
 
   <div class ="row">
     <div class="field col-sm">
