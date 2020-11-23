@@ -7,24 +7,32 @@ class Shared::Inputs
   end
 
   def text(field)
-    @form.label(field, class: "col-sm-1 col-form-label") +
-    @form.text_field(field, class: "col-sm-2")
+    content_tag :div, class: "form-group col-3" do
+      @form.label(field) +
+      @form.text_field(field, class: "form-control")
+    end
   end
 
   def textarea(field)
-    @form.label(field, class: "col-sm-1 col-form-label") +
-    @form.text_area(field, class: "col-sm-6", rows: "2")
+    content_tag :div, class: "form-row" do
+      content_tag :div, class: "form-group col-9" do
+        @form.label(field) +
+        @form.text_area(field, class: "form-control")
+      end
+    end
   end
 
   def select(field, collection)
-    @form.label(field, class: "col-sm-1 col-form-label") +
-    @form.select( field, collection,
-                  include_blank: true,
-                  class: "custom-select col-sm-2")
+    content_tag :div, class: "form-group col-3" do
+      @form.label(field) +
+      @form.select( field, collection,
+                    {include_blank: true},
+                    {class: "form-control"})
+    end
   end
 
   def row(fields)
-    content_tag :div, class: "form-group row mb-3" do
+    content_tag :div, class: "form-row" do
       columns(fields)
     end
   end
