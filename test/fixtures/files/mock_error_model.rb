@@ -1,8 +1,5 @@
 class MockErrorModel
   attr_reader :errors
-
-  delegate :any?, to: :errors
-
   def initialize(errors)
     @errors = errors
   end
@@ -10,13 +7,9 @@ class MockErrorModel
   def model_name
     self.class.name.demodulize
   end
-
-  def err_msgs
-    @errors.full_messages
-  end
 end
 
-class Errors
+class Errs
   def initialize(messages)
     @messages = messages || []
   end

@@ -3,15 +3,12 @@ require 'fixtures/files/mock_error_model'
 
 class MockErrorModelTest < ActiveSupport::TestCase
   setup do
-    @mdl = MockErrorModel.new(Errors.new(["message 1", "message 2"]))
+    errs = Errs.new(["message 1", "message 2"])
+    @mdl = MockErrorModel.new(errs)
   end
 
   test 'responds to #model_name' do
     assert @mdl.respond_to? :model_name
-  end
-
-  test 'responds to #err_msgs' do
-    assert @mdl.respond_to? :err_msgs
   end
 
   test 'responds to #errors' do

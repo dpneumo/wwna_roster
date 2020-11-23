@@ -1,39 +1,24 @@
 <%= form_with(model: person, local: true) do |form| %>
+  <% errors = Shared::ShowErrs.new(person) %>
+  <% input = Shared::Inputs.new(form) %>
 
-  <%= Shared::ShowErrors.new(@person).call %>
+  <%= errors.show %>
 
-  <%= render  partial: 'shared/text_bs',
-              locals: { form: form, my_field: :nickname } %>
+  <%= input.row([:nickname]) %>
 
-  <%= render  partial: 'shared/text_bs',
-              locals: { form: form, my_field: :first } %>
+  <%= input.row([:first, :middle, :last]) %>
 
-  <%= render  partial: 'shared/text_bs',
-              locals: { form: form, my_field: :middle } %>
+  <%= input.row([:suffix, :honorific]) %>
 
-  <%= render  partial: 'shared/text_bs',
-              locals: { form: form, my_field: :last } %>
+  <div class="form-group row mb-3">
+    <%= input.select(:house_id, House.for_select) %>
 
-  <%= render  partial: 'shared/text_bs',
-              locals: { form: form, my_field: :suffix } %>
+    <%= input.select(:role, Person.roles) %>
 
-  <%= render  partial: 'shared/text_bs',
-              locals: { form: form, my_field: :honorific } %>
+    <%= input.select(:status, Person.statuses) %>
+  </div>
 
-  <%= render  partial: 'shared/text_bs',
-              locals: { form: form, my_field: :note } %>
-
-  <%= render  partial: 'shared/grouped_flatselect_bs',
-              locals: { form: form, my_field: :house_id,
-                        my_grouped_options: House.for_select} %>
-
-  <%= render  partial: 'shared/select_bs',
-              locals: { form: form, my_field: :role,
-                        my_collection: Person.roles } %>
-
-  <%= render  partial: 'shared/select_bs',
-              locals: { form: form, my_field: :status,
-                        my_collection: Person.statuses } %>
+  <%= input.textarea(:note) %>
 
   <%= render  partial: 'shared/form_submit_bs',
               locals: { form: form , my_label: nil} %>
