@@ -34,6 +34,11 @@ class HouseTest < ActiveSupport::TestCase
     assert_equal expected, House.for_select
   end
 
+  test "House.select_list returns collection (id & address) for select" do
+    expected = [[1, "123A Oak Dr"], [2, "zzz aaa"]]
+    assert_equal expected, House.select_list
+  end
+
   test "House.street_names returns the streets of it's houses" do
     streets = House.street_names
     err_msg ="House did not return a complete list of streets"

@@ -6,31 +6,6 @@ class Shared::Inputs
     @form = form
   end
 
-  def text(field)
-    content_tag :div, class: "form-group col-3" do
-      @form.label(field) +
-      @form.text_field(field, class: "form-control")
-    end
-  end
-
-  def textarea(field)
-    content_tag :div, class: "form-row" do
-      content_tag :div, class: "form-group col-9" do
-        @form.label(field) +
-        @form.text_area(field, class: "form-control")
-      end
-    end
-  end
-
-  def select(field, collection)
-    content_tag :div, class: "form-group col-3" do
-      @form.label(field) +
-      @form.select( field, collection,
-                    {include_blank: true},
-                    {class: "form-control"})
-    end
-  end
-
   def row(fields)
     content_tag :div, class: "form-row" do
       columns(fields)
@@ -38,6 +13,74 @@ class Shared::Inputs
   end
 
   def columns(fields)
-    fields.map {|field| text(field) }.join.html_safe
+    fields.map do |f|
+      case f[:kind]
+        when :text;               text(f[:attribute], f[:label], f[:width])
+        when :textarea;       textarea(f[:attribute], f[:label], f[:width])
+        when :readonly;       readonly(f[:attribute], f[:label], f[:id], f[:display], f[:width])
+        when :checkbox;       checkbox(f[:attribute], f[:label], f[:width])
+        when :date_select; date_select(f[:attribute], f[:label], f[:width])
+        when :select;           select(f[:attribute], f[:collection], f[:label], f[:width])
+        when :collection_select; collection_select(f[:attribute], f[:collection], f[:label], f[:width])
+        else text(f[:attribute], f[:label], f[:width])
+      end
+    end.join.html_safe
   end
+
+  def text(attribute, label=nil, width=3)
+    content_tag :div, class: "form-group col-#{width || 3}" do
+      @form.label(attribute, label) +
+      @form.text_field(attribute, class: "form-control")
+    end
+  end
+
+  def textarea(attribute, label=nil, width=9)
+    content_tag :div, class: "form-group col-#{width || 9}" do
+      @form.label(attribute, label) +
+      @form.text_area(attribute, class: "form-control")
+    end
+  end
+
+  def checkbox(attribute, label=nil, width=3)
+    content_tag :div, class: "form-check form-check-inline col-#{width || 3} mb-3" do
+      @form.check_box(attribute, class: "form-check-input") +
+      @form.label(attribute, label, class: "form-check-label")
+    end
+  end
+
+  def date_select(attribute, label=nil, width=4)
+    content_tag :div, class: "form-group col-#{width || 4}" do
+      @form.label(attribute, label) + " " +
+      @form.date_select(attribute, class: "form-control")
+    end
+  end
+
+  def select(attribute, collection, label=nil, width=3)
+    content_tag :div, class: "form-group col-#{width || 3}" do
+      @form.label(attribute, label) +
+      @form.select( attribute, collection,
+                    {include_blank: true},
+                    {class: "form-control"} )
+    end
+  end
+
+  def collection_select(attribute, collection, label=nil, width=3)
+    content_tag :div, class: "form-group col-#{width || 3}" do
+      @form.label(attribute, label) +
+      @form.collection_select( attribute, collection, :first, :last,
+                               {include_blank: true},
+                               {class: "form-control"} )
+    end
+  end
+
+  def readonly(attribute, label, id, display, width=12)
+    content_tag :div, class: "form-group col-#{width || 12}" do
+      obj = label.classify.constantize.find(id)
+      display_val = obj.send(display)
+
+      @form.hidden_field(attribute) +
+      @form.label(attribute, label + ": " + display_val, {class: "col col-form-label"})
+    end
+  end
+
 end

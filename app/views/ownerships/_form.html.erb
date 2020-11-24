@@ -1,24 +1,19 @@
 <%= form_with(model: ownership, local: true) do |form| %>
+  <% errors = Shared::ShowErrs.new(ownership) %>
+  <% input = Shared::Inputs.new(form) %>
 
-  <%= Shared::ShowErrors.new(@ownership).call %>
+  <%= errors.show %>
 
   <% if ownership.house_id %>
-    <%= render  partial: 'shared/readonly_field_bs',
-                locals: { form: form, my_field: :house_id,
-                          my_label: "House",
-                          my_id: ownership.house_id,
-                          my_display: :house_address } %>
+    <%= input.row([ { kind: :readonly, attribute: :house_id, label: "House",
+                      id: ownership.house_id, display: :house_address} ]) %>
   <% else %>
-    <%= render  partial: 'shared/collectselect_bs',
-                locals: { form: form, my_field: :house_id,
-                          my_collection: House.all,
-                          my_display: :house_address } %>
+    <%= input.row([ { kind: :collection_select, attribute: :house_id,
+                      collection: House.select_list } ]) %>
   <% end %>
 
-  <%= render  partial: 'shared/collectselect_bs',
-              locals: { form: form, my_field: :person_id,
-                        my_collection: Person.all,
-                        my_display: :fullname } %>
+  <%= input.row([ { kind: :collection_select, attribute: :person_id,
+                      collection: Person.select_list } ]) %>
 
   <%= render  partial: 'shared/form_submit_bs',
               locals: { form: form } %>

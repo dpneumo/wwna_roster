@@ -1,8 +1,7 @@
 require 'test_helper'
-#require '../../app/view_objects/shared/show_errors'
 require 'fixtures/files/mock_error_model'
 
-class ErrorsTest < ActiveSupport::TestCase
+class ShowErrsTest < ActiveSupport::TestCase
   setup do
     errs = Errs.new(["message 1", "message 2"])
     @err_mdl = MockErrorModel.new(errs)
