@@ -2,7 +2,7 @@
 
 <%= render 'form', address: @address %>
 
-<%= link_to 'Person Detail', person_detail_path(@address.person_id) %>
-<% if false %> |
-  <%= link_to 'List', addresses_path %>
-<% end %>
+<% p_id = @address.person_id %>
+<%= link_to 'Show', @address %> |
+<%= link_to('Person Detail', person_detail_path(p_id)) + ' | ' if p_id %>
+<%= link_to 'List', addresses_path %>

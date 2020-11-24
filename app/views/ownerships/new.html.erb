@@ -6,7 +6,7 @@
 
 <%= render 'form', ownership: @ownership %>
 
-<%= link_to 'House Detail', house_detail_path(@ownership.house_id) %>
-<% if false %>
-  | <%= link_to 'List', ownerships_path %>
-<% end %>
+<% h_id = @ownership.house_id %>
+<%= link_to 'Show', @ownership %> |
+<%= link_to('House Detail', house_detail_path(h_id)) + ' | ' if h_id %>
+<%= link_to 'List', ownerships_path %>
