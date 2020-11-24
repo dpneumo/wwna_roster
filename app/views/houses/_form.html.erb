@@ -1,79 +1,30 @@
 <%= form_with(model: house, local: true) do |form| %>
+  <% errors = Shared::ShowErrs.new(house) %>
+  <% input = Shared::Inputs.new(form) %>
 
-  <%= Shared::ShowErrs.new(@house).show %>
+  <%= errors.show %>
 
-  <div class ="row">
-    <div class="field col-sm">
-      <%= form.label :number %>
-      <%= form.text_field :number %>
-    </div>
+  <%= input.row([ {attribute: :number},
+                  {attribute: :street} ]) %>
 
-    <div class="field col-sm">
-      <%= form.label :latitude %>
-      <%= form.text_field :latitude %>
-    </div>
-  </div>
+  <%= input.row([ {attribute: :latitude},
+                  {attribute: :longitude},
+                  {attribute: :image_link} ]) %>
 
-  <div class="row">
-    <div class="field col-sm">
-      <%= form.label :street %>
-      <%= form.text_field :street %>
-    </div>
+  <%= input.row([ { kind: :select, attribute: :status,
+                    collection:  House.statuses, selected: "Occupied" },
+                  { kind: :select, attribute: :linked_lot_id,
+                    collection: grouped_options_for_select(House.for_select),
+                    width: 3 }  ]) %>
 
-    <div class="field col-sm">
-      <%= form.label :longitude %>
-      <%= form.text_field :longitude %>
-    </div>
-  </div>
+  <%= input.row([ { kind: :checkbox, attribute: :flag,
+                    label: "Member Flag Group" },
+                  { kind: :checkbox, attribute: :rental,
+                    label: "Rental Property" },
+                  { kind: :checkbox, attribute: :listed,
+                    label: "For Sale" }        ]) %>
 
-  <div class="row">
-    <div class="field col-sm"></div>
-    <div class="field col-sm">
-      <%= form.label :image_link, "Image Link" %>
-      <%= form.text_field :image_link %>
-    </div>
-  </div>
-
-  <div class="row mb-3">
-    <div class="field col-sm">
-      <%= form.label :status %>
-      <%= form.select :status, ["Occupied","Vacant","Construction"], selected: "Occupied" %>
-    </div>
-
-    <div class="field col-sm">
-      <%= form.label :linked_lot_id, "Linked Lot" %>
-      <%= form.select(:linked_lot_id,
-        grouped_options_for_select(House.for_select),
-        include_blank: true,
-        class: "custom-select col-sm-3" ) %>
-    </div>
-  </div>
-
-  <div class="row mb-3">
-    <div class="field col-sm">
-      <%= form.label :flag, "Member Flag Group" %>
-      <%= form.check_box :flag %>
-    </div>
-
-    <div class="field col-sm">
-      <%= form.label :rental, "Rental Property" %>
-      <%= form.check_box :rental %>
-    </div>
-
-    <div class="field col-sm">
-      <%= form.label :listed, "For Sale" %>
-      <%= form.check_box :listed %>
-    </div>
-  </div>
-
-  <div class="row mb-4 ml-1">
-    <div class="input-group">
-      <div class="input-group-prepend">
-        <span class="input-group-text">Note</span>
-      </div>
-      <%= form.text_area :note, class: 'form-control', 'aria-label': "With textarea" %>
-    </div>
-  </div>
+  <%= input.row([ { kind: :textarea, attribute: :note } ]) %>
 
   <%= render  partial: 'shared/form_submit_bs',
               locals: { form: form } %>

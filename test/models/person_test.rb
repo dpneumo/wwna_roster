@@ -34,4 +34,11 @@ class PersonTest < ActiveSupport::TestCase
   test "Person.statuses returns a list of statusus" do
     assert Person.statuses.include?('Owner')
   end
+
+  test "Person.select_list returns collection (id & fullname) for select" do
+    list = Person.select_list
+    assert_equal 2, list.count
+    assert list.first.first.is_a? Integer
+    assert_equal "Satre, Michael B", list.last.last
+  end
 end

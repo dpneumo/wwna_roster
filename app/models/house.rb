@@ -27,6 +27,10 @@ class House < ApplicationRecord
     end
   end
 
+  def self.select_list
+    all.map {|house| [house.id, house.house_address] }
+  end
+
   def house_address
     number + ' ' + street
   end

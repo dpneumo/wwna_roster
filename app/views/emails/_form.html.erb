@@ -1,34 +1,24 @@
 <%= form_with(model: email, local: true) do |form| %>
+  <% errors = Shared::ShowErrs.new(email) %>
+  <% input = Shared::Inputs.new(form) %>
 
-  <%= Shared::ShowErrs.new(@email).show %>
+  <%= errors.show %>
 
   <% if email.person_id %>
-    <%= render  partial: 'shared/readonly_field_bs',
-                locals: { form: form, my_field: :person_id,
-                          my_label: "Person",
-                          my_id: email.person_id,
-                          my_display: :fullname } %>
+    <%= input.row([ { kind: :readonly, attribute: :person_id, label: "Person",
+                      id: email.person_id, display: :fullname} ]) %>
   <% else %>
-    <%= render  partial: 'shared/collectselect_bs',
-                locals: { form: form, my_field: :person_id,
-                          my_collection: Person.all,
-                          my_display: :fullname } %>
+    <%= input.row([ { kind: :collection_select, attribute: :person_id,
+                      collection: Person.select_list } ]) %>
   <% end %>
 
+  <%= input.row([ {attribute: :addr}  ]) %>
 
-  <%= render  partial: 'shared/text_bs',
-              locals: { form: form, my_field: :addr } %>
+  <%= input.row([ {attribute: :locn},
+                  {attribute: :preferred} ]) %>
 
-  <%= render  partial: 'shared/text_bs',
-              locals: { form: form, my_field: :locn } %>
-
-  <%= render  partial: 'shared/text_bs',
-              locals: { form: form, my_field: :preferred } %>
-
-  <%= render  partial: 'shared/textarea_bs',
-                locals: { form: form, my_field: :note, my_label: 'Note' } %>
+  <%= input.row([ {kind: :textarea, attribute: :note} ]) %>
 
   <%= render  partial: 'shared/form_submit_bs',
               locals: { form: form } %>
-
 <% end %>

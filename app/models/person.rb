@@ -20,6 +20,10 @@ class Person < ApplicationRecord
     Statuses
   end
 
+  def self.select_list
+    all.map {|person| [person.id, person.fullname] }
+  end
+
   def fullname
     last + ', ' + first + ' ' + middle
   end

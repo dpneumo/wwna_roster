@@ -1,46 +1,29 @@
 <%= form_with(model: address, local: true) do |form| %>
+  <% errors = Shared::ShowErrs.new(address) %>
+  <% input = Shared::Inputs.new(form) %>
 
-  <%= Shared::ShowErrs.new(@address).show %>
+  <%= errors.show %>
 
   <% if address.person_id %>
-    <%= render  partial: 'shared/readonly_field_bs',
-                locals: { form: form, my_field: :person_id,
-                          my_label: "Person",
-                          my_id: address.person_id,
-                          my_display: :fullname } %>
+    <%= input.row([ { kind: :readonly, attribute: :person_id, label: "Person",
+                      id: address.person_id, display: :fullname} ]) %>
   <% else %>
-    <%= render  partial: 'shared/collectselect_bs',
-                locals: { form: form, my_field: :person_id,
-                          my_collection: Person.all,
-                          my_display: :fullname } %>
+    <%= input.row([ { kind: :collection_select, attribute: :person_id,
+                      collection: Person.select_list } ]) %>
   <% end %>
 
+  <%= input.row([ {attribute: :number},
+                  {attribute: :street}  ]) %>
 
-  <%= render  partial: 'shared/text_bs',
-              locals: { form: form, my_field: :number } %>
+  <%= input.row([ {attribute: :city},
+                  {attribute: :state, width: 1},
+                  {attribute: :zip,   width: 1}  ]) %>
 
-  <%= render  partial: 'shared/text_bs',
-              locals: { form: form, my_field: :street } %>
+  <%= input.row([ {attribute: :locn},
+                  {attribute: :preferred}  ]) %>
 
-  <%= render  partial: 'shared/text_bs',
-              locals: { form: form, my_field: :city } %>
-
-  <%= render  partial: 'shared/text_bs',
-              locals: { form: form, my_field: :state } %>
-
-  <%= render  partial: 'shared/text_bs',
-              locals: { form: form, my_field: :zip } %>
-
-  <%= render  partial: 'shared/text_bs',
-              locals: { form: form, my_field: :locn } %>
-
-  <%= render  partial: 'shared/text_bs',
-              locals: { form: form, my_field: :preferred } %>
-
-  <%= render  partial: 'shared/text_bs',
-              locals: { form: form, my_field: :note } %>
+  <%= input.row([ {kind: :textarea, attribute: :note} ]) %>
 
   <%= render  partial: 'shared/form_submit_bs',
               locals: { form: form } %>
-
 <% end %>
