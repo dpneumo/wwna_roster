@@ -4,17 +4,13 @@
 
   <%= errors.show %>
 
-  <% if contribution.house_id %>
-    <%= input.row([ { kind: :readonly, attribute: :house_id, label: "House",
-                      id: contribution.house_id, display: :house_address} ]) %>
-  <% else %>
-    <%= input.row([ { kind: :collection_select, attribute: :house_id,
-                      collection: House.select_list } ]) %>
-  <% end %>
+  <%= input.row([ { attribute: :house_id, kind: :select,
+                    collection: House.select_list,
+                    disabled: contribution.house_id } ]) %>
 
-  <%= input.row([ {attribute: :date_paid, kind: :date_select}  ]) %>
+  <%= input.row([ { attribute: :date_paid, kind: :date_select } ]) %>
 
-  <%= input.row([ {attribute: :amount}  ]) %>
+  <%= input.row([ { attribute: :amount } ]) %>
 
   <%= render  partial: 'shared/form_submit_bs',
               locals: { form: form } %>

@@ -38,7 +38,7 @@ class PersonTest < ActiveSupport::TestCase
   test "Person.select_list returns collection (id & fullname) for select" do
     list = Person.select_list
     assert_equal 2, list.count
-    assert list.first.first.is_a? Integer
-    assert_equal "Satre, Michael B", list.last.last
+    assert list.first.last.is_a? Integer
+    assert_equal "Satre, Michael B", list.last.first
   end
 end

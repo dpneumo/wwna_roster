@@ -28,7 +28,7 @@ class House < ApplicationRecord
   end
 
   def self.select_list
-    all.map {|house| [house.id, house.house_address] }
+    all.map {|house| [house.house_address, house.id] }
   end
 
   def house_address

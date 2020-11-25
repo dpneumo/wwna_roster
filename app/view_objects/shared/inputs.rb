@@ -17,11 +17,9 @@ class Shared::Inputs
       case f[:kind]
         when :text;               text(f[:attribute], f[:label], f[:width])
         when :textarea;       textarea(f[:attribute], f[:label], f[:width])
-        when :readonly;       readonly(f[:attribute], f[:label], f[:id], f[:display], f[:width])
         when :checkbox;       checkbox(f[:attribute], f[:label], f[:width])
         when :date_select; date_select(f[:attribute], f[:label], f[:width])
-        when :select;           select(f[:attribute], f[:collection], f[:label], f[:width])
-        when :collection_select; collection_select(f[:attribute], f[:collection], f[:label], f[:width])
+        when :select;           select(f[:attribute], f[:collection], f[:label], f[:width], f[:disabled])
         else text(f[:attribute], f[:label], f[:width])
       end
     end.join.html_safe
@@ -55,32 +53,12 @@ class Shared::Inputs
     end
   end
 
-  def select(attribute, collection, label=nil, width=3)
+  def select(attribute, collection, label=nil, width=3, disabled=false)
     content_tag :div, class: "form-group col-#{width || 3}" do
       @form.label(attribute, label) +
       @form.select( attribute, collection,
                     {include_blank: true},
-                    {class: "form-control"} )
+                    {class: "form-control", disabled: disabled} )
     end
   end
-
-  def collection_select(attribute, collection, label=nil, width=3)
-    content_tag :div, class: "form-group col-#{width || 3}" do
-      @form.label(attribute, label) +
-      @form.collection_select( attribute, collection, :first, :last,
-                               {include_blank: true},
-                               {class: "form-control"} )
-    end
-  end
-
-  def readonly(attribute, label, id, display, width=12)
-    content_tag :div, class: "form-group col-#{width || 12}" do
-      obj = label.classify.constantize.find(id)
-      display_val = obj.send(display)
-
-      @form.hidden_field(attribute) +
-      @form.label(attribute, label + ": " + display_val, {class: "col col-form-label"})
-    end
-  end
-
 end

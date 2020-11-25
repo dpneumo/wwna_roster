@@ -4,20 +4,16 @@
 
   <%= errors.show %>
 
-  <% if email.person_id %>
-    <%= input.row([ { kind: :readonly, attribute: :person_id, label: "Person",
-                      id: email.person_id, display: :fullname} ]) %>
-  <% else %>
-    <%= input.row([ { kind: :collection_select, attribute: :person_id,
-                      collection: Person.select_list } ]) %>
-  <% end %>
+  <%= input.row([ { attribute: :person_id, kind: :select,
+                    collection: Person.select_list,
+                    disabled: email.person_id } ]) %>
 
-  <%= input.row([ {attribute: :addr}  ]) %>
+  <%= input.row([ { attribute: :addr } ]) %>
 
-  <%= input.row([ {attribute: :locn},
-                  {attribute: :preferred} ]) %>
+  <%= input.row([ { attribute: :locn },
+                  { attribute: :preferred } ]) %>
 
-  <%= input.row([ {kind: :textarea, attribute: :note} ]) %>
+  <%= input.row([ { attribute: :note, kind: :textarea } ]) %>
 
   <%= render  partial: 'shared/form_submit_bs',
               locals: { form: form } %>

@@ -21,7 +21,7 @@ class Person < ApplicationRecord
   end
 
   def self.select_list
-    all.map {|person| [person.id, person.fullname] }
+    all.map {|person| [person.fullname, person.id] }
   end
 
   def fullname

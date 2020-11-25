@@ -35,7 +35,7 @@ class HouseTest < ActiveSupport::TestCase
   end
 
   test "House.select_list returns collection (id & address) for select" do
-    expected = [[1, "123A Oak Dr"], [2, "zzz aaa"]]
+    expected = [["123A Oak Dr", 1], ["zzz aaa", 2]]
     assert_equal expected, House.select_list
   end
 

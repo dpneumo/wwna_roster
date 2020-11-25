@@ -4,25 +4,21 @@
 
   <%= errors.show %>
 
-  <% if address.person_id %>
-    <%= input.row([ { kind: :readonly, attribute: :person_id, label: "Person",
-                      id: address.person_id, display: :fullname} ]) %>
-  <% else %>
-    <%= input.row([ { kind: :collection_select, attribute: :person_id,
-                      collection: Person.select_list } ]) %>
-  <% end %>
+  <%= input.row([ { attribute: :person_id, kind: :select,
+                    collection: Person.select_list,
+                    disabled: address.person_id } ]) %>
 
-  <%= input.row([ {attribute: :number},
-                  {attribute: :street}  ]) %>
+  <%= input.row([ { attribute: :number },
+                  { attribute: :street } ]) %>
 
-  <%= input.row([ {attribute: :city},
-                  {attribute: :state, width: 1},
-                  {attribute: :zip,   width: 1}  ]) %>
+  <%= input.row([ { attribute: :city },
+                  { attribute: :state, width: 1 },
+                  { attribute: :zip,   width: 1 } ]) %>
 
-  <%= input.row([ {attribute: :locn},
-                  {attribute: :preferred}  ]) %>
+  <%= input.row([ { attribute: :locn },
+                  { attribute: :preferred } ]) %>
 
-  <%= input.row([ {kind: :textarea, attribute: :note} ]) %>
+  <%= input.row([ { attribute: :note, kind: :textarea } ]) %>
 
   <%= render  partial: 'shared/form_submit_bs',
               locals: { form: form } %>

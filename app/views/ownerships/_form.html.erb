@@ -4,16 +4,12 @@
 
   <%= errors.show %>
 
-  <% if ownership.house_id %>
-    <%= input.row([ { kind: :readonly, attribute: :house_id, label: "House",
-                      id: ownership.house_id, display: :house_address} ]) %>
-  <% else %>
-    <%= input.row([ { kind: :collection_select, attribute: :house_id,
-                      collection: House.select_list } ]) %>
-  <% end %>
+  <%= input.row([ { attribute: :house_id, kind: :select,
+                    collection: House.select_list,
+                    disabled: ownership.house_id } ]) %>
 
-  <%= input.row([ { kind: :collection_select, attribute: :person_id,
-                      collection: Person.select_list } ]) %>
+  <%= input.row([ { attribute: :person_id, kind: :select,
+                    collection: Person.select_list } ]) %>
 
   <%= render  partial: 'shared/form_submit_bs',
               locals: { form: form } %>

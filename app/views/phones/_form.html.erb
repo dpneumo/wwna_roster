@@ -4,25 +4,21 @@
 
   <%= errors.show %>
 
-  <% if phone.person_id %>
-    <%= input.row([ { attribute: :person_id, kind: :readonly, label: "Person",
-                      id: phone.person_id, display: :fullname} ]) %>
-  <% else %>
-    <%= input.row([ { attribute: :person_id, kind: :collection_select,
-                      collection: Person.select_list } ]) %>
-  <% end %>
+  <%= input.row([ { attribute: :person_id, kind: :select,
+                    collection: Person.select_list,
+                    disabled: phone.person_id } ]) %>
 
-  <%= input.row([ {attribute: :cc}  ]) %>
+  <%= input.row([ { attribute: :cc} ]) %>
 
-  <%= input.row([ {attribute: :area},
-                  {attribute: :prefix},
-                  {attribute: :number} ]) %>
+  <%= input.row([ { attribute: :area },
+                  { attribute: :prefix },
+                  { attribute: :number } ]) %>
 
-  <%= input.row([ {attribute: :locn},
-                  {attribute: :txt_capable},
-                  {attribute: :preferred} ]) %>
+  <%= input.row([ { attribute: :locn },
+                  { attribute: :txt_capable },
+                  { attribute: :preferred } ]) %>
 
-  <%= input.row([ {kind: :textarea, attribute: :note} ]) %>
+  <%= input.row([ { attribute: :note, kind: :textarea } ]) %>
 
   <%= render  partial: 'shared/form_submit_bs',
               locals: { form: form } %>
