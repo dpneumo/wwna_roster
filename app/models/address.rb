@@ -10,4 +10,8 @@ class Address < ApplicationRecord
   def address
     "#{number} #{street}, #{city}, #{state}  #{zip}"
   end
+
+  def addressee
+    person.fullname
+  end
 end

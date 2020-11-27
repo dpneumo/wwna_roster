@@ -1,48 +1,16 @@
-<p id="notice"><%= notice %></p>
+<% presenter = Shared::Presenters.new(@phone) %>
 
-<p>
-  <strong>Person:</strong>
-  <%= @phone.person.fullname %>
-</p>
+<%= presenter.notice(notice) %>
 
-<p>
-  <strong>CC:</strong>
-  <%= @phone.cc %>
-</p>
-
-<p>
-  <strong>Area:</strong>
-  <%= @phone.area %>
-</p>
-
-<p>
-  <strong>Prefix:</strong>
-  <%= @phone.prefix %>
-</p>
-
-<p>
-  <strong>Number:</strong>
-  <%= @phone.number %>
-</p>
-
-<p>
-  <strong>Location:</strong>
-  <%= @phone.locn %>
-</p>
-
-<p>
-  <strong>Preferred:</strong>
-  <%= @phone.preferred %>
-</p>
-
-<p>
-  <strong>Msg Capable:</strong>
-  <%= @phone.txt_capable %>
-</p>
-<p>
-  <strong>Note:</strong>
-  <%= @phone.note %>
-</p>
+<%= presenter.show(:person_name, 'Person') %>
+<%= presenter.show(:cc) %>
+<%= presenter.show(:area) %>
+<%= presenter.show(:prefix) %>
+<%= presenter.show(:number) %>
+<%= presenter.show(:locn, 'Location') %>
+<%= presenter.show(:preferred) %>
+<%= presenter.show(:txt_capable, 'Msg Capable') %>
+<%= presenter.show(:note) %>
 
 <%= link_to 'Edit', edit_phone_path(@phone) %> |
 <%= link_to 'Person Detail', person_detail_path(@phone.person_id) %>

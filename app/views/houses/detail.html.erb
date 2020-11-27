@@ -1,90 +1,35 @@
+<% presenter = Shared::Presenters.new(@house) %>
+
+<%= presenter.show_in_row([ [:house_address, 'House'],
+                            [:linked_lot_id] ]) %>
+<%= presenter.show_in_row([ [:latitude, 'Latitude'],
+                            [:longitude, 'Longitude'],
+                            [:image_link, 'Image Link'] ]) %>
+<%= presenter.show_in_row([ [:flag, 'Member Flag Group'],
+                            [:rental, 'Rental Property'],
+                            [:listed, 'Listed For Sale'] ]) %>
+<%= presenter.show_in_row([ :status ] ) %>
+
 <div class="row">
   <div class="col-sm">
-    <p id="notice"><%= notice %></p>
+    <%= render 'occupants' %>
   </div>
 </div>
 
-
-  <div class="row">
-    <div class="col-sm">
-      <p>
-        <strong>House Address:</strong>
-        <%= @house.house_address %>
-      </p>
-    </div>
-
-    <div class="col-sm">
-      <p>
-        <strong>Linked lot:</strong>
-        <%= @house.linked_lot_id %>
-      </p>
-    </div>
+<div class="row">
+  <div class="col-sm">
+    <%= render 'contributions' %>
   </div>
+</div>
 
-
-  <div class="row">
-    <div class="col-sm">
-      <p>
-        <strong>Member Flag Group:</strong>
-        <%= @house.flag %>
-      </p>
-    </div>
-
-    <div class="col-sm">
-      <p>
-        <strong>Rental Property:</strong>
-        <%= @house.rental %>
-      </p>
-    </div>
-
-    <div class="col-sm">
-      <p>
-        <strong>Listed For Sale:</strong>
-        <%= @house.listed %>
-      </p>
-    </div>
+<div class="row">
+  <div class="col-sm">
+    <%= render 'ownerships' %>
   </div>
+</div>
 
+<%= presenter.show_in_row([ :note ]) %>
 
-  <div class="row">
-    <div class="col-sm">
-      <p>
-        <strong>Status:</strong>
-        <%= @house.status %>
-      </p>
-    </div>
-  </div>
-
-
-  <div class="row">
-    <div class="col-sm">
-      <%= render 'occupants' %>
-    </div>
-  </div>
-
-
-  <div class="row">
-    <div class="col-sm">
-      <%= render 'contributions' %>
-    </div>
-  </div>
-
-
-  <div class="row">
-    <div class="col-sm">
-      <%= render 'ownerships' %>
-    </div>
-  </div>
-
-
-  <div class="row">
-    <div class="col-sm">
-      <p>
-        <strong>Note:</strong>
-        <%= @house.note %>
-      </p>
-    </div>
-  </div>
 
 <%= link_to 'Edit', edit_house_path(@house) %> |
 <%= link_to 'List', houses_path %>

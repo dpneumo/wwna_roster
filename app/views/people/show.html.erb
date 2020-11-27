@@ -1,56 +1,17 @@
-<p id="notice"><%= notice %></p>
+<% presenter = Shared::Presenters.new(@person) %>
 
-<p>
-  <strong>Nickname:</strong>
-  <%= @person.nickname %>
-</p>
+<%= presenter.notice(notice) %>
 
-<p>
-  <strong>First:</strong>
-  <%= @person.first %>
-</p>
-
-<p>
-  <strong>Middle:</strong>
-  <%= @person.middle %>
-</p>
-
-<p>
-  <strong>Last:</strong>
-  <%= @person.last %>
-</p>
-
-<p>
-  <strong>Suffix:</strong>
-  <%= @person.suffix %>
-</p>
-
-<p>
-  <strong>Honorific:</strong>
-  <%= @person.honorific %>
-</p>
-
-<p>
-  <strong>Note:</strong>
-  <%= @person.note %>
-</p>
-
-<% if @person.house_id; then %>
-  <p>
-    <strong>House:</strong>
-    <%= @person.house.house_address %>
-  </p>
-<% end %>
-
-<p>
-  <strong>Role:</strong>
-  <%= @person.role %>
-</p>
-
-<p>
-  <strong>Status:</strong>
-  <%= @person.status %>
-</p>
+<%= presenter.show(:nickname) %>
+<%= presenter.show(:first) %>
+<%= presenter.show(:middle) %>
+<%= presenter.show(:last) %>
+<%= presenter.show(:suffix) %>
+<%= presenter.show(:honorific) %>
+<%= presenter.show(:note) %>
+<%= presenter.show(:house_address, 'House') %>
+<%= presenter.show(:role) %>
+<%= presenter.show(:status) %>
 
 <%= link_to 'Edit', edit_person_path(@person) %> |
 <%= link_to 'Person Detail', person_detail_path(@person) %> |

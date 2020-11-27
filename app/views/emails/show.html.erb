@@ -1,29 +1,12 @@
-<p id="notice"><%= notice %></p>
+<% presenter = Shared::Presenters.new(@email) %>
 
-<p>
-  <strong>Person:</strong>
-  <%= @email.person.fullname %>
-</p>
+<%= presenter.notice(notice) %>
 
-<p>
-  <strong>Address:</strong>
-  <%= @email.addr %>
-</p>
-
-<p>
-  <strong>Location:</strong>
-  <%= @email.locn %>
-</p>
-
-<p>
-  <strong>Preferred:</strong>
-  <%= @email.preferred %>
-</p>
-
-<p>
-  <strong>Note:</strong>
-  <%= @email.note %>
-</p>
+<%= presenter.show(:addressee) %>
+<%= presenter.show(:addr, 'Address') %>
+<%= presenter.show(:locn, 'Location') %>
+<%= presenter.show(:preferred) %>
+<%= presenter.show(:note) %>
 
 <%= link_to 'Edit', edit_email_path(@email) %> |
 <%= link_to 'Person Detail', person_detail_path(@email.person_id) %>

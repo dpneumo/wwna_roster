@@ -16,4 +16,9 @@ class Contribution < ApplicationRecord
   rescue
     self.amount = '$0.00'
   end
+
+  def house_address
+    house.house_address
+  end
 end
+

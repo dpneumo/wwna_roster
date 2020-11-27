@@ -1,49 +1,16 @@
-<p id="notice"><%= notice %></p>
+<% presenter = Shared::Presenters.new(@address) %>
 
-<p>
-  <strong>Person:</strong>
-  <%= @address.person.fullname %>
-</p>
+<%= presenter.notice(notice) %>
 
-<p>
-  <strong>Number:</strong>
-  <%= @address.number %>
-</p>
-
-<p>
-  <strong>Street:</strong>
-  <%= @address.street %>
-</p>
-
-<p>
-  <strong>City:</strong>
-  <%= @address.city %>
-</p>
-
-<p>
-  <strong>State:</strong>
-  <%= @address.state %>
-</p>
-
-<p>
-  <strong>Zip:</strong>
-  <%= @address.zip %>
-</p>
-
-<p>
-  <strong>Location:</strong>
-  <%= @address.locn %>
-</p>
-
-<p>
-  <strong>Preferred:</strong>
-  <%= @address.preferred %>
-</p>
-
-<p>
-  <strong>Note:</strong>
-  <%= @address.note %>
-</p>
+<%= presenter.show(:addressee) %>
+<%= presenter.show(:number) %>
+<%= presenter.show(:street) %>
+<%= presenter.show(:city) %>
+<%= presenter.show(:state) %>
+<%= presenter.show(:zip) %>
+<%= presenter.show(:locn, 'Location') %>
+<%= presenter.show(:preferred) %>
+<%= presenter.show(:note) %>
 
 <%= link_to 'Edit', edit_address_path(@address) %> |
 <%= link_to 'Person Detail', person_detail_path(@address.person_id) %>

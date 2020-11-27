@@ -27,4 +27,9 @@ class Person < ApplicationRecord
   def fullname
     last + ', ' + first + ' ' + middle
   end
+
+  def house_address
+    house_id ? house.house_address : ''
+  end
+
 end

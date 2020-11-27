@@ -8,4 +8,8 @@ class Phone < ApplicationRecord
   def ph_number
     "(#{area}) #{prefix}-#{number}"
   end
+
+  def person_name
+    person.fullname
+  end
 end

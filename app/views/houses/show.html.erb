@@ -1,54 +1,17 @@
+<% presenter = Shared::Presenters.new(@house) %>
 <p id="notice"><%= notice %></p>
+<%= presenter.notice(notice) %>
 
-<p>
-  <strong>House Address:</strong>
-  <%= @house.house_address %>
-</p>
-
-<p>
-  <strong>Linked lot:</strong>
-  <%= @house.linked_lot_id %>
-</p>
-
-<p>
-  <strong>Latitude:</strong>
-  <%= @house.latitude %>
-</p>
-
-<p>
-  <strong>Longitude:</strong>
-  <%= @house.longitude %>
-</p>
-
-<p>
-  <strong>Image link:</strong>
-  <%= @house.image_link %>
-</p>
-
-<p>
-  <strong>Member Flag Group:</strong>
-  <%= @house.flag %>
-</p>
-
-<p>
-  <strong>Rental Property:</strong>
-  <%= @house.rental %>
-</p>
-
-<p>
-  <strong>Listed Sale:</strong>
-  <%= @house.listed %>
-</p>
-
-<p>
-  <strong>Status:</strong>
-  <%= @house.status %>
-</p>
-
-<p>
-  <strong>Note:</strong>
-  <%= @house.note %>
-</p>
+<%= presenter.show([ :house_address, 'House Address' ]) %>
+<%= presenter.show([ :linked_lot_id, 'Linked Lot' ]) %>
+<%= presenter.show([ :latitude, 'Latitude' ]) %>
+<%= presenter.show([ :longitude, 'Longitude' ]) %>
+<%= presenter.show([ :image_link, 'Image Link' ]) %>
+<%= presenter.show([ :flag, 'Member Flag Group' ]) %>
+<%= presenter.show([ :rental, 'Rental Property' ]) %>
+<%= presenter.show([ :listed, 'Listed For Sale' ]) %>
+<%= presenter.show([ :status, 'Status' ]) %>
+<%= presenter.show([ :note, 'Note' ]) %>
 
 <%= link_to 'Edit', edit_house_path(@house) %> |
 <%= link_to 'House Detail', house_detail_path(@house) %> |
