@@ -6,7 +6,9 @@
 
   <%= input.row([ { attribute: :house_id, kind: :select,
                     collection: House.select_list,
-                    disabled: contribution.house_id } ]) %>
+                    disabled: contribution.house_id },
+                    attribute: :house_id, kind: :hidden,
+                    value: contribution.house_id ]) %>
 
   <%= input.row([ { attribute: :date_paid, kind: :date_select } ]) %>
 

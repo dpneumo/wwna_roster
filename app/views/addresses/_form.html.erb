@@ -6,7 +6,9 @@
 
   <%= input.row([ { attribute: :person_id, kind: :select,
                     collection: Person.select_list,
-                    disabled: address.person_id } ]) %>
+                    disabled: address.person_id },
+                    attribute: :person_id, kind: :hidden,
+                    value: address.person_id ]) %>
 
   <%= input.row([ { attribute: :number },
                   { attribute: :street } ]) %>
