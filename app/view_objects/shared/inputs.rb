@@ -16,6 +16,7 @@ class Shared::Inputs
     fields.map do |f|
       case f[:kind]
         when :text;               text(f[:attribute], f[:label], f[:width])
+        when :hidden;           hidden(f[:attribute], f[:value])
         when :textarea;       textarea(f[:attribute], f[:label], f[:width])
         when :checkbox;       checkbox(f[:attribute], f[:label], f[:width])
         when :date_select; date_select(f[:attribute], f[:label], f[:width])
@@ -30,6 +31,10 @@ class Shared::Inputs
       @form.label(attribute, label) +
       @form.text_field(attribute, class: "form-control")
     end
+  end
+
+  def hidden(attribute, value)
+    @form.hidden_field attribute, value: value
   end
 
   def textarea(attribute, label=nil, width=9)
