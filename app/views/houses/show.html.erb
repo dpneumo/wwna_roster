@@ -2,16 +2,16 @@
 <p id="notice"><%= notice %></p>
 <%= presenter.notice(notice) %>
 
-<%= presenter.show([ :house_address, 'House Address' ]) %>
-<%= presenter.show([ :linked_lot_id, 'Linked Lot' ]) %>
-<%= presenter.show([ :latitude, 'Latitude' ]) %>
-<%= presenter.show([ :longitude, 'Longitude' ]) %>
-<%= presenter.show([ :image_link, 'Image Link' ]) %>
-<%= presenter.show([ :flag, 'Member Flag Group' ]) %>
-<%= presenter.show([ :rental, 'Rental Property' ]) %>
-<%= presenter.show([ :listed, 'Listed For Sale' ]) %>
-<%= presenter.show([ :status, 'Status' ]) %>
-<%= presenter.show([ :note, 'Note' ]) %>
+<%= presenter.show(:house_address, 'House Address') %>
+<%= presenter.show(:linked_lot_id, 'Linked Lot') %>
+<%= presenter.show(:latitude, 'Latitude') %>
+<%= presenter.show(:longitude, 'Longitude') %>
+<%= presenter.show(:image_link, 'Image Link') %>
+<%= presenter.show(:flag, 'Member Flag Group') %>
+<%= presenter.show(:rental, 'Rental Property') %>
+<%= presenter.show(:listed, 'Listed For Sale') %>
+<%= presenter.show(:status, 'Status') %>
+<%= presenter.show(:note, 'Note') %>
 
 <%= link_to 'Edit', edit_house_path(@house) %> |
 <%= link_to 'House Detail', house_detail_path(@house) %> |

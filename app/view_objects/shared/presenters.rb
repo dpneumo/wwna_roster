@@ -11,8 +11,8 @@ class Shared::Presenters
     tag.div class: "col-sm" do
       tag.p do
         tag.strong do
-          (label || attribute.to_s.capitalize) + ": "
-        end + @model.send(attribute)
+          (label || attribute.to_s.titleize) + ": "
+        end + formated_attr(attribute)
       end
     end.html_safe
   end
@@ -32,5 +32,9 @@ class Shared::Presenters
         attrib.is_a?(Array) ? show(*attrib) : show(attrib)
       end.join.html_safe
     end
+  end
+
+  def formated_attr(attribute)
+    @model.send(attribute).to_s
   end
 end
