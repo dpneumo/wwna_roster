@@ -2,8 +2,8 @@
 
 one:
   house_id: 1
-  person: one
+  owner: one
 
 two:
   house_id: 2
-  person: two
+  owner: two
