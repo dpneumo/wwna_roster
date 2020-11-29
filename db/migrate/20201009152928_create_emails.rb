@@ -4,7 +4,7 @@ class CreateEmails < ActiveRecord::Migration[6.0]
       t.integer  :person_id, null: false
       t.string   :addr, null: false
       t.string   :locn
-      t.string   :preferred, default: "No"
+      t.boolean  :preferred, default: false
       t.text     :note
 
       t.timestamps

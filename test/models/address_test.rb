@@ -44,8 +44,8 @@ class AddressTest < ActiveSupport::TestCase
     assert_equal "Home", @addr2.locn
   end
 
-  test "preferred defaults to No" do
-    assert_equal "No", @addr2.preferred
+  test "preferred defaults to false" do
+    assert_equal false, @addr2.preferred
   end
 
   test "note may be nil" do

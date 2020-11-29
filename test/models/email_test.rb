@@ -19,9 +19,9 @@ class EmailTest < ActiveSupport::TestCase
     refute @em.save, "Saved email without addr"
   end
 
-  test "preferred defaults to No" do
+  test "preferred defaults to false" do
     @em = emails(:two)
-    assert_equal "No", @em.preferred
+    assert_equal false, @em.preferred
   end
 
   test "note may be nil" do

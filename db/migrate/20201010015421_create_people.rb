@@ -7,10 +7,13 @@ class CreatePeople < ActiveRecord::Migration[6.0]
       t.string  :last,  null: false
       t.string  :suffix
       t.string  :honorific
-      t.text    :note
-      t.integer :house_id
       t.string  :role
       t.string  :status
+      t.integer :pref_email_id
+      t.integer :pref_phone_id
+      t.integer :pref_address_id
+      t.integer :house_id
+      t.text    :note
 
       t.timestamps
     end

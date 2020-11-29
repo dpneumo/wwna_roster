@@ -7,8 +7,8 @@
   <%= input.row([ { attribute: :house_id, kind: :select,
                     collection: House.select_list,
                     disabled: ownership.house_id },
-                    attribute: :house_id, kind: :hidden,
-                    value: ownership.house_id ]) %>
+                  { attribute: :house_id, kind: :hidden,
+                    value: ownership.house_id } ]) %>
 
   <%= input.row([ { attribute: :person_id, kind: :select,
                     collection: Person.select_list } ]) %>

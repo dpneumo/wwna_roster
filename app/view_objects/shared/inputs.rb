@@ -20,7 +20,7 @@ class Shared::Inputs
         when :textarea;       textarea(f[:attribute], f[:label], f[:width])
         when :checkbox;       checkbox(f[:attribute], f[:label], f[:width])
         when :date_select; date_select(f[:attribute], f[:label], f[:width])
-        when :select;           select(f[:attribute], f[:collection], f[:label], f[:width], f[:disabled])
+        when :select;           select(f[:attribute], f[:collection], f[:blank], f[:label], f[:width], f[:disabled])
         else text(f[:attribute], f[:label], f[:width])
       end
     end.join.html_safe
@@ -58,11 +58,11 @@ class Shared::Inputs
     end
   end
 
-  def select(attribute, collection, label=nil, width=3, disabled=false)
+  def select(attribute, collection, blank=true, label=nil, width=3, disabled=false)
     content_tag :div, class: "form-group col-#{width || 3}" do
       @form.label(attribute, label) +
       @form.select( attribute, collection,
-                    {include_blank: true},
+                    {include_blank: blank},
                     {class: "form-control", disabled: disabled} )
     end
   end

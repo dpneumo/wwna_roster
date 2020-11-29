@@ -23,7 +23,7 @@ ActiveRecord::Schema.define(version: 2020_10_11_215205) do
     t.string "state", default: "TX", null: false
     t.string "zip", null: false
     t.string "locn", default: "Home"
-    t.string "preferred", default: "No"
+    t.boolean "preferred", default: false
     t.text "note"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
@@ -41,7 +41,7 @@ ActiveRecord::Schema.define(version: 2020_10_11_215205) do
     t.integer "person_id", null: false
     t.string "addr", null: false
     t.string "locn"
-    t.string "preferred", default: "No"
+    t.boolean "preferred", default: false
     t.text "note"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
@@ -77,10 +77,13 @@ ActiveRecord::Schema.define(version: 2020_10_11_215205) do
     t.string "last", null: false
     t.string "suffix"
     t.string "honorific"
-    t.text "note"
-    t.integer "house_id"
     t.string "role"
     t.string "status"
+    t.integer "pref_email_id"
+    t.integer "pref_phone_id"
+    t.integer "pref_address_id"
+    t.integer "house_id"
+    t.text "note"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -92,7 +95,7 @@ ActiveRecord::Schema.define(version: 2020_10_11_215205) do
     t.string "prefix", null: false
     t.string "number", null: false
     t.string "locn"
-    t.string "preferred", default: "No"
+    t.boolean "preferred", default: false
     t.boolean "txt_capable", default: false
     t.text "note"
     t.datetime "created_at", precision: 6, null: false

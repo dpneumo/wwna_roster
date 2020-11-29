@@ -7,7 +7,7 @@ class CreatePhones < ActiveRecord::Migration[6.0]
       t.string  :prefix, null: false
       t.string  :number, null: false
       t.string  :locn
-      t.string  :preferred, default: "No"
+      t.boolean :preferred, default: false
       t.boolean :txt_capable, default: false
       t.text    :note
 

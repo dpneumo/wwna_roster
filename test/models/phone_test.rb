@@ -29,8 +29,8 @@ class PhoneTest < ActiveSupport::TestCase
     assert_equal "1", @ph2.cc
   end
 
-  test "preferred defaults to No" do
-    assert_equal "No", @ph2.preferred
+  test "preferred defaults to false" do
+    assert_equal false, @ph2.preferred
   end
 
   test "txt_capable defaults to false" do

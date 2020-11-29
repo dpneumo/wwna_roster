@@ -7,8 +7,8 @@
   <%= input.row([ { attribute: :person_id, kind: :select,
                     collection: Person.select_list,
                     disabled: phone.person_id },
-                    attribute: :person_id, kind: :hidden,
-                    value: phone.person_id ]) %>
+                  { attribute: :person_id, kind: :hidden,
+                    value: phone.person_id } ]) %>
 
   <%= input.row([ { attribute: :cc} ]) %>
 
@@ -16,9 +16,13 @@
                   { attribute: :prefix },
                   { attribute: :number } ]) %>
 
-  <%= input.row([ { attribute: :locn },
+  <%= input.row([ { attribute: :locn, kind: :select,
+                    collection: Phone.locations,
+                    blank: false },
                   { attribute: :txt_capable },
-                  { attribute: :preferred } ]) %>
+                  { attribute: :preferred, kind: :select,
+                    collection: [['Yes',true],['No',false]],
+                    blank: false } ]) %>
 
   <%= input.row([ { attribute: :note, kind: :textarea } ]) %>
 

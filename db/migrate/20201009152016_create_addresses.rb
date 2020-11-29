@@ -8,7 +8,7 @@ class CreateAddresses < ActiveRecord::Migration[6.0]
       t.string  :state,  null: false, default: 'TX'
       t.string  :zip,    null: false
       t.string  :locn,       default: "Home"
-      t.string  :preferred,  default: "No"
+      t.boolean :preferred,  default: false
       t.text    :note
 
       t.timestamps

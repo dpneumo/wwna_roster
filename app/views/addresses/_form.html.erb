@@ -7,8 +7,8 @@
   <%= input.row([ { attribute: :person_id, kind: :select,
                     collection: Person.select_list,
                     disabled: address.person_id },
-                    attribute: :person_id, kind: :hidden,
-                    value: address.person_id ]) %>
+                  { attribute: :person_id, kind: :hidden,
+                    value: address.person_id } ]) %>
 
   <%= input.row([ { attribute: :number },
                   { attribute: :street } ]) %>
@@ -17,8 +17,12 @@
                   { attribute: :state, width: 1 },
                   { attribute: :zip,   width: 1 } ]) %>
 
-  <%= input.row([ { attribute: :locn },
-                  { attribute: :preferred } ]) %>
+  <%= input.row([ { attribute: :locn, kind: :select,
+                    collection: Address.locations,
+                    blank: false },
+                  { attribute: :preferred, kind: :select,
+                    collection: [['Yes',true],['No',false]],
+                    blank: false } ]) %>
 
   <%= input.row([ { attribute: :note, kind: :textarea } ]) %>
 
