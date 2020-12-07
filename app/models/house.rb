@@ -1,10 +1,14 @@
 class House < ApplicationRecord
   include Comparable
 
-  has_many :occupants, class_name: 'Person'
+  has_many :occupants,
+            -> { order(last: :asc, first: :asc, middle: :asc) },
+            class_name: 'Person'
   has_many :ownerships
-  has_many :owners, through: :ownerships
-  has_many :contributions
+  has_many :owners,
+            -> { order(last: :asc, first: :asc, middle: :asc) },
+            through: :ownerships
+  has_many :contributions, -> { order(date_paid: :asc) }
 
   validate :latitude_is_sane
   validate :longitude_is_sane

@@ -1,7 +1,7 @@
 class Person < ApplicationRecord
-  has_many :addresses
-  has_many :emails
-  has_many :phones
+  has_many :addresses, -> { order(state: :asc, city: :asc, street: :asc, number: :asc) }
+  has_many :emails, -> { order(addr: :asc) }
+  has_many :phones, -> { order(cc: :asc, area: :asc, prefix: :asc, number: :asc) }
   belongs_to :house, optional: true
   has_many :ownerships
   has_many :properties, through: :ownerships

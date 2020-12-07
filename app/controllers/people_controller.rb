@@ -4,8 +4,18 @@ class PeopleController < ApplicationController
   # GET /people
   # GET /people.json
   def index
-    @q = Person.ransack(params[:q])
+    @q = Person.order(last: :asc, first: :asc, middle: :asc)
+               .ransack(params[:q])
     @pagy, @people = pagy(@q.result)
+  end
+
+  # GET /people/non_occupants
+  def non_occupants
+    @q = Person.where(house_id: nil)
+               .order(last: :asc, first: :asc, middle: :asc)
+               .ransack(params[:q])
+    @pagy, @people = pagy(@q.result)
+    render :index
   end
 
   # GET /people/1
