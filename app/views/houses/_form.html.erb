@@ -15,6 +15,7 @@
                     collection:  House.statuses, selected: "Occupied" },
                   { kind: :select, attribute: :linked_lot_id,
                     collection: grouped_options_for_select(House.for_select),
+                    blank: true,
                     width: 3 }  ]) %>
 
   <%= input.row([ { kind: :checkbox, attribute: :flag,
