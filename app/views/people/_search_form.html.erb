@@ -1,6 +1,21 @@
 <%= search_form_for @q do |f| %>
-  <%= f.label :last_cont %>
-  <%= f.search_field :last_cont %>
+  <div class="row">
+    <div class="col-sm-5">
+      <%= f.label :last_cont %>
+      <%= f.search_field :last_cont %>
+    </div>
 
-  <%= f.submit %>
+    <div class="col-sm-3">
+      <%= f.check_box :house_id_blank %>
+      <%= f.label :house_id_blank, "House is Blank" %>
+    </div>
+
+    <div class="col-sm-2">
+      <%= f.submit %>
+    </div>
+
+    <div class="col">
+      <%= link_to "Clear", people_path, method: :get %>
+    </div>
+  </div>
 <% end %>
