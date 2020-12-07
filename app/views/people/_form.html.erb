@@ -4,24 +4,29 @@
 
   <%= errors.show %>
 
-  <%= input.row([ {attribute: :nickname}  ]) %>
+  <%= input.row([ { attribute: :nickname }  ]) %>
 
-  <%= input.row([ {attribute: :first},
-                  {attribute: :middle},
-                  {attribute: :last}      ]) %>
+  <%= input.row([ { attribute: :first },
+                  { attribute: :middle },
+                  { attribute: :last }      ]) %>
 
-  <%= input.row([ {attribute: :suffix},
-                  {attribute: :honorific} ]) %>
+  <%= input.row([ { attribute: :suffix },
+                  { attribute: :honorific } ]) %>
 
 
-  <%= input.row([ { kind: :select, attribute: :house_id,
-                    collection: House.for_select},
-                  { kind: :select, attribute: :role,
-                    collection: Person.roles},
-                  { kind: :select, attribute: :status,
-                    collection: Person.statuses}  ]) %>
+  <%= input.row([ { attribute: :house_id, kind: :select,
+                    collection: House.select_list,
+                    selected: person.house_id,
+                    blank: true,
+                    disabled: @disable_house_select },
+                  { attribute: :role, kind: :select,
+                    collection: Person.roles,
+                    selected: "Unknown" },
+                  { attribute: :status, kind: :select,
+                    collection: Person.statuses,
+                    selected: "Unknown" }  ]) %>
 
-  <%= input.row([ {kind: :textarea, attribute: :note} ]) %>
+  <%= input.row([ { attribute: :note, kind: :textarea } ]) %>
 
   <%= render  partial: 'shared/form_submit_bs',
               locals: { form: form , my_label: nil} %>
