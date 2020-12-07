@@ -3,11 +3,17 @@
 <%= presenter.show_in_row([:nickname]) %>
 <%= presenter.show_in_row([:first, :middle, :last]) %>
 <%= presenter.show_in_row([:suffix, :honorific, :role]) %>
-<%= presenter.show_in_row([ [:house_address, 'House'],
+<%= presenter.show_in_row([ [:house_address, 'House', 4],
                             [:status] ]) %>
-<%= presenter.show_in_row([ [:preferred_email],
-                            [:preferred_phone],
-                            [:preferred_address] ]) %>
+
+<div class="row">
+  <div class="col-sm-8">
+    <h5 class="bg-light">Preferred:</h5>
+  </div>
+</div>
+<%= presenter.show_in_row([ [:preferred_email, 'Email', 3],
+                            [:preferred_phone, 'Phone', 3],
+                            [:preferred_address, 'Address'] ]) %>
 
 <div class="row">
   <div class="col-sm">
