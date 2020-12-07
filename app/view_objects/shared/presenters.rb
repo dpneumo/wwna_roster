@@ -6,9 +6,9 @@ class Shared::Presenters
     @model = model
   end
 
-  def show(attribute, label=nil)
+  def show(attribute, label=nil, width=nil)
     return unless attribute
-    tag.div class: "col-sm" do
+    tag.div class: "col-sm#{width ? '-'+ width.to_s : ''}" do
       tag.p do
         tag.strong do
           (label || attribute.to_s.titleize) + ": "
