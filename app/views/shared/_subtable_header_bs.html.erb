@@ -1,4 +1,9 @@
 <div class="row">
-  <div class="col-sm-8"><h5><%= title %></h5></div>
-  <div class="col-sm-4"><%= link_to link_text, path %></div>
+  <div class="col-sm-8">
+    <h5 class="bg-light"><%= title %></h5>
+  </div>
+  <div class="col-sm"><%= link_to link_text1, path1 %></div>
+  <% if path2 %>
+    <div class="col-sm"><%= link_to link_text2, path2 %></div>
+  <% end %>
 </div>

@@ -1,7 +1,9 @@
 <%= render  partial: 'shared/subtable_header_bs',
             locals: { title: "Contributions:",
-                      link_text: "New Contribution",
-                      path: new_contribution_path(house_id: @house.id) } %>
+                      link_text1: "New Contribution",
+                      path1: new_contribution_path(house_id: @house.id),
+                      link_text2: nil,
+                      path2: nil } %>
 
 <table class='table table-sm table-bordered table-hover'>
   <thead class='thead-light'>
