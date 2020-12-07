@@ -20,7 +20,7 @@ class Shared::Inputs
         when :textarea;       textarea(f[:attribute], f[:label], f[:width])
         when :checkbox;       checkbox(f[:attribute], f[:label], f[:width])
         when :date_select; date_select(f[:attribute], f[:label], f[:width])
-        when :select;           select(f[:attribute], f[:collection], f[:blank], f[:label], f[:width], f[:disabled])
+        when :select;           select(f)
         else text(f[:attribute], f[:label], f[:width])
       end
     end.join.html_safe
@@ -33,8 +33,8 @@ class Shared::Inputs
     end
   end
 
-  def hidden(attribute, value)
-    @form.hidden_field attribute, value: value
+  def hidden(attribute, value=nil)
+    @form.hidden_field(attribute, value: value) if value
   end
 
   def textarea(attribute, label=nil, width=9)
@@ -58,12 +58,16 @@ class Shared::Inputs
     end
   end
 
-  def select(attribute, collection, blank=true, label=nil, width=3, disabled=false)
-    content_tag :div, class: "form-group col-#{width || 3}" do
-      @form.label(attribute, label) +
-      @form.select( attribute, collection,
-                    {include_blank: blank},
-                    {class: "form-control", disabled: disabled} )
+  def select(f)
+    rslt = content_tag :div, class: "form-group col-#{ f[:width] || 3 }" do
+      @form.label( f[:attribute], f[:label] ) +
+      @form.select( f[:attribute], f[:collection],
+                    { include_blank: f[:blank],
+                      selected: f[:selected]    },
+                    { class: "form-control",
+                      disabled: f[:disabled]    } )
     end
+    hdn = f[:disabled] ? hidden(f[:attribute], f[:selected]) : ""
+    rslt+hdn
   end
 end

@@ -30,10 +30,19 @@ class PeopleController < ApplicationController
   # GET /people/new
   def new
     @person = Person.new
+    @disable_house_select = false
+  end
+
+  # GET /people/occupant/<house_id>
+  def new_occupant
+    @person = Person.new
+    @person.house_id = params[:house_id]
+    @disable_house_select = true
   end
 
   # GET /people/1/edit
   def edit
+    @disable_house_select = false
   end
 
   # POST /people
