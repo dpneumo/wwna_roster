@@ -9,22 +9,22 @@ class InputsTest < ActiveSupport::TestCase
 
   test "#text wraps label & text in form-group and col" do
     expected = '<div class="form-group col-3"><div>LBLFirst</div><div>First</div></div>'
-    assert_equal expected, @input.text(:first)
+    assert_equal expected, @input.text(attribute: :first)
   end
 
   test "#textarea wraps label & textarea in form-group and col" do
     expected = '<div class="form-group col-9"><div>LBLNote</div><div>Note</div></div>'
-    assert_equal expected, @input.textarea(:note)
+    assert_equal expected, @input.textarea(attribute: :note)
   end
 
   test "#date_select wraps label & date_select in form-group and col" do
     expected = '<div class="form-group col-4"><div>LBLDate</div> <div>Date</div></div>'
-    assert_equal expected, @input.date_select(:date)
+    assert_equal expected, @input.date_select(attribute: :date)
   end
 
   test "#select wraps label & select in form-group and col" do
     expected = '<div class="form-group col-3"><div>LBLRoles</div><div>Roles</div></div>'
-    assert_equal expected, @input.select(:roles, ['a','b'])
+    assert_equal expected, @input.select(attribute: :roles, collection: ['a','b'])
   end
 
   test "#row wraps text inputs in form-row div" do

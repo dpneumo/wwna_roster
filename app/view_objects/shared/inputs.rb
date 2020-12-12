@@ -1,9 +1,14 @@
 class Shared::Inputs
   include ActionView::Helpers::TagHelper
-  attr_accessor :output_buffer
 
-  def initialize(form)
+  attr_accessor :output_buffer, :wtxt, :wtxtarea, :wckbox, :wdtsel, :wsel
+  def initialize(form, wtxt: 3, wtxtarea: 9, wckbox: 3, wdtsel: 4, wsel: 3)
     @form = form
+    @wtxt = wtxt
+    @wtxtarea = wtxtarea
+    @wckbox = wckbox
+    @wdtsel = wdtsel
+    @wsel = wsel
   end
 
   def row(fields)
@@ -15,59 +20,62 @@ class Shared::Inputs
   def columns(fields)
     fields.map do |f|
       case f[:kind]
-        when :text;               text(f[:attribute], f[:label], f[:width])
-        when :hidden;           hidden(f[:attribute], f[:value])
-        when :textarea;       textarea(f[:attribute], f[:label], f[:width])
-        when :checkbox;       checkbox(f[:attribute], f[:label], f[:width])
-        when :date_select; date_select(f[:attribute], f[:label], f[:width])
-        when :select;           select(f)
-        else text(f[:attribute], f[:label], f[:width])
+        when :textarea;    textarea(f)
+        when :checkbox;    checkbox(f)
+        when :date_select; date_select(f)
+        when :select;      select(f)
+        when :hidden;      hidden(f)
+        else text(f)
       end
     end.join.html_safe
   end
 
-  def text(attribute, label=nil, width=3)
-    content_tag :div, class: "form-group col-#{width || 3}" do
-      @form.label(attribute, label) +
-      @form.text_field(attribute, class: "form-control")
+  def text(f)
+    # text needs: attribute, label, width
+    content_tag :div, class: "form-group col-#{ f[:width] || wtxt }" do
+      @form.label( f[:attribute], f[:label] ) +
+      @form.text_field( f[:attribute], class: "form-control" )
     end
   end
 
-  def hidden(attribute, value=nil)
-    @form.hidden_field(attribute, value: value) if value
-  end
-
-  def textarea(attribute, label=nil, width=9)
-    content_tag :div, class: "form-group col-#{width || 9}" do
-      @form.label(attribute, label) +
-      @form.text_area(attribute, class: "form-control")
+  def textarea(f)
+    # textarea needs: attribute, label, width
+    content_tag :div, class: "form-group col-#{ f[:width] || wtxtarea }" do
+      @form.label( f[:attribute], f[:label] ) +
+      @form.text_area( f[:attribute], class: "form-control" )
     end
   end
 
-  def checkbox(attribute, label=nil, width=3)
-    content_tag :div, class: "form-check form-check-inline col-#{width || 3} mb-3" do
-      @form.check_box(attribute, class: "form-check-input") +
-      @form.label(attribute, label, class: "form-check-label")
+  def checkbox(f)
+    # checkbox needs: attribute, label, width
+    content_tag :div, class: "form-check form-check-inline col-#{ f[:width] || wckbox } mb-3" do
+      @form.check_box( f[:attribute], class: "form-check-input" ) +
+      @form.label( f[:attribute], f[:label], class: "form-check-label" )
     end
   end
 
-  def date_select(attribute, label=nil, width=4)
-    content_tag :div, class: "form-group col-#{width || 4}" do
-      @form.label(attribute, label) + " " +
-      @form.date_select(attribute, class: "form-control")
+  def date_select(f)
+    # date_select needs: attribute, label, width
+    content_tag :div, class: "form-group col-#{ f[:width] || wdtsel }" do
+      @form.label( f[:attribute], f[:label] ) + " " +
+      @form.date_select( f[:attribute], class: "form-control" )
     end
   end
 
   def select(f)
-    rslt = content_tag :div, class: "form-group col-#{ f[:width] || 3 }" do
+    # select needs: attribute, label, width, collection, selected, blank, disabled
+    rslt = content_tag :div, class: "form-group col-#{ f[:width] || wsel }" do
       @form.label( f[:attribute], f[:label] ) +
       @form.select( f[:attribute], f[:collection],
-                    { include_blank: f[:blank],
-                      selected: f[:selected]    },
-                    { class: "form-control",
-                      disabled: f[:disabled]    } )
+                    { include_blank: f[:blank], selected: f[:selected] },
+                    { class: "form-control", disabled: f[:disabled]    } )
     end
-    hdn = f[:disabled] ? hidden(f[:attribute], f[:selected]) : ""
+    hdn = f[:disabled] ? hidden(f) : ""
     rslt+hdn
+  end
+
+  def hidden(f)
+    # hidden needs: attribute, value
+    @form.hidden_field( f[:attribute], value: f[:value] ) if f[:value]
   end
 end
