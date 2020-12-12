@@ -2,38 +2,35 @@
 
 <h1>Addresses</h1>
 
-<div class='container'>
-  <table class='table table-sm table-bordered table-hover'>
-    <thead class='thead-light'>
+<table class='table table-sm table-bordered table-hover'>
+  <thead class='thead-light'>
+    <tr>
+      <th>Person</th>
+      <th>Address</th>
+      <th>Location</th>
+      <th>Preferred</th>
+      <th>Note</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @addresses.each do |address| %>
       <tr>
-        <th>Person</th>
-        <th>Address</th>
-        <th>Location</th>
-        <th>Preferred</th>
-        <th>Note</th>
-        <th colspan="3"></th>
+        <td><%= address.person.fullname %></td>
+        <td><%= address.address %></td>
+        <td><%= address.locn %></td>
+        <td><%= address.preferred %></td>
+        <td><%= address.note %></td>
+        <td><%= link_to 'Show', address %></td>
+        <td><%= link_to 'Edit', edit_address_path(address) %></td>
+        <td><%= link_to 'Destroy', address, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
-    </thead>
+    <% end %>
+  </tbody>
+</table>
 
-    <tbody>
-      <% @addresses.each do |address| %>
-        <tr>
-          <td><%= address.person.fullname %></td>
-          <td><%= address.address %></td>
-          <td><%= address.locn %></td>
-          <td><%= address.preferred %></td>
-          <td><%= address.note %></td>
-          <td><%= link_to 'Show', address %></td>
-          <td><%= link_to 'Edit', edit_address_path(address) %></td>
-          <td><%= link_to 'Destroy', address, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-        </tr>
-      <% end %>
-    </tbody>
-  </table>
+<%== pagy_bootstrap_nav(@pagy) %>
 
-  <%== pagy_bootstrap_nav(@pagy) %>
-
-</div>
 
 <br>
 
