@@ -5,6 +5,8 @@ Rails.application.routes.draw do
   get '/people/occupant/:house_id', to: 'people#new_occupant', as: 'new_occupant'
   get '/people/non_occupants', to: 'people#non_occupants', as: 'non_occupants'
 
+  get '/reports/homes', to: 'reports#homes', as: 'homes'
+
   resources :addresses, :phones, :emails, :people,
             :person_phones, :person_addresses,
   					:houses, :ownerships, :contributions,
