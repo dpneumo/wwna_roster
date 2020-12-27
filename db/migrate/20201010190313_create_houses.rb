@@ -11,6 +11,7 @@ class CreateHouses < ActiveRecord::Migration[6.0]
       t.boolean :rental, default: false
       t.boolean :listed, default: false
       t.string  :status,  default: 'Occupied'
+      t.string  :current_dues, default: '$0.00'
       t.text :note
 
       t.timestamps
