@@ -49,8 +49,13 @@ class House < ApplicationRecord
     self.number <=> other.number
   end
 
+  def contrib
+    Contribution.for(house_id: id, year: Date.today.year)
+  end
+
   private
-      def latitude_is_sane
+
+    def latitude_is_sane
       return unless latitude
       if latitude > 90
         errors.add(:latitude, "is > 90 deg")
