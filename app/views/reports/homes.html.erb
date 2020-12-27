@@ -21,13 +21,7 @@
 
           <% end %>
         </td>
-        <td>
-          <% if home.flag %>
-            <img src="../../$.svg" width=13.5 height=13.5 class='img-responsive center-block' alt="dues" />
-          <% else %>
-
-          <% end %>
-        </td>
+        <td><%= humanized_money_with_symbol(home.contrib) %></td>
         <td></td>
         <td></td>
       </tr>

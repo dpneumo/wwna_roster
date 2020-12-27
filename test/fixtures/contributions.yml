@@ -3,9 +3,19 @@
 one:
   house_id: 1
   date_paid: 2020-10-11
-  amount: $199.99
+  amount_cents: 19999
 
 two:
   house_id: 2
   date_paid: 2020-10-11
-  amount: $299.99
+  amount_cents: 29999
+
+three:
+  house_id: 1
+  date_paid: 2018-12-31
+  amount_cents: 39999
+
+four:
+  house_id: 2
+  date_paid: 2019-01-01
+  amount_cents: 49999

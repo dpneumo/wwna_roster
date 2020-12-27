@@ -1,24 +1,28 @@
 class Contribution < ApplicationRecord
-  include ActionView::Helpers::NumberHelper
-
   belongs_to :house
 
   validates :house_id,  presence: true
   validates :date_paid, presence: true
-  validates :amount,    presence: true,
-                        length: { maximum: 10 }
 
-  before_save :clean_amount
+  monetize :amount_cents, numericality: true
 
-  def clean_amount
-    new_amount = amount.delete '^0-9.'
-    self.amount = number_to_currency(new_amount, raise: true)
-  rescue
-    self.amount = '$0.00'
+
+  def self.for(house_id:, year: Date.today.year)
+    self.where(house_id: house_id, date_paid: year_range(year)).reduce(0) {|sum,c| sum+c.amount_cents }
+  end
+
+  def self.total_for(year: Date.today.year)
+    self.where(date_paid: year_range(year)).reduce(0) {|sum,c| sum+c.amount_cents }
   end
 
   def house_address
-    house.house_address
+    house ? house.house_address : ''
   end
+
+  private
+    def self.year_range(yr)
+      "#{yr}-01-01".."#{yr}-12-31"
+    end
 end
+
 

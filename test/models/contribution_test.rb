@@ -5,6 +5,16 @@ class ContributionTest < ActiveSupport::TestCase
     @cntrb = contributions(:one)
   end
 
+  test "Contribution class returns contributions for a house in a given year" do
+    assert_equal 19999, Contribution.for(house_id: 1, year: 2020)
+    assert_equal 39999, Contribution.for(house_id: 1, year: 2018)
+  end
+
+  test "Contribution class returns total contributions for a given year" do
+    assert_equal 49998, Contribution.total_for(year: 2020)
+    assert_equal 39999, Contribution.total_for(year: 2018)
+  end
+
   test "a valid contribution succeeds" do
     assert @cntrb.save
   end
@@ -19,48 +29,13 @@ class ContributionTest < ActiveSupport::TestCase
     refute @cntrb.save, "Saved contribution without date_paid"
   end
 
-  test "amount must be present" do
-    @cntrb.amount = nil
-    refute @cntrb.save, "Saved contribution without amount"
+  test "amount_cents must be present" do
+    contrib = Contribution.new(house_id: 1, date_paid: '2020-12-14', amount_cents: nil)
+    refute contrib.save, "Saved contribution without amount_cents"
   end
 
-  test "clean_amount formats amount to $ representation" do
-    @cntrb.amount = "45.67"
-    @cntrb.save
-    @cntrb.reload
-    assert_equal "$45.67", @cntrb.amount
+  test "amount_cents must be a number" do
+    contrib = Contribution.new(house_id: 1, date_paid: '2020-12-14', amount_cents: 'abc')
+    refute contrib.save, "contribution amount not a number"
   end
-
-  test "clean_amount rounds to 2 decimal places" do
-    @cntrb.amount = "45.6789"
-    @cntrb.save
-    @cntrb.reload
-    assert_equal "$45.68", @cntrb.amount
-  end
-
-  test "clean_amount scrubs out all char but 0 - 1 & '.'" do
-    @cntrb.amount = "45.67abc89"
-    @cntrb.save
-    @cntrb.reload
-    assert_equal "$45.68", @cntrb.amount
-  end
-
-  test "clean_amount returns '$0.00' for invalid numbers" do
-    # extra decimal points force '$0.00'
-    @cntrb.amount = "45.67..89"
-    @cntrb.save
-    @cntrb.reload
-    assert_equal "$0.00", @cntrb.amount
-
-    @cntrb.amount = "45..6789"
-    @cntrb.save
-    @cntrb.reload
-    assert_equal "$0.00", @cntrb.amount
-  end
-
-  test "amount cannot be longer than 10 characters" do
-    @cntrb.amount = "12345678901234.56"
-    refute @cntrb.valid?, "Validated amount > 10 characters"
-  end
-
 end

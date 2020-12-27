@@ -32,7 +32,8 @@ ActiveRecord::Schema.define(version: 2020_10_11_215205) do
   create_table "contributions", force: :cascade do |t|
     t.integer "house_id", null: false
     t.date "date_paid", null: false
-    t.string "amount", null: false
+    t.integer "amount_cents", default: 0, null: false
+    t.string "amount_currency", default: "USD", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -58,6 +59,7 @@ ActiveRecord::Schema.define(version: 2020_10_11_215205) do
     t.boolean "rental", default: false
     t.boolean "listed", default: false
     t.string "status", default: "Occupied"
+    t.string "current_dues", default: "$0.00"
     t.text "note"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false

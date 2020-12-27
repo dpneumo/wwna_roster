@@ -26,6 +26,8 @@ gem 'font_awesome5_rails'
 gem 'ransack', github: 'activerecord-hackery/ransack'
 gem 'pagy', '~> 3'
 
+gem 'money-rails', '~>1.12'
+
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 4.0'
 # Use Active Model has_secure_password
