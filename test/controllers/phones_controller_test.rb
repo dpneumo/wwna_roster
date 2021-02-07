@@ -3,6 +3,7 @@ require 'test_helper'
 class PhonesControllerTest < ActionDispatch::IntegrationTest
   setup do
     @phone = phones(:one)
+    login_as(users(:one))
   end
 
   test "should get index" do

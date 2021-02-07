@@ -1,53 +1,12 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
   <a class="navbar-brand" href="#">WWNA</a>
 
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
 
+  <% if current_user.nil? %>
+    <%= link_to new_user_session_path, class: 'login-button' do %>Sign in<% end %>
+  <% else %>
+    <%= render "layouts/navbar_user" %>
+    <%= link_to destroy_user_session_path, method: :delete do %>Log out<% end %>
+  <% end %>
 
-  <div class="collapse navbar-collapse" id="navbarSupportedContent">
-    <ul class="navbar-nav d-flex">
-
-      <li class="nav-item p-2">
-        <%= link_to "Register", new_registration_path %>
-      </li>
-
-      <li class="nav-item p-2">
-        <%= link_to "People", people_path %>
-      </li>
-
-      <li class="nav-item p-2">
-        <%= link_to 'Houses', houses_path %>
-      </li>
-
-      <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" href="#" id="propertyLnks" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Property Admin</a>
-        <div class="dropdown-menu" aria-labelledby="propertyLnks">
-          <a class="dropdown-item">
-            <%= link_to "Ownerships", ownerships_path %>
-          </a>
-          <a class="dropdown-item">
-            <%= link_to "Contributions", contributions_path %>
-          </a>
-        </div>
-      </li>
-
-      <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" href="#" id="personLnks" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Person Admin</a>
-        <div class="dropdown-menu" aria-labelledby="personLnks">
-          <a class="dropdown-item">
-            <%= link_to "Addresses", addresses_path %>
-          </a>
-          <a class="dropdown-item">
-            <%= link_to "Emails", emails_path %>
-          </a>
-          <a class="dropdown-item">
-            <%= link_to "Phones", phones_path %>
-          </a>
-        </div>
-      </li>
-
-    </ul>
-  </div>
 </nav>

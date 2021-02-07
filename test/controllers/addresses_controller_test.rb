@@ -3,6 +3,7 @@ require 'test_helper'
 class AddressesControllerTest < ActionDispatch::IntegrationTest
   setup do
     @address = addresses(:one)
+    login_as(users(:one))
   end
 
   test "should get index" do

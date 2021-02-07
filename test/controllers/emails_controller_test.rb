@@ -3,6 +3,7 @@ require 'test_helper'
 class EmailsControllerTest < ActionDispatch::IntegrationTest
   setup do
     @email = emails(:one)
+    login_as(users(:one))
   end
 
   test "should get index" do

@@ -3,6 +3,7 @@ require 'test_helper'
 class HousesControllerTest < ActionDispatch::IntegrationTest
   setup do
     @house = houses(:one)
+    login_as(users(:one))
   end
 
   test "should get index" do

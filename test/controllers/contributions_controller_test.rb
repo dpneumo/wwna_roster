@@ -4,6 +4,7 @@ class ContributionsControllerTest < ActionDispatch::IntegrationTest
   setup do
     @contribution = contributions(:one)
     @house = houses(:one)
+    login_as(users(:one))
   end
 
   test "should get index" do
