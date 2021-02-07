@@ -8,8 +8,8 @@ class PresentersTest < ActiveSupport::TestCase
   end
 
   test "show creates a labeled attribute value for display" do
-    @model.latitude = BigDecimal('123.123456789')
-    actual = @input.show(:latitude,'Latitude')
+    @model.lat = BigDecimal('123.123456789')
+    actual = @input.show(:lat,'Latitude')
 
     assert actual.include? 'Latitude:'
     assert actual.include? '123.123456789'
