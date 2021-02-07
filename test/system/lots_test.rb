@@ -15,8 +15,8 @@ class LotsTest < ApplicationSystemTestCase
     click_on "New Lot"
 
     fill_in "Image link", with: @lot.image_link
-    fill_in "Latitude", with: @lot.latitude
-    fill_in "Longitude", with: @lot.longitude
+    fill_in "Latitude", with: @lot.lat
+    fill_in "Longitude", with: @lot.lng
     fill_in "Note", with: @lot.note
     fill_in "Number", with: @lot.number
     fill_in "Street", with: @lot.street
@@ -31,8 +31,8 @@ class LotsTest < ApplicationSystemTestCase
     click_on "Edit", match: :first
 
     fill_in "Image link", with: @lot.image_link
-    fill_in "Latitude", with: @lot.latitude
-    fill_in "Longitude", with: @lot.longitude
+    fill_in "Latitude", with: @lot.lat
+    fill_in "Longitude", with: @lot.lng
     fill_in "Note", with: @lot.note
     fill_in "Number", with: @lot.number
     fill_in "Street", with: @lot.street

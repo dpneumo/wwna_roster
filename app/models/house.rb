@@ -10,8 +10,8 @@ class House < ApplicationRecord
             through: :ownerships
   has_many :contributions, -> { order(date_paid: :asc) }
 
-  validate :latitude_is_sane
-  validate :longitude_is_sane
+  validate :lat_is_sane
+  validate :lng_is_sane
 
   Statuses = ["Occupied","Vacant","Construction"]
 
@@ -55,21 +55,21 @@ class House < ApplicationRecord
 
   private
 
-    def latitude_is_sane
-      return unless latitude
-      if latitude > 90
-        errors.add(:latitude, "is > 90 deg")
-      elsif latitude < -90
-        errors.add(:latitude, "is < -90 deg")
+    def lat_is_sane
+      return unless lat
+      if lat > 90
+        errors.add(:lat, "is > 90 deg")
+      elsif lat < -90
+        errors.add(:lat, "is < -90 deg")
       end
     end
 
-    def longitude_is_sane
-      return unless longitude
-      if longitude > 180
-        errors.add(:longitude, "is > 180 deg")
-      elsif longitude < -180
-        errors.add(:longitude, "is < -180 deg")
+    def lng_is_sane
+      return unless lng
+      if lng > 180
+        errors.add(:lng, "is > 180 deg")
+      elsif lng < -180
+        errors.add(:lng, "is < -180 deg")
       end
     end
 end

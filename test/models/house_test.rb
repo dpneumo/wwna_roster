@@ -10,22 +10,22 @@ class HouseTest < ActiveSupport::TestCase
   end
 
   test "latitude may not be > 90" do
-    @hse.latitude = 100
+    @hse.lat = 100
     refute @hse.save, "Saved house with too high latitude"
   end
 
   test "latitude may not be < -90" do
-    @hse.latitude = -100
+    @hse.lat = -100
     refute @hse.save, "Saved house with too low latitude"
   end
 
   test "longitude may not be > 180" do
-    @hse.longitude = 200
+    @hse.lng = 200
     refute @hse.save, "Saved house with too high longitude"
   end
 
   test "longitude may not be < -180" do
-    @hse.longitude = -200
+    @hse.lng = -200
     refute @hse.save, "Saved house with too low longitude"
   end
 

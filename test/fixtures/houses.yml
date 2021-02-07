@@ -4,8 +4,8 @@ one:
   id: 1
   number: '123A'
   street: 'Oak Dr'
-  latitude: 45.123456
-  longitude: 120.123456
+  lat: 45.123456
+  lng: 120.123456
   image_link: Img-1
   linked_lot_id: 3
   flag: false
@@ -18,8 +18,8 @@ two:
   id: 2
   number: zzz
   street: aaa
-  latitude: -15.123456
-  longitude: -100.123456
+  lat: -15.123456
+  lng: -100.123456
   image_link: Img-2
   linked_lot_id: 4
   flag: false

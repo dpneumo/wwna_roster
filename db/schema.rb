@@ -51,8 +51,8 @@ ActiveRecord::Schema.define(version: 2020_10_11_215205) do
   create_table "houses", force: :cascade do |t|
     t.string "number", null: false
     t.string "street", null: false
-    t.decimal "latitude", precision: 9, scale: 6
-    t.decimal "longitude", precision: 9, scale: 6
+    t.decimal "lat", precision: 9, scale: 6
+    t.decimal "lng", precision: 9, scale: 6
     t.string "image_link"
     t.integer "linked_lot_id"
     t.boolean "flag", default: false
