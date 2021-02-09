@@ -2,12 +2,12 @@
 
 one:
   person: one
-  name: MyString
+  name: President
   start: 2021-01-29
-  stop: 2021-01-29
+  stop: 2021-01-30
 
 two:
   person: two
-  name: MyString
+  name: Treasurer
   start: 2021-01-29
-  stop: 2021-01-29
+  stop: 2021-01-31

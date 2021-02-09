@@ -3,11 +3,15 @@
   <ul class="navbar-nav d-flex">
 
     <li class="nav-item p-2">
+      <%= link_to 'Houses', houses_path %>
+    </li>
+
+    <li class="nav-item p-2">
       <%= link_to "People", people_path %>
     </li>
 
     <li class="nav-item p-2">
-      <%= link_to 'Houses', houses_path %>
+      <%= link_to "Positions", positions_path %>
     </li>
 
     <%= render "layouts/property_dropdown" %>

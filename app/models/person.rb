@@ -5,6 +5,7 @@ class Person < ApplicationRecord
   belongs_to :house, optional: true
   has_many :ownerships
   has_many :properties, through: :ownerships
+  has_many :positions
 
   validates :first, presence: true
   validates :last,  presence: true
@@ -47,4 +48,13 @@ class Person < ApplicationRecord
     addresses.where(id: pref_address_id).first.address
   end
 
+  def current_position
+    today = Date.today
+    p = positions_during(start: today, stop: today).first
+    p ? p.name : ''
+  end
+
+  def positions_during(start:, stop:)
+    positions.where("start <= ? AND stop > ?", start, stop)
+  end
 end

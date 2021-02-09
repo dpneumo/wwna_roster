@@ -1,37 +1,27 @@
 <%= form_with(model: position, local: true) do |form| %>
-  <% if position.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(position.errors.count, "error") %> prohibited this position from being saved:</h2>
+  <% errors = Shared::ShowErrs.new(position) %>
+  <% input = Shared::Inputs.new(form) %>
 
-      <ul>
-        <% position.errors.full_messages.each do |message| %>
-          <li><%= message %></li>
-        <% end %>
-      </ul>
-    </div>
-  <% end %>
+  <%= errors.show %>
 
-  <div class="field">
-    <%= form.label :person_id %>
-    <%= form.number_field :person_id %>
-  </div>
+  <%= input.columns([ { attribute: :person_id, 
+                        kind: :select,
+                        collection: Person.select_list,
+                        selected: position.person_id,
+                        blank: true } ]) %>
 
-  <div class="field">
-    <%= form.label :name %>
-    <%= form.text_field :name %>
-  </div>
+  <%= input.columns([ { attribute: :name,
+                        kind: :select,
+                        collection: Position.names,
+                        selected: position.name,
+                        blank: true } ]) %>
 
-  <div class="field">
-    <%= form.label :start %>
-    <%= form.date_select :start %>
-  </div>
+  <%= input.columns([ { attribute: :start, 
+                        kind: :date_select } ]) %>
 
-  <div class="field">
-    <%= form.label :stop %>
-    <%= form.date_select :stop %>
-  </div>
+  <%= input.columns([ { attribute: :stop, 
+                        kind: :date_select } ]) %>
 
-  <div class="actions">
-    <%= form.submit %>
-  </div>
+  <%= render  partial: 'shared/form_submit_bs',
+              locals: { form: form , my_label: nil} %>
 <% end %>

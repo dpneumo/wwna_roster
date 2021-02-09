@@ -9,7 +9,7 @@ class Shared::ShowErrs
 
   def show
     return '' unless @mdl.errors.any?
-    content_tag :div, class: "row", id:"error_explanation" do
+    content_tag :div, id:"error_explanation" do
       content_tag(:h5, label) +
       content_tag(:ul) do
         err_msgs.map {|msg| content_tag(:li, msg).html_safe }.
