@@ -15,14 +15,19 @@ class Position < ApplicationRecord
     ]
   end
 
+  def self.for(person_id:, start:, stop:)
+    positions.where("person_id = ? AND start <= ? AND stop > ?", person_id, start, stop)
+  end
+
   def person_name
   	return 'UnAssigned' unless person
   	person.fullname
   end
 
-  def cannot_stop_before_start
-  	if start.present? && stop.present? && stop <= start
-  		errors.add(:stop, "must occur *after* Start")
-  	end
-  end
+	private
+	  def cannot_stop_before_start
+	  	if start.present? && stop.present? && stop <= start
+	  		errors.add(:stop, "must occur *after* Start")
+	  	end
+	  end
 end

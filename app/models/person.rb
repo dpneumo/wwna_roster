@@ -50,7 +50,7 @@ class Person < ApplicationRecord
 
   def current_position
     today = Date.today
-    p = positions_during(start: today, stop: today).first
+    p = Position.for(person_id: id, start: today, stop: today).first
     p ? p.name : ''
   end
 
