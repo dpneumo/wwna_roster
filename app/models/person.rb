@@ -50,11 +50,8 @@ class Person < ApplicationRecord
 
   def current_position
     today = Date.today
-    p = Position.for(person_id: id, start: today, stop: today).first
+    p = Position.for_person(person_id: id, start: today, stop: today).first
     p ? p.name : ''
   end
 
-  def positions_during(start:, stop:)
-    positions.where("start <= ? AND stop > ?", start, stop)
-  end
 end

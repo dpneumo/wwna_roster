@@ -3,11 +3,23 @@
 one:
   person: one
   name: President
-  start: 2021-01-29
-  stop: 2021-01-30
+  start: <%= Date.yesterday %>
+  stop: <%= Date.tomorrow %>
 
 two:
+  person: one
+  name: Secretary
+  start: <%= Date.current %>
+  stop: <%= Date.tomorrow %>
+
+three:
   person: two
   name: Treasurer
-  start: 2021-01-29
-  stop: 2021-01-31
+  start: <%= Date.current.beginning_of_year %>
+  stop: <%= Date.current.end_of_year %>
+
+four:
+  person: two
+  name: Vice
+  start: <%= Date.current.next_year.at_beginning_of_year %>
+  stop: <%= Date.current.next_year.at_end_of_year %>

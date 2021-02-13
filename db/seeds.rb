@@ -18,6 +18,15 @@ Person.create([
   {nickname: "Blake", first: "J", middle: "Blake", last: "Kuppinger"},
 ])
 
+Position.create([
+  {person_id: 1, name: "President",      start: "2021-01-01", stop: "2021-01-30"},
+  {person_id: 2, name: "Vice President", start: "2021-01-01", stop: "2021-02-28"},
+  {person_id: 2, name: "Secretary",      start: "2021-03-01", stop: "2021-06-30"},
+  {person_id: 1, name: "Treasurer",      start: "2021-02-01", stop: "2021-12-31"},
+  {person_id: 1, name: "Landscape",      start: "2021-01-29", stop: "2021-01-30"},
+  {person_id: 2, name: "Welcome",        start: "2021-02-01", stop: "2021-04-30"}
+])
+
 House.create([
   {"number"=>6000, "street"=>"Englishoak Dr", "lat"=>32.7074229, "lng"=>-97.1994438},
   {"number"=>6002, "street"=>"Englishoak Dr", "lat"=>32.707006, "lng"=>-97.199421},
