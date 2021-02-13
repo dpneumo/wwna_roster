@@ -11,6 +11,9 @@ one:
   house_id: 1
   role: MyString
   status: MyString
+  pref_email_id: 1
+  pref_phone_id: 1
+  pref_address_id: 1
 
 two:
   nickname: Mike
@@ -23,3 +26,21 @@ two:
   house_id: 2
   role: MyString
   status: MyString
+  pref_email_id: 
+  pref_phone_id: 
+  pref_address_id: 
+
+three:
+  nickname: Geoff
+  first: Geoffry
+  middle: K
+  last: Swarch
+  suffix: 
+  honorific: 
+  note: MyText
+  house_id: 2
+  role: MyString
+  status: MyString
+  pref_email_id: 
+  pref_phone_id: 
+  pref_address_id: 

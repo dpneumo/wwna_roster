@@ -27,6 +27,42 @@ class PersonTest < ActiveSupport::TestCase
     assert_equal 'Oak Dr', @per.properties.first.street
   end
 
+  test 'returns a preferred email when assigned' do
+    assert_equal 'aaa@bbb.ccc', @per.preferred_email
+  end
+
+  test 'returns an empty string for preferred email when unassigned' do
+    @per2 = people(:two)
+    assert_equal '', @per2.preferred_email
+  end
+
+  test 'returns a preferred phone when assigned' do
+    assert_equal "(817) 123-4567", @per.preferred_phone
+  end
+
+  test 'returns an empty string for preferred phone when unassigned' do
+    @per2 = people(:two)
+    assert_equal '', @per2.preferred_phone
+  end
+
+  test 'returns a preferred address when assigned' do
+    assert_equal "123A Oak Dr, Arlington, TX  76016", @per.preferred_address
+  end
+
+  test 'returns an empty string for preferred address when unassigned' do
+    @per2 = people(:two)
+    assert_equal '', @per2.preferred_address
+  end
+
+  test 'returns the current WWNA position held, if assigned' do
+    assert_equal 'Secretary', @per.current_position
+  end
+
+  test 'returns an empty string for current position if unassigned' do
+    @per3 = people(:three)
+    assert_equal '', @per3.current_position
+  end
+
   test "Person.roles returns a list of roles" do
     assert Person.roles.include?('Child')
   end
@@ -37,8 +73,8 @@ class PersonTest < ActiveSupport::TestCase
 
   test "Person.select_list returns collection (id & fullname) for select" do
     list = Person.select_list
-    assert_equal 2, list.count
+    assert_equal 3, list.count
     assert list.first.last.is_a? Integer
-    assert_equal "Satre, Michael B", list.last.first
+    assert_equal "Swarch, Geoffry K", list.last.first
   end
 end

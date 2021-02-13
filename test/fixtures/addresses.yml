@@ -1,6 +1,7 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
+  id: 1
   person: one
   number: '123A'
   street: 'Oak Dr'
@@ -12,6 +13,7 @@ one:
   note: 'Addr note'
 
 two:
+  id: 2
   person: two
   number: zzz
   street: aaa
