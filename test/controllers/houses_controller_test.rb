@@ -30,6 +30,11 @@ class HousesControllerTest < ActionDispatch::IntegrationTest
     assert_response :success
   end
 
+  test "should return house detail" do
+    get house_detail_url(@house)
+    assert_response :success
+  end
+
   test "should get edit" do
     get edit_house_url(@house)
     assert_response :success

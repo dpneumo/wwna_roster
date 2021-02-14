@@ -39,6 +39,11 @@ class PeopleControllerTest < ActionDispatch::IntegrationTest
     assert_response :success
   end
 
+  test "should return person detail" do
+    get person_detail_url(@person)
+    assert_response :success
+  end
+
   test "should get edit" do
     get edit_person_url(@person)
     assert_response :success
