@@ -52,5 +52,4 @@ class Person < ApplicationRecord
     p = Position.current_posns_for_person(person_id: id).first
     p ? p.name : ''
   end
-
 end
