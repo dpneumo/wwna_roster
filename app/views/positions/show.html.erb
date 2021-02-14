@@ -1,24 +1,11 @@
-<p id="notice"><%= notice %></p>
+<% presenter = Shared::Presenters.new(@position) %>
 
-<p>
-  <strong>Person:</strong>
-  <%= @position.person_name %>
-</p>
+<%= presenter.notice(notice) %>
 
-<p>
-  <strong>Name:</strong>
-  <%= @position.name %>
-</p>
-
-<p>
-  <strong>Start:</strong>
-  <%= @position.start %>
-</p>
-
-<p>
-  <strong>Stop:</strong>
-  <%= @position.stop %>
-</p>
+<%= presenter.show(:person_name, 'Person') %>
+<%= presenter.show(:name) %>
+<%= presenter.show(:start) %>
+<%= presenter.show(:stop) %>
 
 <%= link_to 'Edit', edit_position_path(@position) %> |
-<%= link_to 'Back', positions_path %>
+<%= link_to 'List', positions_path %>
