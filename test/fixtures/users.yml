@@ -6,7 +6,7 @@
 #
 one: 
   email: 'a@b.c'
-  encrypted_password: 'abc'
+  encrypted_password: <%= Devise::Encryptor.digest(User, 'password') %>
   reset_password_token:
   reset_password_sent_at:
   remember_created_at:
@@ -25,7 +25,7 @@ one:
 
 two: 
   email: 'x@y.z'
-  encrypted_password: 'xyz'
+  encrypted_password: <%= Devise::Encryptor.digest(User, 'password') %>
   reset_password_token:
   reset_password_sent_at:
   remember_created_at:

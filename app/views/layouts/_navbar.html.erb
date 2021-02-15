@@ -3,7 +3,7 @@
 
 
   <% if current_user.nil? %>
-    <%= link_to new_user_session_path, class: 'login-button' do %>Sign in<% end %>
+    <%= link_to new_user_session_path, class: 'login-button' do %>Log in<% end %>
   <% else %>
     <%= render "layouts/navbar_user" %>
     <%= link_to destroy_user_session_path, method: :delete do %>Log out<% end %>
