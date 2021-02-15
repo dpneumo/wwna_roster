@@ -75,6 +75,7 @@ class PersonTest < ActiveSupport::TestCase
     list = Person.select_list
     assert_equal 3, list.count
     assert list.first.last.is_a? Integer
-    assert_equal "Swarch, Geoffry K", list.last.first
+    names = list.map {|item| item.first }
+    assert names.include?("Swarch, Geoffry K"), "select_list is incomplete"
   end
 end
