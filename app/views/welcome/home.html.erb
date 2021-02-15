@@ -1,0 +1,23 @@
+<h1>Hello</h1>
+<h1>Welcome to the WWNA Roster!</h1>
+
+<h3>Total Dues Paid: <%= humanized_money_with_symbol Contribution.total_for() %></h3>
+
+<h3>Current Officers and Committee Chairs</h3>
+
+<table class='table table-sm table-bordered table-hover'>
+  <thead class='thead-light'>
+    <tr>
+      <th>Position</th>
+      <th>Name</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% Position.current_active_posns.each do |posn| %>
+      <tr>
+        <td><%= posn.name %></td>
+        <td><%= posn.person_name %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

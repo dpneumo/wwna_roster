@@ -1,8 +1,8 @@
 Rails.application.routes.draw do
   devise_for :users
 
-
   get 'welcome/index'
+  get 'welcome/home'
   get '/houses/:id/detail', to: 'houses#detail', as: 'house_detail'
   get '/people/:id/detail', to: 'people#detail', as: 'person_detail'
   get '/people/occupant/:house_id', to: 'people#new_occupant', as: 'new_occupant'
