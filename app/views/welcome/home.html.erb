@@ -1,23 +1,40 @@
-<h1>Hello</h1>
 <h1>Welcome to the WWNA Roster!</h1>
 
-<h3>Total Dues Paid: <%= humanized_money_with_symbol Contribution.total_for() %></h3>
-
-<h3>Current Officers and Committee Chairs</h3>
-
-<table class='table table-sm table-bordered table-hover'>
-  <thead class='thead-light'>
-    <tr>
-      <th>Position</th>
-      <th>Name</th>
-    </tr>
-  </thead>
-  <tbody>
-    <% Position.current_active_posns.each do |posn| %>
-      <tr>
-        <td><%= posn.name %></td>
-        <td><%= posn.person_name %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+<row>
+  <h3>Total Dues Paid <%= @current_year %>: <%= humanized_money_with_symbol @total_dues_current %></h3>
+  <h3>Total Dues Paid <%= @last_year %>: <%= humanized_money_with_symbol @total_dues_last_year %></h3>
+</row>
+<row>....</row>
+<row>
+  <h3>Current Officers and Committee Chairs</h3>
+  <div class="container">
+    <div class="w-25"></div>
+      <table class='table table-sm table-bordered table-hover'>
+        <thead class='thead-light'>
+          <tr>
+            <th>Position</th>
+            <th>Name</th>
+            <th>Phone</th>
+            <th>Email</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @positions.each do |posn| %>
+            <tr>
+              <td><%= posn.name %></td>
+              <td>
+                <% if posn.person %>
+                  <%= link_to posn.person_name, person_detail_path(posn.person.id) %>
+                <% else %>
+                  <%= posn.person_name %>
+                <% end %>
+              </td>
+              <td><%= posn.person_pref_phone %></td>
+              <td><%= posn.person_pref_email %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</row>
