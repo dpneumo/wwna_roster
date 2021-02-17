@@ -32,6 +32,16 @@ class Position < ApplicationRecord
   	person.fullname
   end
 
+  def person_pref_phone
+    return '' unless person
+    person.preferred_phone
+  end
+
+  def person_pref_email
+    return '' unless person
+    person.preferred_email
+  end
+
   def currently_active?
   	start <= Date.current && stop >= Date.current
   end
