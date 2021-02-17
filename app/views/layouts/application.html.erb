@@ -1,19 +1,38 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
   <head>
-    <title>WWNA Roster</title>
+    <%= render "layouts/bootstrap_head_content" %>
+
+    <meta name="description" content="">
+    <meta name="author" content="Mitch Kuppinger, MD">
+    <meta name="copyright" content="Mitch Kuppinger, MD, Black Lake Software">
+
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
+
+    <title>WWNA Roster</title>
 
     <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
-  <body>
-    <%= render "layouts/navbar" %>
-    <div class="container px-0">
-      <p class="alert"><%= alert %></p>
-      <%= yield %>
+  <body class="text-center">
+    <div class="container-fluid d-flex w-100 h-100 p-3 mx-auto flex-column">
+      <header>
+        <% if current_user.nil? %>
+          <%= link_to new_user_session_path, class: 'login-button' do %>Log in<% end %>
+        <% else %>
+          <%= render "layouts/navbar" %>
+        <% end %>
+      </header>
+      <main role="main" class="inner cover">
+        <p class="alert"><%= alert %></p>
+        <%= yield %>
+      </main>
+      <footer class="mastfoot mt-auto">
+        <%= render "layouts/footer_content" %>
+      </footer>
+
     </div>
   </body>
 </html>

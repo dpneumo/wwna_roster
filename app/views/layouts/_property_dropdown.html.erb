@@ -1,11 +1,7 @@
-      <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" href="#" id="propertyLnks" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Property Admin</a>
-        <div class="dropdown-menu" aria-labelledby="propertyLnks">
-          <a class="dropdown-item">
-            <%= link_to "Ownerships", ownerships_path %>
-          </a>
-          <a class="dropdown-item">
-            <%= link_to "Contributions", contributions_path %>
-          </a>
-        </div>
-      </li>
+<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+  Property Admin
+</a>
+<div class="dropdown-menu" aria-labelledby="navbarDropdown">
+  <%= link_to "Ownerships", ownerships_path, class: "dropdown-item" %>
+  <%= link_to "Contributions", contributions_path, class: "dropdown-item" %>
+</div>
