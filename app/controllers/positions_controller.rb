@@ -14,7 +14,7 @@ class PositionsController < ApplicationController
 
   # GET /positions/new
   def new
-    @position = Position.new(start: Date.today, stop: 1.year.from_now)
+    @position = Position.new(start: Date.current, stop: 1.year.from_now)
   end
 
   # GET /positions/1/edit

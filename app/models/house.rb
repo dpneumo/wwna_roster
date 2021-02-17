@@ -50,7 +50,7 @@ class House < ApplicationRecord
   end
 
   def contrib
-    Contribution.for(house_id: id, year: Date.today.year)
+    Contribution.for(house_id: id, year: Date.current.year)
   end
 
   private

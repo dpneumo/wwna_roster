@@ -7,11 +7,11 @@ class Contribution < ApplicationRecord
   monetize :amount_cents, numericality: true
 
 
-  def self.for(house_id:, year: Date.today.year)
+  def self.for(house_id:, year: Date.current.year)
     self.where(house_id: house_id, date_paid: year_range(year)).reduce(0) {|sum,c| sum+c.amount_cents }
   end
 
-  def self.total_for(year: Date.today.year)
+  def self.total_for(year: Date.current.year)
     self.where(date_paid: year_range(year)).reduce(0) {|sum,c| sum+c.amount_cents }
   end
 

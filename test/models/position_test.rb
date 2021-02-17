@@ -26,10 +26,10 @@ class PositionTest < ActiveSupport::TestCase
   end
 
   test "stop must be after start" do
-  	@psn.start = Date.today
+  	@psn.start = Date.current
     @psn.stop = Date.yesterday
     refute @psn.save, "Saved position with stop before start"
-    @psn.stop = Date.today
+    @psn.stop = Date.current
     refute @psn.save, "Saved position with stop = start"
   end
 
