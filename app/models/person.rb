@@ -35,17 +35,20 @@ class Person < ApplicationRecord
 
   def preferred_email
     return '' unless pref_email_id
-    emails.where(id: pref_email_id).first.addr
+    em = emails.where(id: pref_email_id).first
+    em ? em.addr : ''
   end
 
   def preferred_phone
     return '' unless pref_phone_id
-    phones.where(id: pref_phone_id).first.ph_number
+    ph = phones.where(id: pref_phone_id).first
+    ph ? ph.ph_number : ''
   end
 
   def preferred_address
     return '' unless pref_address_id
-    addresses.where(id: pref_address_id).first.address
+    addr = addresses.where(id: pref_address_id).first
+    addr ? addr.address : ''
   end
 
   def current_position

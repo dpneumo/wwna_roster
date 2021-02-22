@@ -16,15 +16,17 @@
 
   <%= input.row([ { attribute: :house_id, kind: :select,
                     collection: House.select_list,
-                    selected: person.house_id,
                     blank: true,
+                    selected: person.house_id,
                     disabled: @disable_house_select },
+                  { attribute: :house_id, kind: :hidden,
+                    value: person.house_id },
                   { attribute: :role, kind: :select,
                     collection: Person.roles,
-                    selected: "Unknown" },
+                    selected: person.role || "Unknown" },
                   { attribute: :status, kind: :select,
                     collection: Person.statuses,
-                    selected: "Unknown" }  ]) %>
+                    selected: person.role || "Unknown" }  ]) %>
 
   <%= input.row([ { attribute: :note, kind: :textarea } ]) %>
 

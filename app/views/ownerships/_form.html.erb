@@ -6,12 +6,14 @@
 
   <%= input.row([ { attribute: :house_id, kind: :select,
                     collection: House.select_list,
+                    selected: ownership.house_id,
                     disabled: ownership.house_id },
                   { attribute: :house_id, kind: :hidden,
                     value: ownership.house_id } ]) %>
 
   <%= input.row([ { attribute: :person_id, kind: :select,
-                    collection: Person.select_list } ]) %>
+                    collection: Person.select_list,
+                    selected: ownership.person_id } ]) %>
 
   <%= render  partial: 'shared/form_submit_bs',
               locals: { form: form } %>

@@ -11,18 +11,20 @@
                   {attribute: :lng},
                   {attribute: :image_link} ]) %>
 
-  <%= input.row([ { kind: :select, attribute: :status,
-                    collection:  House.statuses, selected: "Occupied" },
-                  { kind: :select, attribute: :linked_lot_id,
+  <%= input.row([ { attribute: :status, kind: :select, 
+                    collection:  House.statuses, 
+                    selected: house.status || "Occupied" },
+                  { attribute: :linked_lot_id, kind: :select, 
                     collection: grouped_options_for_select(House.for_select),
+                    selected: house.linked_lot_id,
                     blank: true,
                     width: 3 }  ]) %>
 
-  <%= input.row([ { kind: :checkbox, attribute: :flag,
+  <%= input.row([ { attribute: :flag, kind: :checkbox, 
                     label: "Member Flag Group" },
-                  { kind: :checkbox, attribute: :rental,
+                  { attribute: :rental, kind: :checkbox, 
                     label: "Rental Property" },
-                  { kind: :checkbox, attribute: :listed,
+                  { attribute: :listed, kind: :checkbox, 
                     label: "For Sale" }        ]) %>
 
   <%= input.row([ { kind: :textarea, attribute: :note } ]) %>

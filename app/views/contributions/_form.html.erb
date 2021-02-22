@@ -6,6 +6,7 @@
 
   <%= input.row([ { attribute: :house_id, kind: :select,
                     collection: House.select_list,
+                    selected: contribution.house_id,
                     disabled: contribution.house_id },
                   { attribute: :house_id, kind: :hidden,
                     value: contribution.house_id } ]) %>

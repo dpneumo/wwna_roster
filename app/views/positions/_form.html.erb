@@ -8,7 +8,10 @@
                         kind: :select,
                         collection: Person.select_list,
                         selected: position.person_id,
-                        blank: true } ]) %>
+                        disabled: position.person_id,
+                        blank: true },
+                      { attribute: :person_id, kind: :hidden,
+                        value: position.person_id } ]) %>
 
   <%= input.columns([ { attribute: :name,
                         kind: :select,
@@ -17,10 +20,12 @@
                         blank: true } ]) %>
 
   <%= input.columns([ { attribute: :start, 
-                        kind: :date_select } ]) %>
+                        kind: :date_select,
+                        selected: position.start } ]) %>
 
   <%= input.columns([ { attribute: :stop, 
-                        kind: :date_select } ]) %>
+                        kind: :date_select,
+                        selected: position.start } ]) %>
 
   <%= render  partial: 'shared/form_submit_bs',
               locals: { form: form , my_label: nil} %>

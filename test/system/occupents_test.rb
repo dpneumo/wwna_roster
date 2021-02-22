@@ -3,6 +3,7 @@ require "application_system_test_case"
 class OccupantsTest < ApplicationSystemTestCase
   setup do
     @occupant = occupants(:one)
+    login_as(users(:one))
   end
 
   test "visiting the index" do

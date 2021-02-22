@@ -6,6 +6,7 @@
 
   <%= input.row([ { attribute: :person_id, kind: :select,
                     collection: Person.select_list,
+                    selected: email.person_id,
                     disabled: email.person_id },
                   { attribute: :person_id, kind: :hidden,
                     value: email.person_id } ]) %>
@@ -14,9 +15,11 @@
 
   <%= input.row([ { attribute: :locn, kind: :select,
                     collection: Email.locations,
+                    selected: email.locn || 'Other',
                     blank: false },
                   { attribute: :preferred, kind: :select,
                     collection: [['Yes',true],['No',false]],
+                    selected: email.preferred || false,
                     blank: false } ]) %>
 
   <%= input.row([ { attribute: :note, kind: :textarea } ]) %>
