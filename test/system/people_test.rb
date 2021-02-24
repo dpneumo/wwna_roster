@@ -2,55 +2,45 @@ require "application_system_test_case"
 
 class PeopleTest < ApplicationSystemTestCase
   setup do
-    @person = people(:one)
     login_as(users(:one))
   end
 
-  test "visiting the index" do
+  test "create a Person, update it then destroy it" do
     visit people_url
-    assert_selector "h1", text: "People"
-  end
 
-  test "creating a Person" do
-    visit people_url
+    # People List (index)
+    assert_selector "h1", text: "People"
     click_on "New Person"
 
-    fill_in "First", with: @person.first
-    fill_in "Honorific", with: @person.honorific
-    fill_in "Last", with: @person.last
-    fill_in "Middle", with: @person.middle
-    fill_in "Nickname", with: @person.nickname
-    fill_in "Note", with: @person.note
-    fill_in "Suffix", with: @person.suffix
+    # New (form)
+    assert_selector "h1", text: "New Person"
+    fill_in "person_honorific", with: 'Sir'
+    fill_in "person_first", with: 'Bob'
+    fill_in "person_middle", with: 'Albert'
+    fill_in "person_last", with: 'Smith'
+    fill_in "person_nickname", with: 'George'
+    fill_in "person_suffix", with: 'Sr.'
+    fill_in "person_note", with: 'abc'
     click_on "Create Person"
 
+    # Show
+    assert_selector "h1", text: "Person"
     assert_text "Person was successfully created"
-    click_on "Back"
-  end
+    click_on "Edit"
 
-  test "updating a Person" do
-    visit people_url
-    click_on "Edit", match: :first
-
-    fill_in "First", with: @person.first
-    fill_in "Honorific", with: @person.honorific
-    fill_in "Last", with: @person.last
-    fill_in "Middle", with: @person.middle
-    fill_in "Nickname", with: @person.nickname
-    fill_in "Note", with: @person.note
-    fill_in "Suffix", with: @person.suffix
+    # Edit (form)
+    assert_selector "h1", text: "Edit Person"
+    fill_in "Honorific", with: 'Dr.'
     click_on "Update Person"
 
+    # Show
     assert_text "Person was successfully updated"
-    click_on "Back"
-  end
+    click_on "List"
 
-  test "destroying a Person" do
-    visit people_url
+    # People List (index)
     page.accept_confirm do
       click_on "Destroy", match: :first
     end
-
     assert_text "Person was successfully destroyed"
   end
 end

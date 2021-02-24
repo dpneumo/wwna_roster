@@ -1,5 +1,7 @@
+<h1>House</h1>
+
 <% presenter = Shared::Presenters.new(@house) %>
-<p id="notice"><%= notice %></p>
+
 <%= presenter.notice(notice) %>
 
 <%= presenter.show(:house_address, 'House Address') %>

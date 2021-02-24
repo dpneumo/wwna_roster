@@ -2,47 +2,48 @@ require "application_system_test_case"
 
 class ContributionsTest < ApplicationSystemTestCase
   setup do
-    @contribution = contributions(:one)
     login_as(users(:one))
   end
 
-  test "visiting the index" do
-    visit contributions_url
-    assert_selector "h1", text: "Contributions"
-  end
 
-  test "creating a Contribution" do
+  test "create an contribution, edit it and then delete it" do
     visit contributions_url
+
+    # Contributions List (index)
+    assert_selector "h1", text: "Contributions"
     click_on "New Contribution"
 
-    fill_in "Amount", with: @contribution.amount
-    fill_in "Date paid", with: @contribution.date_paid
-    fill_in "House", with: @contribution.house_id
+    # New (form)
+    assert_selector "h1", text: "New Contribution"
+    select "123A Oak Dr", from: "contribution_house_id"
+    select "2021", from: "contribution_date_paid_1i"
+    select "January", from: "contribution_date_paid_2i"
+    select "1", from: "contribution_date_paid_3i"
+    fill_in "contribution_amount", with: '1.23'
     click_on "Create Contribution"
 
+    # Show
+    assert_selector "h1", text: "Contribution Detail"
     assert_text "Contribution was successfully created"
-    click_on "Back"
-  end
+    click_on "Edit"
 
-  test "updating a Contribution" do
-    visit contributions_url
-    click_on "Edit", match: :first
-
-    fill_in "Amount", with: @contribution.amount
-    fill_in "Date paid", with: @contribution.date_paid
-    fill_in "House", with: @contribution.house_id
+    # Edit (form)
+    assert_selector "h1", text: "Edit Contribution"
+    assert find_by_id('contribution_house_id').disabled?
+    fill_in "contribution_amount", with: '5.67'
     click_on "Update Contribution"
 
+    # Show
     assert_text "Contribution was successfully updated"
-    click_on "Back"
-  end
+    click_on "House Detail"
 
-  test "destroying a Contribution" do
-    visit contributions_url
-    page.accept_confirm do
-      click_on "Destroy", match: :first
+    # House Detail (detail)
+    assert_selector "h1", text: "House Detail"
+    within_table('contributions') do
+      page.accept_confirm do
+        click_on "Destroy", match: :first
+      end
     end
-
     assert_text "Contribution was successfully destroyed"
   end
 end

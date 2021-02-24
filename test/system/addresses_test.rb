@@ -2,58 +2,53 @@ require "application_system_test_case"
 
 class AddressesTest < ApplicationSystemTestCase
   setup do
-    @address = addresses(:one)
     login_as(users(:one))
   end
 
-  test "visiting the index" do
+  test "create an address, edit it and then delete it" do
     visit addresses_url
+
+    # Addresses List (index)
     assert_selector "h1", text: "Addresses"
-  end
-
-  test "creating a Address" do
-    visit addresses_url
     click_on "New Address"
-
-    fill_in "Person", with: @address.person_id
-    fill_in "Number", with: @address.number
-    fill_in "Street", with: @address.street
-    fill_in "City", with: @address.city
-    fill_in "State", with: @address.state
-    fill_in "Zip", with: @address.zip
-    fill_in "Location", with: @address.locn
-    fill_in "Preferred", with: @address.preferred
-    fill_in "Note", with: @address.note
+    
+    # New (form)
+    assert_selector "h1", text: "New Address"
+    select "Heinlin, Robert A", from: "address_person_id"
+    select "Other", from: 'address_locn'
+    select "No", from: 'address_preferred'
+    fill_in "address_number", with: '123'
+    fill_in "address_street", with: 'abc'
+    fill_in "address_city", with: 'Arl'
+    fill_in "address_state", with: 'TX'
+    fill_in "address_zip", with: '67890'
+    fill_in "address_note", with: 'abc'
     click_on "Create Address"
 
+    # Show
+    assert_selector "h1", text: "Address Detail"
     assert_text "Address was successfully created"
-    click_on "Back"
-  end
+    click_on "Edit"
 
-  test "updating a Address" do
-    visit addresses_url
-    click_on "Edit", match: :first
-
-    fill_in "Number", with: @address.number
-    fill_in "Street", with: @address.street
-    fill_in "City", with: @address.city
-    fill_in "State", with: @address.state
-    fill_in "Zip", with: @address.zip
-    fill_in "Location", with: @address.locn
-    fill_in "Preferred", with: @address.preferred
-    fill_in "Note", with: @address.note
+    # Edit (form)
+    assert_selector "h1", text: "Edit Address"
+    assert find_by_id('address_person_id').disabled?
+    select "No", from: 'address_preferred'
     click_on "Update Address"
 
+    # Show
     assert_text "Address was successfully updated"
-    click_on "Back"
-  end
+    click_on "Person Detail"
 
-  test "destroying a Address" do
-    visit addresses_url
-    page.accept_confirm do
-      click_on "Destroy", match: :first
+    # Personal Detail (detail)
+    assert_selector "h1", text: "Person Detail"
+    within_table('addresses') do
+      page.accept_confirm do
+        click_on "Destroy", match: :first
+      end
     end
 
+    # Addresses List (index)
     assert_text "Address was successfully destroyed"
   end
 end

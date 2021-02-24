@@ -5,7 +5,7 @@
                       link_text2: nil,
                       path2: nil } %>
 
-<table class='table table-sm table-bordered table-hover'>
+<table class='table table-sm table-bordered table-hover', id='phones'>
   <thead class='thead-light'>
     <tr class='d-flex'>
       <th class='col-3'>Phone</th>
@@ -27,7 +27,7 @@
         <td class='col-2'><%= phone.note %></td>
         <td class='col-1'><%= link_to 'Show', phone %></td>
         <td class='col-1'><%= link_to 'Edit', edit_phone_path(phone) %></td>
-        <td class='col-1'><%= link_to 'Destroy', phone, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td class='col-1'><%= link_to 'Destroy', phone, method: :delete, data: { confirm: 'Are you sure?'} %></td>
       </tr>
     <% end %>
   </tbody>

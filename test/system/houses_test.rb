@@ -2,55 +2,49 @@ require "application_system_test_case"
 
 class HousesTest < ApplicationSystemTestCase
   setup do
-    @house = houses(:one)
     login_as(users(:one))
   end
 
-  test "visiting the index" do
+  test "Create a house, update it then destroy it" do
     visit houses_url
-    assert_selector "h1", text: "Houses"
-  end
 
-  test "creating a House" do
-    visit houses_url
+    # Houses List (index)
+    assert_selector "h1", text: "Houses"
     click_on "New House"
 
-    check "Flag" if @house.flag
-    fill_in "Linked lot", with: @house.linked_lot_id
-    check "Listed" if @house.listed
-    fill_in "Lot", with: @house.lot_id
-    fill_in "Note", with: @house.note
-    check "Rental" if @house.rental
-    fill_in "Status", with: @house.status
+    # New (form)
+    assert_selector "h1", text: "New House"
+    check "house_flag"
+    check "house_listed"
+    check "house_rental"
+    select "1", from: 'house_linked_lot_id'
+    select "Occupied", from: 'house_status'
+    fill_in "house_number", with: '123'
+    fill_in "house_street", with: 'EODr'
+    fill_in "house_lat", with: '10.00'
+    fill_in "house_lng", with: '20.99'
+    fill_in "house_image_link", with: 'lnk'
+    fill_in "house_note", with: 'abc'
     click_on "Create House"
 
+    # Show
+    assert_selector "h1", text: "House"
     assert_text "House was successfully created"
-    click_on "Back"
-  end
+    click_on "Edit"
 
-  test "updating a House" do
-    visit houses_url
-    click_on "Edit", match: :first
-
-    check "Flag" if @house.flag
-    fill_in "Linked lot", with: @house.linked_lot_id
-    check "Listed" if @house.listed
-    fill_in "Lot", with: @house.lot_id
-    fill_in "Note", with: @house.note
-    check "Rental" if @house.rental
-    fill_in "Status", with: @house.status
+    # Edit (form)
+    assert_selector "h1", text: "Edit House"
+    select "Vacant", from: 'house_status'
     click_on "Update House"
 
+    # Show
     assert_text "House was successfully updated"
-    click_on "Back"
-  end
+    click_on "List"
 
-  test "destroying a House" do
-    visit houses_url
+    # Houses List (index)
     page.accept_confirm do
       click_on "Destroy", match: :first
     end
-
     assert_text "House was successfully destroyed"
   end
 end

@@ -1,3 +1,5 @@
+<h1>Ownership Detail</h1>
+
 <% presenter = Shared::Presenters.new(@ownership) %>
 
 <%= presenter.notice(notice) %>
@@ -6,7 +8,5 @@
 <%= presenter.show(:owner_name, 'Owner') %>
 
 <%= link_to 'Edit', edit_ownership_path(@ownership) %> |
-<%= link_to 'House Detail', house_detail_path(@ownership.house_id) %>
-<% if false %> |
-  <%= link_to 'List', ownerships_path %>
-<% end %>
+<%= link_to 'House Detail', house_detail_path(@ownership.house_id) %> |
+<%= link_to 'List', ownerships_path %>
