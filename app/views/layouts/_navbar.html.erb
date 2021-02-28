@@ -14,7 +14,7 @@
       <li class="nav-item dropdown"><%= render "layouts/person_dropdown" %></li>
     </ul>
     <ul class="nav navbar-nav navbar-right">
-      <li><%= link_to destroy_user_session_path, class: 'nav-link', method: :delete do %>Log out<% end %></li>
+      <li class="nav-item dropdown"><%= render "layouts/user_dropdown" %></li>
     </ul>
   </div>
 </nav>
