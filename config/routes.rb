@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  devise_for :users
+  devise_for :users, controllers: { sessions: 'users/sessions' }
 
   authenticate :user do
     root 'welcome#home', as: :root
@@ -7,6 +7,7 @@ Rails.application.routes.draw do
     get '/people/:id/detail', to: 'people#detail', as: 'person_detail'
     get '/people/occupant/:house_id', to: 'people#new_occupant', as: 'new_occupant'
     get '/people/non_occupants', to: 'people#non_occupants', as: 'non_occupants'
+    get 'users', to: 'user_admin#index', as: 'users'
     resources :addresses, :phones, :emails, :people,
               :person_phones, :person_addresses,
               :houses, :ownerships, :contributions,
