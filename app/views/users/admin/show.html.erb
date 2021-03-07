@@ -1,0 +1,18 @@
+<h1>User Detail</h1>
+
+<% presenter = Shared::Presenters.new(@user) %>
+
+<%= presenter.notice(notice) %>
+
+<%= presenter.show(:id, 'ID') %>
+<%= presenter.show(:email) %>
+<%= presenter.show(:first_name) %>
+<%= presenter.show(:last_name) %>
+<%= presenter.show(:role) %>
+<%= presenter.show(:approved) %>
+<%= presenter.show(:sign_in_count) %>
+<%= presenter.show(:current_sign_in_at) %>
+<%= presenter.show(:current_sign_in_ip) %>
+<%= presenter.show(:created_at) %>
+
+<%= link_to 'List', users_path %>

@@ -1,5 +1,5 @@
 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-  User
+  <%= User.find(current_user.id).std_name %>
 </a>
 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
 	<%= link_to destroy_user_session_path, class: 'nav-link', method: :delete do %>Log out<% end %>
