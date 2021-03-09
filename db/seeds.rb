@@ -8,8 +8,11 @@
 
 # Initialize first account:
 User.create! do |u|
-    u.email     = 'test@test.com'
-    u.password    = 'password'
+    u.email      = 'first@admin.com'
+    u.password   = 'password'
+    u.first_name = 'Replace'
+    u.last_name  = 'Me!'
+    u.role       = 'admin'
 end
 
 
