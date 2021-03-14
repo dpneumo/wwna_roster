@@ -3,7 +3,7 @@ require 'test_helper'
 class RoutesTest < ActionDispatch::IntegrationTest
   test "get root_url for unauthenticated user should get sign in" do
   	get root_url
-  	assert_redirected_to controller:'devise/sessions', action: 'new'
+  	assert_redirected_to 'http://www.example.com/users/sign_in'
   end
 
   test "get root_url for authenticated user should succeed" do
@@ -14,7 +14,7 @@ class RoutesTest < ActionDispatch::IntegrationTest
 
   test "get phones_url for unauthenticated user should get sign in" do
   	get phones_url
-  	assert_redirected_to controller:'devise/sessions', action: 'new'
+  	assert_redirected_to 'http://www.example.com/users/sign_in'
   end
 
   test "get phones_url for authenticated user should succeed" do

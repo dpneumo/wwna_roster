@@ -9,6 +9,6 @@ class WelcomeControllerTest < ActionDispatch::IntegrationTest
 
   test "get root_url for unauthenticated user should redirect to sign in" do
   	get root_url
-  	assert_redirected_to controller:'devise/sessions', action: 'new'
+  	assert_redirected_to 'http://www.example.com/users/sign_in'
   end
 end
