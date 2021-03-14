@@ -42,6 +42,16 @@ class PositionTest < ActiveSupport::TestCase
   	assert_equal 'UnAssigned', @psn.person_name
   end
 
+  test "person_pref_phone returns empty string if no person assigned" do
+    @psn.person_id = nil
+    assert_equal '', @psn.person_pref_phone
+  end
+
+  test "person_pref_email returns empty string if no person assigned" do
+    @psn.person_id = nil
+    assert_equal '', @psn.person_pref_email
+  end
+
   test "currently_active? returns true if & only if posn is active today" do
   	@psn_inactive = positions(:four)
   	assert @psn.currently_active?, "An active position is identified as inactive"

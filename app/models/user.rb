@@ -20,7 +20,9 @@ class User < ApplicationRecord
   end
 
   def std_name
-  	return email unless first_name || last_name
- 	  (first_name || '') + ' ' + (last_name || '')
+  	return email if first_name.blank? && last_name.blank?
+    return first_name if !first_name.blank? && last_name.blank?
+    return last_name  if first_name.blank? && !last_name.blank?
+ 	  first_name + ' ' + last_name
   end
 end

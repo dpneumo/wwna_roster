@@ -12,14 +12,14 @@ class RoutesTest < ActionDispatch::IntegrationTest
     assert_response :success
   end
 
-  test "get phones_url for unauthenticated user should get sign in" do
-  	get phones_url
+  test "get people_url for unauthenticated user should get sign in" do
+  	get people_url
   	assert_redirected_to 'http://www.example.com/users/sign_in'
   end
 
-  test "get phones_url for authenticated user should succeed" do
+  test "get people_url for authenticated user should succeed" do
   	log_in(users(:one))
-    get phones_url
+    get people_url
     assert_response :success
   end
 end
