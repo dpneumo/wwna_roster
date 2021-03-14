@@ -5,6 +5,7 @@ class HousesController < ApplicationController
   # GET /houses.json
   def index
     @q = House.ransack(params[:q])
+    @q.sorts = ['street asc', 'number asc'] if @q.sorts.empty?
     @pagy, @houses = pagy(@q.result)
   end
 
