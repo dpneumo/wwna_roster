@@ -21,7 +21,7 @@ class PositionsControllerTest < ActionDispatch::IntegrationTest
       post positions_url, params: { position: { name: @position.name, person_id: @position.person_id, start: @position.start, stop: @position.stop } }
     end
 
-    assert_redirected_to position_url(Position.last)
+    assert_redirected_to Position.last
   end
 
   test "should show position" do

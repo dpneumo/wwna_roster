@@ -52,7 +52,7 @@ class Person < ApplicationRecord
   end
 
   def current_position
-    p = Position.current_posns_for_person(person_id: id).first
+    p = Position.current_posns_for_person(person_id: id).last
     p ? p.name : ''
   end
 end
