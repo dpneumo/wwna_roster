@@ -17,6 +17,7 @@
       <th><%= sort_link(@q,:rental) %></th>
       <th><%= sort_link(@q,:listed) %></th>
       <th><%= sort_link(@q,:status) %></th>
+      <th>Linked Lots</th>
       <th>Note</th>
       <th colspan="3"></th>
     </tr>
@@ -29,6 +30,7 @@
         <td><%= house.rental %></td>
         <td><%= house.listed %></td>
         <td><%= house.status %></td>
+        <td><%= house.linked_lot_addresses %></td>
         <td><%= house.note %></td>
         <td><%= link_to 'Detail', house_detail_path(house) %></td>
         <td><%= link_to 'Edit', edit_house_path(house) %></td>
