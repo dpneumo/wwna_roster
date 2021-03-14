@@ -19,7 +19,7 @@ class HousesControllerTest < ActionDispatch::IntegrationTest
   test "should create house" do
     assert_difference('House.count') do
       post houses_url, params: { house: { image_link: @house.image_link, lat: @house.lat, lng: @house.lng, number: @house.number, street: @house.street,
-                                          flag: @house.flag, linked_lot_id: @house.linked_lot_id, listed: @house.listed, note: @house.note, rental: @house.rental, status: @house.status } }
+                                          flag: @house.flag, listed: @house.listed, note: @house.note, rental: @house.rental, status: @house.status } }
     end
 
     assert_redirected_to house_url(House.last)
@@ -42,7 +42,7 @@ class HousesControllerTest < ActionDispatch::IntegrationTest
 
   test "should update house" do
     patch house_url(@house), params: { house: { image_link: @house.image_link, lat: @house.lat, lng: @house.lng, number: @house.number, street: @house.street,
-                                       flag: @house.flag, linked_lot_id: @house.linked_lot_id, listed: @house.listed, note: @house.note, rental: @house.rental, status: @house.status } }
+                                       flag: @house.flag, listed: @house.listed, note: @house.note, rental: @house.rental, status: @house.status } }
     assert_redirected_to house_url(@house)
   end
 

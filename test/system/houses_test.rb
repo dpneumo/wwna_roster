@@ -17,7 +17,7 @@ class HousesTest < ApplicationSystemTestCase
     check "house_flag"
     check "house_listed"
     check "house_rental"
-    select "1", from: 'house_linked_lot_id'
+    select "zzz", from: 'house_lot_ids'
     select "Occupied", from: 'house_status'
     fill_in "house_number", with: '123'
     fill_in "house_street", with: 'EODr'

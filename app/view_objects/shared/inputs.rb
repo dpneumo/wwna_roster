@@ -42,7 +42,7 @@ class Shared::Inputs
     # textarea needs: attribute, label, width
     content_tag :div, class: "form-group col-#{ f[:width] || wtxtarea }" do
       @form.label( f[:attribute], f[:label] ) +
-      @form.text_area( f[:attribute], class: "form-control" )
+      @form.text_area( f[:attribute], rows: f[:rows], class: "form-control" )
     end
   end
 
@@ -68,7 +68,8 @@ class Shared::Inputs
       @form.label( f[:attribute], f[:label] ) +
       @form.select( f[:attribute], f[:collection],
                     { include_blank: f[:blank], selected: f[:selected] },
-                    { class: "form-control", disabled: f[:disabled]    } )
+                    { class: "form-control", 
+                      multiple: f[:multiple], disabled: f[:disabled] } )
     end
     hdn = f[:disabled] ? hidden(f) : ""
     rslt+hdn

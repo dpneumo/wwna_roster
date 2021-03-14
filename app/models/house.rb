@@ -9,7 +9,9 @@ class House < ApplicationRecord
             -> { order(last: :asc, first: :asc, middle: :asc) },
             through: :ownerships
   has_many :contributions, -> { order(date_paid: :asc) }
-
+  has_many :links
+  has_many :lots, through: :links
+  
   validate :lat_is_sane
   validate :lng_is_sane
 
@@ -37,6 +39,11 @@ class House < ApplicationRecord
 
   def house_address
     number + ' ' + street
+  end
+
+  def linked_lot_addresses
+    return '' unless lots
+    lots.map {|lot| lot.house_address }.join('; ')
   end
 
   def err_msgs

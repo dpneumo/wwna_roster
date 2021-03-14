@@ -13,7 +13,6 @@
   <thead class='thead-light'>
     <tr>
       <th><%= sort_link(@q,:house_address, [:street, :number], 'Address') %></th>
-      <th>Linked lot</th>
       <th><%= sort_link(@q,:flag) %></th>
       <th><%= sort_link(@q,:rental) %></th>
       <th><%= sort_link(@q,:listed) %></th>
@@ -26,7 +25,6 @@
     <% @houses.each do |house| %>
       <tr>
         <td><%= house.house_address %></td>
-        <td><%= house.linked_lot_id %></td>
         <td><%= house.flag %></td>
         <td><%= house.rental %></td>
         <td><%= house.listed %></td>
