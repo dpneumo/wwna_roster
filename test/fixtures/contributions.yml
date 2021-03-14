@@ -1,21 +1,21 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  house_id: 1
+  house: one
   date_paid: 2020-10-11
   amount_cents: 19999
 
 two:
-  house_id: 2
+  house: two
   date_paid: 2020-10-11
   amount_cents: 29999
 
 three:
-  house_id: 1
+  house: one
   date_paid: 2018-12-31
   amount_cents: 39999
 
 four:
-  house_id: 2
+  house: two
   date_paid: 2019-01-01
   amount_cents: 49999
