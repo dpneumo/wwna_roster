@@ -28,6 +28,7 @@ class PersonTest < ActiveSupport::TestCase
   end
 
   test 'returns a preferred email when assigned' do
+    @per.pref_email_id = emails(:one).id   
     assert_equal 'aaa@bbb.ccc', @per.preferred_email
   end
 
@@ -37,6 +38,7 @@ class PersonTest < ActiveSupport::TestCase
   end
 
   test 'returns a preferred phone when assigned' do
+    @per.pref_phone_id = phones(:one).id   
     assert_equal "(817) 123-4567", @per.preferred_phone
   end
 
@@ -46,6 +48,7 @@ class PersonTest < ActiveSupport::TestCase
   end
 
   test 'returns a preferred address when assigned' do
+    @per.pref_address_id = addresses(:one).id
     assert_equal "123A Oak Dr, Arlington, TX  76016", @per.preferred_address
   end
 
@@ -55,7 +58,7 @@ class PersonTest < ActiveSupport::TestCase
   end
 
   test 'returns the current WWNA position held, if assigned' do
-    assert_equal 'Secretary', @per.current_position
+    assert_equal 'President', @per.current_position
   end
 
   test 'returns an empty string for current position if unassigned' do
@@ -74,7 +77,7 @@ class PersonTest < ActiveSupport::TestCase
   test "Person.select_list returns collection (id & fullname) for select" do
     list = Person.select_list
     assert_equal 3, list.count
-    assert list.first.last.is_a? Integer
+    assert list.first.last.is_a? String
     names = list.map {|item| item.first }
     assert names.include?("Swarch, Geoffry K"), "select_list is incomplete"
   end

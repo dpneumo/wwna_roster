@@ -1,0 +1,93 @@
+# Install postgresql
+
+	sudo apt-get update
+	sudo apt-get upgrade -y
+	sudo apt install -y wget gnupg2 net-tools sysstat postgresql-12
+	sudo -i -u postgres
+
+
+# For each db
+
+	psql -c "create extension pgcrypto" wwna_development
+	psql -c "create extension pgcrypto" wwna_test
+
+
+# example usage
+
+	\c wwna_test
+	select digest('hello world','md5');
+	select gen_random_bytes(1024);
+	select gen_random_uuid();
+
+
+# Reference:
+
+	https://www.percona.com/sites/default/files/presentations/percona-tech-day-2020-04.pdf
+
+
+##########################################################################################
+
+# UUID as primary key in Rails 6
+
+	# config/initializers/generators.rb
+	Rails.application.config.generators do |g|
+	  g.orm :active_record, primary_key_type: :uuid
+	end
+
+
+	# app/models/application_record.rb
+	class ApplicationRecord < ActiveRecord::Base
+	  self.abstract_class = true
+
+	  
+	# Sort records by date of creation instead of primary key
+	  self.implicit_order_column = :created_at
+	end
+
+
+	# db/migrate/enable_uuid.rb
+	class EnableUuid < ActiveRecord::Migration[6.0]
+	  def change
+	    enable_extension 'pgcrypto'
+	  end
+	end
+
+
+	# db/migrate/create_rocks.rb
+	class CreateRocks < ActiveRecord::Migration[6.0]
+	  def change
+	    create_table :rocks, id: :uuid do |t|
+	      t.string  :somedata
+	      t.timestamps
+	    end
+	  end
+	end
+
+
+	# db/migrate/create_litters.rb
+	class CreateLitters < ActiveRecord::Migration[6.0]
+	  def change
+	    create_table :litters, id: :uuid do |t|
+	      t.uuid    :rock_id,  null: false
+	      t.string  :otherdata
+	      t.timestamps
+	    end
+	  end
+      add_index :litters, :rock_id
+	end
+
+
+	# test/fixtures/rocks.yml
+	precious:
+	  somedata: 'My data is precious'
+	coal:
+	  somedata: 'My data is garbage'
+
+
+	# test/fixtures/litters.yml
+	one:
+	  rock: precious
+	  otherdata: 'Diamonds'
+	two:
+	  rock: coal
+	  otherdata: 'Wha..?'

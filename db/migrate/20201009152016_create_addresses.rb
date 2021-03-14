@@ -1,7 +1,7 @@
 class CreateAddresses < ActiveRecord::Migration[6.0]
   def change
-    create_table :addresses do |t|
-      t.integer :person_id,  null: false
+    create_table :addresses, id: :uuid do |t|
+      t.uuid    :person_id,  null: false
       t.string  :number, null: false
       t.string  :street, null: false
       t.string  :city,   null: false
@@ -13,5 +13,7 @@ class CreateAddresses < ActiveRecord::Migration[6.0]
 
       t.timestamps
     end
+
+    add_index :addresses, :person_id
   end
 end

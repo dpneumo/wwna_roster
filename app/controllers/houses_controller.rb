@@ -79,6 +79,6 @@ class HousesController < ApplicationController
     # Only allow a list of trusted parameters through.
     def house_params
       params.require(:house).permit( :number, :street, :lat, :lng, :image_link,
-                                     :linked_lot_id, :flag, :rental, :listed, :status, :note)
+                                     :flag, :rental, :listed, :status, :note, lot_ids: [] )
     end
 end

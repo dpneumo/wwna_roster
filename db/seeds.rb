@@ -7,6 +7,8 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 # Initialize first account:
+require "securerandom"
+
 User.create! do |u|
     u.email      = 'first@admin.com'
     u.password   = 'password'
@@ -15,19 +17,21 @@ User.create! do |u|
     u.role       = 'admin'
 end
 
+p1_id = SecureRandom.uuid
+p2_id = SecureRandom.uuid
 
 Person.create([
-  {nickname: "Mitch", first: "Mitch", middle: "C", last: "Kuppinger"},
-  {nickname: "Blake", first: "J", middle: "Blake", last: "Kuppinger"},
+  {id: p1_id, nickname: "Mitch", first: "Mitch", middle: "C", last: "Kuppinger"},
+  {id: p2_id, nickname: "Blake", first: "J", middle: "Blake", last: "Kuppinger"},
 ])
 
 Position.create([
-  {person_id: 1, name: "President",      start: "2021-01-01", stop: "2021-01-30"},
-  {person_id: 2, name: "Vice President", start: "2021-01-01", stop: "2021-02-28"},
-  {person_id: 2, name: "Secretary",      start: "2021-03-01", stop: "2021-06-30"},
-  {person_id: 1, name: "Treasurer",      start: "2021-02-01", stop: "2021-12-31"},
-  {person_id: 1, name: "Landscape",      start: "2021-01-29", stop: "2021-01-30"},
-  {person_id: 2, name: "Welcome",        start: "2021-02-01", stop: "2021-04-30"}
+  {person_id: p1_id, name: "President",      start: "2021-01-01", stop: "2021-01-30"},
+  {person_id: p2_id, name: "Vice President", start: "2021-01-01", stop: "2021-02-28"},
+  {person_id: p2_id, name: "Secretary",      start: "2021-03-01", stop: "2021-06-30"},
+  {person_id: p1_id, name: "Treasurer",      start: "2021-02-01", stop: "2021-12-31"},
+  {person_id: p1_id, name: "Landscape",      start: "2021-01-29", stop: "2021-01-30"},
+  {person_id: p2_id, name: "Welcome",        start: "2021-02-01", stop: "2021-04-30"}
 ])
 
 House.create([

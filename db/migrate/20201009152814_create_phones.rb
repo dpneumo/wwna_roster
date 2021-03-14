@@ -1,7 +1,7 @@
 class CreatePhones < ActiveRecord::Migration[6.0]
   def change
-    create_table :phones do |t|
-      t.integer :person_id, null: false
+    create_table :phones, id: :uuid do |t|
+      t.uuid    :person_id, null: false
       t.string  :cc, default: "1"
       t.string  :area,   null: false
       t.string  :prefix, null: false
@@ -13,5 +13,7 @@ class CreatePhones < ActiveRecord::Migration[6.0]
 
       t.timestamps
     end
+
+    add_index :phones, :person_id
   end
 end
