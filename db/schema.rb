@@ -13,10 +13,11 @@
 ActiveRecord::Schema.define(version: 2021_03_07_211043) do
 
   # These are extensions that must be enabled in order to support this database
+  enable_extension "pgcrypto"
   enable_extension "plpgsql"
 
-  create_table "addresses", force: :cascade do |t|
-    t.integer "person_id", null: false
+  create_table "addresses", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.uuid "person_id", null: false
     t.string "number", null: false
     t.string "street", null: false
     t.string "city", null: false
@@ -27,34 +28,36 @@ ActiveRecord::Schema.define(version: 2021_03_07_211043) do
     t.text "note"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["person_id"], name: "index_addresses_on_person_id"
   end
 
-  create_table "contributions", force: :cascade do |t|
-    t.integer "house_id", null: false
+  create_table "contributions", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.uuid "house_id", null: false
     t.date "date_paid", null: false
     t.integer "amount_cents", default: 0, null: false
     t.string "amount_currency", default: "USD", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["house_id"], name: "index_contributions_on_house_id"
   end
 
-  create_table "emails", force: :cascade do |t|
-    t.integer "person_id", null: false
+  create_table "emails", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.uuid "person_id", null: false
     t.string "addr", null: false
     t.string "locn"
     t.boolean "preferred", default: false
     t.text "note"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["person_id"], name: "index_emails_on_person_id"
   end
 
-  create_table "houses", force: :cascade do |t|
+  create_table "houses", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
     t.string "number", null: false
     t.string "street", null: false
     t.decimal "lat", precision: 9, scale: 6
     t.decimal "lng", precision: 9, scale: 6
     t.string "image_link"
-    t.integer "linked_lot_id"
     t.boolean "flag", default: false
     t.boolean "rental", default: false
     t.boolean "listed", default: false
@@ -65,14 +68,25 @@ ActiveRecord::Schema.define(version: 2021_03_07_211043) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
-  create_table "ownerships", force: :cascade do |t|
-    t.integer "house_id", null: false
-    t.integer "person_id", null: false
+  create_table "links", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.uuid "house_id", null: false
+    t.uuid "lot_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["house_id"], name: "index_links_on_house_id"
+    t.index ["lot_id"], name: "index_links_on_lot_id"
   end
 
-  create_table "people", force: :cascade do |t|
+  create_table "ownerships", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.uuid "house_id", null: false
+    t.uuid "person_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["house_id"], name: "index_ownerships_on_house_id"
+    t.index ["person_id"], name: "index_ownerships_on_person_id"
+  end
+
+  create_table "people", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
     t.string "nickname"
     t.string "first", null: false
     t.string "middle"
@@ -81,17 +95,18 @@ ActiveRecord::Schema.define(version: 2021_03_07_211043) do
     t.string "honorific"
     t.string "role"
     t.string "status"
-    t.integer "pref_email_id"
-    t.integer "pref_phone_id"
-    t.integer "pref_address_id"
-    t.integer "house_id"
+    t.uuid "pref_email_id"
+    t.uuid "pref_phone_id"
+    t.uuid "pref_address_id"
+    t.uuid "house_id"
     t.text "note"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["house_id"], name: "index_people_on_house_id"
   end
 
-  create_table "phones", force: :cascade do |t|
-    t.integer "person_id", null: false
+  create_table "phones", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.uuid "person_id", null: false
     t.string "cc", default: "1"
     t.string "area", null: false
     t.string "prefix", null: false
@@ -102,18 +117,20 @@ ActiveRecord::Schema.define(version: 2021_03_07_211043) do
     t.text "note"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["person_id"], name: "index_phones_on_person_id"
   end
 
-  create_table "positions", force: :cascade do |t|
-    t.integer "person_id"
+  create_table "positions", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.uuid "person_id"
     t.string "name"
     t.date "start"
     t.date "stop"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["person_id"], name: "index_positions_on_person_id"
   end
 
-  create_table "users", force: :cascade do |t|
+  create_table "users", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
     t.string "reset_password_token"

@@ -20,6 +20,9 @@ class OwnershipTest < ActiveSupport::TestCase
   end
 
   test "accesses houses through property association" do
-    assert_equal 1, @own.property.id
+    hse = houses(:one)
+    pers = people(:two)
+    ownership = Ownership.new(house_id: hse.id, person_id: pers.id)
+    assert_equal hse.id, ownership.property.id
   end
 end

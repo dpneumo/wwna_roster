@@ -1,7 +1,7 @@
 class CreateEmails < ActiveRecord::Migration[6.0]
   def change
-    create_table :emails do |t|
-      t.integer  :person_id, null: false
+    create_table :emails, id: :uuid do |t|
+      t.uuid     :person_id, null: false
       t.string   :addr, null: false
       t.string   :locn
       t.boolean  :preferred, default: false
@@ -9,5 +9,7 @@ class CreateEmails < ActiveRecord::Migration[6.0]
 
       t.timestamps
     end
+
+    add_index :emails, :person_id
   end
 end

@@ -2,47 +2,48 @@ require 'test_helper'
 
 class HouseTest < ActiveSupport::TestCase
   setup do
-    @hse = houses(:one)
+    @hse1 = houses(:one)
+    @hse2 = houses(:two)
   end
 
   test "a valid house succeeds" do
-    assert @hse.save
+    assert @hse1.save
   end
 
   test "latitude may not be > 90" do
-    @hse.lat = 100
-    refute @hse.save, "Saved house with too high latitude"
+    @hse1.lat = 100
+    refute @hse1.save, "Saved house with too high latitude"
   end
 
   test "latitude may not be < -90" do
-    @hse.lat = -100
-    refute @hse.save, "Saved house with too low latitude"
+    @hse1.lat = -100
+    refute @hse1.save, "Saved house with too low latitude"
   end
 
   test "longitude may not be > 180" do
-    @hse.lng = 200
-    refute @hse.save, "Saved house with too high longitude"
+    @hse1.lng = 200
+    refute @hse1.save, "Saved house with too high longitude"
   end
 
   test "longitude may not be < -180" do
-    @hse.lng = -200
-    refute @hse.save, "Saved house with too low longitude"
+    @hse1.lng = -200
+    refute @hse1.save, "Saved house with too low longitude"
   end
 
   test "House.for_select returns options for grouped_options_for_select helper" do
-    expected = {"Oak Dr"=>[["123A", 1]], "aaa"=>[["zzz", 2]]}
+    expected = {"Oak Dr"=>[["123A", @hse1.id]], "aaa"=>[["zzz", @hse2.id]]}
     assert_equal expected, House.for_select
   end
 
   test "House.select_list returns collection (id & address) for select" do
-    expected = [["123A Oak Dr", 1], ["zzz aaa", 2]]
+    expected = [["123A Oak Dr", @hse1.id], ["zzz aaa", @hse2.id]]
     assert_equal expected, House.select_list
   end
 
   test "House.street_names returns the streets of it's houses" do
     streets = House.street_names
     err_msg ="House did not return a complete list of streets"
-    assert streets.include?(@hse.street), err_msg
+    assert streets.include?(@hse1.street), err_msg
   end
 
   test "House.statuses returns a list of statuses" do
@@ -52,7 +53,7 @@ class HouseTest < ActiveSupport::TestCase
   end
 
   test "house_address returns the house address" do
-    assert_equal '123A Oak Dr', @hse.house_address
+    assert_equal '123A Oak Dr', @hse1.house_address
   end
 
   test "implements <=> for houses based on addresses" do

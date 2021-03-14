@@ -6,8 +6,9 @@ class ContributionTest < ActiveSupport::TestCase
   end
 
   test "Contribution class returns contributions for a house in a given year" do
-    assert_equal 19999, Contribution.for(house_id: 1, year: 2020)
-    assert_equal 39999, Contribution.for(house_id: 1, year: 2018)
+    hid1 = houses(:one).id
+    assert_equal 19999, Contribution.for(house_id: hid1, year: 2020)
+    assert_equal 39999, Contribution.for(house_id: hid1, year: 2018)
   end
 
   test "Contribution class returns total contributions for a given year" do
