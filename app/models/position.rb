@@ -6,13 +6,8 @@ class Position < ApplicationRecord
   validates :stop,  presence: true
   validate :does_not_stop_before_start
 
-  Officers = %w[ President Vice\ President Secretary Treasurer ]
-  Chairs = %w[ Landscape Social Security New\ Member ]
-
   def self.names
-  	[
-  		['Officers', Officers],['Committee Chairs', Chairs]
-    ]
+  	[ ['Officers', Enums.officers],['Committee Chairs', Enums.chairs] ]
   end
 
   def self.current_posns_for_person(person_id:)

@@ -15,10 +15,8 @@ class House < ApplicationRecord
   validate :lat_is_sane
   validate :lng_is_sane
 
-  Statuses = ["Occupied","Vacant","Construction"]
-
   def self.statuses
-    Statuses
+    Enums.house_statuses
   end
 
   def self.street_names

@@ -10,15 +10,12 @@ class Person < ApplicationRecord
   validates :first, presence: true
   validates :last,  presence: true
 
-  Roles  = %w[ Husband Wife Partner Child Guest Other Unknown ]
-  Statuses = %w[ Owner Renter Other Unknown ]
-
   def self.roles
-    Roles
+    Enums.person_roles
   end
 
   def self.statuses
-    Statuses
+    Enums.person_statuses
   end
 
   def self.select_list

@@ -5,10 +5,8 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
          #:lockable, :timeoutable, :trackable #:confirmable,
 
-  Roles = ["user", "admin"]
-
   def self.roles
-  	Roles
+  	Enums.user_roles
   end
 
   def authenticatable_salt

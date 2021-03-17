@@ -10,10 +10,8 @@ class Address < ApplicationRecord
   after_save :update_person_prefs
   after_save :make_preferred_uniq, if: -> { preferred }
 
-  Locations = %w[ Home Work Other ]
-
-  def self.locations
-    Locations
+  def self.types
+    Enums.address_types
   end
 
   def address
