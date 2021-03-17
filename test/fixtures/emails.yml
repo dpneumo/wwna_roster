@@ -3,12 +3,12 @@
 one:
   person: one
   addr: "aaa@bbb.ccc"
-  locn: work
+  email_type: work
   preferred: Yes
   note: MyText
 
 two:
   person: two
   addr: MyString
-  locn: home
+  email_type: home
   note: MyText

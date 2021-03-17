@@ -11,11 +11,12 @@
                   { attribute: :person_id, kind: :hidden,
                     value: email.person_id } ]) %>
 
-  <%= input.row([ { attribute: :addr } ]) %>
+  <%= input.row([ { attribute: :addr, label: 'Email Address' } ]) %>
 
-  <%= input.row([ { attribute: :locn, kind: :select,
-                    collection: Email.locations,
-                    selected: email.locn || 'Other',
+  <%= input.row([ { attribute: :email_type, kind: :select,
+                    label: 'Email Type',
+                    collection: Email.types,
+                    selected: email.email_type || 'Other',
                     blank: false },
                   { attribute: :preferred, kind: :select,
                     collection: [['Yes',true],['No',false]],

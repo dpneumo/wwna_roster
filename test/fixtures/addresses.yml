@@ -7,7 +7,7 @@ one:
   city: Arlington
   state: TX
   zip: '76016'
-  locn: Other
+  address_type: Other
   preferred: 'Yes'
   note: 'Addr note'
 

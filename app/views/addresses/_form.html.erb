@@ -18,9 +18,10 @@
                   { attribute: :state, width: 1 },
                   { attribute: :zip,   width: 1 } ]) %>
 
-  <%= input.row([ { attribute: :locn, kind: :select,
-                    collection: Address.locations,
-                    selected: address.locn,
+  <%= input.row([ { attribute: :address_type, kind: :select,
+                    label: 'Address Type',
+                    collection: Address.types,
+                    selected: address.address_type,
                     blank: false },
                   { attribute: :preferred, kind: :select,
                     collection: [['Yes',true],['No',false]],

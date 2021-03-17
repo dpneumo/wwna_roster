@@ -9,7 +9,7 @@
   <thead class='thead-light'>
     <tr class='d-flex'>
       <th class='col-3'>Phone</th>
-      <th class='col-2'>Location</th>
+      <th class='col-2'>Type</th>
       <th class='col-1'>Preferred</th>
       <th class='col-1'>Msg Capable</th>
       <th class='col-2'>Note</th>
@@ -21,7 +21,7 @@
     <% @person.phones.each do |phone| %>
       <tr class='d-flex'>
         <td class='col-3'><%= phone.ph_number %></td>
-        <td class='col-2'><%= phone.locn %></td>
+        <td class='col-2'><%= phone.phone_type %></td>
         <td class='col-1'><%= phone.preferred %></td>
         <td class='col-1'><%= phone.txt_capable %></td>
         <td class='col-2'><%= phone.note %></td>

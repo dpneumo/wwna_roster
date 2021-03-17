@@ -23,7 +23,7 @@ ActiveRecord::Schema.define(version: 2021_03_07_211043) do
     t.string "city", null: false
     t.string "state", default: "TX", null: false
     t.string "zip", null: false
-    t.string "locn", default: "Home"
+    t.string "address_type", default: "Home"
     t.boolean "preferred", default: false
     t.text "note"
     t.datetime "created_at", precision: 6, null: false
@@ -44,7 +44,7 @@ ActiveRecord::Schema.define(version: 2021_03_07_211043) do
   create_table "emails", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
     t.uuid "person_id", null: false
     t.string "addr", null: false
-    t.string "locn"
+    t.string "email_type"
     t.boolean "preferred", default: false
     t.text "note"
     t.datetime "created_at", precision: 6, null: false
@@ -111,7 +111,7 @@ ActiveRecord::Schema.define(version: 2021_03_07_211043) do
     t.string "area", null: false
     t.string "prefix", null: false
     t.string "number", null: false
-    t.string "locn"
+    t.string "phone_type"
     t.boolean "preferred", default: false
     t.boolean "txt_capable", default: false
     t.text "note"

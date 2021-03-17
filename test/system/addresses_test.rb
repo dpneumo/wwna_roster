@@ -15,7 +15,7 @@ class AddressesTest < ApplicationSystemTestCase
     # New (form)
     assert_selector "h1", text: "New Address"
     select "Heinlin, Robert A", from: "address_person_id"
-    select "Other", from: 'address_locn'
+    select "Other", from: 'address_address_type'
     select "No", from: 'address_preferred'
     fill_in "address_number", with: '123'
     fill_in "address_street", with: 'abc'

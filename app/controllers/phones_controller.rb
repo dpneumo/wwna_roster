@@ -72,7 +72,7 @@ class PhonesController < ApplicationController
     def phone_params
       params.require(:phone).permit(:person_id, :cc,
                                     :area, :prefix, :number,
-                                    :locn, :preferred, :txt_capable,
+                                    :phone_type, :preferred, :txt_capable,
                                     :note)
     end
 end

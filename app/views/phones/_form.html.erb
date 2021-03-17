@@ -11,17 +11,19 @@
                   { attribute: :person_id, kind: :hidden,
                     value: phone.person_id } ]) %>
 
-  <%= input.row([ { attribute: :cc} ]) %>
+  <%= input.row([ { attribute: :cc, label: 'Country Code' } ]) %>
 
-  <%= input.row([ { attribute: :area },
+  <%= input.row([ { attribute: :area, label: 'Area Code' },
                   { attribute: :prefix },
                   { attribute: :number } ]) %>
 
-  <%= input.row([ { attribute: :locn, kind: :select,
-                    collection: Phone.locations,
-                    selected: phone.locn,
+  <%= input.row([ { attribute: :phone_type, kind: :select,
+                    label: 'Phone Type',
+                    collection: Phone.types,
+                    selected: phone.phone_type,
                     blank: false },
                   { attribute: :txt_capable, kind: :select,
+                    label: 'Message Capable',
                     collection: [['Yes',true],['No',false]],
                     selected: phone.txt_capable,
                     blank: false },

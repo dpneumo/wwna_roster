@@ -5,7 +5,7 @@ Address
 	city
 	state
 	zip
-	locn(home, work, other)
+	address_type(home, work, other)
 	preferred(y/n)
 	note
 
@@ -15,7 +15,7 @@ Phone
 	area
 	prefix
 	number
-	locn(home, work, other)
+	phone_type(home, work, other)
 	preferred(y/n)
 	txt_capable(y/n)
 	note
@@ -23,7 +23,7 @@ Phone
 Email
 	person_id
 	addr
-	locn(home, work, other)
+	email_type(home, work, other)
 	preferred(y/n)
 	note
 

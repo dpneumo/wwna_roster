@@ -9,7 +9,7 @@
   <thead class='thead-light'>
     <tr class='d-flex'>
       <th class='col-3'>Email</th>
-      <th class='col-2'>Location</th>
+      <th class='col-2'>Type</th>
       <th class='col-1'>Preferred</th>
       <th class='col-3'>Note</th>
       <th colspan="3"></th>
@@ -20,7 +20,7 @@
     <% @person.emails.each do |email| %>
       <tr class='d-flex'>
         <td class='col-3'><%= email.addr %></td>
-        <td class='col-2'><%= email.locn %></td>
+        <td class='col-2'><%= email.email_type %></td>
         <td class='col-1'><%= email.preferred %></td>
         <td class='col-3'><%= email.note %></td>
         <td class='col-1'><%= link_to 'Show', email %></td>

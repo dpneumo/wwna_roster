@@ -7,7 +7,7 @@ class CreateAddresses < ActiveRecord::Migration[6.0]
       t.string  :city,   null: false
       t.string  :state,  null: false, default: 'TX'
       t.string  :zip,    null: false
-      t.string  :locn,       default: "Home"
+      t.string  :address_type,       default: "Home"
       t.boolean :preferred,  default: false
       t.text    :note
 

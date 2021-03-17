@@ -40,8 +40,8 @@ class AddressTest < ActiveSupport::TestCase
   	refute @addr.save, "Saved address without zip"
   end
 
-  test "locn defaults to Home" do
-    assert_equal "Home", @addr2.locn
+  test "address_type defaults to Home" do
+    assert_equal "Home", @addr2.address_type
   end
 
   test "preferred defaults to false" do

@@ -15,7 +15,7 @@ class EmailsTest < ApplicationSystemTestCase
     # New (form)
     assert_selector "h1", text: "New Email"
     select "Heinlin, Robert A", from: "email_person_id"
-    select "Other", from: 'email_locn'
+    select "Other", from: 'email_email_type'
     select "No", from: 'email_preferred'
     fill_in "email_addr", with: 'r@s.t'
     fill_in "email_note", with: 'abc'

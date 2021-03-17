@@ -3,7 +3,7 @@ class CreateEmails < ActiveRecord::Migration[6.0]
     create_table :emails, id: :uuid do |t|
       t.uuid     :person_id, null: false
       t.string   :addr, null: false
-      t.string   :locn
+      t.string   :email_type
       t.boolean  :preferred, default: false
       t.text     :note
 

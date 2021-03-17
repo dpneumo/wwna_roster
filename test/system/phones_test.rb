@@ -15,7 +15,7 @@ class PhonesTest < ApplicationSystemTestCase
     # New (form)
     assert_selector "h1", text: "New Phone"
     select "Heinlin, Robert A", from: "phone_person_id"
-    select "Other", from: 'phone_locn'
+    select "Other", from: 'phone_phone_type'
     select "Yes", from: 'phone_txt_capable'
     select "No", from: 'phone_preferred'
     fill_in "phone_cc", with: '0'

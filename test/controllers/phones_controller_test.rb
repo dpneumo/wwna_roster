@@ -22,7 +22,7 @@ class PhonesControllerTest < ActionDispatch::IntegrationTest
       assert_difference('Phone.count') do
       post phones_url, params: { phone: { person_id: @person.id, cc: @phone.cc,
                                           area: @phone.area, prefix: @phone.prefix, number: @phone.number,
-                                          locn: @phone.locn, preferred: @phone.preferred,
+                                          phone_type: @phone.phone_type, preferred: @phone.preferred,
                                           txt_capable: @phone.txt_capable } }
       end
 
@@ -42,7 +42,7 @@ class PhonesControllerTest < ActionDispatch::IntegrationTest
   test "should update phone" do
     patch phone_url(@phone), params: { phone: { cc: @phone.cc,
                                                 area: @phone.area, prefix: @phone.prefix, number: @phone.number,
-                                                locn: @phone.locn, preferred: @phone.preferred,
+                                                phone_type: @phone.phone_type, preferred: @phone.preferred,
                                                 txt_capable: @phone.txt_capable } }
     assert_redirected_to phone_url(@phone)
   end

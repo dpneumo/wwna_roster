@@ -9,7 +9,7 @@
   <thead class='thead-light'>
     <tr class='d-flex'>
       <th class='col-3'>Address</th>
-      <th class='col-2'>Location</th>
+      <th class='col-2'>Type</th>
       <th class='col-1'>Preferred</th>
       <th class='col-3'>Note</th>
       <th colspan="3"></th>
@@ -20,7 +20,7 @@
     <% @person.addresses.each do |address| %>
       <tr class='d-flex'>
         <td class='col-3'><%= address.address %></td>
-        <td class='col-2'><%= address.locn %></td>
+        <td class='col-2'><%= address.address_type %></td>
         <td class='col-1'><%= address.preferred %></td>
         <td class='col-3'><%= address.note %></td>
         <td class='col-1'><%= link_to 'Show', address %></td>
