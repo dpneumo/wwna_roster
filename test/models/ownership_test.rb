@@ -24,7 +24,7 @@ class OwnershipTest < ActiveSupport::TestCase
   end
 
   test "can return the owner name for a house" do
-    assert_equal 'Heinlin, Robert A', @own.owner_name
+    assert_equal 'Robert A Heinlin', @own.owner_name
   end
 
   test "accesses houses through property association" do

@@ -10,6 +10,9 @@ class Person < ApplicationRecord
   validates :first, presence: true
   validates :last,  presence: true
 
+  delegate  :fullname, :sortable_name, :informal_name, :formal_name, 
+            to: :person_name
+
   def self.roles
     Enums.person_roles
   end
@@ -22,8 +25,14 @@ class Person < ApplicationRecord
     all.map {|person| [person.fullname, person.id] }
   end
 
-  def fullname
-    last + ', ' + first + ' ' + middle
+  def person_name
+    PersonName.new(first, middle, last, nickname, suffix, honorific)
+  end
+
+  def person_name=(person_name)
+    self.nickname  = person_name.nickname
+    self.first, self.middle, self.last = person_name.first, person_name.middle, person_name.last
+    self.suffix, self.honorific = person_name.suffix, person_name.honorific
   end
 
   def house_address
@@ -46,10 +55,5 @@ class Person < ApplicationRecord
     return '' unless pref_address_id
     addr = addresses.where(id: pref_address_id).first
     addr ? addr.address : ''
-  end
-
-  def current_position
-    p = Position.current_posns_for_person(person_id: id).last
-    p ? p.name : ''
   end
 end

@@ -23,7 +23,7 @@
     <% @people.each do |person| %>
       <tr>
         <td><%= person.nickname %></td>
-        <td><%= person.fullname %></td>
+        <td><%= person.sortable_name %></td>
         <td><%= person.suffix %></td>
         <td><%= person.honorific %></td>
         <td><%= person.house_id ? person.house.house_address : '' %></td>
