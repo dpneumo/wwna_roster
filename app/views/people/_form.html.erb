@@ -17,16 +17,16 @@
   <%= input.row([ { attribute: :house_id, kind: :select,
                     collection: House.select_list,
                     blank: true,
-                    selected: person.house_id,
+                    selected: pdata.house_id,
                     disabled: @disable_house_select },
                   { attribute: :house_id, kind: :hidden,
-                    value: person.house_id },
+                    value: pdata.house_id },
                   { attribute: :role, kind: :select,
-                    collection: Person.roles,
-                    selected: person.role || "Unknown" },
+                    collection: pdata.roles,
+                    selected: pdata.role || "Unknown" },
                   { attribute: :status, kind: :select,
-                    collection: Person.statuses,
-                    selected: person.role || "Unknown" }  ]) %>
+                    collection: pdata.statuses,
+                    selected: pdata.role || "Unknown" }  ]) %>
 
   <%= input.row([ { attribute: :note, kind: :textarea } ]) %>
 

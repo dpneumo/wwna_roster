@@ -21,27 +21,32 @@ class PeopleController < ApplicationController
   # GET /people/1
   # GET /people/1.json
   def show
+    @person_data = PersonData.new(@person)
   end
 
   # GET /people/1/detail
   def detail
+    @person_data = PersonData.new(@person)
   end
 
   # GET /people/new
   def new
     @person = Person.new
+    @person_data = PersonData.new(@person)
     @disable_house_select = false
   end
 
   # GET /people/occupant/<house_id>
   def new_occupant
     @person = Person.new
+    @person_data = PersonData.new(@person)
     @person.house_id = params[:house_id]
     @disable_house_select = true
   end
 
   # GET /people/1/edit
   def edit
+    @person_data = PersonData.new(@person)
     @disable_house_select = false
   end
 
