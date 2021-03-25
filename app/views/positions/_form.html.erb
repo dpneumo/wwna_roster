@@ -4,28 +4,29 @@
 
   <%= errors.show %>
 
-  <%= input.columns([ { attribute: :person_id, 
-                        kind: :select,
-                        collection: Person.select_list,
-                        selected: position.person_id,
-                        disabled: position.person_id,
-                        blank: true },
-                      { attribute: :person_id, kind: :hidden,
-                        value: position.person_id } ]) %>
-
   <%= input.columns([ { attribute: :name,
                         kind: :select,
-                        collection: Position.names,
-                        selected: position.name,
+                        label: 'Position Name',
+                        collection: pdata.position_names,
+                        selected: pdata.name,
                         blank: true } ]) %>
+
+  <%= input.columns([ { attribute: :person_id, 
+                        kind: :select,
+                        collection: pdata.person_selectlist,
+                        selected: pdata.person_id,
+                        disabled: pdata.person_id,
+                        blank: true },
+                      { attribute: :person_id, kind: :hidden,
+                        value: pdata.person_id } ]) %>
 
   <%= input.columns([ { attribute: :start, 
                         kind: :date_select,
-                        selected: position.start } ]) %>
+                        selected: pdata.date_range.start } ]) %>
 
   <%= input.columns([ { attribute: :stop, 
                         kind: :date_select,
-                        selected: position.start } ]) %>
+                        selected: pdata.date_range.stop } ]) %>
 
   <%= render  partial: 'shared/form_submit_bs',
               locals: { form: form , my_label: nil} %>

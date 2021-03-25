@@ -4,21 +4,24 @@ class PositionsController < ApplicationController
   # GET /positions
   # GET /positions.json
   def index
-    @positions = Position.all
+    @positions = Position.all.map {|p| PositionData.new(p) }
   end
 
   # GET /positions/1
   # GET /positions/1.json
   def show
+    @position_data = PositionData.new(@position)
   end
 
   # GET /positions/new
   def new
     @position = Position.new(start: Date.current, stop: 1.year.from_now)
+    @position_data = PositionData.new(@position)
   end
 
   # GET /positions/1/edit
   def edit
+    @position_data = PositionData.new(@position)
   end
 
   # POST /positions
@@ -40,6 +43,7 @@ class PositionsController < ApplicationController
   # PATCH/PUT /positions/1
   # PATCH/PUT /positions/1.json
   def update
+    @position_data = PositionData.new(@position)
     respond_to do |format|
       if @position.update(position_params)
         format.html { redirect_to @position, notice: 'Position was successfully updated.' }

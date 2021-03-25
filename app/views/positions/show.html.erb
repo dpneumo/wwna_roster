@@ -1,13 +1,12 @@
 <h1>Position Detail</h1>
 
-<% presenter = Shared::Presenters.new(@position) %>
+<% presenter = Shared::Presenters.new(@position_data) %>
 
 <%= presenter.notice(notice) %>
 
 <%= presenter.show(:person_name, 'Person') %>
 <%= presenter.show(:name) %>
-<%= presenter.show(:start) %>
-<%= presenter.show(:stop) %>
+<%= presenter.show(:date_range) %>
 
-<%= link_to 'Edit', edit_position_path(@position) %> |
+<%= link_to 'Edit', edit_position_path(@position_data.id) %> |
 <%= link_to 'List', positions_path %>

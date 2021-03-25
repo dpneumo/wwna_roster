@@ -33,50 +33,24 @@ class PositionTest < ActiveSupport::TestCase
     refute @psn.save, "Saved position with stop = start"
   end
 
-  test "person_name returns a formated, person name" do
-  	assert_equal 'Heinlin, Robert A', @psn.person_name
+  test "current_posns_for_person rtns positions currently held by person" do
+    posns = Position.current_posns_for_person(person_id: @per.id)
+    assert_equal 2, posns.count
+    posn_names = posns.map {|p| p.name }
+    assert posn_names.include? 'President'
   end
 
-  test "person_name returns 'UnAssigned' if no person assigned" do
-  	@psn.person_id = nil
-  	assert_equal 'UnAssigned', @psn.person_name
+  test "current_active_posns rtns positions currently active" do
+    posns = Position.current_active_posns
+    assert_equal 3, posns.count
+    posn_names = posns.map {|p| p.name }
+    assert posn_names.include? 'Treasurer'
   end
 
-  test "person_pref_phone returns empty string if no person assigned" do
-    @psn.person_id = nil
-    assert_equal '', @psn.person_pref_phone
+  test "posns_active_in_interval rtns positions active some time during an interval" do
+    istart = Date.current.next_year.beginning_of_quarter
+    istop = Date.current.next_year.end_of_quarter
+    posns = Position.posns_active_in_interval(int_start: istart, int_stop: istop)
+    assert_equal 1, posns.count
   end
-
-  test "person_pref_email returns empty string if no person assigned" do
-    @psn.person_id = nil
-    assert_equal '', @psn.person_pref_email
-  end
-
-  test "currently_active? returns true if & only if posn is active today" do
-  	@psn_inactive = positions(:four)
-  	assert @psn.currently_active?, "An active position is identified as inactive"
-  	refute @psn_inactive.currently_active?, "An inactive position is identified as active"
-  end
-
-  test "Position.current_posns_for_person rtns positions currently held by person" do
-  	posns = Position.current_posns_for_person(person_id: @per.id)
-  	assert_equal 2, posns.count
-  	posn_names = posns.map {|p| p.name }
-  	assert posn_names.include? 'President'
-  end
-
-  test "Position.current_active_posns rtns positions currently active" do
-  	posns = Position.current_active_posns
-  	assert_equal 3, posns.count
-  	posn_names = posns.map {|p| p.name }
-  	assert posn_names.include? 'Treasurer'
-  end
-
-  test "Position.posns_active_in_interval rtns positions active some time during an interval" do
-  	istart = Date.current.next_year.beginning_of_quarter
-  	istop = Date.current.next_year.end_of_quarter
-  	posns = Position.posns_active_in_interval(int_start: istart, int_stop: istop)
-  	assert_equal 1, posns.count
-  end
-
 end
