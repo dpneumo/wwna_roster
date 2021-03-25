@@ -23,8 +23,8 @@
             <tr>
               <td><%= posn.name %></td>
               <td>
-                <% if posn.person %>
-                  <%= link_to posn.person_name, person_detail_path(posn.person.id) %>
+                <% if posn.person_id %>
+                  <%= link_to posn.person_name, person_detail_path(posn.person_id) %>
                 <% else %>
                   <%= posn.person_name %>
                 <% end %>
