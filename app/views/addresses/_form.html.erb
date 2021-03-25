@@ -5,7 +5,7 @@
   <%= errors.show %>
 
   <%= input.row([ { attribute: :person_id, kind: :select,
-                    collection: Person.select_list,
+                    collection: adata.persons_list,
                     selected: address.person_id,
                     disabled: address.person_id },
                   { attribute: :person_id, kind: :hidden,
@@ -20,7 +20,7 @@
 
   <%= input.row([ { attribute: :address_type, kind: :select,
                     label: 'Address Type',
-                    collection: Address.types,
+                    collection: adata.types,
                     selected: address.address_type,
                     blank: false },
                   { attribute: :preferred, kind: :select,

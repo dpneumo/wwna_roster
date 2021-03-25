@@ -10,9 +10,10 @@ class Shared::Presenters
     return unless attribute
     tag.div class: "col-sm#{width ? '-'+ width.to_s : ''}" do
       tag.p do
-        tag.strong do
-          (label || attribute.to_s.titleize) + ": "
-        end + formated_attr(attribute)
+        lbl = tag.strong do
+                (label || attribute.to_s.titleize) + ": "
+              end
+        lbl + @model.send(attribute).to_s
       end
     end.html_safe
   end
@@ -32,9 +33,5 @@ class Shared::Presenters
         attrib.is_a?(Array) ? show(*attrib) : show(attrib)
       end.join.html_safe
     end
-  end
-
-  def formated_attr(attribute)
-    @model.send(attribute).to_s
   end
 end

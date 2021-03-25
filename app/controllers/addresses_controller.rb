@@ -4,22 +4,26 @@ class AddressesController < ApplicationController
   # GET /addresses
   # GET /addresses.json
   def index
-    @pagy, @addresses = pagy(Address.all)
+    @pagy, addrs = pagy(Address.all)
+    @addresses = addrs.map {|a| AddressData.new(a) }
   end
 
   # GET /addresses/1
   # GET /addresses/1.json
   def show
+    @address_data = AddressData.new(@address)
   end
 
   # GET /addresses/new
   def new
     @address = Address.new
     @address.person_id = params[:person_id]
+    @address_data = AddressData.new(@address)
   end
 
   # GET /addresses/1/edit
   def edit
+    @address_data = AddressData.new(@address)
   end
 
   # POST /addresses

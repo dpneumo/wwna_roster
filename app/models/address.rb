@@ -10,18 +10,11 @@ class Address < ApplicationRecord
   after_save :update_person_prefs
   after_save :make_preferred_uniq, if: -> { preferred }
 
-  def self.types
-    Enums.address_types
-  end
-
   def address
-    "#{number} #{street}, #{city}, #{state}  #{zip}"
+    "#{number} #{street}, #{city}, #{state} #{zip}"
   end
 
-  def addressee
-    person.fullname
-  end
-
+private
   def update_person_prefs
     persn = Person.find(person_id)
     pref_id = preferred ? id : nil
