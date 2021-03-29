@@ -1,5 +1,5 @@
 class PersonData
-  delegate  :fullname, :sortable_name, :informal_name, :formal_name,
+  delegate  :id, :fullname, :sortable_name, :informal_name, :formal_name,
   					:nickname, :first, :middle, :last, :suffix, :honorific, 
   					:house_id, :role, :status, :note, :addresses, 
   		      to: :@person

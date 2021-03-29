@@ -1,5 +1,6 @@
 class AddressData
-  delegate  :id, :address_type, :preferred, :note, 
+  delegate  :id, :errors, 
+            :person_id, :address_type, :preferred, :note, 
             :number, :street, :city, :state, :zip,
             to: :@address
 
