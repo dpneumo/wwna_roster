@@ -33,13 +33,6 @@ class PositionTest < ActiveSupport::TestCase
     refute @psn.save, "Saved position with stop = start"
   end
 
-  test "current_posns_for_person rtns positions currently held by person" do
-    posns = Position.current_posns_for_person(person_id: @per.id)
-    assert_equal 2, posns.count
-    posn_names = posns.map {|p| p.name }
-    assert posn_names.include? 'President'
-  end
-
   test "current_active_posns rtns positions currently active" do
     posns = Position.current_active_posns
     assert_equal 3, posns.count

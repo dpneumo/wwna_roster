@@ -5,7 +5,7 @@ class PositionDataTest < ActiveSupport::TestCase
   test "currently_active? returns true if posn is active today" do
     sally = StubPerson.new('Sally Ride')
     daterange = DateRange.new(Date.yesterday, Date.tomorrow)
-    what = StubPosition.new(sally, daterange)
+    what = StubPosition.new(sally, 'Treas', daterange)
     pdata = PositionData.new(what)
     assert_equal true, pdata.currently_active?
   end
@@ -13,7 +13,7 @@ class PositionDataTest < ActiveSupport::TestCase
   test "currently_active? returns false if posn is not active today" do
     sally = StubPerson.new('Sally Ride')
     daterange = DateRange.new(Date.current.days_ago(2), Date.yesterday)
-    what = StubPosition.new(sally, daterange)
+    what = StubPosition.new(sally, 'Pres', daterange)
     pdata = PositionData.new(what)
     assert_equal false, pdata.currently_active?
   end

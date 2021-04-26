@@ -18,60 +18,70 @@ class PersonDataTest < ActiveSupport::TestCase
 
   test 'returns a preferred email address when assigned' do
   	em1 = StubEmail.new('1','a@b.c')
-  	em2 = StubEmail.new('2','x@y.z')
-  	pers = StubPersonEM.new('1', [em1, em2])
-  	pdata = PersonData.new(pers)
-    assert_equal 'a@b.c', pdata.preferred_email
+  	pers = StubPersonEM.new('1', [ em1 ])
+    Person::GetPreferredEmail.stub(:call, em1) do
+      pdata = PersonData.new(pers)
+      assert_equal 'a@b.c', pdata.preferred_email
+    end
   end
 
-  test 'returns an empty string for preferred email when unassigned' do
-  	em1 = StubEmail.new('1','a@b.c')
-  	em2 = StubEmail.new('2','x@y.z')
-  	pers = StubPersonEM.new(nil,[em1, em2])
-  	pdata = PersonData.new(pers)
-    assert_equal '', pdata.preferred_email
+  test 'preferred_email returns an empty string if person.id is invalid' do
+  	pers = StubPersonEM.new('Invalid', [ ])
+    Person::GetPreferredEmail.stub(:call, nil) do
+      pdata = PersonData.new(pers)
+      assert_equal '', pdata.preferred_email
+    end
   end
 
   test 'returns a preferred phone when assigned' do
   	ph1 = StubPhone.new('1','(817) 123-4567')
-  	ph2 = StubPhone.new('2','(214) 987-6543')
-  	pers = StubPersonPh.new('1', [ph1, ph2])
-  	pdata = PersonData.new(pers)
-    assert_equal '(817) 123-4567', pdata.preferred_phone
+  	pers = StubPersonPh.new('1', [ ph1 ])
+    Person::GetPreferredPhone.stub(:call, ph1) do
+    	pdata = PersonData.new(pers)
+      assert_equal '(817) 123-4567', pdata.preferred_phone
+    end
   end
 
-  test 'returns an empty string for preferred phone when unassigned' do
-  	ph1 = StubPhone.new('1','(817) 123-4567')
-  	ph2 = StubPhone.new('2','(214) 987-6543')
-  	pers = StubPersonPh.new(nil, [ph1, ph2])
-  	pdata = PersonData.new(pers)
-    assert_equal '', pdata.preferred_phone
+  test 'preferred_phone returns an empty string if person.id is invalid' do
+  	pers = StubPersonPh.new('Invalid', [ ])
+    Person::GetPreferredPhone.stub(:call, nil) do
+    	pdata = PersonData.new(pers)
+      assert_equal '', pdata.preferred_phone
+    end
   end
 
   test 'returns a preferred address when assigned' do
   	ad1 = StubAddress1.new('1','123A Oak Dr, Arlington, TX  76016')
-  	ad2 = StubAddress1.new('2','789 Main, Fort Worth, TX  78912')
-  	pers = StubPersonAd.new('1', [ad1, ad2])
-  	pdata = PersonData.new(pers)
-    assert_equal '123A Oak Dr, Arlington, TX  76016', pdata.preferred_address
+  	pers = StubPersonAd.new('1', [ ad1 ])
+    Person::GetPreferredAddress.stub(:call, ad1) do
+    	pdata = PersonData.new(pers)
+      assert_equal '123A Oak Dr, Arlington, TX  76016', pdata.preferred_address
+    end
   end
 
-  test 'returns an empty string for preferred address when unassigned' do
-  	ad1 = StubAddress1.new('1','123A Oak Dr, Arlington, TX  76016')
-  	ad2 = StubAddress1.new('2','789 Main, Fort Worth, TX  78912')
-  	pers = StubPersonAd.new(nil, [ad1, ad2])
-  	pdata = PersonData.new(pers)
-    assert_equal '', pdata.preferred_address
+  test 'preferred_address returns an empty string if person.id is invalid' do
+  	pers = StubPersonAd.new('Invalid', [ ])
+    Person::GetPreferredAddress.stub(:call, nil) do
+    	pdata = PersonData.new(pers)
+      assert_equal '', pdata.preferred_address
+    end
   end
 
   test 'returns the current WWNA position held, if assigned' do
-  	pdata = PersonData.new(people(:one))
-    assert_equal 'President', pdata.current_position
+    pers = StubPersonPn.new('1')
+    posn = StubPosition.new('1', 'President')
+    Positions::GetCurrentForPerson.stub(:call, [ posn ]) do
+    	pdata = PersonData.new(pers)
+      assert_equal 'President', pdata.current_position
+    end
   end
 
   test 'returns an empty string for current position if unassigned' do
-    pdata = PersonData.new(people(:three))
-    assert_equal '', pdata.current_position
+    pers = StubPersonPn.new('1')
+    Positions::GetCurrentForPerson.stub(:call, [ ]) do
+      pdata = PersonData.new(pers)
+      assert_equal '', pdata.current_position
+    end
   end
 
   test "Person.roles returns a list of roles" do
