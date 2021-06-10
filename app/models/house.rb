@@ -8,54 +8,18 @@ class House < ApplicationRecord
   has_many :owners,
             -> { order(last: :asc, first: :asc, middle: :asc) },
             through: :ownerships
-  has_many :contributions, -> { order(date_paid: :asc) }
+  has_many :contributions,
+            -> { order(date_paid: :asc) }
   has_many :links
   has_many :lots, through: :links
-  
+
   validate :lat_is_sane
   validate :lng_is_sane
-
-  def self.statuses
-    Enums.house_statuses
-  end
-
-  def self.street_names
-    all.collect {|house| house.street }.uniq
-  end
-
-  def self.for_select
-    all.reduce({}) do |acc,house|
-      acc[house.street] ||= []
-      acc[house.street] << [house.number, house.id ]
-      acc
-    end
-  end
-
-  def self.select_list
-    all.map {|house| [house.house_address, house.id] }
-  end
-
-  def house_address
-    number + ' ' + street
-  end
-
-  def linked_lot_addresses
-    return '' unless lots
-    lots.map {|lot| lot.house_address }.join('; ')
-  end
-
-  def err_msgs
-    errors.full_messages
-  end
 
   def <=>(other)
     return -1 if self.street < other.street
     return +1 if self.street > other.street
     self.number <=> other.number
-  end
-
-  def contrib
-    Contribution.for(house_id: id, year: Date.current.year)
   end
 
   private

@@ -10,6 +10,11 @@ class PhoneTest < ActiveSupport::TestCase
     assert @ph.save, "Failed to save a valid phone"
   end
 
+  test "person_id must be present" do
+    @ph.person_id = nil
+    refute @ph.save, "Saved phone without person_id"
+  end
+
   test "area must be present" do
     @ph.area = ""
     refute @ph.save, "Saved phone without area"
@@ -25,6 +30,7 @@ class PhoneTest < ActiveSupport::TestCase
     refute @ph.save, "Saved phone without number"
   end
 
+# Schema tests (db enforces)
   test "cc defaults to 1" do
     assert_equal "1", @ph2.cc
   end
@@ -37,12 +43,12 @@ class PhoneTest < ActiveSupport::TestCase
     assert_equal false, @ph2.txt_capable
   end
 
-  test "note may be nil" do
-    assert @ph2.save, "Save phone failed with nil note"
+  test "note may be null" do
+    assert @ph2.save, "Save phone failed with null note"
   end
 
-  test "note may be empty" do
+  test "note may be blank" do
     @ph.note = ""
-    assert @ph.save, "Save phone failed with empty note"
+    assert @ph.save, "Save phone failed with blank note"
   end
 end

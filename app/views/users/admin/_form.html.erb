@@ -1,17 +1,17 @@
 <%= form_with(model: user, local: true) do |form| %>
-  <% errors = Shared::ShowErrs.new(user) %>
-  <% input = Shared::Inputs.new(form) %>
+  <% present(user) do |user| %>
+    <%  user.form = form %>
+    <%= user.show_errors %>
 
-  <%= errors.show %>
+    <%= user.input_row([ { attribute: :first_name },
+                    { attribute: :last_name  } ]) %>
 
-  <%= input.row([ { attribute: :first_name },
-                  { attribute: :last_name  } ]) %>
+    <%= user.input_row([ { attribute: :role, kind: :select,
+                      collection: user.roles,
+                      selected: user.role,
+                      blank: false } ]) %>
 
-  <%= input.row([ { attribute: :role, kind: :select,
-                    collection: User.roles,
-                    selected: user.role,
-                    blank: false } ]) %>
-
-  <%= render  partial: 'shared/form_submit_bs',
-              locals: { form: form } %>
+    <%= render  partial: 'shared/form_submit_bs',
+                locals: { form: form } %>
+  <% end %>
 <% end %>

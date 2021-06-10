@@ -5,7 +5,9 @@
     <h1>Houses</h1>
   </div>
   <div class="field col-sm-8">
-    <%= render 'search_form' %>
+    <% present(nil, HousePresenter) do |h| %>
+      <%= render 'search_form', house: h %>
+    <% end %>
   </div>
 </div>
 
@@ -23,19 +25,21 @@
     </tr>
   </thead>
   <tbody>
-    <% @houses.each do |house| %>
-      <tr>
-        <td><%= house.house_address %></td>
-        <td><%= house.flag %></td>
-        <td><%= house.rental %></td>
-        <td><%= house.listed %></td>
-        <td><%= house.status %></td>
-        <td><%= house.linked_lot_addresses %></td>
-        <td><%= house.note %></td>
-        <td><%= link_to 'Detail', house_detail_path(house) %></td>
-        <td><%= link_to 'Edit', edit_house_path(house) %></td>
-        <td><%= link_to 'Destroy', house, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
+    <% @houses.each do |h| %>
+      <% present(h) do |house| %>
+        <tr>
+          <td><%= house.house_address %></td>
+          <td><%= house.flag %></td>
+          <td><%= house.rental %></td>
+          <td><%= house.listed %></td>
+          <td><%= house.status %></td>
+          <td><%= house.linked_lot_addresses %></td>
+          <td><%= house.note %></td>
+          <td><%= link_to 'Detail', house_detail_path(house) %></td>
+          <td><%= link_to 'Edit', edit_house_path(house) %></td>
+          <td><%= link_to 'Destroy', house, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        </tr>
+      <% end %>
     <% end %>
   </tbody>
 </table>

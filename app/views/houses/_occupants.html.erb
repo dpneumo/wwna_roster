@@ -1,7 +1,7 @@
 <%= render  partial: 'shared/subtable_header_bs',
             locals: { title: "Occupants:",
                       link_text1: "New Person as Occupant",
-                      path1: new_occupant_path(house_id: @house.id),
+                      path1: new_occupant_path(house_id: house.id),
                       link_text2: "Add Occupant",
                       path2: non_occupants_path } %>
 
@@ -16,14 +16,16 @@
   </thead>
 
   <tbody>
-    <% @occupants.each do |occupant| %>
-      <tr>
-        <td><%= occupant.fullname %></td>
-        <td><%= occupant.role %></td>
-        <td><%= occupant.status %></td>
-        <td><%= link_to 'Show', occupant %></td>
-        <td><%= link_to 'Edit', edit_person_path(occupant) %></td>
-      </tr>
+    <% house.occupants.each do |o| %>
+      <% present(o) do |occupant| %>
+        <tr>
+          <td><%= occupant.fullname %></td>
+          <td><%= occupant.role %></td>
+          <td><%= occupant.status %></td>
+          <td><%= link_to 'Show', occupant %></td>
+          <td><%= link_to 'Edit', edit_person_path(occupant) %></td>
+        </tr>
+      <% end %>
     <% end %>
   </tbody>
 </table>

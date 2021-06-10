@@ -4,12 +4,4 @@ class Ownership < ApplicationRecord
 
   validates :house_id,  presence: true
   validates :person_id, presence: true
-
-  def house_address
-    property.house_address
-  end
-
-  def owner_name
-    owner.fullname
-  end
 end

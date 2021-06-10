@@ -8,7 +8,7 @@ class Enums
 	end
 
 	def self.phone_types
-	  %w[ Home Work Other ]
+	  %w[ Cell Home Work Other ]
 	end
 
 	def self.house_statuses

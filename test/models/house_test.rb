@@ -30,36 +30,6 @@ class HouseTest < ActiveSupport::TestCase
     refute @hse1.save, "Saved house with too low longitude"
   end
 
-  test "House.for_select returns options for grouped_options_for_select helper" do
-    expected = {"Oak Dr"=>[["123A", @hse1.id]], "aaa"=>[["zzz", @hse2.id]]}
-    assert_equal expected, House.for_select
-  end
-
-  test "House.select_list returns collection (id & address) for select" do
-    expected = [["123A Oak Dr", @hse1.id], ["zzz aaa", @hse2.id]]
-    assert_equal expected, House.select_list
-  end
-
-  test "House.street_names returns the streets of it's houses" do
-    streets = House.street_names
-    err_msg ="House did not return a complete list of streets"
-    assert streets.include?(@hse1.street), err_msg
-  end
-
-  test "House.statuses returns a list of statuses" do
-    statuses = House.statuses
-    err_msg ="House did not return a list of statuses"
-    assert statuses.include?("Vacant"), err_msg
-  end
-
-  test "can return the house address" do
-    assert_equal '123A Oak Dr', @hse1.house_address
-  end
-
-  test "can return the year's contribution for the house" do
-    assert_equal 0, @hse1.contrib
-  end
-
   test "implements <=> for houses based on addresses" do
     h1 = House.new(number: '1', street: 'aaa')
     h2 = House.new(number: '9', street: 'bbb')

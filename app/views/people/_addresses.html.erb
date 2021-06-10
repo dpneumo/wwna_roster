@@ -1,7 +1,7 @@
 <%= render  partial: 'shared/subtable_header_bs',
             locals: { title: "Addresses:",
                       link_text1: "New Address",
-                      path1: new_address_path(person_id: @person.id),
+                      path1: new_address_path(person_id: person.id),
                       link_text2: nil,
                       path2: nil } %>
 
@@ -17,16 +17,18 @@
   </thead>
 
   <tbody>
-    <% @person_data.addresses.each do |address| %>
-      <tr class='d-flex'>
-        <td class='col-3'><%= address.address %></td>
-        <td class='col-2'><%= address.address_type %></td>
-        <td class='col-1'><%= address.preferred %></td>
-        <td class='col-3'><%= address.note %></td>
-        <td class='col-1'><%= link_to 'Show', address %></td>
-        <td class='col-1'><%= link_to 'Edit', edit_address_path(address) %></td>
-        <td class='col-1'><%= link_to 'Destroy', address, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
+    <% person.addresses.each do |a| %>
+      <% present(a) do |address| %>
+        <tr class='d-flex'>
+          <td class='col-3'><%= address.address %></td>
+          <td class='col-2'><%= address.address_type %></td>
+          <td class='col-1'><%= address.preferred %></td>
+          <td class='col-3'><%= address.note %></td>
+          <td class='col-1'><%= link_to 'Show', address %></td>
+          <td class='col-1'><%= link_to 'Edit', edit_address_path(address) %></td>
+          <td class='col-1'><%= link_to 'Destroy', address, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        </tr>
+      <% end %>
     <% end %>
   </tbody>
 </table>

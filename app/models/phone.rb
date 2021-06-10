@@ -1,32 +1,8 @@
 class Phone < ApplicationRecord
   belongs_to :person
 
+  validates :person_id, presence: true
   validates :area, presence: true
   validates :prefix, presence: true
   validates :number, presence: true
-
-  after_save :update_person_prefs
-  after_save :make_preferred_uniq, if: -> { preferred }
-
-  def self.types
-    Enums.phone_types
-  end
-
-  def ph_number
-    "(#{area}) #{prefix}-#{number}"
-  end
-
-  def person_name
-    person.fullname
-  end
-
-  def update_person_prefs
-    persn = Person.find(person_id)
-    pref_id = preferred ? id : nil
-    persn.update(pref_phone_id: pref_id)
-  end
-
-  def make_preferred_uniq
-    Phone.where.not(id: id ).update_all(preferred: false)
-  end
 end

@@ -1,14 +1,14 @@
 <h1>Email Detail</h1>
 
-<% presenter = Shared::Presenters.new(@email) %>
+<% present(@email) do |email| %>
+	<%= email.notice(notice) %>
 
-<%= presenter.notice(notice) %>
-
-<%= presenter.show(:addressee) %>
-<%= presenter.show(:addr, 'Address') %>
-<%= presenter.show(:email_type, 'Type') %>
-<%= presenter.show(:preferred) %>
-<%= presenter.show(:note) %>
+	<%= email.show(:addressee) %>
+	<%= email.show(:addr, 'Address') %>
+	<%= email.show(:email_type, 'Type') %>
+	<%= email.show(:preferred) %>
+	<%= email.show(:note) %>
+<% end %>
 
 <%= link_to 'Edit', edit_email_path(@email) %> |
 <%= link_to 'Person Detail', person_detail_path(@email.person_id) %>

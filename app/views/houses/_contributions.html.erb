@@ -1,7 +1,7 @@
 <%= render  partial: 'shared/subtable_header_bs',
             locals: { title: "Contributions:",
                       link_text1: "New Contribution",
-                      path1: new_contribution_path(house_id: @house.id),
+                      path1: new_contribution_path(house_id: house.id),
                       link_text2: nil,
                       path2: nil } %>
 
@@ -15,14 +15,16 @@
   </thead>
 
   <tbody>
-    <% @contributions.each do |contribution| %>
-      <tr>
-        <td><%= contribution.date_paid %></td>
-        <td><%= contribution.amount %></td>
-        <td><%= link_to 'Show', contribution %></td>
-        <td><%= link_to 'Edit', edit_contribution_path(contribution) %></td>
-        <td><%= link_to 'Destroy', contribution, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
+    <% house.contributions.each do |c| %>
+      <% present(c) do |contribution| %>
+        <tr>
+          <td><%= contribution.date_paid %></td>
+          <td><%= contribution.amount %></td>
+          <td><%= link_to 'Show', contribution %></td>
+          <td><%= link_to 'Edit', edit_contribution_path(contribution) %></td>
+          <td><%= link_to 'Destroy', contribution, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        </tr>
+      <% end %>
     <% end %>
   </tbody>
 </table>

@@ -19,18 +19,19 @@ class EmailTest < ActiveSupport::TestCase
     refute @em.save, "Saved email without addr"
   end
 
+# Schema tests (db enforces)
   test "preferred defaults to false" do
     @em = emails(:two)
     assert_equal false, @em.preferred
   end
 
-  test "note may be nil" do
+  test "note may be null" do
     @em.note = nil
-    assert @em.save, "Save email failed with nil note"
+    assert @em.save, "Save email failed with null note"
   end
 
-  test "note may be empty" do
+  test "note may be blank" do
     @em.note = ""
-    assert @em.save, "Save email failed with empty note"
+    assert @em.save, "Save email failed with blank note"
   end
 end

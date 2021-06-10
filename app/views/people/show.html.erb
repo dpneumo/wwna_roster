@@ -1,19 +1,19 @@
 <h1>Person</h1>
 
-<% presenter = Shared::Presenters.new(@person_data) %>
+<% present(@person) do |person| %>
+	<%= person.notice(notice) %>
 
-<%= presenter.notice(notice) %>
-
-<%= presenter.show(:nickname) %>
-<%= presenter.show(:first) %>
-<%= presenter.show(:middle) %>
-<%= presenter.show(:last) %>
-<%= presenter.show(:suffix) %>
-<%= presenter.show(:honorific) %>
-<%= presenter.show(:note) %>
-<%= presenter.show(:house_address, 'House') %>
-<%= presenter.show(:role) %>
-<%= presenter.show(:status) %>
+	<%= person.show(:nickname) %>
+	<%= person.show(:first) %>
+	<%= person.show(:middle) %>
+	<%= person.show(:last) %>
+	<%= person.show(:suffix) %>
+	<%= person.show(:honorific) %>
+	<%= person.show(:note) %>
+	<%= person.show(:house_address, 'House') %>
+	<%= person.show(:role) %>
+	<%= person.show(:status) %>
+<% end %>
 
 <%= link_to 'Edit', edit_person_path(@person) %> |
 <%= link_to 'Person Detail', person_detail_path(@person) %> |

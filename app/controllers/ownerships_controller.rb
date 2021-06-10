@@ -2,13 +2,11 @@ class OwnershipsController < ApplicationController
   before_action :set_ownership, only: [:show, :edit, :update, :destroy]
 
   # GET /ownerships
-  # GET /ownerships.json
   def index
     @pagy, @ownerships = pagy(Ownership.all)
   end
 
   # GET /ownerships/1
-  # GET /ownerships/1.json
   def show
   end
 
@@ -23,43 +21,28 @@ class OwnershipsController < ApplicationController
   end
 
   # POST /ownerships
-  # POST /ownerships.json
   def create
     @ownership = Ownership.new(ownership_params)
-
-    respond_to do |format|
-      if @ownership.save
-        format.html { redirect_to @ownership, notice: 'Ownership was successfully created.' }
-        format.json { render :show, status: :created, location: @ownership }
-      else
-        format.html { render :new }
-        format.json { render json: @ownership.errors, status: :unprocessable_entity }
-      end
+    if @ownership.save
+      redirect_to @ownership, notice: 'Ownership was successfully created.' 
+    else
+      render :new 
     end
   end
 
   # PATCH/PUT /ownerships/1
-  # PATCH/PUT /ownerships/1.json
   def update
-    respond_to do |format|
-      if @ownership.update(ownership_params)
-        format.html { redirect_to @ownership, notice: 'Ownership was successfully updated.' }
-        format.json { render :show, status: :ok, location: @ownership }
-      else
-        format.html { render :edit }
-        format.json { render json: @ownership.errors, status: :unprocessable_entity }
-      end
+    if @ownership.update(ownership_params)
+      redirect_to @ownership, notice: 'Ownership was successfully updated.' 
+    else
+      render :edit 
     end
   end
 
   # DELETE /ownerships/1
-  # DELETE /ownerships/1.json
   def destroy
     @ownership.destroy
-    respond_to do |format|
-      format.html { redirect_to ownerships_url, notice: 'Ownership was successfully destroyed.' }
-      format.json { head :no_content }
-    end
+    redirect_to ownerships_url, notice: 'Ownership was successfully destroyed.' 
   end
 
   private

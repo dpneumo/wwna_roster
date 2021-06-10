@@ -5,11 +5,11 @@ class CreateAddresses < ActiveRecord::Migration[6.0]
       t.string  :number, null: false
       t.string  :street, null: false
       t.string  :city,   null: false
-      t.string  :state,  null: false, default: 'TX'
+      t.string  :state,              default: 'TX'
       t.string  :zip,    null: false
       t.string  :address_type,       default: "Home"
-      t.boolean :preferred,  default: false
-      t.text    :note
+      t.boolean :preferred,          default: false
+      t.text    :note,   null: true
 
       t.timestamps
     end

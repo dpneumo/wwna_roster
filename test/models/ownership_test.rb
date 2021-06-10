@@ -19,14 +19,6 @@ class OwnershipTest < ActiveSupport::TestCase
     refute @own.save, "Saved ownership without person_id"
   end
 
-  test "can return the house address of the property owned" do
-    assert_equal '123A Oak Dr', @own.house_address
-  end
-
-  test "can return the owner name for a house" do
-    assert_equal 'Robert A Heinlin', @own.owner_name
-  end
-
   test "accesses houses through property association" do
     hse = houses(:one)
     pers = people(:two)

@@ -1,36 +1,35 @@
 <%= form_with(model: person, local: true) do |form| %>
-  <% errors = Shared::ShowErrs.new(person) %>
-  <% input = Shared::Inputs.new(form) %>
+  <% present(person) do |person| %>
+    <%  person.form = form %>
+    <%= person.show_errors %>
 
-  <%= errors.show %>
+    <%= person.input_row([ { attribute: :nickname }  ]) %>
 
-  <%= input.row([ { attribute: :nickname }  ]) %>
+    <%= person.input_row([ { attribute: :first },
+                    { attribute: :middle },
+                    { attribute: :last }      ]) %>
 
-  <%= input.row([ { attribute: :first },
-                  { attribute: :middle },
-                  { attribute: :last }      ]) %>
-
-  <%= input.row([ { attribute: :suffix },
-                  { attribute: :honorific } ]) %>
+    <%= person.input_row([ { attribute: :suffix },
+                    { attribute: :honorific } ]) %>
 
 
-  <%= input.row([ { attribute: :house_id, kind: :select,
-                    collection: House.select_list,
-                    blank: true,
-                    selected: pdata.house_id,
-                    disabled: @disable_house_select },
-                  { attribute: :house_id, kind: :hidden,
-                    value: pdata.house_id },
-                  { attribute: :role, kind: :select,
-                    collection: pdata.roles,
-                    selected: pdata.role || "Unknown" },
-                  { attribute: :status, kind: :select,
-                    collection: pdata.statuses,
-                    selected: pdata.role || "Unknown" }  ]) %>
+    <%= person.input_row([ { attribute: :house_id, kind: :select,
+                      collection: person.houses,
+                      blank: true,
+                      selected: person.house_id,
+                      disabled: @disable_house_select },
+                    { attribute: :house_id, kind: :hidden,
+                      value: person.house_id },
+                    { attribute: :role, kind: :select,
+                      collection: person.roles,
+                      selected: person.role || "Unknown" },
+                    { attribute: :status, kind: :select,
+                      collection: person.statuses,
+                      selected: person.role || "Unknown" }  ]) %>
 
-  <%= input.row([ { attribute: :note, kind: :textarea } ]) %>
+    <%= person.input_row([ { attribute: :note, kind: :textarea } ]) %>
 
-  <%= render  partial: 'shared/form_submit_bs',
-              locals: { form: form , my_label: nil} %>
-
+    <%= render  partial: 'shared/form_submit_bs',
+                locals: { form: form , my_label: nil} %>
+  <% end %>
 <% end %>

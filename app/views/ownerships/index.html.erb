@@ -11,14 +11,18 @@
     </tr>
   </thead>
   <tbody>
-    <% @ownerships.each do |ownership| %>
-      <tr>
-        <td><%= ownership.property.house_address %></td>
-        <td><%= ownership.owner.fullname %></td>
-        <td><%= link_to 'Show', ownership %></td>
-        <td><%= link_to 'Edit', edit_ownership_path(ownership) %></td>
-        <td><%= link_to 'Destroy', ownership, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
+    <% @ownerships.each do |o| %>
+      <% present(o) do |ownership| %>
+        <tr>
+          <td><%= ownership.house_address %></td>
+          <td><%= ownership.owner_name %></td>
+          <td><%= link_to 'Show', ownership_path(ownership.id) %></td>
+          <td><%= link_to 'Edit', edit_ownership_path(ownership.id) %></td>
+          <td><%= link_to 'Destroy', ownership_path(ownership.id),
+                                     method: :delete,
+                                     data: { confirm: 'Are you sure?' } %></td>
+        </tr>
+      <% end %>
     <% end %>
   </tbody>
 </table>

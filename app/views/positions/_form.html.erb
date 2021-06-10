@@ -1,33 +1,33 @@
 <%= form_with(model: position, local: true) do |form| %>
-  <% errors = Shared::ShowErrs.new(position) %>
-  <% input = Shared::Inputs.new(form) %>
+  <% present(position) do |position| %>
+    <% position.form = form %>
+    <% position.show_errors %>
 
-  <%= errors.show %>
+    <%= position.columns([ { attribute: :name,
+                          kind: :select,
+                          label: 'Position Name',
+                          collection: position.position_names,
+                          selected: position.name,
+                          blank: true } ]) %>
 
-  <%= input.columns([ { attribute: :name,
-                        kind: :select,
-                        label: 'Position Name',
-                        collection: pdata.position_names,
-                        selected: pdata.name,
-                        blank: true } ]) %>
+    <%= position.columns([ { attribute: :person_id, 
+                          kind: :select,
+                          collection: position.person_selectlist,
+                          selected: position.person_id,
+                          disabled: position.person_id,
+                          blank: true },
+                        { attribute: :person_id, kind: :hidden,
+                          value: position.person_id } ]) %>
 
-  <%= input.columns([ { attribute: :person_id, 
-                        kind: :select,
-                        collection: pdata.person_selectlist,
-                        selected: pdata.person_id,
-                        disabled: pdata.person_id,
-                        blank: true },
-                      { attribute: :person_id, kind: :hidden,
-                        value: pdata.person_id } ]) %>
+    <%= position.columns([ { attribute: :start, 
+                          kind: :date_select,
+                          selected: position.date_range.start } ]) %>
 
-  <%= input.columns([ { attribute: :start, 
-                        kind: :date_select,
-                        selected: pdata.date_range.start } ]) %>
+    <%= position.columns([ { attribute: :stop, 
+                          kind: :date_select,
+                          selected: position.date_range.stop } ]) %>
 
-  <%= input.columns([ { attribute: :stop, 
-                        kind: :date_select,
-                        selected: pdata.date_range.stop } ]) %>
-
-  <%= render  partial: 'shared/form_submit_bs',
-              locals: { form: form , my_label: nil} %>
+    <%= render  partial: 'shared/form_submit_bs',
+                locals: { form: form , my_label: nil} %>
+  <% end %>
 <% end %>

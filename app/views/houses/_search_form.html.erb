@@ -17,12 +17,12 @@
 
       <div class='field col-sm-4'>
         <%= f.label :street, 'Street: ' %>
-        <%= f.select(:street_eq, House.street_names, { include_blank: true }) %>
+        <%= f.select(:street_eq, house.street_names, { include_blank: true }) %>
       </div>
 
       <div class='field col-sm-4'>
         <%= f.label :status, 'Status: ' %>
-        <%= f.select(:status_eq, House.statuses, { include_blank: true }) %>
+        <%= f.select(:status_eq, house.statuses, { include_blank: true }) %>
       </div>
 
       <div class="field col-sm-4">

@@ -5,8 +5,8 @@ class Person::MakePrefUnique < ApplicationQuery
 
   def call
   	klass
-  	  .where('person_id = ? and not id = ?', person_id, pref_id)
-  	  .update_all(preferred: false)
+  	  .where('person_id = ? and not id = ?', person_id, pref_model_id)
+  	  .update_all(preferred: false, updated_at: DateTime.now)
   end
 
   private
@@ -14,7 +14,7 @@ class Person::MakePrefUnique < ApplicationQuery
 	    @model.person_id
 	  end
 
-	  def pref_id
+	  def pref_model_id
 	    @model.id
 	  end
 

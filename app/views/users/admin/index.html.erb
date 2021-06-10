@@ -10,24 +10,26 @@
     </tr>
   </thead>
   <tbody>
-    <% @users.each do |user| %>
-      <tr>
-        <td><%= user.id %></td>
-        <td><%= user.email %></td>
-        <td><%= user.first_name %></td>
-        <td><%= user.last_name %></td>
-        <td><%= user.role %></td>
-        <td><%= link_to 'Detail', show_user_path(user) %></td>
-        <% if user.id != current_user.id %>
-          <td><%= link_to 'Edit', edit_user_path(user) %></td>
-          <td><%= link_to 'Destroy', user_registration_path(user), 
-                          method: :delete, 
-                          data: { confirm: 'Are you sure?' } %></td>
-        <% else %>
-          <td>Current User</td>
-          <td>Current User</td>
-        <% end %>
-      </tr>
+    <% @users.each do |u| %>
+      <% present(u) do |user| %>
+        <tr>
+          <td><%= user.id %></td>
+          <td><%= user.email %></td>
+          <td><%= user.first_name %></td>
+          <td><%= user.last_name %></td>
+          <td><%= user.role %></td>
+          <td><%= link_to 'Detail', show_user_path(user.id) %></td>
+          <% if user.id != current_user.id %>
+            <td><%= link_to 'Edit', edit_user_path(user.id) %></td>
+            <td><%= link_to 'Destroy', user_registration_path(user.id), 
+                            method: :delete, 
+                            data: { confirm: 'Are you sure?' } %></td>
+          <% else %>
+            <td>Current User</td>
+            <td>Current User</td>
+          <% end %>
+        </tr>
+      <% end %>
     <% end %>
   </tbody>
 </table>

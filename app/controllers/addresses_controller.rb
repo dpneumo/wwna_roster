@@ -2,34 +2,27 @@ class AddressesController < ApplicationController
   before_action :set_address, only: [:show, :edit, :update, :destroy]
 
   # GET /addresses
-  # GET /addresses.json
   def index
-    @pagy, addrs = pagy(Address.all)
-    @addresses = addrs.map {|a| AddressData.new(a) }
+    @pagy, @addresses = pagy(Address.all)
   end
 
   # GET /addresses/1
-  # GET /addresses/1.json
   def show
-    @address_data = AddressData.new(@address)
   end
 
   # GET /addresses/new
   def new
     @address = Address.new
     @address.person_id = params[:person_id]
-    @address_data = AddressData.new(@address)
   end
 
   # GET /addresses/1/edit
   def edit
-    @address_data = AddressData.new(@address)
   end
 
   # POST /addresses
   def create
     @address = Address.new(address_params)
-
     if @address.save
       Person::MakePrefUnique.call(@address) if @address.preferred
       redirect_to @address, notice: 'Address was successfully created.'
@@ -55,7 +48,6 @@ class AddressesController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
     def set_address
       @address = Address.find(params[:id])
     end

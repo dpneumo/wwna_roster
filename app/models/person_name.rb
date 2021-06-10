@@ -5,49 +5,83 @@ class PersonName
   end
 
   def fullname
-    first + middle + last
+    padded_first + padded_middle + last
   end
 
   def sortable_name
-    last + ', ' + first + middle
-  end  
+    last + ', ' + padded_first + middle
+  end
 
   def informal_name
-    nickname + last
+    padded_nick + last
   end
 
   def formal_name
-    honorific + fullname + suffix
+    padded_honorific + fullname + padded_suffix
   end
 
-private
+  def padded_nick
+    return '' if @nickname.nil?
+    n = @nickname.strip
+    return '' if n.empty?
+    n + ' '
+  end
+
   def nickname
-    '' if @nickname.blank?
-    @nickname.strip + ' '
+    return '' if @nickname.nil?
+    @nickname.strip
+  end
+
+  def padded_first
+    return '' if @first.nil?
+    f = @first.strip
+    return '' if f.empty?
+    f + ' '
   end
 
   def first
-    '' if @first.blank?
-    @first.strip + ' '
+    return '' if @first.nil?
+    @first.strip
+  end
+
+  def padded_middle
+    return '' if @middle.nil?
+    m = @middle.strip
+    return '' if m.empty?
+    m + ' '
   end
 
   def middle
-    '' if @middle.blank?
-    @middle.strip + ' '
+    return '' if @middle.nil?
+    @middle.strip
   end
 
   def last
-    'Not Provided' if @last.blank?
+    return 'Not Provided' if @last.nil?
     @last.strip
   end
 
+  def padded_honorific
+    return '' if @honorific.nil?
+    h = @honorific.strip
+    return '' if h.empty?
+    h + ' '
+  end
+
   def honorific
-    '' if @honorific.blank?
-    @honorific.strip + ' '
+    return '' if @honorific.nil?
+    @honorific.strip
+  end
+
+  def padded_suffix
+    return '' if @suffix.nil?
+    s = @suffix.strip
+    return '' if s.empty?
+    ' ' + s
   end
 
   def suffix
-    '' if @suffix.blank?
-    ' ' + @suffix.strip
+    return '' if @suffix.nil?
+    @suffix.strip
   end
 end

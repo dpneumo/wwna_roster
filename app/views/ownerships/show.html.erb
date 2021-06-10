@@ -1,11 +1,11 @@
 <h1>Ownership Detail</h1>
 
-<% presenter = Shared::Presenters.new(@ownership) %>
+<% present(@ownership) do |ownership| %>
+	<%= ownership.notice(notice) %>
 
-<%= presenter.notice(notice) %>
-
-<%= presenter.show(:house_address, 'Property') %>
-<%= presenter.show(:owner_name, 'Owner') %>
+	<%= ownership.show(:house_address, 'Property') %>
+	<%= ownership.show(:owner_name, 'Owner') %>
+<% end %>
 
 <%= link_to 'Edit', edit_ownership_path(@ownership) %> |
 <%= link_to 'House Detail', house_detail_path(@ownership.house_id) %> |

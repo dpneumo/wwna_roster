@@ -1,17 +1,18 @@
 <h1>Address Detail</h1>
-<% presenter = Shared::Presenters.new(@address_data) %>
 
-<%= presenter.notice(notice) %>
+<% present(@address) do |address| %>
+	<%= address.notice(notice) %>
 
-<%= presenter.show(:addressee) %>
-<%= presenter.show(:number) %>
-<%= presenter.show(:street) %>
-<%= presenter.show(:city) %>
-<%= presenter.show(:state) %>
-<%= presenter.show(:zip) %>
-<%= presenter.show(:address_type) %>
-<%= presenter.show(:preferred) %>
-<%= presenter.show(:note) %>
+	<%= address.show(:addressee) %>
+	<%= address.show(:number) %>
+	<%= address.show(:street) %>
+	<%= address.show(:city) %>
+	<%= address.show(:state) %>
+	<%= address.show(:zip) %>
+	<%= address.show(:address_type) %>
+	<%= address.show(:preferred) %>
+	<%= address.show(:note) %>
+<% end %>
 
 <%= link_to 'Edit', edit_address_path(@address) %> |
 <%= link_to 'Person Detail', person_detail_path(@address.person_id) %>

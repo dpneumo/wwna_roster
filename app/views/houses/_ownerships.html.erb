@@ -1,7 +1,7 @@
 <%= render  partial: 'shared/subtable_header_bs',
             locals: { title: "Owners:",
                       link_text1: "New Owner",
-                      path1: new_ownership_path(house_id: @house.id),
+                      path1: new_ownership_path(house_id: house.id),
                       link_text2: nil,
                       path2: nil } %>
 
@@ -14,13 +14,15 @@
   </thead>
 
   <tbody>
-    <% @house.ownerships.each do |ownership| %>
-      <tr>
-        <td><%= ownership.owner_name %></td>
-        <td><%= link_to 'Show', ownership %></td>
-        <td><%= link_to 'Edit', edit_ownership_path(ownership) %></td>
-        <td><%= link_to 'Destroy', ownership, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
+    <% house.ownerships.each do |o| %>
+      <% present(o) do |ownership| %>
+        <tr>
+          <td><%= ownership.owner_name %></td>
+          <td><%= link_to 'Show', ownership %></td>
+          <td><%= link_to 'Edit', edit_ownership_path(ownership) %></td>
+          <td><%= link_to 'Destroy', ownership, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        </tr>
+      <% end %>
     <% end %>
   </tbody>
 </table>

@@ -1,18 +1,19 @@
 <h1>Phone Detail</h1>
 
-<% presenter = Shared::Presenters.new(@phone) %>
+<% present(@phone) do |phone| %>
 
-<%= presenter.notice(notice) %>
+	<%= phone.notice(notice) %>
 
-<%= presenter.show(:person_name, 'Person') %>
-<%= presenter.show(:cc) %>
-<%= presenter.show(:area) %>
-<%= presenter.show(:prefix) %>
-<%= presenter.show(:number) %>
-<%= presenter.show(:phone_type, 'Type') %>
-<%= presenter.show(:preferred) %>
-<%= presenter.show(:txt_capable, 'Msg Capable') %>
-<%= presenter.show(:note) %>
+	<%= phone.show(:person_name, 'Person') %>
+	<%= phone.show(:cc) %>
+	<%= phone.show(:area) %>
+	<%= phone.show(:prefix) %>
+	<%= phone.show(:number) %>
+	<%= phone.show(:phone_type, 'Type') %>
+	<%= phone.show(:preferred) %>
+	<%= phone.show(:txt_capable, 'Msg Capable') %>
+	<%= phone.show(:note) %>
+<% end %>
 
 <%= link_to 'Edit', edit_phone_path(@phone) %> |
 <%= link_to 'Person Detail', person_detail_path(@phone.person_id) %>

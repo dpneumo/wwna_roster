@@ -1,12 +1,12 @@
 <h1>Contribution Detail</h1>
 
-<% presenter = Shared::Presenters.new(@contribution) %>
+<% present(@contribution) do |contribution| %>
+	<%= contribution.notice(notice) %>
 
-<%= presenter.notice(notice) %>
-
-<%= presenter.show(:house_address, 'House') %>
-<%= presenter.show(:date_paid) %>
-<%= presenter.show(:amount) %>
+	<%= contribution.show(:house_address, 'House') %>
+	<%= contribution.show(:date_paid) %>
+	<%= contribution.show(:amount) %>
+<% end %>
 
 <%= link_to 'Edit', edit_contribution_path(@contribution) %> |
 <%= link_to 'House Detail', house_detail_path(@contribution.house_id) %>

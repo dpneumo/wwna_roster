@@ -1,42 +1,64 @@
 <h1>Person Detail</h1>
 
-<% presenter = Shared::Presenters.new(@person_data) %>
+<% present(@person) do |person| %>
 
-<%= presenter.show_in_row([:nickname]) %>
-<%= presenter.show_in_row([:first, :middle, :last]) %>
-<%= presenter.show_in_row([:suffix, :honorific, :role]) %>
-<%= presenter.show_in_row([ [:house_address, 'House', 4],
-                            [:status],
-                            [:current_position, 'Position'] ]) %>
+  <%= person.show_row do %>
+    <%= person.show :nickname %>
+  <% end %>
 
-<div class="row">
-  <div class="col-sm-8">
-    <h5 class="bg-light">Preferred:</h5>
+  <%= person.show_row do %>
+    <%= person.show :first  %>
+    <%= person.show :middle %>
+    <%= person.show :last   %>
+  <% end %>
+
+  <%= person.show_row do %>
+    <%= person.show :suffix    %>
+    <%= person.show :honorific %>
+    <%= person.show :role      %>
+  <% end %>
+
+  <%= person.show_row do %>
+    <%= person.show :house_address, 'center', 'House', 4    %>
+    <%= person.show :status                       %>
+    <%= person.show :current_position, 'center', 'Position' %>
+  <% end %>
+
+  <div class="row">
+    <div class="col-sm-8">
+      <h5 class="bg-light">Preferred:</h5>
+    </div>
   </div>
-</div>
-<%= presenter.show_in_row([ [:preferred_email, 'Email', 3],
-                            [:preferred_phone, 'Phone', 3],
-                            [:preferred_address, 'Address'] ]) %>
 
-<div class="row">
-  <div class="col-sm">
-    <%= render 'emails' %>
+  <%= person.show_row do %>
+    <%= person.show :preferred_email,'center', 'Email', 3  %>
+    <%= person.show :preferred_phone,'center', 'Phone', 3  %>
+    <%= person.show :preferred_address,'center', 'Address' %>
+  <% end %>
+
+  <div class="row">
+    <div class="col-sm">
+      <%= render 'emails', person: @person %>
+    </div>
   </div>
-</div>
 
-<div class="row">
-  <div class="col-sm">
-    <%= render 'phones' %>
+  <div class="row">
+    <div class="col-sm">
+      <%= render 'phones', person: @person %>
+    </div>
   </div>
-</div>
 
-<div class="row">
-  <div class="col-sm">
-    <%= render 'addresses' %>
+  <div class="row">
+    <div class="col-sm">
+      <%= render 'addresses', person: @person %>
+    </div>
   </div>
-</div>
 
-<%= presenter.show_in_row([:note]) %>
+  <%= person.show_row do %>
+    <%= person.show :note %>
+  <% end %>
+    
+<% end %>
 
 <%= link_to 'Edit', edit_person_path(@person) %> |
 <%= link_to 'List', people_path %>

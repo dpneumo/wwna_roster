@@ -1,5 +1,6 @@
 ENV['RAILS_ENV'] ||= 'test'
 require_relative '../config/environment'
+require_relative 'fixtures/files/stubs'
 require 'rails/test_help'
 require 'minitest/autorun'
 require 'pry'

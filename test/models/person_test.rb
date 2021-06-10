@@ -19,15 +19,17 @@ class PersonTest < ActiveSupport::TestCase
     refute @per.save, "Saved person without last"
   end
 
-  test "accesses owned houses through properties association" do
-    assert_equal 'Oak Dr', @per.properties.first.street
+  test "person_name returns a new PersonName" do
+    assert_equal PersonName, @per.person_name.class
   end
 
-  test "Person.select_list returns collection (id & fullname) for select" do
-    list = Person.select_list
-    assert_equal 3, list.count
-    assert list.first.last.is_a? String
-    names = list.map {|item| item.first }
-    assert names.include?("Geoffry K Swarch"), "select_list is incomplete"
+  test "person_name= sets self values" do
+    pn = PersonName.new('a', 'b', 'c', 'Starwalker','e', 'f')
+    @per.person_name = pn
+    assert_equal "Starwalker", @per.nickname
+  end
+
+  test "accesses owned houses via properties association" do
+    assert_equal 'Oak Dr', @per.properties.first.street
   end
 end

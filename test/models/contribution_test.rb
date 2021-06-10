@@ -5,17 +5,6 @@ class ContributionTest < ActiveSupport::TestCase
     @cntrb = contributions(:one)
   end
 
-  test "Contribution class returns contributions for a house in a given year" do
-    hid1 = houses(:one).id
-    assert_equal 19999, Contribution.for(house_id: hid1, year: 2020)
-    assert_equal 39999, Contribution.for(house_id: hid1, year: 2018)
-  end
-
-  test "Contribution class returns total contributions for a given year" do
-    assert_equal 49998, Contribution.total_for(year: 2020)
-    assert_equal 39999, Contribution.total_for(year: 2018)
-  end
-
   test "a valid contribution succeeds" do
     assert @cntrb.save
   end

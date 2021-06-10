@@ -40,20 +40,25 @@ class AddressTest < ActiveSupport::TestCase
   	refute @addr.save, "Saved address without zip"
   end
 
+# Schema tests (db enforces)
   test "address_type defaults to Home" do
     assert_equal "Home", @addr2.address_type
+  end
+
+  test "state defaults to Tx" do
+    assert_equal "TX", @addr2.state
   end
 
   test "preferred defaults to false" do
     assert_equal false, @addr2.preferred
   end
 
-  test "note may be nil" do
-    assert @addr2.save, "Save address failed with nil note"
+  test "note may be null" do
+    assert @addr2.save, "Save address failed with null note"
   end
 
-  test "note may be empty" do
+  test "note may be blank" do
     @addr.note = ""
-    assert @addr.save, "Save address failed with empty note"
+    assert @addr.save, "Save address failed with blank note"
   end
 end

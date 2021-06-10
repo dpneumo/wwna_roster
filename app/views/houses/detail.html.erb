@@ -1,37 +1,51 @@
 <h1>House Detail</h1>
 
-<% presenter = Shared::Presenters.new(@house) %>
+<% present(@house) do |house| %>
 
-<%= presenter.show_in_row([ [:house_address, 'House'],
-                            [:linked_lot_addresses, 'Linked Lots'] ]) %>
-<%= presenter.show_in_row([ [:lat, 'Latitude'],
-                            [:lng, 'Longitude'],
-                            [:image_link, 'Image Link'] ]) %>
-<%= presenter.show_in_row([ [:flag, 'Member Flag Group'],
-                            [:rental, 'Rental Property'],
-                            [:listed, 'Listed For Sale'] ]) %>
-<%= presenter.show_in_row([ :status ] ) %>
+  <%= house.show_row do %>
+    <%= house.show :house_address, 'center', 'House' %>
+    <%= house.show :linked_lot_addresses, 'center', 'Linked Lots' %>
+  <% end %>
 
-<div class="row">
-  <div class="col-sm">
-    <%= render 'occupants' %>
+  <%= house.show_row do %>
+    <%= house.show :lat, 'center', 'Latitude' %>
+    <%= house.show :lng, 'center', 'Longitude' %>
+    <%= house.show :image_link, 'center', 'Image Link' %>
+  <% end %>
+
+  <%= house.show_row do %>
+    <%= house.show :flag, 'center', 'Member Flag Group' %>
+    <%= house.show :rental, 'center', 'Rental Property' %>
+    <%= house.show :listed, 'center', 'Listed For Sale' %>
+  <% end %>
+
+  <%= house.show_row do %>
+    <%= house.show :status %>
+  <% end %>
+
+  <div class="row">
+    <div class="col-sm">
+      <%= render 'occupants', house: @house %>
+    </div>
   </div>
-</div>
 
-<div class="row">
-  <div class="col-sm">
-    <%= render 'contributions' %>
+  <div class="row">
+    <div class="col-sm">
+      <%= render 'contributions', house: @house %>
+    </div>
   </div>
-</div>
 
-<div class="row">
-  <div class="col-sm">
-    <%= render 'ownerships' %>
+  <div class="row">
+    <div class="col-sm">
+      <%= render 'ownerships', house: @house %>
+    </div>
   </div>
-</div>
 
-<%= presenter.show_in_row([ :note ]) %>
+  <%= house.show_row do %>
+    <%= house.show :note %>
+  <% end %>
 
+<% end %>
 
 <%= link_to 'Edit', edit_house_path(@house) %> |
 <%= link_to 'List', houses_path %>

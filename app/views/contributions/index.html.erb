@@ -12,21 +12,24 @@
     </tr>
   </thead>
   <tbody>
-    <% @contributions.each do |contribution| %>
-      <tr>
-        <td><%= contribution.house.house_address %></td>
-        <td><%= contribution.date_paid %></td>
-        <td><%= contribution.amount %></td>
-        <td><%= link_to 'Show', contribution %></td>
-        <td><%= link_to 'Edit', edit_contribution_path(contribution) %></td>
-        <td><%= link_to 'Destroy', contribution, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
+    <% @contributions.each do |c| %>
+      <% present(c) do |contribution| %>
+        <tr>
+          <td><%= contribution.house_address %></td>
+          <td><%= contribution.date_paid %></td>
+          <td><%= contribution.amount %></td>
+          <td><%= link_to 'Show', contribution_path(contribution.id) %></td>
+          <td><%= link_to 'Edit', edit_contribution_path(contribution.id) %></td>
+          <td><%= link_to 'Destroy', contribution_path(contribution.id), 
+                                     method: :delete, 
+                                     data: { confirm: 'Are you sure?' } %></td>
+        </tr>
+      <% end %>
     <% end %>
   </tbody>
 </table>
 
 <%== pagy_bootstrap_nav(@pagy) %>
-
 
 <br>
 

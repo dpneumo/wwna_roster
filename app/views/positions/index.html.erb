@@ -14,17 +14,19 @@
   </thead>
 
   <tbody>
-    <% @positions.each do |position| %>
-      <tr>
-        <td><%= position.person_name %></td>
-        <td><%= position.name %></td>
-        <td><%= position.date_range %></td>
-        <td><%= link_to 'Show', position_path(position.id) %></td>
-        <td><%= link_to 'Edit', edit_position_path(position.id) %></td>
-        <td><%= link_to 'Destroy', position_path(position.id), 
-                                   method: :delete, 
-                                   data: { confirm: 'Are you sure?' } %></td>
-      </tr>
+    <% @positions.each do |p| %>
+      <% present(p) do |position| %>
+        <tr>
+          <td><%= position.person_name %></td>
+          <td><%= position.name %></td>
+          <td><%= position.date_range %></td>
+          <td><%= link_to 'Show', position_path(position.id) %></td>
+          <td><%= link_to 'Edit', edit_position_path(position.id) %></td>
+          <td><%= link_to 'Destroy', position_path(position.id), 
+                                     method: :delete, 
+                                     data: { confirm: 'Are you sure?' } %></td>
+        </tr>
+      <% end %>
     <% end %>
   </tbody>
 </table>

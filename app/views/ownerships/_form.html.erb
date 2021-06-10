@@ -1,24 +1,23 @@
 <%= form_with(model: ownership, local: true) do |form| %>
-  <% errors = Shared::ShowErrs.new(ownership) %>
-  <% input = Shared::Inputs.new(form) %>
+  <% present(ownership) do |ownership| %>
+    <%  ownership.form = form %>
+    <%= ownership.show_errors %>
 
-  <%= errors.show %>
+    <%= ownership.input_row([ { attribute: :house_id, kind: :select,
+                      collection: ownership.house_list,
+                      selected: ownership.house_id,
+                      blank: true,
+                      disabled: ownership.house_id },
+                    { attribute: :house_id, kind: :hidden,
+                      value: ownership.house_id } ]) %>
 
-  <%= input.row([ { attribute: :house_id, kind: :select,
-                    collection: House.select_list,
-                    selected: ownership.house_id,
-                    blank: true,
-                    disabled: ownership.house_id },
-                  { attribute: :house_id, kind: :hidden,
-                    value: ownership.house_id } ]) %>
+    <%= ownership.input_row([ { attribute: :person_id, kind: :select,
+                      collection: ownership.people_list,
+                      selected: ownership.person_id,
+                      blank: true } ]) %>
 
-  <%= input.row([ { attribute: :person_id, kind: :select,
-                    collection: Person.select_list,
-                    selected: ownership.person_id,
-                    blank: true } ]) %>
-
-  <%= render  partial: 'shared/form_submit_bs',
-              locals: { form: form } %>
-
+    <%= render  partial: 'shared/form_submit_bs',
+                locals: { form: form } %>
+  <% end %>
 <% end %>
 

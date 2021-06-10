@@ -14,25 +14,26 @@
     </tr>
   </thead>
   <tbody>
-    <% @addresses.each do |address| %>
-      <tr>
-        <td><%= address.addressee %></td>
-        <td><%= address.complete_address %></td>
-        <td><%= address.address_type %></td>
-        <td><%= address.preferred %></td>
-        <td><%= address.note %></td>
-        <td><%= link_to 'Show', address_path(address.id) %></td>
-        <td><%= link_to 'Edit', edit_address_path(address.id) %></td>
-        <td><%= link_to 'Destroy', address_path(address.id), 
-                                   method: :delete, 
-                                   data: { confirm: 'Are you sure?' } %></td>
-      </tr>
+    <% @addresses.each do |a| %>
+      <% present(a) do |address| %>
+        <tr>
+          <td><%= address.addressee %></td>
+          <td><%= address.complete_address %></td>
+          <td><%= address.address_type %></td>
+          <td><%= address.preferred %></td>
+          <td><%= address.note %></td>
+          <td><%= link_to 'Show', address_path(address.id) %></td>
+          <td><%= link_to 'Edit', edit_address_path(address.id) %></td>
+          <td><%= link_to 'Destroy', address_path(address.id), 
+                                     method: :delete, 
+                                     data: { confirm: 'Are you sure?' } %></td>
+        </tr>
+      <% end %>
     <% end %>
   </tbody>
 </table>
 
 <%== pagy_bootstrap_nav(@pagy) %>
-
 
 <br>
 
