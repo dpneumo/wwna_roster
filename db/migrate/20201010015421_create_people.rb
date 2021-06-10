@@ -1,10 +1,12 @@
+# frozen_string_literal: true
+
 class CreatePeople < ActiveRecord::Migration[6.0]
   def change
     create_table :people, id: :uuid do |t|
       t.string  :nickname
       t.string  :first, null: false
       t.string  :middle
-      t.string  :last,  null: false
+      t.string  :last, null: false
       t.string  :suffix
       t.string  :honorific
       t.string  :role

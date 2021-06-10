@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Position < ApplicationRecord
   belongs_to :person, optional: true
 
@@ -5,7 +7,6 @@ class Position < ApplicationRecord
   validates :start, presence: true
   validates :stop,  presence: true
   validate :does_not_stop_before_start
-
 
   def date_range
     DateRange.new(start, stop)
@@ -21,13 +22,12 @@ class Position < ApplicationRecord
   end
 
   def self.posns_active_in_interval(int_start:, int_stop:)
-    Position.where("(start, stop) OVERLAPS (?, ?)", int_start, int_stop)
+    Position.where('(start, stop) OVERLAPS (?, ?)', int_start, int_stop)
   end
 
-	private
-	  def does_not_stop_before_start
-	  	if start.present? && stop.present? && stop <= start
-	  		errors.add(:stop, "must occur *after* Start")
-	  	end
-	  end
+  private
+
+  def does_not_stop_before_start
+    errors.add(:stop, 'must occur *after* Start') if start.present? && stop.present? && stop <= start
+  end
 end

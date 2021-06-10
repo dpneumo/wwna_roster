@@ -1,5 +1,8 @@
+# frozen_string_literal: true
+
 class MockErrorModel
   attr_reader :errors
+
   def initialize(errors)
     @errors = errors
   end

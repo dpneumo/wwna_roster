@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Contribution < ApplicationRecord
   belongs_to :house
 
@@ -6,5 +8,3 @@ class Contribution < ApplicationRecord
 
   monetize :amount_cents, numericality: true
 end
-
-

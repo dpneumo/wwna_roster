@@ -1,8 +1,10 @@
+# frozen_string_literal: true
+
 class CreatePhones < ActiveRecord::Migration[6.0]
   def change
     create_table :phones, id: :uuid do |t|
       t.uuid    :person_id, null: false
-      t.string  :cc, default: "1"
+      t.string  :cc, default: '1'
       t.string  :area,   null: false
       t.string  :prefix, null: false
       t.string  :number, null: false

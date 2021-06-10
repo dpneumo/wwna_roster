@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class RegistrationsController < ApplicationController
   def new
     @houses = House.all
@@ -15,11 +17,11 @@ class RegistrationsController < ApplicationController
   end
 
   private
-      # Only allow a list of trusted parameters through.
-    def registration_params
-      params.require(:registration )
-            .permit(:nickname, :first, :middle, :last,
-                    :relation, :status, :house_id )
-    end
 
+  # Only allow a list of trusted parameters through.
+  def registration_params
+    params.require(:registration)
+          .permit(:nickname, :first, :middle, :last,
+                  :relation, :status, :house_id)
+  end
 end

@@ -1,5 +1,7 @@
+# frozen_string_literal: true
+
 class HousesController < ApplicationController
-  before_action :set_house, only: [:show, :detail, :edit, :update, :destroy]
+  before_action :set_house, only: %i[show detail edit update destroy]
 
   # GET /houses
   def index
@@ -9,12 +11,10 @@ class HousesController < ApplicationController
   end
 
   # GET /houses/1
-  def show
-  end
+  def show; end
 
   # GET /houses/1/detail
-  def detail
-  end
+  def detail; end
 
   # GET /houses/new
   def new
@@ -22,8 +22,7 @@ class HousesController < ApplicationController
   end
 
   # GET /houses/1/edit
-  def edit
-  end
+  def edit; end
 
   # POST /houses
   def create
@@ -31,7 +30,7 @@ class HousesController < ApplicationController
     if @house.save
       redirect_to @house, notice: 'House was successfully created.'
     else
-      render :new 
+      render :new
     end
   end
 
@@ -40,7 +39,7 @@ class HousesController < ApplicationController
     if @house.update(house_params)
       redirect_to @house, notice: 'House was successfully updated.'
     else
-      render :edit 
+      render :edit
     end
   end
 
@@ -51,12 +50,13 @@ class HousesController < ApplicationController
   end
 
   private
-    def set_house
-      @house = House.find(params[:id])
-    end
 
-    def house_params
-      params.require(:house).permit( :number, :street, :lat, :lng, :image_link,
-                                     :flag, :rental, :listed, :status, :note, lot_ids: [] )
-    end
+  def set_house
+    @house = House.find(params[:id])
+  end
+
+  def house_params
+    params.require(:house).permit(:number, :street, :lat, :lng, :image_link,
+                                  :flag, :rental, :listed, :status, :note, lot_ids: [])
+  end
 end

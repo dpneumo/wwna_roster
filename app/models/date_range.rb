@@ -1,8 +1,11 @@
+# frozen_string_literal: true
+
 class DateRange
   attr_reader :start, :stop
 
   def initialize(start, stop)
-    @start, @stop = start, stop
+    @start = start
+    @stop = stop
   end
 
   def includes_date?(date)
@@ -23,7 +26,8 @@ class DateRange
 
   def valid?(start, stop)
     return false unless start && stop
-    return false unless start.class == Date && stop.class == Date
+    return false unless start.instance_of?(Date) && stop.instance_of?(Date)
+
     stop < start
   end
 end

@@ -1,15 +1,17 @@
+# frozen_string_literal: true
+
 class OwnershipPresenter < ApplicationPresenter
   def house_list
-  	HousePresenter.new(nil,nil).select_list
+    HousePresenter.new(nil, nil).select_list
   end
 
   def people_list
-  	PersonPresenter.new(nil,nil).select_list
+    PersonPresenter.new(nil, nil).select_list
   end
 
   def house_address
-    #binding.pry
-    HousePresenter.new(property,nil).house_address
+    # binding.pry
+    HousePresenter.new(property, nil).house_address
   end
 
   def owner_name

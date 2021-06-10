@@ -1,8 +1,10 @@
+# frozen_string_literal: true
+
 class PersonPresenter < ApplicationPresenter
   def select_list
     Person.all
-          .collect {|person| [person.sortable_name, person.id] }
-          .sort_by {|element| element.first }
+          .collect { |person| [person.sortable_name, person.id] }
+          .sort_by(&:first)
   end
 
   def roles
@@ -15,6 +17,7 @@ class PersonPresenter < ApplicationPresenter
 
   def house_address
     return '' unless house
+
     HousePresenter.new(house, view_context).house_address
   end
 
@@ -39,15 +42,15 @@ class PersonPresenter < ApplicationPresenter
   end
 
   def addrs
-    addresses.map {|addr| AddressPresenter.new(addr, view_context) }
+    addresses.map { |addr| AddressPresenter.new(addr, view_context) }
   end
 
   def email_addrs
-    emails.map {|email| EmailPresenter.new(email, view_context) }
+    emails.map { |email| EmailPresenter.new(email, view_context) }
   end
 
   def phone_nums
-    phones.map {|ph| PhonePresenter.new(ph, view_context) }
+    phones.map { |ph| PhonePresenter.new(ph, view_context) }
   end
 
   def houses

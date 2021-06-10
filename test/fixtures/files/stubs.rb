@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 StubPerson   = Struct.new(:id, :first, :middle, :last, :house_id, :house)
 StubPersonAd = Struct.new(:id, :addresses)
 StubPersonEM = Struct.new(:id, :emails)

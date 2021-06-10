@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'test_helper'
 
 class PositionsControllerTest < ActionDispatch::IntegrationTest
@@ -6,40 +8,44 @@ class PositionsControllerTest < ActionDispatch::IntegrationTest
     login_as(users(:one))
   end
 
-  test "should get index" do
+  test 'should get index' do
     get positions_url
     assert_response :success
   end
 
-  test "should get new" do
+  test 'should get new' do
     get new_position_url
     assert_response :success
   end
 
-  test "should create position" do
+  test 'should create position' do
     assert_difference('Position.count') do
-      post positions_url, params: { position: { name: @position.name, person_id: @position.person_id, start: @position.start, stop: @position.stop } }
+      post positions_url,
+           params: { position: { name: @position.name, person_id: @position.person_id, start: @position.start,
+                                 stop: @position.stop } }
     end
 
     assert_redirected_to Position.last
   end
 
-  test "should show position" do
+  test 'should show position' do
     get position_url(@position)
     assert_response :success
   end
 
-  test "should get edit" do
+  test 'should get edit' do
     get edit_position_url(@position)
     assert_response :success
   end
 
-  test "should update position" do
-    patch position_url(@position), params: { position: { name: @position.name, person_id: @position.person_id, start: @position.start, stop: @position.stop } }
+  test 'should update position' do
+    patch position_url(@position),
+          params: { position: { name: @position.name, person_id: @position.person_id, start: @position.start,
+                                stop: @position.stop } }
     assert_redirected_to position_url(@position)
   end
 
-  test "should destroy position" do
+  test 'should destroy position' do
     assert_difference('Position.count', -1) do
       delete position_url(@position)
     end

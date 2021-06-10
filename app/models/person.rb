@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Person < ApplicationRecord
   has_many :addresses, -> { order(state: :asc, city: :asc, street: :asc, number: :asc) }
   has_many :emails, -> { order(addr: :asc) }
@@ -13,13 +15,17 @@ class Person < ApplicationRecord
   delegate  :fullname, :sortable_name, :informal_name, :formal_name,
             to: :person_name
 
-  def person_name # Should this move to PersonPresenter?
+  # Should this move to PersonPresenter?
+  def person_name
     PersonName.new(first, middle, last, nickname, suffix, honorific)
   end
 
   def person_name=(person_name)
-    self.nickname  = person_name.nickname
-    self.first, self.middle, self.last = person_name.first, person_name.middle, person_name.last
-    self.suffix, self.honorific = person_name.suffix, person_name.honorific
+    self.nickname = person_name.nickname
+    self.first = person_name.first
+    self.middle = person_name.middle
+    self.last = person_name.last
+    self.suffix = person_name.suffix
+    self.honorific = person_name.honorific
   end
 end

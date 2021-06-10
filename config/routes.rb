@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 Rails.application.routes.draw do
   devise_for :users, controllers: { sessions: 'users/sessions' }
 
@@ -20,7 +22,7 @@ Rails.application.routes.draw do
 
   unauthenticated do
     devise_scope :user do
-      root to: "devise/sessions#new", as: :unauthenticated_root
+      root to: 'devise/sessions#new', as: :unauthenticated_root
     end
   end
 end

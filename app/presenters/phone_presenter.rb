@@ -1,10 +1,12 @@
+# frozen_string_literal: true
+
 class PhonePresenter < ApplicationPresenter
   def types
     Enums.phone_types
   end
 
   def persons_list
-    PersonPresenter.new(nil,nil).select_list
+    PersonPresenter.new(nil, nil).select_list
   end
 
   def ph_number
@@ -12,7 +14,8 @@ class PhonePresenter < ApplicationPresenter
   end
 
   def person_name
-  	return 'Unknown' unless person
+    return 'Unknown' unless person
+
     person.fullname
   end
 end

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'test_helper'
 
 class LinkTest < ActiveSupport::TestCase
@@ -5,17 +7,17 @@ class LinkTest < ActiveSupport::TestCase
     @lnk = links(:one)
   end
 
-  test "a valid link succeeds" do
+  test 'a valid link succeeds' do
     assert @lnk.save
   end
 
-  test "house_id must be present" do
+  test 'house_id must be present' do
     @lnk.house_id = nil
-    refute @lnk.save, "Saved link without house_id"
+    refute @lnk.save, 'Saved link without house_id'
   end
 
-  test "lot_id must be present" do
+  test 'lot_id must be present' do
     @lnk.lot_id = nil
-    refute @lnk.save, "Saved link without lot_id"
+    refute @lnk.save, 'Saved link without lot_id'
   end
 end

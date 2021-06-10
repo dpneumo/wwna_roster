@@ -1,8 +1,10 @@
+# frozen_string_literal: true
+
 class ApplicationPresenter < SimpleDelegator
   include ActionView::Helpers::TagHelper
   include Decorators::Show
-	include Decorators::ShowErrs
-	include Decorators::Input
+  include Decorators::ShowErrs
+  include Decorators::Input
 
   def initialize(model, view)
     @view = view

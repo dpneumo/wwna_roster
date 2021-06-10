@@ -1,5 +1,7 @@
+# frozen_string_literal: true
+
 class EmailsController < ApplicationController
-  before_action :set_email, only: [:show, :edit, :update, :destroy]
+  before_action :set_email, only: %i[show edit update destroy]
 
   # GET /emails
   def index
@@ -7,8 +9,7 @@ class EmailsController < ApplicationController
   end
 
   # GET /emails/1
-  def show
-  end
+  def show; end
 
   # GET /emails/new
   def new
@@ -17,8 +18,7 @@ class EmailsController < ApplicationController
   end
 
   # GET /emails/1/edit
-  def edit
-  end
+  def edit; end
 
   # POST /emails
   def create
@@ -27,7 +27,7 @@ class EmailsController < ApplicationController
       Person::MakePrefUnique.call(@email) if @email.preferred
       redirect_to @email, notice: 'Email was successfully created.'
     else
-      render :new 
+      render :new
     end
   end
 
@@ -48,13 +48,14 @@ class EmailsController < ApplicationController
   end
 
   private
-    def set_email
-      @email = Email.find(params[:id])
-    end
 
-    # Only allow a list of trusted parameters through.
-    def email_params
-      params.require(:email).permit(:person_id, 
-                                    :addr, :email_type, :preferred, :note)
-    end
+  def set_email
+    @email = Email.find(params[:id])
+  end
+
+  # Only allow a list of trusted parameters through.
+  def email_params
+    params.require(:email).permit(:person_id,
+                                  :addr, :email_type, :preferred, :note)
+  end
 end

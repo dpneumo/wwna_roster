@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 
 class Registration
   include ActiveModel::Model
@@ -8,8 +9,8 @@ class Registration
     return false if invalid?
 
     ActiveRecord::Base.transaction do
-      person = Person.create!(nickname: nickname, first: first, middle: middle, last: last,
-                              house_id: house_id, status: status, relation: relation)
+      Person.create!(nickname: nickname, first: first, middle: middle, last: last,
+                     house_id: house_id, status: status, relation: relation)
     end
 
     true
@@ -20,5 +21,4 @@ class Registration
 
     false
   end
-
 end

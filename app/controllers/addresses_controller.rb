@@ -1,5 +1,7 @@
+# frozen_string_literal: true
+
 class AddressesController < ApplicationController
-  before_action :set_address, only: [:show, :edit, :update, :destroy]
+  before_action :set_address, only: %i[show edit update destroy]
 
   # GET /addresses
   def index
@@ -7,8 +9,7 @@ class AddressesController < ApplicationController
   end
 
   # GET /addresses/1
-  def show
-  end
+  def show; end
 
   # GET /addresses/new
   def new
@@ -17,8 +18,7 @@ class AddressesController < ApplicationController
   end
 
   # GET /addresses/1/edit
-  def edit
-  end
+  def edit; end
 
   # POST /addresses
   def create
@@ -48,14 +48,15 @@ class AddressesController < ApplicationController
   end
 
   private
-    def set_address
-      @address = Address.find(params[:id])
-    end
 
-    # Only allow a list of trusted parameters through.
-    def address_params
-      params.require(:address).permit(:person_id,
-                                      :number, :street, :city, :state, :zip,
-                                      :address_type, :preferred, :note)
-    end
+  def set_address
+    @address = Address.find(params[:id])
+  end
+
+  # Only allow a list of trusted parameters through.
+  def address_params
+    params.require(:address).permit(:person_id,
+                                    :number, :street, :city, :state, :zip,
+                                    :address_type, :preferred, :note)
+  end
 end

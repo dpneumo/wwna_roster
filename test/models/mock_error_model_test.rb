@@ -1,9 +1,11 @@
+# frozen_string_literal: true
+
 require 'test_helper'
 require 'fixtures/files/mock_error_model'
 
 class MockErrorModelTest < ActiveSupport::TestCase
   setup do
-    errs = Errs.new(["message 1", "message 2"])
+    errs = Errs.new(['message 1', 'message 2'])
     @mdl = MockErrorModel.new(errs)
   end
 
