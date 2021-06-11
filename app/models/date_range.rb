@@ -16,7 +16,7 @@ class DateRange
     start <= date_range.start && stop >= date_range.stop
   end
 
-  def overlap_date_range?(date_range)
+  def overlaps_date_range?(date_range)
     start <= date_range.stop && stop >= date_range.start
   end
 
@@ -24,10 +24,9 @@ class DateRange
     "#{start.strftime('%d-%B-%Y')}  to  #{stop.strftime('%d-%B-%Y')}"
   end
 
-  def valid?(start, stop)
-    return false unless start && stop
+  def valid?
+    return false if start.nil? || stop.nil?
     return false unless start.instance_of?(Date) && stop.instance_of?(Date)
-
-    stop < start
+    start < stop
   end
 end
