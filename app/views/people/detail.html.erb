@@ -3,18 +3,8 @@
 <% present(@person) do |person| %>
 
   <%= person.show_row do %>
+    <%= person.show :formal_name %>
     <%= person.show :nickname %>
-  <% end %>
-
-  <%= person.show_row do %>
-    <%= person.show :first  %>
-    <%= person.show :middle %>
-    <%= person.show :last   %>
-  <% end %>
-
-  <%= person.show_row do %>
-    <%= person.show :suffix    %>
-    <%= person.show :honorific %>
     <%= person.show :role      %>
   <% end %>
 
@@ -25,7 +15,7 @@
   <% end %>
 
   <div class="row">
-    <div class="col-sm-8">
+    <div class="col-sm-12">
       <h5 class="bg-light">Preferred:</h5>
     </div>
   </div>

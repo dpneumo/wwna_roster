@@ -5,6 +5,10 @@ class AddressPresenter < ApplicationPresenter
     Enums.address_types
   end
 
+  def primary
+    preferred ? 'yes' : ''
+  end
+
   def persons_list
     PersonPresenter.new(nil, nil).select_list
   end
@@ -15,7 +19,6 @@ class AddressPresenter < ApplicationPresenter
 
   def addressee
     return 'Unknown' unless person
-
     person.fullname
   end
 end
