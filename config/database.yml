@@ -10,7 +10,7 @@ development:
   <<: *default
   database: wwna_development
   username: loco
-  password: <%= ENV['WWNA_Roster_DATABASE_PASSWORD'] %>
+  password: <%= Rails.application.credentials[:development][:postgresql][:password] %>
 
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".
@@ -19,7 +19,7 @@ test:
   <<: *default
   database: wwna_test
   username: loco
-  password: <%= ENV['WWNA_Roster_DATABASE_PASSWORD'] %>
+  password: <%= Rails.application.credentials[:test][:postgresql][:password] %>
 
 production:
   <<: *default
