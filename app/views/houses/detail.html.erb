@@ -1,10 +1,11 @@
-<h1>House Detail</h1>
-
 <% present(@house) do |house| %>
 
+  <h1><%= house.house_address %></h1>
+
   <%= house.show_row do %>
-    <%= house.show :house_address, 'center', 'House' %>
-    <%= house.show :linked_lot_addresses, 'center', 'Linked Lots' %>
+    <%= house.show :flag, 'center', 'Member Flag Group' %>
+    <%= house.show :rental, 'center', 'Rental Property' %>
+    <%= house.show :listed, 'center', 'Listed For Sale' %>
   <% end %>
 
   <%= house.show_row do %>
@@ -14,13 +15,8 @@
   <% end %>
 
   <%= house.show_row do %>
-    <%= house.show :flag, 'center', 'Member Flag Group' %>
-    <%= house.show :rental, 'center', 'Rental Property' %>
-    <%= house.show :listed, 'center', 'Listed For Sale' %>
-  <% end %>
-
-  <%= house.show_row do %>
     <%= house.show :status %>
+    <%= house.show :linked_lot_addresses, 'center', 'Linked Lots' %>
   <% end %>
 
   <div class="row">

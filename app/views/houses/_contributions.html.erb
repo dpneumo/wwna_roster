@@ -1,7 +1,7 @@
 <%= render  partial: 'shared/subtable_header_bs',
             locals: { title: "Contributions:",
-                      link_text1: "New Contribution",
-                      path1: new_contribution_path(house_id: house.id),
+                      link_text1: nil,
+                      path1: nil,
                       link_text2: nil,
                       path2: nil } %>
 
@@ -10,7 +10,7 @@
     <tr>
       <th>Date paid</th>
       <th>Amount</th>
-      <th colspan="3"></th>
+      <th class='col-3'><%= link_to 'New Contribution', new_contribution_path(house_id: house.id) %></th>
     </tr>
   </thead>
 
