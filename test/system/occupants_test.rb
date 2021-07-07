@@ -15,7 +15,7 @@ class OccupantsTest < ApplicationSystemTestCase
     click_on 'Detail', match: :first
 
     # House (detail)
-    assert_selector 'h1', text: 'House Detail'
+    assert_selector 'h1'
     click_on 'New Person as Occupant'
 
     # New (form)
@@ -45,7 +45,7 @@ class OccupantsTest < ApplicationSystemTestCase
     click_on 'Detail', match: :first
 
     # House (detail)
-    assert_selector 'h1', text: 'House Detail'
+    assert_selector 'h1'
     click_on 'Add Occupant'
 
     # People List (index)

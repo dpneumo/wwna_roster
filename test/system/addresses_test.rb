@@ -43,7 +43,7 @@ class AddressesTest < ApplicationSystemTestCase
     click_on 'Person Detail'
 
     # Personal Detail (detail)
-    assert_selector 'h1', text: 'Person Detail'
+    assert_selector 'h1'
     within_table('addresses') do
       page.accept_confirm do
         click_on 'Destroy', match: :first

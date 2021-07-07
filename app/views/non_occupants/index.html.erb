@@ -1,0 +1,39 @@
+<p id="notice"><%= notice %></p>
+
+<% present(nil, NonOccupantsPresenter) do |non_occupant| %>
+  <h1>Occupant Candidates</h1>
+  <h2>for <%= non_occupant.topic_house(@house_id) %></h2>
+<% end %>
+<br>
+
+<%= render partial:'search_form', locals: {house_id: @house_id} %>
+<br>
+
+<table class='table table-sm table-bordered table-hover', id='people'>
+  <thead class='thead-light'>
+    <tr>
+      <th>Nickname</th>
+      <th>Name</th>
+      <th>Role</th>
+      <th>Status</th>
+      <th colspan="1"></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @non_occupants.each do |n| %>
+      <% present(n) do |person| %>
+        <tr>
+          <td><%= person.nickname %></td>
+          <td><%= person.sortable_name %></td>
+          <td><%= person.role %></td>
+          <td><%= person.status %></td>
+          <td><%= link_to 'Add to House', non_occupant_path(person.id, {house_id: @house_id}), method: :patch %></td>
+        </tr>
+      <% end %>
+    <% end %>
+  </tbody>
+</table>
+
+<%== pagy_bootstrap_nav(@pagy) %>
+
+<%= link_to 'House Detail', house_detail_path(id: @house_id) %>

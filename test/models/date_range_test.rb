@@ -4,8 +4,8 @@ require 'test_helper'
 
 class DateRangeTest < ActiveSupport::TestCase
   def setup
-    @start = Date.new(2021,5,10)
-    @stop = Date.new(2021,5,12)
+    @start = Date.new(2021, 5, 10)
+    @stop = Date.new(2021, 5, 12)
     @daterange = DateRange.new(@start, @stop)
   end
 
@@ -18,11 +18,11 @@ class DateRangeTest < ActiveSupport::TestCase
   end
 
   test 'includes_date? returns false for date out of range' do
-    assert @daterange.includes_date?(@stop-1)
+    assert @daterange.includes_date?(@stop - 1)
   end
 
   test 'includes_date_range? is true for daterange within this daterange' do
-    daterange2 = DateRange.new(@start+1, @stop-1)
+    daterange2 = DateRange.new(@start + 1, @stop - 1)
     assert @daterange.includes_date_range?(daterange2)
   end
 
@@ -31,7 +31,7 @@ class DateRangeTest < ActiveSupport::TestCase
   end
 
   test 'overlaps_date_range? is true for overlapping daterange' do
-    daterange2 = DateRange.new(@start-1, @stop-1)
+    daterange2 = DateRange.new(@start - 1, @stop - 1)
     assert @daterange.overlaps_date_range?(daterange2)
   end
 
@@ -76,6 +76,4 @@ class DateRangeTest < ActiveSupport::TestCase
     daterange = DateRange.new(@start, @start)
     refute daterange.valid?
   end
-
-
 end

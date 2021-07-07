@@ -56,18 +56,19 @@ module Decorators
     # date_select accepts: label, width
     def date_select(f)
       h.content_tag :div, class: "form-group col-#{f[:width] || wdtsel}" do
-        "#{@form.label(f[:attribute], f[:label])} #{@form.date_select(f[:attribute], class: 'form-control')}"
+        @form.label(f[:attribute], f[:label]) +
+          @form.date_select(f[:attribute], class: 'form-control')
       end
     end
 
-    # select accepts: label, width, collection, selected, blank, disabled
+    # select accepts: label, width, collection, selected, blank, multiple, hidden_mirror, disabled
     def select(f)
       rslt = h.content_tag :div, class: "form-group col-#{f[:width] || wsel}" do
         @form.label(f[:attribute], f[:label]) +
           @form.select(f[:attribute], f[:collection],
                        { include_blank: f[:blank], selected: f[:selected] },
                        { class: 'form-control',
-                         multiple: f[:multiple], disabled: f[:disabled] })
+                         multiple: f[:multiple], hidden: f[:hidden_mirror], disabled: f[:disabled] })
       end
       hdn = f[:disabled] ? hidden(f) : ''
       rslt + hdn

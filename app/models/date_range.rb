@@ -27,6 +27,7 @@ class DateRange
   def valid?
     return false if start.nil? || stop.nil?
     return false unless start.instance_of?(Date) && stop.instance_of?(Date)
+
     start < stop
   end
 end

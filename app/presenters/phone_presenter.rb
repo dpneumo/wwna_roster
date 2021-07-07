@@ -19,6 +19,7 @@ class PhonePresenter < ApplicationPresenter
 
   def person_name
     return 'Unknown' unless person
+
     person.fullname
   end
 end

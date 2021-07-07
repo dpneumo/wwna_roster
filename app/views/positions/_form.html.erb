@@ -3,29 +3,29 @@
     <% position.form = form %>
     <% position.show_errors %>
 
-    <%= position.columns([ { attribute: :name,
-                          kind: :select,
-                          label: 'Position Name',
-                          collection: position.position_names,
-                          selected: position.name,
-                          blank: true } ]) %>
+    <%= position.columns( [ { attribute: :name,
+                              kind: :select,
+                              label: 'Position Name',
+                              collection: position.position_names,
+                              selected: position.name,
+                              blank: true } ] ) %>
 
-    <%= position.columns([ { attribute: :person_id, 
-                          kind: :select,
-                          collection: position.person_selectlist,
-                          selected: position.person_id,
-                          disabled: position.person_id,
-                          blank: true },
-                        { attribute: :person_id, kind: :hidden,
-                          value: position.person_id } ]) %>
+    <%= position.columns( [ { attribute: :person_id,
+                              kind: :select,
+                              collection: position.person_selectlist,
+                              selected: position.person_id,
+                              disabled: position.person_id,
+                              blank: true },
+                            { attribute: :person_id, kind: :hidden,
+                              value: position.person_id } ] ) %>
 
-    <%= position.columns([ { attribute: :start, 
-                          kind: :date_select,
-                          selected: position.date_range.start } ]) %>
+    <%= position.columns( [ { attribute: :start,
+                              kind: :date_select,
+                              selected: position.date_range.start } ] ) %>
 
-    <%= position.columns([ { attribute: :stop, 
-                          kind: :date_select,
-                          selected: position.date_range.stop } ]) %>
+    <%= position.columns( [ { attribute: :stop,
+                              kind: :date_select,
+                              selected: position.date_range.stop } ] ) %>
 
     <%= render  partial: 'shared/form_submit_bs',
                 locals: { form: form , my_label: nil} %>

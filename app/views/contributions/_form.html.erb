@@ -4,11 +4,9 @@
     <%= contribution.show_errors %>
 
     <%= contribution.input_row([ { attribute: :house_id, kind: :select,
-                      collection: contribution.house_list,
-                      selected: contribution.house_id,
-                      disabled: contribution.house_id },
-                    { attribute: :house_id, kind: :hidden,
-                      value: contribution.house_id } ]) %>
+                                   collection: contribution.house_list,
+                                   selected: contribution.house_id,
+                                   disabled: contribution.house_id } ]) %>
 
     <%= contribution.input_row([ { attribute: :date_paid, kind: :date_select } ]) %>
 

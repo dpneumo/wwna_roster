@@ -19,6 +19,7 @@ class AddressPresenter < ApplicationPresenter
 
   def addressee
     return 'Unknown' unless person
+
     person.fullname
   end
 end

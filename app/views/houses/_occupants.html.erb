@@ -7,13 +7,15 @@
 
 <table class='table table-sm table-bordered table-hover'>
   <thead class='thead-light'>
+    <% present(house) do |h| %>
     <tr>
       <th>Occupant</th>
       <th>Role</th>
       <th>Status</th>
       <th class='col-2'><%= link_to 'New Person as Occupant', new_occupant_path(house_id: house.id) %></th>
-      <th class='col-1'><%= link_to 'Add Occupant', non_occupants_path %></th>
+      <th class='col-1'><%= link_to 'Add Occupant', non_occupants_path(house_id: house.id)  %></th>
     </tr>
+    <% end %>
   </thead>
 
   <tbody>

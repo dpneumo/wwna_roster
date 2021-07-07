@@ -12,7 +12,8 @@ Rails.application.routes.draw do
     get   '/houses/:id/detail', to: 'houses#detail', as: 'house_detail'
     get   '/people/:id/detail', to: 'people#detail', as: 'person_detail'
     get   '/people/occupant/:house_id', to: 'people#new_occupant', as: 'new_occupant'
-    get   '/people/non_occupants', to: 'people#non_occupants', as: 'non_occupants'
+    get   '/non_occupants', to: 'non_occupants#index', as: 'non_occupants'
+    patch '/non_occupant/:id', to: 'non_occupants#update', as: 'non_occupant'
     resources :addresses, :phones, :emails, :people,
               :person_phones, :person_addresses,
               :houses, :ownerships, :contributions,

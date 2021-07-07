@@ -13,11 +13,6 @@ class PeopleControllerTest < ActionDispatch::IntegrationTest
     assert_response :success
   end
 
-  test 'should get non_occupants' do
-    get non_occupants_url
-    assert_response :success
-  end
-
   test 'should get new' do
     get new_person_url
     assert_response :success

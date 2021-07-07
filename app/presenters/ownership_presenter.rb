@@ -10,7 +10,6 @@ class OwnershipPresenter < ApplicationPresenter
   end
 
   def house_address
-    # binding.pry
     HousePresenter.new(property, nil).house_address
   end
 
