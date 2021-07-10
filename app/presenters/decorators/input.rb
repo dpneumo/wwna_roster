@@ -10,8 +10,9 @@ module Decorators
       @form
     end
 
-    def input_row(fields)
-      h.content_tag :div, class: 'form-row' do
+    def input_row(fields, align=nil)
+      align ||= 'justify-content-around'
+      h.content_tag :div, class: "form-row #{align}" do
         columns(fields)
       end
     end
