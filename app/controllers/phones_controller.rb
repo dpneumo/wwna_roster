@@ -24,7 +24,7 @@ class PhonesController < ApplicationController
   def create
     @phone = Phone.new(phone_params)
     if @phone.save
-      Person::MakePrefUnique.call(@phone) if @phone.preferred
+      Persons::MakePrefUniqueForPerson.call(@phone) if @phone.preferred
       redirect_to @phone, notice: 'Phone was successfully created.'
     else
       render :new
@@ -34,7 +34,7 @@ class PhonesController < ApplicationController
   # PATCH/PUT /phones/1
   def update
     if @phone.update(phone_params)
-      Person::MakePrefUnique.call(@phone) if @phone.preferred
+      Persons::MakePrefUniqueForPerson.call(@phone) if @phone.preferred
       redirect_to @phone, notice: 'Phone was successfully updated.'
     else
       render :edit

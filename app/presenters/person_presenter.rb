@@ -27,17 +27,17 @@ class PersonPresenter < ApplicationPresenter
   end
 
   def preferred_email
-    em = Person::GetPreferredEmail.call(person_id)
+    em = Persons::GetPreferredEmail.call(person_id)
     em ? EmailPresenter.new(em, view_context).addr : ''
   end
 
   def preferred_phone
-    ph = Person::GetPreferredPhone.call(person_id)
+    ph = Persons::GetPreferredPhone.call(person_id)
     ph ? PhonePresenter.new(ph, view_context).ph_number : ''
   end
 
   def preferred_address
-    ad = Person::GetPreferredAddress.call(person_id)
+    ad = Persons::GetPreferredAddress.call(person_id)
     ad ? AddressPresenter.new(ad, view_context).complete_address : ''
   end
 

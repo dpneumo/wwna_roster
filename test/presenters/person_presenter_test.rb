@@ -24,7 +24,7 @@ class PersonPresenterTest < ActiveSupport::TestCase
   test 'returns a preferred email address when assigned' do
     em1 = StubEmail.new('1', 'a@b.c')
     pers = StubPersonEM.new('1', [em1])
-    Person::GetPreferredEmail.stub(:call, em1) do
+    Persons::GetPreferredEmail.stub(:call, em1) do
       presenter = PersonPresenter.new(pers, nil)
       assert_equal 'a@b.c', presenter.preferred_email
     end
@@ -32,7 +32,7 @@ class PersonPresenterTest < ActiveSupport::TestCase
 
   test 'preferred_email returns an empty string if person_id is invalid' do
     pers = StubPersonEM.new('Invalid', [])
-    Person::GetPreferredEmail.stub(:call, nil) do
+    Persons::GetPreferredEmail.stub(:call, nil) do
       presenter = PersonPresenter.new(pers, nil)
       assert_equal '', presenter.preferred_email
     end
@@ -41,7 +41,7 @@ class PersonPresenterTest < ActiveSupport::TestCase
   test 'returns a preferred phone when assigned' do
     ph1 = StubPhone.new('1', '817', '123', '4567')
     pers = StubPersonPh.new('1', [ph1])
-    Person::GetPreferredPhone.stub(:call, ph1) do
+    Persons::GetPreferredPhone.stub(:call, ph1) do
       presenter = PersonPresenter.new(pers, nil)
       assert_equal '(817) 123-4567', presenter.preferred_phone
     end
@@ -49,7 +49,7 @@ class PersonPresenterTest < ActiveSupport::TestCase
 
   test 'preferred_phone returns an empty string if person_id is invalid' do
     pers = StubPersonPh.new('Invalid', [])
-    Person::GetPreferredPhone.stub(:call, nil) do
+    Persons::GetPreferredPhone.stub(:call, nil) do
       presenter = PersonPresenter.new(pers, nil)
       assert_equal '', presenter.preferred_phone
     end
@@ -58,7 +58,7 @@ class PersonPresenterTest < ActiveSupport::TestCase
   test 'returns a preferred address when assigned' do
     ad1 = StubAddress.new('1', '123A', 'Oak Dr', 'Arlington', 'TX', '76016')
     pers = StubPersonAd.new('1', [ad1])
-    Person::GetPreferredAddress.stub(:call, ad1) do
+    Persons::GetPreferredAddress.stub(:call, ad1) do
       presenter = PersonPresenter.new(pers, nil)
       assert_equal '123A Oak Dr, Arlington, TX 76016', presenter.preferred_address
     end
@@ -66,7 +66,7 @@ class PersonPresenterTest < ActiveSupport::TestCase
 
   test 'preferred_address returns an empty string if person_id is invalid' do
     pers = StubPersonAd.new('Invalid', [])
-    Person::GetPreferredAddress.stub(:call, nil) do
+    Persons::GetPreferredAddress.stub(:call, nil) do
       presenter = PersonPresenter.new(pers, nil)
       assert_equal '', presenter.preferred_address
     end

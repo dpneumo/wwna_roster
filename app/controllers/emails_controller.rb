@@ -24,7 +24,7 @@ class EmailsController < ApplicationController
   def create
     @email = Email.new(email_params)
     if @email.save
-      Person::MakePrefUnique.call(@email) if @email.preferred
+      Persons::MakePrefUniqueForPerson.call(@email) if @email.preferred
       redirect_to @email, notice: 'Email was successfully created.'
     else
       render :new
@@ -34,7 +34,7 @@ class EmailsController < ApplicationController
   # PATCH/PUT /emails/1
   def update
     if @email.update(email_params)
-      Person::MakePrefUnique.call(@email) if @email.preferred
+      Persons::MakePrefUniqueForPerson.call(@email) if @email.preferred
       redirect_to @email, notice: 'Email was successfully updated.'
     else
       render :edit

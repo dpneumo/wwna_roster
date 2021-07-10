@@ -24,7 +24,7 @@ class AddressesController < ApplicationController
   def create
     @address = Address.new(address_params)
     if @address.save
-      Person::MakePrefUnique.call(@address) if @address.preferred
+      Persons::MakePrefUniqueForPerson.call(@address) if @address.preferred
       redirect_to @address, notice: 'Address was successfully created.'
     else
       render :new
@@ -34,7 +34,7 @@ class AddressesController < ApplicationController
   # PATCH/PUT /addresses/1
   def update
     if @address.update(address_params)
-      Person::MakePrefUnique.call(@address) if @address.preferred
+      Persons::MakePrefUniqueForPerson.call(@address) if @address.preferred
       redirect_to @address, notice: 'Address was successfully updated.'
     else
       render :edit

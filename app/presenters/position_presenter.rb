@@ -20,12 +20,12 @@ class PositionPresenter < ApplicationPresenter
   end
 
   def person_pref_phone
-    ph = Person::GetPreferredPhone.call(person.id)
+    ph = Persons::GetPreferredPhone.call(person.id)
     ph.nil? ? '' : PhonePresenter.new(ph, nil).ph_number
   end
 
   def person_pref_email
-    em = Person::GetPreferredEmail.call(person.id)
+    em = Persons::GetPreferredEmail.call(person.id)
     em.nil? ? '' : EmailPresenter.new(em, nil).addr
   end
 end
