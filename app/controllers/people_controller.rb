@@ -10,15 +10,6 @@ class PeopleController < ApplicationController
     @pagy, @people = pagy(@q.result)
   end
 
-  # GET /people/non_occupants
-  def non_occupants
-    @q = Person.where(house_id: nil)
-               .order(last: :asc, first: :asc, middle: :asc)
-               .ransack(params[:q])
-    @pagy, @people = pagy(@q.result)
-    render :index
-  end
-
   # GET /people/1
   def show; end
 
@@ -33,8 +24,8 @@ class PeopleController < ApplicationController
 
   # GET /people/occupant/<house_id>
   def new_occupant
-    @person = Person.new
-    @person.house_id = params[:house_id]
+    redirect_to houses_path and return unless house_id
+    @person = Person.new(house_id: house_id)
     @disable_house_select = true
   end
 
@@ -70,14 +61,26 @@ class PeopleController < ApplicationController
 
   private
 
-  # Use callbacks to share common setup or constraints between actions.
   def set_person
     @person = Person.find(params[:id])
   end
 
-  # Only allow a list of trusted parameters through.
   def person_params
     params.require(:person).permit(:nickname, :first, :middle, :last, :suffix, :honorific,
                                    :note, :house_id, :role, :status)
+  end
+
+  def house_id
+    @house_id ||= existing_house_id
+  end
+
+  def existing_house_id
+    House.find(house_id_as_UUID_from_params).id
+  rescue ActiveRecord::RecordNotFound
+    nil
+  end
+
+  def house_id_as_UUID_from_params
+    params[:house_id].match(SharedRegexp::UUID_FORMAT)[0]
   end
 end
