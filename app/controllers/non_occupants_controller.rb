@@ -9,7 +9,6 @@ class NonOccupantsController < ApplicationController
 
   def update
     non_occupant = Person.find(params[:id])
-    house_id = params[:house_id]
     if non_occupant.update(house_id: house_id)
       redirect_to house_detail_path(id: house_id), notice: 'An occupant was added.'
     else
@@ -24,5 +23,9 @@ class NonOccupantsController < ApplicationController
       .where(house_id: nil)
       .order(last: :asc, first: :asc, middle: :asc)
       .ransack(params[:q])
+  end
+
+  def house_id
+    @house_id ||= params[:house_id].match(SharedRegexp::UUID_FORMAT)[0]
   end
 end
