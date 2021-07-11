@@ -5,7 +5,8 @@ class PeopleController < ApplicationController
 
   # GET /people
   def index
-    @q = Person.order(last: :asc, first: :asc, middle: :asc)
+    @q = Person.includes(:house)
+               .order(last: :asc, first: :asc, middle: :asc)
                .ransack(params[:q])
     @pagy, @people = pagy(@q.result)
   end
