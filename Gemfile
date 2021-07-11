@@ -3,7 +3,7 @@
 source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
-ruby '2.7.2'
+ruby '3.0.2'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 6.0.3', '>= 6.0.3.4'
@@ -25,12 +25,14 @@ gem 'jbuilder', '~> 2.7'
 gem 'bootstrap', '~>4.3.1'
 gem 'font_awesome5_rails'
 
-gem 'pagy', '~> 3'
+gem 'pagy', '~> 4'
 gem 'ransack', github: 'activerecord-hackery/ransack'
 
 gem 'money-rails', '~>1.12'
 
 gem 'devise'
+
+gem 'rexml', '~> 3.2', '>= 3.2.4'
 
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 4.0'
