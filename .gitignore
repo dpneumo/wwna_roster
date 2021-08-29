@@ -27,22 +27,32 @@
 /storage/*
 !/storage/.keep
 
-/public/assets
-.byebug_history
-
-# Ignore master key for decrypting credentials and more.
+# Ignore keys for decrypting credentials and more.
 /config/master.key
+/config/credentials/production.key
+/config/credentials/test.key
+/config/credentials/development.key
+apikey.txt
 
-/public/packs
-/public/packs-test
+# Ignore node_modules and most of yarn
 /node_modules
+.yarn-integrity
+.yarn/*
+!.yarn/patches
+!.yarn/releases
+!.yarn/plugins
+!.yarn/sdks
+!.yarn/versions
+.pnp.*
+
+# Ignore yarn logs
 /yarn-error.log
 yarn-debug.log*
-.yarn-integrity
 
-apikey.txt
-/config/credentials/production.key
+# Ignore webpacker creations
+/public/packs
+/public/assets
+/public/packs-test
 
-/config/credentials/test.key
-
-/config/credentials/development.key
+# Igore byebug history
+.byebug_history
