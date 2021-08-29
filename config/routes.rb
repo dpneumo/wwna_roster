@@ -4,10 +4,10 @@ Rails.application.routes.draw do
   devise_for :users, controllers: { sessions: 'users/sessions' }
 
   authenticate :user do
-    get   '/users',           to: 'users/admin#index',  as: 'users'
-    get   '/users/:id',       to: 'users/admin#show',   as: 'show_user'
-    get   '/users/:id/edit',  to: 'users/admin#edit',   as: 'edit_user'
-    patch '/users/:id',       to: 'users/admin#update', as: 'user'
+    get   '/users/admin',           to: 'users/admin#index',  as: 'list_users'
+    get   '/users/admin/:id',       to: 'users/admin#show',   as: 'show_user'
+    get   '/users/admin/:id/edit',  to: 'users/admin#edit',   as: 'edit_user'
+    patch '/users/admin/:id',       to: 'users/admin#update', as: 'user'
 
     get   '/houses/:id/detail', to: 'houses#detail', as: 'house_detail'
     get   '/people/:id/detail', to: 'people#detail', as: 'person_detail'

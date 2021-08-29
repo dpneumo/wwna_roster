@@ -3,7 +3,6 @@
 <% present(@user) do |user| %>
 	<%= user.notice(notice) %>
 
-	<%= user.show(:id, 'ID') %>
 	<%= user.show(:email) %>
 	<%= user.show(:first_name) %>
 	<%= user.show(:last_name) %>
@@ -15,4 +14,4 @@
 	<%= user.show(:created_at) %>
 <% end %>
 
-<%= link_to 'List', users_path %>
+<%= link_to 'List', list_users_path %>

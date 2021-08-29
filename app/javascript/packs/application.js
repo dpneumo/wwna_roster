@@ -16,11 +16,13 @@ require("channels")
 // const images = require.context('../images', true)
 // const imagePath = (name) => images(name, true)
 
-import './pagy.js.erb'
-
 import "bootstrap";
 import "../stylesheets/application";
+
+var jQuery = require('jquery')
+global.$ = global.jQuery = jQuery;
+window.$ = window.jQuery = jQuery;
+
+import './pagy.js.erb'
 import "./custom";
 import "@fortawesome/fontawesome-free/js/all";
-import $ from 'jquery';
-global.$ = jQuery;

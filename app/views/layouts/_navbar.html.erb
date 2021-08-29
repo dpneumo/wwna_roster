@@ -13,7 +13,7 @@
       <% if current_user.role == 'admin' %>
         <li class="nav-item dropdown"><%= render "layouts/property_dropdown" %></li>
         <li class="nav-item dropdown"><%= render "layouts/person_dropdown" %></li>
-        <li class="nav-item"><%= link_to "Users", users_path, class: 'nav-link' %></li>
+        <li class="nav-item"><%= link_to "Users", list_users_path, class: 'nav-link' %></li>
       <% end %>
     </ul>
     <ul class="nav navbar-nav navbar-right">

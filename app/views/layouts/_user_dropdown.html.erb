@@ -2,7 +2,7 @@
   <%= User.find(current_user.id).std_name %>
 </a>
 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-	<%= link_to destroy_user_session_path, class: 'nav-link', method: :delete do %>Log out<% end %>
+	<%= link_to destroy_user_session_path, {method: :delete}, class: 'nav-link' do %>Log out<% end %>
 	<div class="dropdown-divider"></div>
-	<%= link_to edit_user_registration_path, class: 'nav-link' do %>Edit Profile<% end %>
+	<%= link_to edit_user_registration_path, {}, class: 'nav-link' do %>Edit Profile<% end %>
 </div>
