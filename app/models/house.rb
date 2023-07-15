@@ -18,6 +18,10 @@ class House < ApplicationRecord
   validate :lat_is_sane
   validate :lng_is_sane
 
+  def self.ransackable_attributes(auth_object = nil)
+    ["created_at", "current_dues", "flag", "id", "image_link", "lat", "listed", "lng", "note", "number", "rental", "status", "street", "updated_at"]
+  end
+
   def <=>(other)
     return -1 if street < other.street
     return +1 if street > other.street

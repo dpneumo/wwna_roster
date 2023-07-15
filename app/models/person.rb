@@ -15,6 +15,10 @@ class Person < ApplicationRecord
   delegate  :fullname, :sortable_name, :informal_name, :formal_name,
             to: :person_name
 
+  def self.ransackable_attributes(auth_object = nil)
+    ["created_at", "first", "honorific", "house_id", "id", "last", "middle", "nickname", "note", "pref_address_id", "pref_email_id", "pref_phone_id", "role", "status", "suffix", "updated_at"]
+  end
+
   # Should this move to PersonPresenter?
   def person_name
     PersonName.new(first, middle, last, nickname, suffix, honorific)

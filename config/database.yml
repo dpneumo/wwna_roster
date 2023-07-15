@@ -8,8 +8,8 @@ default: &default
 
 development:
   <<: *default
-  database: wwna_development
-  username: loco
+  database: wwna_roster_development
+  username: wwna
   password: <%= Rails.application.credentials.postgresql[:password] %>
 
 # Warning: The database defined as "test" will be erased and
@@ -17,12 +17,12 @@ development:
 # Do not set this db to the same as development or production.
 test:
   <<: *default
-  database: wwna_test
-  username: loco
+  database: wwna_roster_test
+  username: wwna
   password: <%= Rails.application.credentials.postgresql[:password] %>
 
 production:
   <<: *default
-  database: wwna_production
+  database: wwna_roster_production
   username: <%= Rails.application.credentials.postgresql[:role] %>
   password: <%= Rails.application.credentials.postgresql[:password] %>
