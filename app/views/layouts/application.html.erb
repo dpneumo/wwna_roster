@@ -1,35 +1,37 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <%= render "layouts/bootstrap_head_content" %>
-
-    <meta name="description" content="">
+    <meta name="description" content="WWNA Property info, Owner & Occupent info, Dues and Flag status.">
     <meta name="author" content="Mitch Kuppinger, MD">
     <meta name="copyright" content="Mitch Kuppinger, MD, Black Lake Software">
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com"></script>
 
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
     <title>WWNA Roster</title>
 
+    <%= stylesheet_link_tag "tailwind", "inter-font", "data-turbo-track": "reload" %>
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= stylesheet_link_tag 'application', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag "application", "data-turbo-track": "reload", defer: true %>
   </head>
 
-  <body class="text-center">
-    <div class="container-fluid d-flex w-100 h-100 p-3 mx-auto flex-column">
-      <header>
+  <body>
+    <div class="flex w-full bg-white">
+      <header class="object-top">
           <%= render "layouts/navbar" unless current_user.nil? %>
       </header>
 
-      <main role="main" class="inner cover">
+      <main role="main">
         <p class="alert"><%= alert %></p>
         <%= yield %>
       </main>
 
-      <footer class="mastfoot mt-auto">
+      <footer class="object-bottom">
         <%= render "layouts/footer_content" %>
       </footer>
     </div>

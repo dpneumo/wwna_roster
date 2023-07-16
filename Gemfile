@@ -11,6 +11,8 @@ gem 'puma', '~> 4.1'
 gem 'sass-rails', '>= 6'
 
 gem 'jsbundling-rails'
+gem "view_component"
+gem "tailwindcss-rails", "~> 2.0"
 
 # Turbolinks makes navigating your web application faster. Read more: https://github.com/turbolinks/turbolinks
 gem 'turbolinks', '~> 5'
@@ -34,8 +36,8 @@ group :development do
   gem 'web-console', '>= 4.2.0'
   gem 'pry-byebug'
   gem 'pry-rails'
-  gem 'spring'
-  gem 'spring-watcher-listen', '~> 2.0.0'
+#  gem 'spring'
+#  gem 'spring-watcher-listen', '~> 2.0.0'
 end
 
 group :test do
@@ -43,3 +45,4 @@ group :test do
   gem 'selenium-webdriver'
   gem 'webdrivers'
 end
+

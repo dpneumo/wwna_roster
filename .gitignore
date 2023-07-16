@@ -56,3 +56,6 @@ yarn-debug.log*
 
 # Igore byebug history
 .byebug_history
+
+/app/assets/builds/*
+!/app/assets/builds/.keep
